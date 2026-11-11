@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Animais 8º ano</title>
-<style id="mainCss">
+<style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
 body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:#eaf6ff;background:#06182f;overflow-x:hidden;font-size:18px;line-height:1.45}
@@ -415,13 +415,7 @@ header{position:relative}
 <canvas id="cf"></canvas>
 
 <script>
-(function(SRC){"use strict";
-const EXPECT="1c8a9afbd12e31";
-function h53(str){let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}
- h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);}
-(function(){if(!SRC)return;const cs=document.getElementById("mainCss");if(!cs)return;const css=cs.textContent;
- if(h53(SRC.replace(EXPECT,"")+css)!==EXPECT){document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;background:#0b1a3a;color:#fff;font:20px/1.5 sans-serif;text-align:center;padding:24px"><div><div style="font-size:64px">🔒</div><b>Arquivo modificado e bloqueado.</b><br>Peça ao professor o arquivo original.</div></div>';throw new Error("bloqueado");}})();
-
+"use strict";
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 let pmode="g";
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
@@ -1721,13 +1715,6 @@ document.addEventListener("pointerdown",ev=>{if(!ev.isTrusted||!autoFs||document
  try{const r=document.documentElement.requestFullscreen();if(r&&r.catch)r.catch(()=>{});}catch(e){}},{once:true});
 setTimeout(()=>showInst(),1500);
 
-/* ---------- travas: dados congelados e placar vigiado ---------- */
-(function deepFreeze(o){if(o&&typeof o==="object"&&!Object.isFrozen(o)){Object.freeze(o);Object.getOwnPropertyNames(o).forEach(k=>deepFreeze(o[k]));}return o;})
- ([G,QZ,AN,PA,MINI,MQX,BANK3,IMGALL,EMJ]);
-setInterval(()=>{const n=String(stars.size);if($("#stars").textContent!==n||$("#sbar").style.width!==(stars.size/13*100)+"%")updScore();},1200);
-document.addEventListener("contextmenu",e=>e.preventDefault());
-document.addEventListener("keydown",e=>{const k=(e.key||"").toLowerCase();
- if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&["i","j","c"].includes(k))||(e.ctrlKey&&k==="u")||(e.metaKey&&e.altKey&&["i","j","u"].includes(k)))e.preventDefault();});
 let zpT=0;$("#zp").onclick=function(ev){if(!ev||!ev.isTrusted)return;const b=this;
  if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";},4000);}
  else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";clearProg();$("#opm").classList.remove("show");}};
@@ -1735,8 +1722,6 @@ $("#sn").onclick=function(){soundOn=!soundOn;this.textContent=(soundOn?"🔊":"�
 $("#op").onclick=e=>{e.stopPropagation();const m=$("#opm");m.classList.toggle("show");$("#op").setAttribute("aria-expanded",m.classList.contains("show"));};
 document.addEventListener("click",e=>{if(!e.target.closest(".opw"))$("#opm").classList.remove("show");});
 $$(".ht").forEach(b=>b.onclick=()=>$('#tabs button[data-t="'+b.dataset.t+'"]').click());
-
-})(document.currentScript?document.currentScript.textContent:null);
 </script>
 </body>
 </html>
