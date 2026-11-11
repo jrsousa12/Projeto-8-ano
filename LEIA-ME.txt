@@ -1,0 +1,37 @@
+ANIMAIS 8º ANO - COMO INSTALAR COMO APLICATIVO (tela cheia, funciona sem internet)
+
+O QUE TEM NESTA PASTA
+  index.html                 o aplicativo
+  manifest.webmanifest       dados do app (nome, ícone, abre em tela cheia)
+  sw.js                      guarda o app no aparelho para abrir sem internet
+  icon-192.png, icon-512.png, icon-maskable-512.png   ícones
+
+IMPORTANTE
+  - O arquivo único "animais-8ano.html" funciona direto no navegador, mas NÃO consegue se
+    instalar sozinho. Navegadores só instalam apps vindos de um endereço https.
+  - Para o aviso "Instalar na tela inicial" funcionar de verdade, publique ESTA PASTA inteira
+    (todos os arquivos juntos) em uma hospedagem de sites estáticos e use o link no celular.
+    Depois da primeira abertura com internet, o app passa a abrir sem internet.
+
+COMO PUBLICAR (exemplos gratuitos, escolha um)
+  A) Netlify Drop: acesse app.netlify.com/drop e arraste a pasta. Ele gera um link https.
+  B) GitHub Pages: crie um repositório, envie todos os arquivos e ative Pages nas configurações.
+
+COMO INSTALAR NO CELULAR (depois de publicado)
+  Android (Chrome): abra o link. Aparece o aviso "Instalar na tela inicial" > toque em Instalar.
+    Se não aparecer: menu ⋮ > Instalar app (ou Adicionar à tela inicial).
+  iPhone/iPad (Safari): abra o link > Compartilhar > Adicionar à Tela de Início.
+  Computador (Chrome/Edge): ícone de instalar na barra de endereço.
+  O app instalado abre em tela cheia, sem barra do navegador.
+
+SE NÃO FOR PUBLICAR
+  Abra o arquivo "animais-8ano.html" no Chrome. Em Opções, a "Tela cheia automática"
+  coloca o app em tela cheia no primeiro toque.
+
+PERFIS DOS ALUNOS
+  As estrelas ficam salvas por aluno, somente no aparelho e no navegador usados.
+  Trocar de celular, de navegador ou limpar os dados do navegador apaga o progresso.
+
+ATENÇÃO
+  O arquivo tem trava contra alteração. Se editar o index.html à mão, ele mostra
+  "Arquivo modificado e bloqueado". Peça a versão nova ao professor responsável pelo app.
