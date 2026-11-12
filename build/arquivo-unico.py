@@ -15,6 +15,11 @@ def embutir_js(m):
     return '<script>\n' + js + '\n</script>'
 # no arquivo único não existe o editor (ele fica no site publicado)
 html = re.sub(r'\s*<a class="fs" id="ed"[^>]*>.*?</a>', '', html)
+# ilustrações embutidas (data URI), para o arquivo único funcionar sozinho
+import base64, json
+pasta = A + 'img/animais/'
+imgs = {f[:-5]: 'data:image/webp;base64,' + base64.b64encode(open(pasta + f, 'rb').read()).decode() for f in sorted(os.listdir(pasta)) if f.endswith('.webp')} if os.path.isdir(pasta) else {}
+html = html.replace('<script src="util.js"></script>', '<script>var IMGDATA=' + json.dumps(imgs) + ';</script>\n<script src="util.js"></script>', 1)
 html = re.sub(r'<script src="([^"]+)"></script>', embutir_js, html)
 html = re.sub(r'<link rel="stylesheet" href="([^"]+)">', lambda m: '<style>\n' + ler(m.group(1)) + '\n</style>', html)
 # no arquivo único os scripts ficam dentro da página, então a regra de segurança precisa permiti-los

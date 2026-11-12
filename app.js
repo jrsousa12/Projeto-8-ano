@@ -10,6 +10,9 @@ for(let i=0;i<26;i++){const b=document.createElement("div");b.className="bubble"
 
 /* ---------- ilustrações ---------- */
 const star5=(cx,cy,R,r)=>{let p=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,k=i%2?r:R;p.push((cx+k*Math.cos(a)).toFixed(1)+","+(cy+k*Math.sin(a)).toFixed(1));}return p.join(" ");};
+/* ilustrações (slides do 8º ano): no arquivo único elas vêm embutidas em IMGDATA */
+const imgSrc=n=>(typeof IMGDATA!=="undefined"&&IMGDATA[n])||("img/animais/"+n+".webp");
+const imgAni=(n,alt,cls)=>`<img class="ani${cls?" "+cls:""}" src="${imgSrc(n)}" alt="${alt||""}" draggable="false">`;
 const ICON={
 porifero:()=>`<svg viewBox="0 0 120 120"><path d="M6 108 Q60 98 114 108 L114 116 L6 116Z" fill="#475569"/><g class="bob">
 <rect x="20" y="50" width="24" height="58" rx="12" fill="#fbbf24"/><ellipse cx="32" cy="52" rx="9" ry="4" fill="#b45309"/>
@@ -60,6 +63,8 @@ mamifero:()=>`<svg viewBox="0 0 120 120"><g class="tilt"><circle cx="22" cy="62"
 <ellipse class="blink" cx="48" cy="62" rx="4.6" ry="5.4" fill="#1f2937"/><ellipse class="blink" cx="72" cy="62" rx="4.6" ry="5.4" fill="#1f2937"/><circle cx="46.5" cy="60" r="1.5" fill="#fff"/><circle cx="70.5" cy="60" r="1.5" fill="#fff"/>
 <ellipse cx="55" cy="76" rx="2" ry="2.6" fill="#92400e"/><ellipse cx="65" cy="76" rx="2" ry="2.6" fill="#92400e"/><path d="M46 85 Q60 96 74 85" stroke="#7c2d12" stroke-width="3.4" fill="none" stroke-linecap="round"/></g></svg>`
 };
+const ICONSVG=Object.assign({},ICON);
+G.forEach(g=>{ICON[g.id]=()=>imgAni("g-"+g.id,g.n);});
 
 /* ---------- conteúdo ---------- */
 
@@ -135,7 +140,7 @@ function openPanel(i){pmode="g";cur=i;const g=G[i];seen.add(g.id);if(typeof NV!=
  const p=$("#panel");p.style.setProperty("--c",g.c);
  let sp="";for(let k=0;k<9;k++)sp+=`<i class="spark" style="left:${8+Math.random()*84}%;top:${8+Math.random()*84}%;animation-delay:${Math.random()*3}s"></i>`;
  p.innerHTML=`<button class="x" aria-label="Fechar">✕</button><div class="pgrid">
- <div class="hero">${sp}${ICON[g.id]()}<h2>${g.n}</h2><span class="tag">${g.tag}</span><p style="opacity:.9">${g.sub}</p></div>
+ <div class="hero">${sp}${imgAni("p-"+g.id,"Ilustração: "+g.n,"heroimg")}<h2>${g.n}</h2><span class="tag">${g.tag}</span><p style="opacity:.9">${g.sub}</p></div>
  <div class="info"><h3>Como são</h3><ul>${g.f.map(x=>`<li>${x}</li>`).join("")}</ul>
  <h3>Como se reproduzem</h3><p>${g.r}</p><h3>Papel na natureza</h3><p>${g.p}</p>
  <h3>Exemplos</h3><div class="chips">${g.e.map((x,k)=>`<span class="chip" style="--i:${Math.min(k,7)}">${x}</span>`).join("")}</div>
@@ -423,7 +428,7 @@ sapo:[
 {t:"1. Ovos",d:"Os anfíbios fazem fecundação externa, na água ou em locais úmidos. Os ovos ficam em uma massa gelatinosa.",s:`<svg viewBox="0 0 160 160"><g fill="#bae6fd" stroke="#38bdf8" stroke-width="2" opacity=".95">${[[50,92],[72,86],[94,92],[116,88],[60,112],[84,110],[106,112],[72,66],[96,70]].map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="11"/>`).join("")}</g><g fill="#1e293b">${[[50,92],[72,86],[94,92],[116,88],[60,112],[84,110],[106,112],[72,66],[96,70]].map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="4"/>`).join("")}</g></svg>`},
 {t:"2. Girino",d:"Do ovo nasce o girino, que vive na água, tem cauda e respira por brânquias.",s:`<svg viewBox="0 0 160 160"><g class="swim"><g class="tail"><path d="M70 80 Q110 60 138 82 Q110 100 70 82Z" fill="#374151"/></g><ellipse cx="56" cy="80" rx="30" ry="22" fill="#4b5563"/><circle cx="44" cy="72" r="5" fill="#fff"/><circle cx="43" cy="72" r="2.4" fill="#111"/></g></svg>`},
 {t:"3. Girino com pernas",d:"Crescem as pernas, a cauda vai diminuindo e os pulmões se desenvolvem. É a metamorfose!",s:`<svg viewBox="0 0 160 160"><g class="swim"><path d="M76 82 Q104 72 124 84 Q104 94 76 84Z" fill="#4b5563"/><ellipse cx="60" cy="80" rx="30" ry="22" fill="#6b7280"/><circle cx="46" cy="70" r="5" fill="#fff"/><circle cx="45" cy="70" r="2.4" fill="#111"/><g stroke="#16a34a" stroke-width="7" stroke-linecap="round" fill="none"><path d="M70 98 L84 116 L96 112"/><path d="M52 98 L48 118 L60 120"/></g></g></svg>`},
-{t:"4. Sapo adulto",d:"O sapo adulto respira por pulmões e pela pele, vive na terra úmida e volta à água para se reproduzir.",s:ICON.anfibio()}]};
+{t:"4. Sapo adulto",d:"O sapo adulto respira por pulmões e pela pele, vive na terra úmida e volta à água para se reproduzir.",s:ICONSVG.anfibio()}]};
 const GAF=(k,w)=>`<svg viewBox="0 0 160 160"><g transform="translate(80 110) scale(${k}) translate(-80 -110)"><g class="bob">
 <path d="M82 98 L96 66 L116 118" stroke="#4d7c0f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M70 100 L66 124 M60 100 L52 122" stroke="#4d7c0f" stroke-width="5" stroke-linecap="round"/>
 <ellipse cx="102" cy="94" rx="36" ry="13" fill="#84cc16"/><circle cx="66" cy="90" r="13" fill="#a3e635"/><circle cx="46" cy="84" r="12" fill="#84cc16"/>
@@ -505,7 +510,10 @@ function cardsFor(sel,L,cls){const el=$(sel);el.innerHTML=L.map((x,k)=>`<button 
 /* ---------- fauna do Pará ---------- */
 const PAK=["boto","peixeboi","pirarucu","jacare","tracaja","caranguejo","harpia","sapo","tartaruga","guara","onca","ariranha"];
 const PAC=["#f472b6","#94a3b8","#a3b18a","#65a30d","#84cc16","#6366f1","#64748b","#b08968","#a16207","#ef4444","#f59e0b","#a16207"];
-const PAL=PA.map((a,i)=>({c:PAC[i],svg:ART[PAK[i]](),name:a[0],tag:"Fauna da Amazônia",sub:a[1],
+/* animais da fauna do Pará que já têm ilustração; os outros usam o desenho do app */
+const PAIMG={boto:"a-boto",jacare:"a-jacare-acu",sapo:"a-sapo-cururu"};
+const paArt=i=>PAIMG[PAK[i]]?imgAni(PAIMG[PAK[i]],"Ilustração: "+PA[i][0]):ART[PAK[i]]();
+const PAL=PA.map((a,i)=>({c:PAC[i],svg:paArt(i),name:a[0],tag:"Fauna da Amazônia",sub:a[1],
  html:`<h3>Sobre ele</h3><p>${a[3]}</p><h3>Nome científico</h3><p><i>${a[1]}</i></p><h3>Qual é o grupo dele?</h3><div id="rv"><button class="btn pri" id="rvb">👀 Revelar o grupo</button></div>`,
  after:p=>{$("#rvb",p).onclick=()=>{$("#rv",p).innerHTML=`<div class="know">✅ <b>${NG[a[2]]}</b></div>`;};}}));
 cardsFor("#pag",PAL,"pc");
@@ -559,6 +567,7 @@ function renderFic(){const box=$("#fbox");
 /* ---------- Quem é este? (jogo com imagens) ---------- */
 
 const emjSvg=e=>`<svg viewBox="0 0 120 120"><text x="60" y="94" font-size="92" text-anchor="middle">${e}</text></svg>`;
+const EMJIMG={polvo:"a-polvo",caracol:"a-caracol",ostra:"a-ostra",abelha:"a-abelha",aranha:"a-aranha",caranguejo:"a-caranguejo",borboleta:"a-borboleta","tubarão":"a-tubarao",sapo:"a-sapo",tartaruga:"a-tartaruga",lagarto:"a-lagarto",serpente:"a-serpente","jacaré":"a-jacare"};
 const IMGALL=[...PA.flatMap((a,i)=>[{k:"n",i},{k:"g",i}]),...G.map(g=>({k:"c",id:g.id})),...EMJ.map((x,i)=>({k:"e",i}))];
 const iS={started:false,order:[],i:0,score:0,hints:0,missed:[],review:false};
 function startImg(list){iS.started=true;iS.review=!!list;iS.order=list?shuffle(list):shuffle(IMGALL).slice(0,10);iS.i=0;iS.score=0;iS.hints=0;iS.missed=[];renderImg();}
@@ -568,9 +577,9 @@ function renderImg(){const box=$("#ibox"),S=iS;
   if(!S.review&&pct>=.7&&typeof NV!=="undefined")NV.marcar("jogo:img");
   $("#iagain").onclick=()=>startImg();if(S.missed.length)$("#irev").onclick=()=>startImg(S.missed.slice());if(pct>=.7)burst(140);return;}
  const it=S.order[S.i];let svg,ask,right,pool;
- if(it.k==="n"){svg=ART[PAK[it.i]]();ask="Que animal da Amazônia é este?";right=PA[it.i][0];pool=PA.filter((_,j)=>j!==it.i).map(x=>x[0]);}
- else if(it.k==="g"){const g=G.find(x=>x.id===PA[it.i][2]);svg=ART[PAK[it.i]]();ask="A qual grupo este animal pertence?";right=g.n;pool=G.filter(x=>x!==g).map(x=>x.n);}
- else if(it.k==="e"){const x=EMJ[it.i],g=G.find(y=>y.id===x[1]);svg=emjSvg(x[2]);ask="Este animal é o(a) "+x[0]+". A qual grupo ele pertence?";right=g.n;pool=G.filter(y=>y!==g).map(y=>y.n);}
+ if(it.k==="n"){svg=paArt(it.i);ask="Que animal da Amazônia é este?";right=PA[it.i][0];pool=PA.filter((_,j)=>j!==it.i).map(x=>x[0]);}
+ else if(it.k==="g"){const g=G.find(x=>x.id===PA[it.i][2]);svg=paArt(it.i);ask="A qual grupo este animal pertence?";right=g.n;pool=G.filter(x=>x!==g).map(x=>x.n);}
+ else if(it.k==="e"){const x=EMJ[it.i],g=G.find(y=>y.id===x[1]);svg=EMJIMG[x[0]]?imgAni(EMJIMG[x[0]],"Ilustração do animal"):emjSvg(x[2]);ask="Este animal é o(a) "+x[0]+". A qual grupo ele pertence?";right=g.n;pool=G.filter(y=>y!==g).map(y=>y.n);}
  else{const g=G.find(x=>x.id===it.id);svg=ICON[g.id]();ask="Que grupo de animais aparece na imagem?";right=g.n;pool=G.filter(x=>x!==g).map(x=>x.n);}
  box.innerHTML=`<h2>🖼️ Quem é este?</h2><p class="sub">Olhe a imagem com atenção e escolha a resposta.</p><div class="qtop"><span>Imagem ${S.i+1}/${S.order.length}</span><span>⭐ ${fmt(S.score)}</span></div><div class="qbar"><i style="width:${S.i/S.order.length*100}%"></i></div><div class="imgq">${svg}</div><div class="qq">${ask}</div><div id="io"></div><div class="why" id="iw"></div><div style="margin-top:14px"><button class="btn pri" id="in" style="display:none">Próxima ▶</button></div>`;
  const od=$("#io");let okI=null,idone=false;
