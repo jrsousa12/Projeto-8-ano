@@ -20,7 +20,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `nivel.js` | XP, níveis, atividades e trilhas |
 | `progresso.js` | Meu progresso: caderno de erros, desempenho por tema, treino inteligente, simulado, ranking, continuar de onde parou e código para levar o progresso a outro aparelho |
 | `animais-8ano.html` | O app inteiro em um só arquivo, para abrir direto ou mandar por WhatsApp (gerado automaticamente) |
-| `img/animais/` | Ilustrações dos animais (da apresentação do 8º ano), em WebP |
+| `img/animais/` | Ilustrações dos animais em WebP: as da apresentação do 8º ano e as feitas no Canva no mesmo estilo (fauna do Pará e jogo Quem é este?) |
 | `manifest.webmanifest`, `sw.js`, `icon-*.png` | Instalação no celular e uso sem internet |
 | `validar-banco.js` | Confere as perguntas (gabarito, alternativas repetidas ou vazias, grupos inexistentes) |
 | `testes/testes.js` | Testes de navegador: abrem o app no Chromium e conferem telas e jogos |
