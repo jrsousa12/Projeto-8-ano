@@ -511,7 +511,7 @@ function cardsFor(sel,L,cls){const el=$(sel);el.innerHTML=L.map((x,k)=>`<button 
 const PAK=["boto","peixeboi","pirarucu","jacare","tracaja","caranguejo","harpia","sapo","tartaruga","guara","onca","ariranha"];
 const PAC=["#f472b6","#94a3b8","#a3b18a","#65a30d","#84cc16","#6366f1","#64748b","#b08968","#a16207","#ef4444","#f59e0b","#a16207"];
 /* animais da fauna do Pará que já têm ilustração; os outros usam o desenho do app */
-const PAIMG={boto:"a-boto",jacare:"a-jacare-acu",sapo:"a-sapo-cururu"};
+const PAIMG={"boto":"a-boto","peixeboi":"a-peixe-boi","pirarucu":"a-pirarucu","jacare":"a-jacare-acu","tracaja":"a-tracaja","caranguejo":"a-caranguejo-uca","harpia":"a-harpia","sapo":"a-sapo-cururu","tartaruga":"a-tartaruga-amazonia","guara":"a-guara","onca":"a-onca","ariranha":"a-ariranha"};
 const paArt=i=>PAIMG[PAK[i]]?imgAni(PAIMG[PAK[i]],"Ilustração: "+PA[i][0]):ART[PAK[i]]();
 const PAL=PA.map((a,i)=>({c:PAC[i],svg:paArt(i),name:a[0],tag:"Fauna da Amazônia",sub:a[1],
  html:`<h3>Sobre ele</h3><p>${a[3]}</p><h3>Nome científico</h3><p><i>${a[1]}</i></p><h3>Qual é o grupo dele?</h3><div id="rv"><button class="btn pri" id="rvb">👀 Revelar o grupo</button></div>`,
@@ -567,7 +567,7 @@ function renderFic(){const box=$("#fbox");
 /* ---------- Quem é este? (jogo com imagens) ---------- */
 
 const emjSvg=e=>`<svg viewBox="0 0 120 120"><text x="60" y="94" font-size="92" text-anchor="middle">${e}</text></svg>`;
-const EMJIMG={polvo:"a-polvo",caracol:"a-caracol",ostra:"a-ostra",abelha:"a-abelha",aranha:"a-aranha",caranguejo:"a-caranguejo",borboleta:"a-borboleta","tubarão":"a-tubarao",sapo:"a-sapo",tartaruga:"a-tartaruga",lagarto:"a-lagarto",serpente:"a-serpente","jacaré":"a-jacare"};
+const EMJIMG={"polvo":"a-polvo","lula":"a-lula","caracol":"a-caracol","ostra":"a-ostra","abelha":"a-abelha","formiga":"a-formiga","grilo":"a-grilo","aranha":"a-aranha","escorpião":"a-escorpiao","caranguejo":"a-caranguejo","lagosta":"a-lagosta","camarão":"a-camarao","borboleta":"a-borboleta","joaninha":"a-joaninha","lagarta":"a-lagarta","tubarão":"a-tubarao","baiacu":"a-baiacu","peixe-tropical":"a-peixe-tropical","sardinha":"a-sardinha","sapo":"a-sapo","tartaruga":"a-tartaruga","lagarto":"a-lagarto","serpente":"a-serpente","jacaré":"a-jacare","pinguim":"a-pinguim","coruja":"a-coruja","papagaio":"a-papagaio","pato":"a-pato","águia":"a-aguia","flamingo":"a-flamingo","pavão":"a-pavao","passarinho":"a-passarinho","baleia":"a-baleia","golfinho":"a-golfinho","morcego":"a-morcego","canguru":"a-canguru","coala":"a-coala","preguiça":"a-preguica","elefante":"a-elefante","macaco":"a-macaco","cavalo":"a-cavalo","cachorro":"a-cachorro","gato":"a-gato","lontra":"a-lontra"};
 const IMGALL=[...PA.flatMap((a,i)=>[{k:"n",i},{k:"g",i}]),...G.map(g=>({k:"c",id:g.id})),...EMJ.map((x,i)=>({k:"e",i}))];
 const iS={started:false,order:[],i:0,score:0,hints:0,missed:[],review:false};
 function startImg(list){iS.started=true;iS.review=!!list;iS.order=list?shuffle(list):shuffle(IMGALL).slice(0,10);iS.i=0;iS.score=0;iS.hints=0;iS.missed=[];renderImg();}
