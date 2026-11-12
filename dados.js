@@ -757,7 +757,8 @@ const NAT=[
 const FONTES=[
 ["Fauna do Pará e da Amazônia","ICMBio (Livro Vermelho, SALVE e PAN Onça-pintada), National Geographic Brasil, Portal Amazônia, InfoEscola, UFPA/Instituto de Estudos Costeiros (Bragança)."],
 ["Vermes e doenças","Ministério da Saúde (folder Verminoses e Filariose Linfática), Secretaria de Saúde do Paraná (Teniose e Cisticercose), Agência Brasil/OMS (eliminação da filariose no Brasil, 2024), SciELO Saúde Pública (filariose em Belém nos anos 1950)."],
-["Revisão do conteúdo (2026)","OPAS/OMS (eliminação da filariose no Brasil, 30/09/2024), Instituto Butantan (material educativo sobre quelônios), UNESP (aula de Zoologia sobre répteis) e Revista Pesquisa FAPESP (harpia)."]];
+["Revisão do conteúdo (2026)","OPAS/OMS (eliminação da filariose no Brasil, 30/09/2024), Instituto Butantan (material educativo sobre quelônios), UNESP (aula de Zoologia sobre répteis) e Revista Pesquisa FAPESP (harpia)."],
+["Perguntas novas (2026)","Ministério da Saúde (acidentes com escorpiões e serpentes), Instituto Butantan (fosseta loreal), CDC DPDx (ovos da lombriga), Fiocruz (caramujo-gigante-africano), ICMBio (peixe-boi-da-amazônia), Ibama (javali), INPA (alimentação do tambaqui), Boletim do Museu Paraense Emílio Goeldi (cauxi), Agência FAPESP (recifes da foz do Amazonas e rã-touro)."]];
 /* fontes confiáveis para consulta (as mesmas de FONTES-CONFIAVEIS.md): [grupo, nome, para quê, endereço] */
 const FONTES_MAIS=[
 ["Órgãos oficiais brasileiros","Ministério da Saúde: Saúde de A a Z","transmissão e prevenção das verminoses","https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z"],
@@ -765,6 +766,7 @@ const FONTES_MAIS=[
 ["Órgãos oficiais brasileiros","Fiocruz","parasitologia, verminoses e o caramujo Biomphalaria","https://portal.fiocruz.br"],
 ["Órgãos oficiais brasileiros","ICMBio: SALVE","fichas das espécies brasileiras e risco de extinção","https://salve.icmbio.gov.br"],
 ["Órgãos oficiais brasileiros","ICMBio: Livro Vermelho da Fauna Brasileira","espécies ameaçadas, como harpia, ariranha e peixe-boi","https://www.gov.br/icmbio"],
+["Órgãos oficiais brasileiros","Ibama: espécies exóticas invasoras","javali, caramujo-gigante-africano e outras espécies invasoras","https://www.gov.br/ibama"],
 ["Órgãos oficiais brasileiros","BNCC (Base Nacional Comum Curricular)","o que se estuda em Ciências no Ensino Fundamental","https://basenacionalcomum.mec.gov.br"],
 ["Museus e institutos de pesquisa","Museu Paraense Emílio Goeldi","fauna amazônica e do Pará e história dos naturalistas","https://www.gov.br/museugoeldi"],
 ["Museus e institutos de pesquisa","INPA (Instituto Nacional de Pesquisas da Amazônia)","peixes, quelônios e mamíferos aquáticos da Amazônia","https://www.gov.br/inpa"],
@@ -801,3 +803,194 @@ MQ0["Desafio dos ciclos"]=[
 ["Por onde passam as larvas da lombriga antes de voltar ao intestino?",["Pelos pulmões","Pelo cérebro","Pelos ossos","Pelos olhos"],"Elas sobem pela traqueia e são engolidas de novo."],
 ["Como os ovos da lombriga chegam à boca das pessoas?",["Por água, alimentos ou mãos contaminados com fezes","Pela picada de mosquito","Pelo contato com caramujos","Pelo ar"],"Por isso lavar as mãos e os alimentos protege."],
 ["Qual medida previne as três verminoses dos ciclos?",["Saneamento básico e higiene","Usar protetor solar","Dormir cedo","Beber refrigerante"],"Esgoto tratado impede que os ovos cheguem à água e ao solo."]];
+
+/* ---------- +30% de perguntas (revisão de 2026; fontes em FONTES-CONFIAVEIS.md). 1ª opção = correta ---------- */
+const BANK4={
+porifero:[
+["O que quer dizer o nome porífero?",["Portador de poros","Animal com espinhos","Corpo mole","Pés articulados"],"A água entra no corpo da esponja por muitos poros."],
+["O que são as gêmulas de algumas esponjas de água doce?",["Estruturas de resistência que depois formam uma nova esponja","Ovos com casca dura","Células urticantes","Tentáculos de defesa"],"Elas aguentam a seca e o frio e, quando o ambiente melhora, originam uma esponja."],
+["Como é a larva das esponjas?",["Ciliada e nada livremente","Fixa no fundo desde o início","Parecida com um girino","Coberta por uma concha"],"Depois de nadar um tempo, a larva se fixa e forma a esponja adulta."],
+["Além do alimento, o que a corrente de água traz para a esponja?",["Oxigênio","Luz","Sangue","Areia para o esqueleto"],"A água traz oxigênio e leva embora os resíduos pelo ósculo."],
+["A qual reino pertencem as esponjas?",["Animal (Animalia)","Plantas (Plantae)","Fungos (Fungi)","Bactérias"],"Esponjas são animais, mesmo sem se mover quando adultas."],
+["Na Amazônia, como se chama a esponja de água doce cujas espículas eram misturadas ao barro na cerâmica indígena?",["Cauxi","Pirarucu","Tracajá","Sururu"],"As espículas de sílica do cauxi deixavam a cerâmica mais resistente."],
+["Em 2016, cientistas descreveram um grande sistema de recifes, com muitas esponjas, em frente à foz de qual rio?",["Amazonas","São Francisco","Paraná","Tietê"],"Esse sistema de recifes vai do Maranhão até a Guiana Francesa."]],
+cnidario:[
+["O que é o nematocisto?",["Uma cápsula que dispara um filamento com toxina","Um tipo de tentáculo","A larva dos cnidários","A concha do coral"],"Ele fica dentro do cnidócito e dispara ao ser tocado."],
+["A caravela-portuguesa é uma única água-viva?",["Não, é uma colônia de muitos indivíduos","Sim, é uma só medusa","Não, é um peixe","Não, é uma alga"],"Cada indivíduo da colônia faz uma função, como flutuar, caçar ou digerir."],
+["Qual destes cnidários vive em água doce?",["Hidra","Coral","Caravela-portuguesa","Anêmona-do-mar"],"A hidra é pequena e vive presa a plantas e pedras em lagos e rios."],
+["Os cnidários têm cérebro?",["Não; têm uma rede de nervos espalhada pelo corpo","Sim, um cérebro grande","Sim, dois cérebros","Têm medula espinhal"],"Essa rede nervosa coordena os movimentos dos tentáculos."],
+["Como a anêmona-do-mar fica presa às rochas?",["Por um disco adesivo na base do corpo","Por raízes","Por fios de seda","Por ventosas nos tentáculos"],"A anêmona é um pólipo e pode se deslocar devagar sobre esse disco."],
+["Qual é a importância dos recifes de coral?",["Abrigam e alimentam muitas espécies marinhas","Produzem água doce","Impedem a chuva","Não têm importância"],"Muitos peixes, crustáceos e moluscos vivem nos recifes."],
+["O que dá a cor à maioria dos corais?",["Algas que vivem dentro deles","A areia do fundo","O sangue dos peixes","A luz da Lua"],"Quando o coral perde essas algas, fica branco: é o branqueamento."]],
+platelminto:[
+["O que são as proglotes (proglótides) da tênia?",["Os pedaços do corpo, que guardam os ovos","Os dentes da tênia","As larvas na água","As ventosas da boca"],"As proglotes maduras se soltam e saem nas fezes."],
+["Como se chamam as estruturas da planária que percebem a luz?",["Ocelos","Antenas","Olhos compostos","Cnidócitos"],"Os ocelos ficam na cabeça e parecem dois olhinhos."],
+["A qual classe pertence o esquistossomo?",["Trematódeos","Cestódeos","Turbelários","Nematódeos"],"Trematódeos são platelmintos parasitas com ventosas."],
+["Como se chama a larva que sai do ovo do esquistossomo na água?",["Miracídio","Cercária","Cisticerco","Plânula"],"O miracídio nada até encontrar um caramujo."],
+["Onde ficam os cisticercos da tênia-do-boi?",["Na carne (músculos) do boi","No leite","No couro","Nos chifres"],"Por isso a carne deve ser bem cozida e ter inspeção."],
+["Como a planária come?",["Põe a faringe para fora da boca e suga pequenos animais","Filtra a água","Faz fotossíntese","Raspa com a rádula"],"A boca da planária fica na parte de baixo do corpo."],
+["Qual platelminto parasita principalmente o fígado de bois e ovelhas?",["Fasciola hepática","Planária","Lombriga","Minhoca"],"O nome hepática vem de fígado."]],
+nematodeo:[
+["O bicho-geográfico é causado por larvas de…",["Ancilóstomos de cães e gatos","Tênias do porco","Mosquitos","Caramujos"],"Areias com fezes desses animais podem ter as larvas, que entram pela pele."],
+["Como os nematódeos de vida livre ajudam o solo?",["Participam da decomposição e da reciclagem de nutrientes","Deixam o solo duro","Produzem oxigênio","Comem as raízes de todas as plantas"],"Há milhões de nematódeos em poucos punhados de terra."],
+["Qual problema alguns nematódeos causam na agricultura?",["Atacam as raízes das plantas","Picam os agricultores","Secam os rios","Comem as sementes no armazém"],"Esses nematódeos formam caroços (galhas) nas raízes."],
+["Na lombriga, quem costuma ser maior?",["A fêmea","O macho","São sempre do mesmo tamanho","A lombriga não tem sexos"],"Nos nematódeos, macho e fêmea costumam ser diferentes."],
+["Quantos ovos uma fêmea de lombriga pode pôr por dia?",["Cerca de 200 mil","Só 1","Cerca de 10","Nenhum"],"Os ovos saem nas fezes; por isso o saneamento é tão importante."],
+["Como se pega a oxiurose?",["Engolindo ovos que ficam nas mãos, nas unhas e nas roupas","Pela picada de mosquito","Nadando em lagoas","Comendo carne de boi"],"Lavar as mãos e manter as unhas curtas e limpas ajuda a evitar."],
+["Por que muitas lombrigas podem deixar uma criança desnutrida?",["Os vermes aproveitam parte dos nutrientes dos alimentos","As lombrigas comem os ossos","Elas impedem a respiração","Elas tiram a água do sangue"],"Com sintomas, procure uma Unidade de Saúde."]],
+molusco:[
+["O sururu, muito consumido no Norte e no Nordeste, é um…",["Molusco bivalve","Crustáceo","Peixe","Equinodermo"],"Como a ostra e o mexilhão, tem duas valvas e filtra a água."],
+["Como o caramujo se protege quando está em perigo?",["Recolhe o corpo para dentro da concha","Solta tinta","Voa","Dispara cnidócitos"],"Alguns ainda fecham a entrada com o opérculo."],
+["O que é o opérculo de alguns caramujos?",["Uma tampa que fecha a abertura da concha","Uma brânquia","Um olho","Um dente"],"Ele protege o animal contra predadores e contra a perda de água."],
+["Como a lula consegue nadar rápido?",["Lançando um jato de água pelo sifão","Batendo asas","Andando com patas","Rolando como uma bola"],"É uma propulsão a jato, como um balão que solta o ar."],
+["Qual cefalópode ainda tem concha externa em espiral?",["Náutilo","Polvo","Lula","Sépia"],"No polvo não há concha, e na lula e na sépia ela é interna."],
+["Qual caramujo, vindo da África, virou praga no Brasil e pode transmitir doenças?",["Caramujo-gigante-africano","Caramujo Biomphalaria","Sururu","Ostra"],"Evite tocar nele sem luvas e não deixe lixo e entulho que o atraem."],
+["Por que ostras e mexilhões são usados para avaliar a poluição da água?",["Acumulam no corpo substâncias da água que filtram","Mudam de cor com a chuva","Cantam quando a água está suja","Saem andando da água"],"São bons bioindicadores."]],
+anelideo:[
+["Como se chama a criação de minhocas para produzir adubo?",["Minhocultura (vermicompostagem)","Apicultura","Piscicultura","Avicultura"],"As minhocas transformam restos orgânicos em húmus."],
+["Onde ficam os ovos da minhoca?",["Em um casulo formado pelo clitelo","Dentro de uma concha","Em ninhos de folhas nas árvores","Presos às cerdas"],"O casulo fica no solo até os filhotes saírem."],
+["Como se chamam as expansões laterais com cerdas dos poliquetas?",["Parapódios","Tentáculos","Ventosas","Antenas"],"Os parapódios ajudam a nadar, rastejar e respirar."],
+["O que quer dizer oligoqueta?",["Poucas cerdas","Muitas cerdas","Sem cerdas","Corpo achatado"],"As minhocas são oligoquetas."],
+["A minhoca tem olhos?",["Não; percebe a luz por células da pele","Sim, dois olhos grandes","Sim, olhos compostos","Sim, oito olhos"],"Por isso ela foge da luz forte."],
+["A minhoca tem esqueleto?",["Não; usa músculos e a pressão do líquido do corpo para se mover","Sim, de ossos","Sim, de quitina","Sim, uma concha"],"É o chamado esqueleto hidrostático."],
+["Como os túneis das minhocas ajudam na chuva?",["Facilitam a entrada da água no solo","Deixam a água escorrer por cima","Secam o solo","Não têm efeito"],"O solo arejado também ajuda as raízes a respirar."]],
+artropode:[
+["Qual destes é um diplópode?",["Piolho-de-cobra","Lacraia","Aranha","Camarão"],"Diplópodes têm 2 pares de patas em cada segmento."],
+["O que fazer se alguém for picado por escorpião?",["Levar a pessoa logo a uma Unidade de Saúde","Fazer um corte no local","Chupar o veneno","Esperar passar"],"Lave o local com água e sabão e procure atendimento. Crianças correm mais risco."],
+["Como se chamam os olhos formados por muitas pequenas unidades, comuns nos insetos?",["Olhos compostos","Ocelos de planária","Olhos de vidro","Olhos simples"],"Cada unidade capta uma parte da imagem."],
+["Como formigas e cupins se comunicam muito?",["Por substâncias químicas (feromônios)","Por cartas","Por cantos altos","Mudando de cor"],"Os feromônios marcam trilhas e avisam do perigo."],
+["Qual crustáceo vive em terra, em lugares úmidos como jardins?",["Tatuzinho-de-jardim","Camarão","Lagosta","Siri"],"Ele se enrola em bola para se proteger."],
+["Quantas asas tem a maioria dos insetos adultos?",["Quatro (dois pares)","Seis","Oito","Dez"],"Moscas e mosquitos têm só um par; formigas operárias não têm asas."],
+["Qual aracnídeo se prende à pele para sugar sangue e pode transmitir doenças?",["Carrapato","Escorpião","Aranha-de-jardim","Opilião"],"O carrapato-estrela pode transmitir a febre maculosa."]],
+equinodermo:[
+["O que quer dizer equinodermo?",["Pele com espinhos","Corpo mole","Pés articulados","Portador de poros"],"Echinos quer dizer espinho e derma quer dizer pele."],
+["Como o ouriço-do-mar pode ferir banhistas?",["Com espinhos que entram na pele","Com mordidas","Com descargas elétricas","Com tentáculos urticantes"],"Use calçado em costões e evite pisar nas pedras com ouriços."],
+["Do que o pepino-do-mar se alimenta?",["De restos de matéria orgânica no fundo do mar","De peixes grandes","De algas fora da água","De sangue"],"Assim ele ajuda a limpar o fundo do mar."],
+["Onde fica a boca da estrela-do-mar?",["Na parte de baixo do corpo","Na ponta de um braço","Na parte de cima","Ela não tem boca"],"A parte de baixo fica encostada no fundo."],
+["Qual equinoderma tem braços finos e flexíveis que se movem como serpentes?",["Ofiúro (estrela-serpente)","Pepino-do-mar","Bolacha-da-praia","Lírio-do-mar"],"Ele se move rápido balançando os braços."],
+["Por que os ouriços-do-mar são importantes nos recifes?",["Comem algas e controlam o crescimento delas","Produzem areia para as praias","Caçam tubarões","Fazem fotossíntese"],"Sem eles, as algas podem cobrir os corais."],
+["Como funcionam os pés ambulacrais?",["Com a pressão da água dentro de pequenos tubos","Com ossos e articulações","Com ar","Com eletricidade"],"A água entra pelo madreporito e enche os pés."]],
+peixe:[
+["O que é um cardume?",["Um grupo de peixes que nadam juntos","Um tipo de rede","Uma doença de peixe","Um peixe gigante"],"Nadar em grupo ajuda a se proteger dos predadores."],
+["Qual peixe amazônico tem dentes afiados e costuma viver em grupos?",["Piranha","Pirarucu","Cavalo-marinho","Sardinha"],"Há várias espécies de piranha, e muitas também comem frutos e restos."],
+["Qual peixe da Amazônia produz descargas elétricas?",["Poraquê (peixe-elétrico)","Tambaqui","Tucunaré","Acará"],"Ele usa a eletricidade para caçar e se defender."],
+["Na época da cheia, o tambaqui se alimenta muito de…",["Frutos e sementes que caem na água da floresta alagada","Peixes grandes","Aves","Algas do mar"],"Ao comer frutos, ele também espalha sementes."],
+["Por que existe o defeso da pesca?",["Para proteger os peixes na época de reprodução","Para os rios descansarem","Porque os peixes ficam doentes","Para mudar a cor dos peixes"],"Durante o defeso, a pesca de algumas espécies é proibida."],
+["O que o cavalo-marinho macho tem de diferente?",["Carrega os ovos em uma bolsa até os filhotes nascerem","Bota ovos com casca","Respira por pulmões","Não tem nadadeiras"],"A fêmea coloca os ovos na bolsa do macho."],
+["Para que servem as escamas dos peixes?",["Proteger o corpo","Respirar","Enxergar","Produzir leite"],"O muco sobre as escamas também protege e ajuda a nadar."]],
+anfibio:[
+["O que quer dizer anfíbio?",["Vida dupla: na água e na terra","Pele seca","Sem patas","Sangue quente"],"Muitos anfíbios nascem na água e vivem na terra quando adultos."],
+["O que as cores fortes dos sapinhos-ponta-de-flecha avisam?",["Que eles têm substâncias tóxicas na pele","Que estão com frio","Que são filhotes","Que são inofensivos"],"Avisar o perigo com cores fortes protege contra predadores."],
+["A rã-touro, trazida da América do Norte para criação, é no Brasil…",["Uma espécie invasora que prejudica os anfíbios nativos","Uma espécie nativa da Amazônia","Um réptil","Uma espécie extinta"],"Ela compete com as espécies nativas e pode espalhar doenças."],
+["Como a maioria dos sapos captura insetos?",["Com a língua pegajosa lançada para fora","Com garras","Com veneno nos dentes","Filtrando a água"],"A língua sai muito rápido e prende o inseto."],
+["Para que servem os discos nas pontas dos dedos das pererecas?",["Para se prender em folhas e galhos","Para cavar","Para nadar mais rápido","Para cantar"],"Por isso as pererecas sobem em árvores e paredes."],
+["Como a maioria dos anfíbios adultos obtém água?",["Absorvendo pela pele","Bebendo pela boca como os mamíferos","Comendo areia","Não precisam de água"],"Por isso eles procuram lugares úmidos."],
+["Por que muitas espécies de anfíbios estão ameaçadas?",["Perda de ambiente, poluição e doenças causadas por fungos","Excesso de chuva","Falta de sol","Porque voam longe demais"],"Os anfíbios estão entre os vertebrados mais ameaçados."]],
+reptil:[
+["Qual é a maior serpente do Brasil?",["Sucuri","Jararaca","Cascavel","Coral-verdadeira"],"A sucuri vive em rios e áreas alagadas e não tem veneno."],
+["Para que serve a fosseta loreal de jararacas e cascavéis?",["Perceber o calor das presas","Ouvir","Soltar veneno","Respirar debaixo da água"],"É um orifício entre a narina e o olho."],
+["O que fazer se alguém for picado por cobra?",["Levar a pessoa rápido a um serviço de saúde","Amarrar o braço ou a perna com força","Cortar e chupar o local","Passar borra de café"],"Só o serviço de saúde avalia e trata o acidente. Se possível, tire uma foto da cobra, sem se arriscar."],
+["Para que serve o chocalho da cascavel?",["Avisar e afastar ameaças","Guardar veneno","Atrair presas","Respirar"],"O chocalho não tem veneno: é um aviso."],
+["O camaleão é conhecido por…",["Mudar de cor","Voar","Ser venenoso","Viver no mar"],"A cor muda com a temperatura, o humor e a comunicação."],
+["As fêmeas de jacaré cuidam dos ovos e dos filhotes?",["Sim, protegem o ninho e os filhotes","Não, abandonam os ovos na água","Não, comem os ovos","Os jacarés não botam ovos"],"O cuidado com os filhotes é comum nos crocodilianos."],
+["Do que é formado o casco do jabuti?",["Ossos cobertos por placas de queratina","Quitina","Cartilagem","Calcário de concha de molusco"],"O casco faz parte do esqueleto: o jabuti não sai dele."]],
+ave:[
+["Qual ave da Amazônia tem bico muito grande e colorido?",["Tucano","Urubu","Pinguim","Coruja"],"O bico é leve, porque é cheio de espaços com ar."],
+["Por que o urubu é importante para o ambiente?",["Come animais mortos e ajuda a limpar o ambiente","Poliniza flores","Planta árvores","Caça onças"],"Ele evita que carcaças fiquem espalhadas."],
+["Qual ave caça à noite e gira muito a cabeça?",["Coruja","Beija-flor","Pato","Galinha"],"Os olhos da coruja quase não se mexem; por isso ela vira a cabeça."],
+["Como são os pés do papagaio?",["Dois dedos para a frente e dois para trás, bons para segurar","Com membranas para nadar","Sem dedos","Com cascos"],"Ele segura galhos e alimentos com os pés."],
+["Como se chama a troca periódica das penas?",["Muda","Ecdise de cobra","Metamorfose","Hibernação"],"As penas velhas caem e nascem penas novas."],
+["Qual é a maior ave do Brasil?",["Ema","Harpia","Arara-azul","Tucano"],"A ema não voa, mas corre muito."],
+["Para que servem as membranas entre os dedos do pato?",["Para nadar","Para voar mais alto","Para cavar","Para segurar presas"],"Os pés funcionam como remos."]],
+mamifero:[
+["O que os morcegos usam para se orientar no escuro?",["O eco dos sons que eles emitem (ecolocalização)","Uma lanterna natural","O cheiro das estrelas","Antenas"],"Os golfinhos também usam ecolocalização."],
+["Do que o tamanduá-bandeira se alimenta principalmente?",["Formigas e cupins","Frutas","Peixes","Folhas"],"A língua comprida e pegajosa captura os insetos."],
+["Os seres humanos são…",["Mamíferos primatas","Répteis","Anfíbios","Aves"],"Temos pelos, glândulas mamárias e diafragma."],
+["Qual mamífero brasileiro tem o corpo coberto de espinhos?",["Ouriço-cacheiro","Tatu","Gambá","Capivara"],"Os espinhos são pelos modificados."],
+["Qual é uma das principais ameaças ao peixe-boi-da-amazônia?",["A caça","O frio do rio","Os tubarões","A falta de sal"],"Ele é uma espécie vulnerável na lista oficial do Brasil."],
+["Como os golfinhos respiram?",["Por pulmões, pelo orifício no alto da cabeça","Por brânquias","Pela pele","Por traqueias"],"Eles sobem à superfície para respirar."],
+["Para que serve o suor dos mamíferos?",["Ajuda a esfriar o corpo","Produz leite","Serve para respirar","Protege contra a chuva"],"As glândulas sudoríparas são exclusivas dos mamíferos."]]
+};
+
+/* +30% no Desafio final (3º campo = posição da correta) */
+QZ.push(
+["Qual destes animais NÃO é um invertebrado?",["Sapo","Polvo","Minhoca","Aranha"],0,"O sapo é um vertebrado anfíbio."],
+["Qual destes grupos tem simetria radial quando adulto?",["Cnidários","Artrópodes","Mamíferos","Anelídeos"],0,"Águas-vivas e anêmonas têm partes iguais ao redor de um eixo."],
+["Entre platelmintos, nematódeos e cnidários, qual tem tubo digestório completo?",["Nematódeos","Platelmintos","Cnidários","Nenhum deles"],0,"Os nematódeos têm boca e ânus."],
+["Em qual grupo aparecem a rádula e o manto?",["Moluscos","Anelídeos","Equinodermos","Artrópodes"],0,"O manto forma a concha e a rádula raspa o alimento."],
+["O que minhoca, sanguessuga e nereis têm em comum?",["Corpo dividido em anéis","Concha","Patas articuladas","Penas"],0,"São anelídeos."],
+["Qual destes animais tem exoesqueleto?",["Besouro","Minhoca","Lesma","Sapo"],0,"O besouro é um inseto, um artrópode."],
+["Bolacha-da-praia e ouriço-do-mar pertencem a qual grupo?",["Equinodermos","Moluscos","Cnidários","Crustáceos"],0,"Os dois têm esqueleto calcário e pés ambulacrais."],
+["Qual grupo de vertebrados tem mais espécies?",["Peixes","Mamíferos","Anfíbios","Répteis"],0,"Os peixes são o grupo de vertebrados com mais espécies: são mais de 30 mil."],
+["Qual vertebrado tem escamas, nadadeiras e respira por brânquias?",["Peixe","Sapo","Jacaré","Golfinho"],0,"O golfinho tem nadadeiras, mas respira por pulmões."],
+["Qual destes insetos faz metamorfose completa?",["Besouro","Gafanhoto","Barata","Percevejo"],0,"O besouro passa por ovo, larva, pupa e adulto."],
+["Em qual fase da metamorfose completa o inseto mais se alimenta?",["Larva","Pupa","Ovo","Adulto recém-saído da pupa"],0,"A lagarta passa o dia comendo e cresce muito."],
+["Como é a metamorfose do mosquito Aedes aegypti?",["Completa: ovo, larva, pupa e adulto","Incompleta: ovo, ninfa e adulto","Ele não faz metamorfose","Ovo, girino e adulto"],0,"As larvas e as pupas vivem na água parada."],
+["Por que eliminar água parada ajuda contra a dengue?",["Impede que as larvas do mosquito se desenvolvam","Mata os vírus no ar","Deixa o mosquito sem asas","Faz chover menos"],0,"Sem água parada, o Aedes aegypti não completa o ciclo."],
+["Em um dia frio, por que a onça precisa comer mais que um jacaré do mesmo tamanho?",["Gasta energia para manter o corpo quente","Porque é maior","Porque o jacaré não come","Porque a onça faz fotossíntese"],0,"Endotérmicos gastam energia dos alimentos para produzir calor."],
+["Qual destes animais é endotérmico e vive no mar?",["Golfinho","Tubarão","Polvo","Tartaruga-marinha"],0,"O golfinho é um mamífero."],
+["O que peixes, anfíbios e répteis têm em comum?",["São ectotérmicos","Têm penas","Amamentam","Têm pelos"],0,"A temperatura do corpo deles depende do ambiente."],
+["O que aves e répteis têm em comum na reprodução?",["A maioria bota ovos com casca","Têm girinos","Amamentam","Têm placenta"],0,"O ovo com casca permite a reprodução fora da água."],
+["O que diferencia um mamífero placentário de um marsupial?",["O filhote se desenvolve mais tempo no útero, ligado à placenta","O placentário bota ovos","O marsupial não amamenta","Não há diferença"],0,"Nos marsupiais, o filhote nasce pequeno e termina o desenvolvimento no marsúpio."],
+["Qual destes animais amazônicos é um quelônio?",["Tracajá","Jacaré-açu","Peixe-boi","Pirarucu"],0,"Quelônios têm casco: tartarugas, cágados e jabutis."],
+["O guará é uma ave típica de qual ambiente?",["Manguezal","Deserto","Geleira","Caatinga seca"],0,"Ele come os caranguejos e camarões do mangue."],
+["Qual mamífero da Amazônia, ameaçado de extinção, é chamado de lontra-gigante?",["Ariranha","Capivara","Anta","Preguiça"],0,"A ariranha vive em grupos e come peixes."],
+["O que é uma espécie ameaçada de extinção?",["Uma espécie que corre risco de desaparecer","Uma espécie que vive no mar","Uma espécie muito comum","Uma espécie nova"],0,"Caça, desmatamento e poluição estão entre as causas."],
+["Qual atitude ajuda a proteger a fauna da Amazônia?",["Não comprar animais silvestres tirados da natureza","Soltar animais domésticos na floresta","Caçar na época da reprodução","Jogar lixo nos rios"],0,"O tráfico de animais silvestres é crime."],
+["O que é um animal silvestre?",["Um animal nativo que vive livre na natureza","Um animal criado em casa","Um animal de fazenda","Um animal de zoológico de outro país"],0,"Onça, arara e boto são exemplos."],
+["Qual destes animais é uma espécie exótica invasora no Brasil?",["Javali","Onça-pintada","Capivara","Tamanduá"],0,"O javali veio da Europa e da Ásia e causa prejuízos ao ambiente e às lavouras."],
+["Em uma cadeia alimentar, a harpia que caça macacos é…",["Consumidora (predadora)","Produtora","Decompositora","Parasita"],0,"As plantas são as produtoras."],
+["Qual destes vermes é parasita do ser humano?",["Lombriga","Planária","Minhoca","Nereis"],0,"A lombriga vive no intestino humano."],
+["Qual verminose pode ser evitada comendo carne de porco bem cozida?",["Teníase","Esquistossomose","Amarelão","Oxiurose"],0,"O cozimento mata os cisticercos."],
+["Qual verminose é popularmente chamada de amarelão?",["Ancilostomíase","Ascaridíase","Teníase","Filariose"],0,"Ela pode causar anemia, deixando a pessoa pálida."],
+["Qual destas doenças NÃO é uma verminose?",["Dengue","Ascaridíase","Teníase","Esquistossomose"],0,"A dengue é causada por um vírus transmitido por mosquito."],
+["Por que é importante manter as unhas curtas e limpas?",["Ovos de vermes podem ficar debaixo das unhas","Para correr mais rápido","Para não sentir frio","Não faz diferença"],0,"Lavar as mãos também é essencial."],
+["Quem organizou a classificação e deu nomes científicos a milhares de espécies no século XVIII?",["Lineu","Darwin","Wallace","Goeldi"],0,"O sistema de Lineu é usado até hoje."],
+["Qual naturalista inglês viajou ao redor do mundo no navio Beagle?",["Charles Darwin","Henry Bates","Emílio Goeldi","Lamarck"],0,"A viagem durou de 1831 a 1836."],
+["Qual é a ordem da classificação, do grupo maior para o menor?",["Reino, filo, classe, ordem, família, gênero e espécie","Espécie, gênero, reino e filo","Classe, reino, espécie e ordem","Família, espécie, filo e reino"],0,"Quanto menor o grupo, mais parecidos são os seres."],
+["No nome científico Arapaima gigas (pirarucu), o que é Arapaima?",["O gênero","A espécie","O reino","A família"],0,"A primeira palavra é o gênero e se escreve com maiúscula."],
+["Qual destes animais tem o corpo dividido em cefalotórax e abdômen?",["Aranha","Formiga","Borboleta","Gafanhoto"],0,"Os insetos têm cabeça, tórax e abdômen."],
+["O que são animais herbívoros?",["Os que se alimentam de plantas","Os que comem carne","Os que comem de tudo","Os que vivem no mar"],0,"Capivara e peixe-boi são herbívoros."],
+["Qual destes animais é carnívoro?",["Onça-pintada","Peixe-boi","Capivara","Anta"],0,"A onça é predadora de topo."],
+["Qual destes moluscos é filtrador?",["Ostra","Polvo","Caramujo","Lesma"],0,"Os bivalves filtram a água."],
+["Por que lixo e esgoto nos rios prejudicam os peixes?",["Diminuem o oxigênio e contaminam a água","Deixam a água mais limpa","Aquecem só a superfície","Não prejudicam"],0,"Os peixes respiram o oxigênio dissolvido na água."],
+["Qual destes animais passa parte da vida na água e parte na terra?",["Sapo","Tubarão","Beija-flor","Polvo"],0,"O girino vive na água e o adulto vive na terra úmida."],
+["Por que o pinguim é uma ave, mesmo sem voar?",["Tem penas, bico e bota ovos","Tem pelos","Respira por brânquias","Amamenta os filhotes"],0,"As asas do pinguim funcionam como nadadeiras."],
+["O morcego é uma ave?",["Não, é um mamífero que tem pelos e amamenta","Sim, porque voa","Sim, porque tem penas","Não, é um inseto"],0,"Voar não define o grupo: penas definem as aves."],
+["O que é a ecdise nas cobras?",["A troca da pele","A troca dos dentes","A troca do veneno","O nascimento dos filhotes"],0,"A cobra solta a pele velha inteira."],
+["Qual destes animais tem tentáculos com células urticantes?",["Água-viva","Polvo","Lula","Lesma"],0,"Polvos e lulas não têm cnidócitos."],
+["Quantos pares de patas tem um caranguejo, contando as pinças?",["Cinco pares","Três pares","Quatro pares","Dois pares"],0,"Caranguejos, camarões e lagostas são crustáceos decápodes: dez patas."],
+["O que a ostra e o caramujo têm em comum?",["São moluscos com concha","São crustáceos","São peixes","Têm patas articuladas"],0,"A ostra é bivalve e o caramujo é gastrópode."],
+["Por que a tartaruga-da-amazônia precisa de proteção?",["Foi muito caçada pela carne e pelos ovos","Porque voa longe","Porque vive no gelo","Não precisa de proteção"],0,"Há programas que protegem as praias onde ela desova."],
+["Qual destes animais respira pela pele e precisa mantê-la úmida?",["Minhoca","Lagarto","Galinha","Cachorro"],0,"A pele seca impediria a troca de gases."]
+);
+
+/* +30% nos mini desafios das abas */
+MQX["Desafio da temperatura"].push(
+["Por que muitos lagartos se escondem no meio de um dia muito quente?",["Para não superaquecer","Para dormir de dia","Para trocar de pele","Para fazer fotossíntese"],"Ectotérmicos controlam a temperatura mudando de lugar."],
+["Como o cachorro perde calor, já que tem poucas glândulas de suor?",["Ofegando com a língua para fora","Tomando sol","Arrepiando os pelos","Comendo mais"],"A água que evapora da boca e da língua leva calor embora."],
+["Qual destes animais precisa comer mais, para o seu tamanho, para manter o corpo quente?",["Beija-flor","Lagarto","Sapo","Cobra"],"O beija-flor é endotérmico e gasta muita energia."],
+["Por que as aves arrepiam as penas no frio?",["Para prender ar e se aquecer","Para voar mais rápido","Para trocar as penas","Para assustar"],"O ar preso entre as penas funciona como isolante."]);
+MQX["Desafio da metamorfose"].push(
+["Que estrutura a lagarta usa para comer as folhas?",["Mandíbulas fortes","Língua enrolada","Bico","Rádula"],"A borboleta adulta tem uma língua enrolada para sugar néctar."],
+["Qual inseto tem metamorfose completa e larva que vive na água?",["Mosquito","Gafanhoto","Barata","Grilo"],"As larvas do mosquito vivem em água parada."],
+["Como é a metamorfose da libélula?",["Incompleta, e a ninfa vive na água","Completa, com pupa","Não tem metamorfose","Igual à do sapo"],"A ninfa sai da água, troca de pele e vira adulta."],
+["O que é a exúvia?",["O exoesqueleto vazio deixado depois da muda","Um tipo de ovo","A pupa da borboleta","A cauda do girino"],"Às vezes encontramos exúvias de cigarras nas árvores."]);
+MQX["Desafio da fauna do Pará"].push(
+["O que é o defeso do caranguejo-uçá?",["Período em que a captura é proibida para proteger a reprodução","Uma festa do mangue","Uma doença do caranguejo","Uma época de chuvas"],"É quando os caranguejos saem para acasalar (a andada)."],
+["Do que o boto-cor-de-rosa se alimenta principalmente?",["Peixes","Plantas aquáticas","Frutos","Insetos"],"Ele usa a ecolocalização para achar peixes em águas escuras."],
+["O tracajá é parente próximo de qual animal?",["Tartaruga-da-amazônia","Jacaré-açu","Sapo-cururu","Peixe-boi"],"Os dois são quelônios do mesmo gênero, Podocnemis."],
+["Onde vive o jacaré-açu?",["Em rios, lagos e áreas alagadas da Amazônia","No mar aberto","No deserto","Em montanhas geladas"],"É um dos maiores predadores da Amazônia."]);
+MQX["Desafio das verminoses"].push(
+["Por que não se deve fazer as necessidades no chão ou perto de rios?",["As fezes podem espalhar ovos e larvas de vermes","Porque assusta os peixes","Porque faz chover","Não tem problema"],"Banheiro e esgoto tratado quebram o ciclo dos vermes."],
+["Quem deve indicar o tratamento de uma verminose?",["Um profissional de saúde","Um vizinho","Um vídeo na internet","Ninguém, passa sozinho"],"Procure uma Unidade de Saúde."],
+["Qual parte do corpo a filariose atinge?",["Os vasos linfáticos, causando inchaço","Os ossos","Os dentes","Os cabelos"],"O inchaço grande nas pernas é chamado de elefantíase."],
+["Por que a carne deve ter selo de inspeção?",["Mostra que foi examinada, evitando carne com cisticercos","Deixa a carne mais saborosa","Aumenta o peso","Não serve para nada"],"Mesmo com selo, a carne deve ser bem cozida."],
+["Como fica quem tem anemia causada pelo amarelão?",["Cansado e pálido","Mais forte","Com a pele azul","Com febre amarela"],"O ancilóstomo se alimenta de sangue no intestino."]);
+MQ0["Desafio dos naturalistas"].push(
+["Em qual navio Darwin fez a viagem ao redor do mundo?",["Beagle","Titanic","Caravela","Santa Maria"],"A viagem durou cinco anos."],
+["O que é o mimetismo descrito por Bates?",["Um animal inofensivo imitar outro perigoso","Um animal trocar de pele","Um animal hibernar","Um animal migrar"],"Assim os predadores evitam o imitador."],
+["Em qual cidade fica o Museu Paraense Emílio Goeldi?",["Belém","Manaus","Santarém","Macapá"],"É uma das instituições de pesquisa mais antigas da Amazônia."]);
+MQ0["Desafio dos ciclos"].push(
+["No ciclo da tênia-do-porco, o que acontece no porco?",["Os ovos viram cisticercos na carne","A tênia adulta vive no intestino do porco","O porco elimina cercárias","O porco é picado por mosquitos"],"A pessoa pega teníase ao comer essa carne crua ou mal passada."],
+["No ciclo da esquistossomose, o que sai do caramujo e nada na água?",["Cercárias","Ovos com casca","Tênias adultas","Mosquitos"],"As cercárias entram pela pele de quem está na água."]);

@@ -10,7 +10,7 @@ const ctx = { console };
 vm.createContext(ctx);
 let codigo = fs.readFileSync(D + "util.js", "utf8") + "\n" + fs.readFileSync(D + "dados.js", "utf8");
 if (fs.existsSync(D + "banco-proprio.js")) codigo += "\n" + fs.readFileSync(D + "banco-proprio.js", "utf8");
-vm.runInContext(codigo + "\n;this.X={G,EXTRA,EXTRA2,BANK3,QZ,PA,NG,MQX,MQ0,DIS,PR,AN,EMJ,CUR,NAT,FONTES,FONTES_MAIS,PROPRIO:typeof PROPRIO==='undefined'?null:PROPRIO};", ctx);
+vm.runInContext(codigo + "\n;this.X={G,EXTRA,EXTRA2,BANK3,BANK4,QZ,PA,NG,MQX,MQ0,DIS,PR,AN,EMJ,CUR,NAT,FONTES,FONTES_MAIS,PROPRIO:typeof PROPRIO==='undefined'?null:PROPRIO};", ctx);
 const X = ctx.X;
 const erros = [], avisos = [];
 const ids = new Set(X.G.map(g => g.id));
@@ -46,14 +46,14 @@ X.G.forEach((g, i) => {
 });
 
 /* bancos por grupo (1ª alternativa = correta) */
-["EXTRA", "EXTRA2", "BANK3"].forEach(nome => {
+["EXTRA", "EXTRA2", "BANK3", "BANK4"].forEach(nome => {
   const B = X[nome];
   Object.keys(B).forEach(gid => {
     if (!ids.has(gid)) erros.push(nome + "." + gid + ": grupo não existe");
     B[gid].forEach((x, i) => { const onde = nome + "." + gid + "[" + i + "]"; pergunta(onde, x[0], x[1], 0, x[2]); repetida(onde, x[0]); });
   });
 });
-["EXTRA", "EXTRA2", "BANK3"].forEach(nome => X.G.forEach(g => { if (!X[nome][g.id]) erros.push(nome + ": falta o grupo " + g.id); }));
+["EXTRA", "EXTRA2", "BANK3", "BANK4"].forEach(nome => X.G.forEach(g => { if (!X[nome][g.id]) erros.push(nome + ": falta o grupo " + g.id); }));
 
 /* desafio final (índice da correta no 3º campo) */
 X.QZ.forEach((x, i) => { const onde = "QZ[" + i + "]"; pergunta(onde, x[0], x[1], x[2], x[3]); repetida(onde, x[0]); });
@@ -86,13 +86,13 @@ if (X.PROPRIO) {
     pergunta(onde, x.q, x.o, 0, x.w); repetida(onde, x.q);
   });
   const todas = new Set();
-  X.G.forEach(g => { todas.add(ctx.idPerg(g.q.q, g.q.o)); ["EXTRA", "EXTRA2", "BANK3"].forEach(n => (X[n][g.id] || []).forEach(x => todas.add(ctx.idPerg(x[0], x[1])))); });
+  X.G.forEach(g => { todas.add(ctx.idPerg(g.q.q, g.q.o)); ["EXTRA", "EXTRA2", "BANK3", "BANK4"].forEach(n => (X[n][g.id] || []).forEach(x => todas.add(ctx.idPerg(x[0], x[1])))); });
   X.QZ.forEach(x => todas.add(ctx.idPerg(x[0], x[1])));
   titulos.forEach(t => [...(X.MQ0[t] || []), ...(X.MQX[t] || [])].forEach(x => todas.add(ctx.idPerg(x[0], x[1]))));
   (X.PROPRIO.ocultas || []).forEach(id => { if (!todas.has(id)) avisos.push("banco-proprio: pergunta oculta " + id + " não existe mais no app"); });
 }
 
-const total = X.G.length + Object.values(X.EXTRA).flat().length + Object.values(X.EXTRA2).flat().length + Object.values(X.BANK3).flat().length + X.QZ.length + [...titulos].reduce((s, t) => s + (X.MQ0[t] || []).length + (X.MQX[t] || []).length, 0);
+const total = X.G.length + Object.values(X.EXTRA).flat().length + Object.values(X.EXTRA2).flat().length + Object.values(X.BANK3).flat().length + Object.values(X.BANK4).flat().length + X.QZ.length + [...titulos].reduce((s, t) => s + (X.MQ0[t] || []).length + (X.MQX[t] || []).length, 0);
 avisos.forEach(a => console.log("aviso: " + a));
 erros.forEach(e => console.log("ERRO: " + e));
 console.log(total + " perguntas conferidas, " + erros.length + " erro(s), " + avisos.length + " aviso(s).");

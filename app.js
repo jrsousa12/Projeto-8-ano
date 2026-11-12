@@ -71,7 +71,7 @@ G.forEach(g=>{g.qs=[g.q,...EXTRA[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
 
 G.forEach(g=>{g.pool=[...g.qs,...EXTRA2[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
 
-G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
+G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Array.isArray(x)?{q:x[0],o:x[1],a:0,w:x[2]}:x);});
 /* perguntas do professor (banco-proprio.js, gerado pelo editor): acrescenta as novas e tira as ocultadas */
 (function(){if(typeof PROPRIO==="undefined"||!PROPRIO)return;
  const oc=new Set(Array.isArray(PROPRIO.ocultas)?PROPRIO.ocultas:[]);

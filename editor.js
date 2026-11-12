@@ -18,7 +18,7 @@ const nomeLugar = g => (LUGARES.find(l => l[0] === g) || [g, g])[1];
 const DOAPP = [];
 G.forEach(g => {
   DOAPP.push({ g: g.id, q: g.q.q, o: [g.q.o[g.q.a], ...g.q.o.filter((_, k) => k !== g.q.a)], w: g.q.w });
-  [EXTRA, EXTRA2, BANK3].forEach(B => (B[g.id] || []).forEach(x => DOAPP.push({ g: g.id, q: x[0], o: x[1], w: x[2] })));
+  [EXTRA, EXTRA2, BANK3, BANK4].forEach(B => (B[g.id] || []).forEach(x => DOAPP.push({ g: g.id, q: x[0], o: x[1], w: x[2] })));
 });
 QZ.forEach(x => DOAPP.push({ g: "final", q: x[0], o: [x[1][x[2]], ...x[1].filter((_, k) => k !== x[2])], w: x[3] }));
 Object.keys(MQ0).forEach(t => [...MQ0[t], ...(MQX[t] || [])].forEach(x => DOAPP.push({ g: t, q: x[0], o: x[1], w: x[2] })));

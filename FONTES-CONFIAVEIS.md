@@ -19,6 +19,7 @@ Use estas fontes para conferir ou corrigir qualquer parte conceitual do app: tex
 | Fiocruz e Agência Fiocruz de Notícias | Parasitologia, verminoses, caramujo *Biomphalaria* | https://portal.fiocruz.br |
 | ICMBio: SALVE (Sistema de Avaliação do Risco de Extinção) | Fichas das espécies brasileiras e categoria de ameaça | https://salve.icmbio.gov.br |
 | ICMBio: Livro Vermelho da Fauna Brasileira Ameaçada de Extinção | Espécies ameaçadas (harpia, ariranha, peixe-boi etc.) | https://www.gov.br/icmbio |
+| Ibama: espécies exóticas invasoras | Javali, caramujo-gigante-africano e outras invasoras | https://www.gov.br/ibama |
 | BNCC (Base Nacional Comum Curricular) | O que se espera em Ciências no Ensino Fundamental | https://basenacionalcomum.mec.gov.br |
 
 ## 2. Museus e institutos de pesquisa do Brasil
