@@ -444,7 +444,7 @@ renderStage();
 
 PA.push(
 ["Tartaruga-da-amazônia","Podocnemis expansa","reptil","Um dos maiores quelônios de água doce da América do Sul. Na seca, as fêmeas fazem covas nos bancos de areia dos rios e põem dezenas de ovos. A temperatura do ninho influencia o sexo dos filhotes."],
-["Guará","Eudocimus ruber","ave","Ave dos manguezais, com população na costa norte (Pará e Maranhão). O vermelho das penas vem dos carotenoides dos crustáceos de que se alimenta."],
+["Guará","Eudocimus ruber","ave","Ave dos manguezais. No Brasil, a maior população está na costa norte (Amapá, Pará e Maranhão). O vermelho das penas vem dos carotenoides dos crustáceos de que se alimenta."],
 ["Onça-pintada","Panthera onca","mamifero","Maior felino das Américas e terceiro maior do mundo. Mamífero carnívoro, predador de topo da cadeia alimentar. A maior parte da área adequada para ela está na Amazônia."],
 ["Ariranha","Pteronura brasiliensis","mamifero","Também chamada de lontra-gigante. É um mamífero semiaquático que come peixes e vive em pequenos grupos. Está ameaçada de extinção."]);
 PA[7][3]="Anfíbio de pele rugosa, com glândulas parotoides atrás dos olhos que liberam uma secreção tóxica de defesa. A secreção só irrita se entrar em contato com olhos ou boca. Faz metamorfose: ovos → girino → adulto.";

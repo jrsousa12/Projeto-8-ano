@@ -12,6 +12,8 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `util.js` | Funções usadas pelo app e pelo editor (identificador das perguntas) |
 | `banco-proprio.js` | **Perguntas do professor** e perguntas ocultadas (gerado pelo editor) |
 | `editor.html`, `editor.js`, `editor.css` | Editor de questões para o professor |
+| `FONTES-CONFIAVEIS.md` | Fontes confiáveis para conferir e corrigir o conteúdo |
+| `CLAUDE.md` | Regras para o Claude ao editar o app (inclui a pesquisa padrão nessas fontes) |
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
 | `extras.js` | Curiosidade da tela inicial, aba Naturalistas (retratos desenhados no app), aba Ciclos dos vermes (animação passo a passo) e tela de Fontes |
