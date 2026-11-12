@@ -18,7 +18,6 @@
 :where([data-theme=claro]) .chal{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
 :where([data-theme=claro]) .cprog .dots i{background:rgba(15,23,42,0.245)}
 :where([data-theme=claro]) .cprog .dots i.c{box-shadow:0 0 0 3px rgba(15,23,42,0.29)}
-:where([data-theme=claro]) .tbar{background:rgba(15,23,42,0.155)}
 :where([data-theme=claro]) #md{background:rgba(255,255,255,1)}
 :where([data-theme=claro]) .mdbox{color:#0f172a;border:1px solid rgba(15,23,42,0.2)}
 :where([data-theme=claro]) .mdbar{border-bottom:1px solid rgba(15,23,42,0.155)}

@@ -104,13 +104,13 @@ section.on{display:block}
 .cprog .dots{display:flex;gap:5px}.cprog .dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25)}
 .cprog .dots i.d{background:#34d399}.cprog .dots i.c{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
 #cnx{margin-top:10px}
-.tbar{height:6px;border-radius:6px;background:rgba(255,255,255,.15);margin-bottom:10px;overflow:hidden}.tbar i{display:block;height:100%;background:#fbbf24;transition:width .25s linear}
+
 #md{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px}
 .mdbox{background:#0f1b3d;color:#fff;border-radius:20px;max-width:900px;width:100%;max-height:92vh;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.2)}
 .mdbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.15);flex-wrap:wrap}
 .mdbody{padding:16px 20px;overflow:auto}.mdbody table{width:100%;border-collapse:collapse}.mdbody th,.mdbody td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}
 .mdbody h4{margin:12px 0 4px;font-size:17px}.mdbody ul{padding-left:22px}.mdbody a{color:#7dd3fc}
-.mdbody h3{margin:16px 0 6px}.mdbody ol{padding-left:22px}.mdbody li{margin:6px 0}.small{opacity:.7;font-size:14px}
+.mdbody h3{margin:16px 0 6px}.mdbody ol{padding-left:22px}.mdbody li{margin:6px 0}
 @media print{body.printing>*:not(#md){display:none!important}body.printing{overflow:visible!important;background:#fff!important}body.printing .bg{display:none!important}
  body.printing #md{position:static;background:#fff;padding:0;display:block}body.printing .mdbox{background:#fff;color:#000;max-height:none;border:0;display:block}
  body.printing .mdbar span{display:none}body.printing .mdbody{overflow:visible;color:#000}body.printing th,body.printing td{border-color:#999}}
@@ -175,7 +175,7 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 .streak{color:#fbbf24}
 .review{margin:14px auto;max-width:640px;text-align:left;background:rgba(0,0,0,.22);border-radius:18px;padding:14px 18px;font-size:16px}
 .review li{margin:6px 0 6px 18px}
-.proj{zoom:1.25}
+
 /* animações dos desenhos */
 .bob{animation:bobk 3s ease-in-out infinite}@keyframes bobk{50%{transform:translateY(-5px)}}
 .sb{animation:sbr 2.6s ease-in infinite;animation-delay:var(--d,0s)}@keyframes sbr{from{opacity:.9}to{transform:translateY(-30px);opacity:0}}
@@ -192,16 +192,16 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 .swim{animation:swimk 3.2s ease-in-out infinite alternate}@keyframes swimk{from{transform:translateX(-6px)}to{transform:translateX(7px)}}
 .blink{transform-origin:50% 50%;animation:blinkk 4s infinite}@keyframes blinkk{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
 .croak{transform-origin:50% 0;animation:croakk 1.6s ease-in-out infinite}@keyframes croakk{50%{transform:scale(1.25,1.35)}}
-.flap{transform-origin:90% 20%;animation:flapk .45s ease-in-out infinite alternate}@keyframes flapk{from{transform:rotate(-22deg)}to{transform:rotate(14deg)}}
-.tilt{transform-origin:50% 100%;animation:tiltk 2.4s ease-in-out infinite alternate}@keyframes tiltk{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+
+
 .head{animation:headk 3s ease-in-out infinite alternate}@keyframes headk{to{transform:translateX(5px)}}
 .wing{transform-origin:100% 50%;animation:wingk .5s ease-in-out infinite alternate}@keyframes wingk{from{transform:scaleX(1)}to{transform:scaleX(.35)}}
-.wingl{transform-origin:0% 50%;animation:wingk .5s ease-in-out infinite alternate}
-.swing{transform-origin:50% 0;animation:swingk 2.4s ease-in-out infinite alternate}@keyframes swingk{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
-.shiver{animation:shivk .12s infinite alternate}@keyframes shivk{from{transform:translateX(-2px)}to{transform:translateX(2px)}}
+
+
+@keyframes shivk{from{transform:translateX(-2px)}to{transform:translateX(2px)}}
 
 @media (max-width:760px){
- nav .ng{display:none}
+ 
  .branches{grid-template-columns:1fr}.branches::before,.branch::before{display:none}
  .pgrid,.tgrid,.stagebox{grid-template-columns:1fr}.hero svg{width:150px}.info{padding:20px}
 }
@@ -211,8 +211,8 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 .opw{position:relative}
 .opm{display:none;position:absolute;right:0;top:112%;z-index:70;min-width:230px;padding:10px;border-radius:18px;background:#10305a;border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 40px -10px #000;flex-direction:column;gap:8px}
 .opm.show{display:flex}.opm .fs{width:100%;text-align:left}
-nav .ng{align-self:center;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;margin:0 2px 0 8px}
-.hwel{text-align:center;margin:6px 0 20px}.hwel h2{font-size:32px}
+
+
 .hgrp{margin-bottom:22px}.hgrp>h2{font-size:22px;margin-bottom:10px}.hgrp>h2 small{font-weight:500;opacity:.75;font-size:15px;margin-left:10px}
 .htiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .ht{display:flex;gap:14px;align-items:center;text-align:left;padding:16px 18px;border-radius:24px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.14);border-left:7px solid var(--c);transition:.25s}
@@ -260,7 +260,7 @@ header{position:relative}
  nav button{flex:0 0 auto;padding:10px 14px;font-size:15px;scroll-snap-align:center;white-space:nowrap}
  main{padding:12px 12px 90px}
  .box{padding:14px;border-radius:22px}.box h2{font-size:22px}
- .hwel h2{font-size:24px}.htiles{grid-template-columns:1fr}.ht{padding:14px 16px}
+ .htiles{grid-template-columns:1fr}.ht{padding:14px 16px}
  .cards.always{grid-template-columns:repeat(2,1fr);gap:10px}
  .card.pc svg{width:100%;max-width:130px;height:auto}
  .tcol{padding:12px}.tube{height:150px}.deg{font-size:30px}
@@ -269,8 +269,7 @@ header{position:relative}
 }
 @media (max-height:520px){
  header{padding:8px 14px 2px;gap:8px}.brand h1{font-size:22px}.brand p{display:none}
- nav{margin-top:4px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:4px 14px 6px;position:sticky;top:0;z-index:40;background:rgba(6,14,38,.94)}nav::-webkit-scrollbar{display:none}nav button{padding:8px 14px;flex:0 0 auto;white-space:nowrap}nav .ng{flex:0 0 auto}
- .hwel{margin:0 0 8px}.hwel h2{font-size:22px}.hwel .sub{display:none}
+ nav{margin-top:4px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:4px 14px 6px;position:sticky;top:0;z-index:40;background:rgba(6,14,38,.94)}nav::-webkit-scrollbar{display:none}nav button{padding:8px 14px;flex:0 0 auto;white-space:nowrap}
  .htiles{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.ht{padding:10px 14px}.ht .ic{font-size:30px}
  main{padding:10px 14px 60px}.hgrp{margin-bottom:12px}
  .panel{max-height:98vh}
@@ -453,7 +452,6 @@ li.f .trp{opacity:.7}
 :where([data-theme=claro]) .chal{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
 :where([data-theme=claro]) .cprog .dots i{background:rgba(15,23,42,0.245)}
 :where([data-theme=claro]) .cprog .dots i.c{box-shadow:0 0 0 3px rgba(15,23,42,0.29)}
-:where([data-theme=claro]) .tbar{background:rgba(15,23,42,0.155)}
 :where([data-theme=claro]) #md{background:rgba(255,255,255,1)}
 :where([data-theme=claro]) .mdbox{color:#0f172a;border:1px solid rgba(15,23,42,0.2)}
 :where([data-theme=claro]) .mdbar{border-bottom:1px solid rgba(15,23,42,0.155)}
@@ -1502,7 +1500,7 @@ porifero:[
 ["Como é a larva das esponjas?",["Ciliada e nada livremente","Fixa no fundo desde o início","Parecida com um girino","Coberta por uma concha"],"Depois de nadar um tempo, a larva se fixa e forma a esponja adulta."],
 ["Além do alimento, o que a corrente de água traz para a esponja?",["Oxigênio","Luz","Sangue","Areia para o esqueleto"],"A água traz oxigênio e leva embora os resíduos pelo ósculo."],
 ["A qual reino pertencem as esponjas?",["Animal (Animalia)","Plantas (Plantae)","Fungos (Fungi)","Bactérias"],"Esponjas são animais, mesmo sem se mover quando adultas."],
-["Na Amazônia, como se chama a esponja de água doce cujas espículas eram misturadas ao barro na cerâmica indígena?",["Cauxi","Pirarucu","Tracajá","Sururu"],"As espículas de sílica do cauxi deixavam a cerâmica mais resistente."],
+["Na Amazônia, como se chama a esponja de água doce cujas espículas são misturadas ao barro na cerâmica indígena?",["Cauxi","Pirarucu","Tracajá","Sururu"],"As espículas do cauxi são de sílica, um material duro, e há muito tempo fazem parte da cerâmica de povos indígenas."],
 ["Em 2016, cientistas descreveram um grande sistema de recifes, com muitas esponjas, em frente à foz de qual rio?",["Amazonas","São Francisco","Paraná","Tietê"],"Esse sistema de recifes vai do Maranhão até a Guiana Francesa."]],
 cnidario:[
 ["O que é o nematocisto?",["Uma cápsula que dispara um filamento com toxina","Um tipo de tentáculo","A larva dos cnidários","A concha do coral"],"Ele fica dentro do cnidócito e dispara ao ser tocado."],
@@ -1511,7 +1509,7 @@ cnidario:[
 ["Os cnidários têm cérebro?",["Não; têm uma rede de nervos espalhada pelo corpo","Sim, um cérebro grande","Sim, dois cérebros","Têm medula espinhal"],"Essa rede nervosa coordena os movimentos dos tentáculos."],
 ["Como a anêmona-do-mar fica presa às rochas?",["Por um disco adesivo na base do corpo","Por raízes","Por fios de seda","Por ventosas nos tentáculos"],"A anêmona é um pólipo e pode se deslocar devagar sobre esse disco."],
 ["Qual é a importância dos recifes de coral?",["Abrigam e alimentam muitas espécies marinhas","Produzem água doce","Impedem a chuva","Não têm importância"],"Muitos peixes, crustáceos e moluscos vivem nos recifes."],
-["O que dá a cor à maioria dos corais?",["Algas que vivem dentro deles","A areia do fundo","O sangue dos peixes","A luz da Lua"],"Quando o coral perde essas algas, fica branco: é o branqueamento."]],
+["No branqueamento, por que o coral fica branco?",["Porque perde as algas que vivem dentro dele","Porque a areia cobre o coral","Porque o coral troca de pele","Porque a Lua ilumina o fundo"],"Sem as algas, aparece o esqueleto branco de calcário. Se as algas não voltam, o coral pode morrer."]],
 platelminto:[
 ["O que são as proglotes (proglótides) da tênia?",["Os pedaços do corpo, que guardam os ovos","Os dentes da tênia","As larvas na água","As ventosas da boca"],"As proglotes maduras se soltam e saem nas fezes."],
 ["Como se chamam as estruturas da planária que percebem a luz?",["Ocelos","Antenas","Olhos compostos","Cnidócitos"],"Os ocelos ficam na cabeça e parecem dois olhinhos."],
@@ -1519,17 +1517,17 @@ platelminto:[
 ["Como se chama a larva que sai do ovo do esquistossomo na água?",["Miracídio","Cercária","Cisticerco","Plânula"],"O miracídio nada até encontrar um caramujo."],
 ["Onde ficam os cisticercos da tênia-do-boi?",["Na carne (músculos) do boi","No leite","No couro","Nos chifres"],"Por isso a carne deve ser bem cozida e ter inspeção."],
 ["Como a planária come?",["Põe a faringe para fora da boca e suga pequenos animais","Filtra a água","Faz fotossíntese","Raspa com a rádula"],"A boca da planária fica na parte de baixo do corpo."],
-["Qual platelminto parasita principalmente o fígado de bois e ovelhas?",["Fasciola hepática","Planária","Lombriga","Minhoca"],"O nome hepática vem de fígado."]],
+["Qual platelminto parasita principalmente o fígado de bois e ovelhas?",["Fascíola (Fasciola hepatica)","Planária","Lombriga","Minhoca"],"O nome hepatica vem de fígado."]],
 nematodeo:[
 ["O bicho-geográfico é causado por larvas de…",["Ancilóstomos de cães e gatos","Tênias do porco","Mosquitos","Caramujos"],"Areias com fezes desses animais podem ter as larvas, que entram pela pele."],
-["Como os nematódeos de vida livre ajudam o solo?",["Participam da decomposição e da reciclagem de nutrientes","Deixam o solo duro","Produzem oxigênio","Comem as raízes de todas as plantas"],"Há milhões de nematódeos em poucos punhados de terra."],
+["Como os nematódeos de vida livre ajudam o solo?",["Participam da decomposição e da reciclagem de nutrientes","Deixam o solo duro","Produzem oxigênio","Comem as raízes de todas as plantas"],"Eles são muito numerosos no solo, mesmo sem a gente conseguir ver."],
 ["Qual problema alguns nematódeos causam na agricultura?",["Atacam as raízes das plantas","Picam os agricultores","Secam os rios","Comem as sementes no armazém"],"Esses nematódeos formam caroços (galhas) nas raízes."],
 ["Na lombriga, quem costuma ser maior?",["A fêmea","O macho","São sempre do mesmo tamanho","A lombriga não tem sexos"],"Nos nematódeos, macho e fêmea costumam ser diferentes."],
 ["Quantos ovos uma fêmea de lombriga pode pôr por dia?",["Cerca de 200 mil","Só 1","Cerca de 10","Nenhum"],"Os ovos saem nas fezes; por isso o saneamento é tão importante."],
 ["Como se pega a oxiurose?",["Engolindo ovos que ficam nas mãos, nas unhas e nas roupas","Pela picada de mosquito","Nadando em lagoas","Comendo carne de boi"],"Lavar as mãos e manter as unhas curtas e limpas ajuda a evitar."],
 ["Por que muitas lombrigas podem deixar uma criança desnutrida?",["Os vermes aproveitam parte dos nutrientes dos alimentos","As lombrigas comem os ossos","Elas impedem a respiração","Elas tiram a água do sangue"],"Com sintomas, procure uma Unidade de Saúde."]],
 molusco:[
-["O sururu, muito consumido no Norte e no Nordeste, é um…",["Molusco bivalve","Crustáceo","Peixe","Equinodermo"],"Como a ostra e o mexilhão, tem duas valvas e filtra a água."],
+["O sururu, muito consumido no litoral do Nordeste, é um…",["Molusco bivalve","Crustáceo","Peixe","Equinodermo"],"Como a ostra e o mexilhão, tem duas valvas e filtra a água."],
 ["Como o caramujo se protege quando está em perigo?",["Recolhe o corpo para dentro da concha","Solta tinta","Voa","Dispara cnidócitos"],"Alguns ainda fecham a entrada com o opérculo."],
 ["O que é o opérculo de alguns caramujos?",["Uma tampa que fecha a abertura da concha","Uma brânquia","Um olho","Um dente"],"Ele protege o animal contra predadores e contra a perda de água."],
 ["Como a lula consegue nadar rápido?",["Lançando um jato de água pelo sifão","Batendo asas","Andando com patas","Rolando como uma bola"],"É uma propulsão a jato, como um balão que solta o ar."],
@@ -1581,7 +1579,7 @@ reptil:[
 ["Para que serve a fosseta loreal de jararacas e cascavéis?",["Perceber o calor das presas","Ouvir","Soltar veneno","Respirar debaixo da água"],"É um orifício entre a narina e o olho."],
 ["O que fazer se alguém for picado por cobra?",["Levar a pessoa rápido a um serviço de saúde","Amarrar o braço ou a perna com força","Cortar e chupar o local","Passar borra de café"],"Só o serviço de saúde avalia e trata o acidente. Se possível, tire uma foto da cobra, sem se arriscar."],
 ["Para que serve o chocalho da cascavel?",["Avisar e afastar ameaças","Guardar veneno","Atrair presas","Respirar"],"O chocalho não tem veneno: é um aviso."],
-["O camaleão é conhecido por…",["Mudar de cor","Voar","Ser venenoso","Viver no mar"],"A cor muda com a temperatura, o humor e a comunicação."],
+["O camaleão é conhecido por…",["Mudar de cor","Voar","Ser venenoso","Viver no mar"],"A cor muda com a temperatura, a luz e a comunicação com outros camaleões."],
 ["As fêmeas de jacaré cuidam dos ovos e dos filhotes?",["Sim, protegem o ninho e os filhotes","Não, abandonam os ovos na água","Não, comem os ovos","Os jacarés não botam ovos"],"O cuidado com os filhotes é comum nos crocodilianos."],
 ["Do que é formado o casco do jabuti?",["Ossos cobertos por placas de queratina","Quitina","Cartilagem","Calcário de concha de molusco"],"O casco faz parte do esqueleto: o jabuti não sai dele."]],
 ave:[
@@ -1618,7 +1616,7 @@ QZ.push(
 ["Como é a metamorfose do mosquito Aedes aegypti?",["Completa: ovo, larva, pupa e adulto","Incompleta: ovo, ninfa e adulto","Ele não faz metamorfose","Ovo, girino e adulto"],0,"As larvas e as pupas vivem na água parada."],
 ["Por que eliminar água parada ajuda contra a dengue?",["Impede que as larvas do mosquito se desenvolvam","Mata os vírus no ar","Deixa o mosquito sem asas","Faz chover menos"],0,"Sem água parada, o Aedes aegypti não completa o ciclo."],
 ["Em um dia frio, por que a onça precisa comer mais que um jacaré do mesmo tamanho?",["Gasta energia para manter o corpo quente","Porque é maior","Porque o jacaré não come","Porque a onça faz fotossíntese"],0,"Endotérmicos gastam energia dos alimentos para produzir calor."],
-["Qual destes animais é endotérmico e vive no mar?",["Golfinho","Tubarão","Polvo","Tartaruga-marinha"],0,"O golfinho é um mamífero."],
+["Qual destes animais é endotérmico e vive no mar?",["Golfinho","Tubarão","Polvo","Água-viva"],0,"O golfinho é um mamífero."],
 ["O que peixes, anfíbios e répteis têm em comum?",["São ectotérmicos","Têm penas","Amamentam","Têm pelos"],0,"A temperatura do corpo deles depende do ambiente."],
 ["O que aves e répteis têm em comum na reprodução?",["A maioria bota ovos com casca","Têm girinos","Amamentam","Têm placenta"],0,"O ovo com casca permite a reprodução fora da água."],
 ["O que diferencia um mamífero placentário de um marsupial?",["O filhote se desenvolve mais tempo no útero, ligado à placenta","O placentário bota ovos","O marsupial não amamenta","Não há diferença"],0,"Nos marsupiais, o filhote nasce pequeno e termina o desenvolvimento no marsúpio."],
@@ -1775,8 +1773,10 @@ G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Arra
  const tira=(arr,f)=>{for(let i=arr.length-1;i>=0;i--)if(oc.has(f(arr[i])))arr.splice(i,1);};
  if(oc.size){G.forEach(g=>tira(g.pool,x=>idPerg(x.q,x.o)));tira(QZ,x=>idPerg(x[0],x[1]));
   [MQ0,MQX].forEach(M=>Object.keys(M).forEach(t=>tira(M[t],x=>idPerg(x[0],x[1]))));}
+ const limpa=t=>String(t).replace(/</g,"‹").replace(/>/g,"›");
  (Array.isArray(PROPRIO.perguntas)?PROPRIO.perguntas:[]).forEach(x=>{
-  if(!x||typeof x.q!=="string"||!Array.isArray(x.o)||x.o.length<2)return;const w=x.w||"";
+  if(!x||typeof x.q!=="string"||!Array.isArray(x.o)||x.o.length<2)return;
+  x={g:x.g,q:limpa(x.q),o:x.o.map(limpa),w:limpa(x.w||"")};const w=x.w;
   const g=G.find(y=>y.id===x.g);
   if(g)g.pool.push({q:x.q,o:x.o,a:0,w});
   else if(x.g==="final")QZ.push([x.q,x.o,0,w]);
@@ -1794,26 +1794,28 @@ function updScore(){if(typeof NV!=="undefined")NV.atualiza();
 const SALT="an8-prof-ivaldo-2026";
 
 const PK="an8v2",esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const PROF={cur:"",p:{}};let whoMode="",whoAnon=false;
+const PROF={cur:"",p:Object.create(null)};
+const nomeOk=n=>typeof n==="string"&&n.length>0&&n.length<=20&&!/^(__proto__|constructor|prototype)$/i.test(n);let whoMode="",whoAnon=false;
 const sigOf=(n,ids)=>hsh(n+"|"+ids+SALT);
 function writeAll(){try{localStorage.setItem(PK,JSON.stringify(PROF));}catch(e){}}
 function readAll(){try{const d=JSON.parse(localStorage.getItem(PK)||"null");
- if(d&&d.p&&typeof d.p==="object"){Object.keys(d.p).slice(0,30).forEach(n=>{const r=d.p[n];if(typeof n==="string"&&n.length<=20&&r&&typeof r.s==="string"&&r.k===sigOf(n,r.s))PROF.p[n]={s:r.s,k:r.k};});
-  if(typeof d.cur==="string"&&PROF.p[d.cur])PROF.cur=d.cur;}
+ if(d&&d.p&&typeof d.p==="object"){Object.keys(d.p).slice(0,30).forEach(n=>{const r=d.p[n];if(nomeOk(n)&&r&&typeof r.s==="string"&&r.k===sigOf(n,r.s))PROF.p[n]={s:r.s,k:r.k};});
+  if(nomeOk(d.cur)&&PROF.p[d.cur])PROF.cur=d.cur;}
  else{const o=JSON.parse(localStorage.getItem("an8v1")||"null");
   if(o&&typeof o.s==="string"&&o.k===hsh(o.s+SALT)&&o.s){PROF.p["Aluno"]={s:o.s,k:sigOf("Aluno",o.s)};PROF.cur="Aluno";writeAll();}}}catch(e){}}
 const profIds=n=>{const r=PROF.p[n];return r?(r.s?r.s.split(",").filter(id=>G.some(g=>g.id===id)):[]):[];};
 function saveProg(){if(!PROF.cur)return;const ids=[...stars].sort().join(",");PROF.p[PROF.cur]={s:ids,k:sigOf(PROF.cur,ids)};writeAll();}
-function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
+function loadProfile(){stars.clear();seen.clear();if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
  if(typeof PG!=="undefined"){PG.carregar();if(typeof NV!=="undefined")NV.recomeca();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
-function clearProg(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);saveProg();updScore();renderWho();}
+function clearProg(){stars.clear();seen.clear();saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
  if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · ⭐ ${stars.size}/13</span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
  if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as estrelas <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
  w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>⭐ ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
  $$(".wb",w).forEach(b=>b.onclick=()=>switchTo(b.dataset.n));
  const ok=()=>{const n=$("#wn").value.replace(/\s+/g," ").trim();if(!n){$("#wmsg").textContent="Escreva um nome para começar.";return;}
+  if(!nomeOk(n)){$("#wmsg").textContent="Escolha outro nome.";return;}
   const ex=Object.keys(PROF.p).find(x=>x.toLowerCase()===n.toLowerCase());if(ex){switchTo(ex);return;}
   if(names.length>=30){$("#wmsg").textContent="Limite de 30 alunos neste aparelho. Apague algum perfil.";return;}switchTo(n);};
  $("#wok").onclick=ok;$("#wn").onkeydown=e=>{if(e.key==="Enter")ok();};
@@ -1847,7 +1849,7 @@ function mkHint(od,okBtn,isDone,used){HF=false;const h=document.createElement("b
  const w=document.createElement("div");w.className="hintrow";w.appendChild(h);return w;}
 const hintLine=n=>n?`<p class="hintn">💡 Dicas usadas: <b>${n}</b></p>`:"";
 /* ---------- desafio: sorteia 5 do banco ---------- */
-const PASS=3,TLIM=20;let timerOn=false,soundOn=false;const RES={};
+const PASS=3;let soundOn=false;
 let AC=null;
 /* vibração (celular) e tema: preferências do aparelho */
 let vibOn=LSg("an8vib")!=="no";
@@ -1876,7 +1878,7 @@ function runChal(g,p){
   $("#cn",box).onclick=()=>{qi++;last?end():show();};$("#cn",box).focus();}
  function show(){
   const Q=qs[qi];let okBtn=null,answered=false;
-  box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div>${timerOn?`<div class="tbar"><i id="tb"></i></div>`:""}<p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
+  box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div><p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
   const od=$("#opts",box);
   shuffle(Q.o.map((t,k)=>({t,ok:k===Q.a}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okBtn=b;
    b.onclick=ev=>{
@@ -1885,13 +1887,9 @@ function runChal(g,p){
     else{b.classList.add("no");okBtn.classList.add("ok");beep("no");finish(Q,false,"🤔 Quase!");}};
    od.appendChild(b);});
   od.after(mkHint(od,okBtn,()=>answered,()=>{hints++;}));
-  if(timerOn){let t=TLIM;const tb=$("#tb",box);tb.style.width="100%";
-   tm=setInterval(()=>{if(!box.isConnected){clearInterval(tm);return;}t-=.25;tb.style.width=(t/TLIM*100)+"%";
-    if(t<=0){okBtn.classList.add("ok");beep("no");finish(Q,false,"⏰ <b>Tempo esgotado!</b>");}},250);}
  }
  function end(){
   clearInterval(tm);const ok=!review&&hits>=PASS;
-  if(!review){const r=RES[g.id]||(RES[g.id]={best:0,tries:0,last:0});r.tries++;r.last=hits;r.best=Math.max(r.best,hits);}
   const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A estrela vem das perguntas sorteadas.":(ok?"⭐ Muito bem! Você ganhou a estrela de "+g.n+".":"Para ganhar a estrela são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
   box.innerHTML=`<div class="cprog"><span>🏁 Resultado</span><span class="dots">${qs.map(()=>"<i class='d'></i>").join("")}</span></div><p>Você acertou ${fmt(hits)} de ${qs.length}.</p>${hintLine(hints)}<div class="why">${msg}</div><div id="cnx">${missed.length?`<button class="btn" id="rv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="cn">🔄 Jogar de novo (novas perguntas)</button></div>`;
   $("#cn",box).onclick=()=>{qi=0;hits=0;hints=0;review=false;missed=[];qs=shuffle(g.pool.slice()).slice(0,5);show();};
@@ -1910,11 +1908,6 @@ function openMd(title,html){
  $("#mdx").onclick=goBack;
  $("#mdp").onclick=()=>{document.body.classList.add("printing");window.print();setTimeout(()=>document.body.classList.remove("printing"),500);};
  $("#mdx").focus();}
-function resumo(){
- const rows=G.map(g=>{const r=RES[g.id];const st=r?(r.best>=PASS?"✅":"⚠️"):"—";
-  return `<tr><td>${g.n}</td><td>${r?r.tries:0}</td><td>${r?r.last+"/5":"—"}</td><td>${r?r.best+"/5":"—"}</td><td>${st}</td></tr>`}).join("");
- const rev=G.filter(g=>!RES[g.id]||RES[g.id].best<PASS).map(g=>g.n);
- openMd("📊 Resumo de desempenho",`<p>⭐ Estrelas: <b>${stars.size}/13</b> • Quiz “Classifique” e Desafio final não entram neste resumo.</p><table><tr><th>Grupo</th><th>Tentativas</th><th>Última</th><th>Melhor</th><th></th></tr>${rows}</table><p><b>Para revisar:</b> ${rev.length?rev.join(", "):"nenhum, parabéns!"}</p><p class="small">Os dados ficam só nesta página aberta e somem ao recarregar.</p>`);}
 function hidePanel(){$("#ov").classList.remove("show");document.body.style.overflow="";}
 function closePanel(){if($("#ov").classList.contains("show"))goBack();}
 $("#ov").addEventListener("click",e=>{if(e.target.id==="ov")closePanel();});
@@ -1949,9 +1942,9 @@ function irPara(t){const h=HUB[t]||"home";
  if(t==="home"){if(TABL){const k=LAY.length-hubIdx;if(k>0){try{history.go(-k);}catch(e){while(LAY.length>hubIdx)LAY.pop()();updBack();}}}else showTab("home");return;}
  if(!TABL){TABL=true;hubIdx=LAY.length;pushLayer(()=>{TABL=false;SUBL=false;showTab("home");});}
  if(t===h){if(SUBL){depois=t;goBack();}else showTab(t);return;}
- if(!SUBL){SUBL=true;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||HUB[abaAtual]||"home");});}
+ if(!SUBL){SUBL=true;const origem=(abaAtual!=="home"&&abaAtual===HUB[abaAtual])?abaAtual:h;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||origem);});}
  showTab(t);}
-$$("#tabs button").forEach(b=>b.onclick=()=>irPara(b.dataset.t));
+$$("#tabs button").forEach(b=>b.onclick=()=>{if(b.dataset.t==="prog"&&typeof prPausa==="function")prPausa();irPara(b.dataset.t);});
 $("#bk").onclick=goBack;
 
 /* ---------- ilustrações ---------- */
@@ -2575,10 +2568,11 @@ const PG = (() => {
     PROF.p[n] = { s: ids, k: sigOf(n, ids) };
     /* histórico: junta, ficando com o registro mais recente de cada pergunta */
     const atual = ler(HK(n)) || vazio();
-    Object.keys(d.h.q).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
+    if (!nomeOk(n)) return "Código inválido.";
+    Object.keys(d.h.q).filter(id => /^q[0-9a-f]+$/.test(id)).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
     if (Array.isArray(d.h.c)) atual.c = [...new Set([...atual.c, ...d.h.c.filter(id => typeof id === "string")])].filter(id => !(atual.q[id] && atual.q[id].s >= 2));
     if (Array.isArray(d.h.r)) { const vis = new Set(atual.r.map(x => x.d)); d.h.r.forEach(x => { if (x && typeof x.d === "number" && !vis.has(x.d)) atual.r.push({ m: String(x.m), d: x.d, s: +x.s || 0, n: +x.n || 0 }); }); atual.r.sort((a, b) => a.d - b.d); atual.r = atual.r.slice(-60); }
-    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (typeof k === "string" && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
+    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (/^[a-z]+:?[^<>]*$/.test(k) && !/__proto__|constructor|prototype/.test(k) && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
     gravar(HK(n), atual);
     switchTo(n);
     return "";
@@ -2593,6 +2587,8 @@ const PG = (() => {
 const RODA = {};
 function rodada(cfg, ids, retomar) {
   const st = retomar || { m: cfg.m, ids, i: 0, sc: 0, h: 0, miss: [], seq: 0, best: 0, resp: {}, rest: cfg.tempo ? cfg.tempo * 1000 : 0, rev: !!cfg.rev };
+  /* uma rodada nova na mesma caixa para o relógio de outra (o simulado fica salvo para continuar) */
+  Object.keys(RODA).forEach(k => { const o = RODA[k]; if (o.tm && o.cfg.box() === cfg.box()) { clearInterval(o.tm); if (!o.st.rev && !o.st.fim) PG.salvarRodada(k, o.st); } });
   RODA[cfg.m] = { cfg, st };
   if (!st.rev) PG.salvarRodada(cfg.m, st);
   mostrar(cfg.m);
@@ -2601,7 +2597,9 @@ function rodadaRelogio(m) {
   const R = RODA[m]; if (!R || !R.cfg.tempo) return;
   clearInterval(R.tm); let ult = Date.now();
   R.tm = setInterval(() => {
-    const box = R.cfg.box(); const vis = box.isConnected && box.offsetParent !== null && !document.hidden;
+    const box = R.cfg.box();
+    if (!box || box.dataset.m !== m || RODA[m] !== R) { clearInterval(R.tm); return; }
+    const vis = box.isConnected && box.offsetParent !== null && !document.hidden;
     const agora = Date.now(); if (vis) R.st.rest -= agora - ult; ult = agora;
     const el = box.querySelector(".rel"); if (el) el.textContent = "⏱️ " + relogio(R.st.rest);
     if (vis && Math.round(R.st.rest / 1000) % 5 === 0) PG.salvarRodada(m, R.st);
@@ -2611,6 +2609,7 @@ function rodadaRelogio(m) {
 const relogio = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
 function mostrar(m) {
   const R = RODA[m], { cfg, st } = R, box = cfg.box();
+  box.dataset.m = m;
   if (st.i >= st.ids.length) return resultado(m);
   const it = PG.item(st.ids[st.i]);
   if (!it) { st.i++; return mostrar(m); }
@@ -2639,7 +2638,7 @@ function mostrar(m) {
   else od.after(mkHint(od, okB, () => feito, () => {}));
 }
 function resultado(m) {
-  const R = RODA[m], { cfg, st } = R, box = cfg.box(); clearInterval(R.tm);
+  const R = RODA[m], { cfg, st } = R, box = cfg.box(); clearInterval(R.tm); box.dataset.m = m;
   const n = st.ids.length;
   let sc = st.sc, revisao = "";
   if (cfg.sim) {
@@ -2703,6 +2702,12 @@ function prCfg(m) {
   if (m === "erros") return { m, box: () => $("#pgrun"), titulo: "📒 Caderno de erros", denovo: () => prIniciar("erros", true), voltar: vt };
   if (m === "treino") return { m, box: () => $("#pgrun"), titulo: "🧠 Treino inteligente", denovo: () => prIniciar("treino", true), voltar: vt };
   return { m: "simulado", box: () => $("#pgrun"), titulo: "📝 Simulado", sim: true, tempo: 20 * 60, rank: true, denovo: () => prIniciar("simulado", true), voltar: vt };
+}
+/* sai de uma rodada em andamento (ela continua salva) e volta ao resumo do progresso */
+function prPausa() {
+  if (!prModo) return;
+  Object.keys(RODA).forEach(k => { const o = RODA[k]; clearInterval(o.tm); if (!o.st.rev && !o.st.fim && o.st.i < o.st.ids.length) PG.salvarRodada(k, o.st); });
+  prModo = "";
 }
 function prIniciar(m, forcar, area) {
   prModo = m; prRender();

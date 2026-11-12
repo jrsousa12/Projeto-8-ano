@@ -39,8 +39,10 @@ SE NÃO FOR PUBLICAR
   coloca o app em tela cheia no primeiro toque.
 
 PERFIS DOS ALUNOS
-  As estrelas ficam salvas por aluno, somente no aparelho e no navegador usados.
-  Trocar de celular, de navegador ou limpar os dados do navegador apaga o progresso.
+  As estrelas, o XP, o nível e o progresso das trilhas ficam salvos por aluno, somente no
+  aparelho e no navegador usados. Para levar a outro aparelho, use o código em 📊 Progresso.
+  Trocar de celular, de navegador ou limpar os dados do navegador apaga o progresso,
+  a não ser que ele seja levado antes com o código de 📊 Progresso.
 
 ATENÇÃO
   Os arquivos podem ser editados livremente (não há trava contra alteração).

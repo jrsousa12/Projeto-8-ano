@@ -124,10 +124,11 @@ const PG = (() => {
     PROF.p[n] = { s: ids, k: sigOf(n, ids) };
     /* histórico: junta, ficando com o registro mais recente de cada pergunta */
     const atual = ler(HK(n)) || vazio();
-    Object.keys(d.h.q).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
+    if (!nomeOk(n)) return "Código inválido.";
+    Object.keys(d.h.q).filter(id => /^q[0-9a-f]+$/.test(id)).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
     if (Array.isArray(d.h.c)) atual.c = [...new Set([...atual.c, ...d.h.c.filter(id => typeof id === "string")])].filter(id => !(atual.q[id] && atual.q[id].s >= 2));
     if (Array.isArray(d.h.r)) { const vis = new Set(atual.r.map(x => x.d)); d.h.r.forEach(x => { if (x && typeof x.d === "number" && !vis.has(x.d)) atual.r.push({ m: String(x.m), d: x.d, s: +x.s || 0, n: +x.n || 0 }); }); atual.r.sort((a, b) => a.d - b.d); atual.r = atual.r.slice(-60); }
-    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (typeof k === "string" && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
+    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (/^[a-z]+:?[^<>]*$/.test(k) && !/__proto__|constructor|prototype/.test(k) && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
     gravar(HK(n), atual);
     switchTo(n);
     return "";
@@ -142,6 +143,8 @@ const PG = (() => {
 const RODA = {};
 function rodada(cfg, ids, retomar) {
   const st = retomar || { m: cfg.m, ids, i: 0, sc: 0, h: 0, miss: [], seq: 0, best: 0, resp: {}, rest: cfg.tempo ? cfg.tempo * 1000 : 0, rev: !!cfg.rev };
+  /* uma rodada nova na mesma caixa para o relógio de outra (o simulado fica salvo para continuar) */
+  Object.keys(RODA).forEach(k => { const o = RODA[k]; if (o.tm && o.cfg.box() === cfg.box()) { clearInterval(o.tm); if (!o.st.rev && !o.st.fim) PG.salvarRodada(k, o.st); } });
   RODA[cfg.m] = { cfg, st };
   if (!st.rev) PG.salvarRodada(cfg.m, st);
   mostrar(cfg.m);
@@ -150,7 +153,9 @@ function rodadaRelogio(m) {
   const R = RODA[m]; if (!R || !R.cfg.tempo) return;
   clearInterval(R.tm); let ult = Date.now();
   R.tm = setInterval(() => {
-    const box = R.cfg.box(); const vis = box.isConnected && box.offsetParent !== null && !document.hidden;
+    const box = R.cfg.box();
+    if (!box || box.dataset.m !== m || RODA[m] !== R) { clearInterval(R.tm); return; }
+    const vis = box.isConnected && box.offsetParent !== null && !document.hidden;
     const agora = Date.now(); if (vis) R.st.rest -= agora - ult; ult = agora;
     const el = box.querySelector(".rel"); if (el) el.textContent = "⏱️ " + relogio(R.st.rest);
     if (vis && Math.round(R.st.rest / 1000) % 5 === 0) PG.salvarRodada(m, R.st);
@@ -160,6 +165,7 @@ function rodadaRelogio(m) {
 const relogio = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
 function mostrar(m) {
   const R = RODA[m], { cfg, st } = R, box = cfg.box();
+  box.dataset.m = m;
   if (st.i >= st.ids.length) return resultado(m);
   const it = PG.item(st.ids[st.i]);
   if (!it) { st.i++; return mostrar(m); }
@@ -188,7 +194,7 @@ function mostrar(m) {
   else od.after(mkHint(od, okB, () => feito, () => {}));
 }
 function resultado(m) {
-  const R = RODA[m], { cfg, st } = R, box = cfg.box(); clearInterval(R.tm);
+  const R = RODA[m], { cfg, st } = R, box = cfg.box(); clearInterval(R.tm); box.dataset.m = m;
   const n = st.ids.length;
   let sc = st.sc, revisao = "";
   if (cfg.sim) {
@@ -252,6 +258,12 @@ function prCfg(m) {
   if (m === "erros") return { m, box: () => $("#pgrun"), titulo: "📒 Caderno de erros", denovo: () => prIniciar("erros", true), voltar: vt };
   if (m === "treino") return { m, box: () => $("#pgrun"), titulo: "🧠 Treino inteligente", denovo: () => prIniciar("treino", true), voltar: vt };
   return { m: "simulado", box: () => $("#pgrun"), titulo: "📝 Simulado", sim: true, tempo: 20 * 60, rank: true, denovo: () => prIniciar("simulado", true), voltar: vt };
+}
+/* sai de uma rodada em andamento (ela continua salva) e volta ao resumo do progresso */
+function prPausa() {
+  if (!prModo) return;
+  Object.keys(RODA).forEach(k => { const o = RODA[k]; clearInterval(o.tm); if (!o.st.rev && !o.st.fim && o.st.i < o.st.ids.length) PG.salvarRodada(k, o.st); });
+  prModo = "";
 }
 function prIniciar(m, forcar, area) {
   prModo = m; prRender();

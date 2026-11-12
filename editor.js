@@ -41,9 +41,10 @@ function msg(id, t, ok) { const el = $(id); el.textContent = t; el.className = "
 function opcoesLugar(sel, todas) {
   sel.innerHTML = (todas ? `<option value="">Todos os lugares</option>` : "") + LUGARES.map(l => `<option value="${esc(l[0])}">${esc(l[1])}</option>`).join("");
 }
+const limpa = t => t.replace(/\s+/g, " ").replace(/</g, "‹").replace(/>/g, "›").trim();
 function lerForm() {
-  const o = [0, 1, 2, 3].map(i => $("#f-o" + i).value.replace(/\s+/g, " ").trim()).filter((t, i) => i < 3 || t);
-  return { g: $("#f-g").value, q: $("#f-q").value.replace(/\s+/g, " ").trim(), o, w: $("#f-w").value.replace(/\s+/g, " ").trim() };
+  const o = [0, 1, 2, 3].map(i => limpa($("#f-o" + i).value)).filter((t, i) => i < 3 || t);
+  return { g: $("#f-g").value, q: limpa($("#f-q").value), o, w: limpa($("#f-w").value) };
 }
 function conferir(x, ignorar) {
   if (!x.q) return "Escreva a pergunta.";

@@ -303,6 +303,31 @@ testes["XP, níveis, atividades e trilhas"] = async (p) => {
   confere(r[0] < 10 && r[1] === 10, "nível 10 só com 70% das atividades (" + r.join(" → ") + ")");
 };
 
+testes["segurança: nomes perigosos, perguntas com HTML e relógio do simulado"] = async (p, ctx, url) => {
+  await p.fill("#wn", "__proto__"); await p.click("#wok");
+  confere(/outro nome/.test(await p.textContent("#wmsg")), "nome __proto__ é recusado");
+  /* pergunta do professor com marcação HTML não vira código na página */
+  await p.evaluate(async () => { for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister(); for (const k of await caches.keys()) await caches.delete(k); });
+  const q = await ctx.newPage();
+  const ruim = 'const PROPRIO={"perguntas":[{"g":"final","q":"<img src=x id=xss>Teste?","o":["<b id=xss2>A</b>","B","C"],"w":"<i id=xss3>w</i>"}],"ocultas":[]};';
+  await q.route("**/banco-proprio.js", r => r.fulfill({ status: 200, contentType: "text/javascript", body: ruim }));
+  await q.goto(url);
+  const it = await q.evaluate(() => QZ[QZ.length - 1]);
+  confere(!/[<>]/.test(it[0] + it[1].join("") + it[3]), "perguntas do professor ficam sem < e >");
+  await q.close();
+  /* começar um treino com um simulado em andamento: o relógio do simulado para e não invade o treino */
+  await perfil(p, "Gil");
+  await abrir(p, "prog");
+  await p.click("#pg-sim");
+  await p.evaluate(() => { RODA.simulado.st.rest = 1500; });
+  await abrir(p, "jogar");
+  await p.click('#jogar .ht[data-pr="treino"]');
+  await p.waitForTimeout(2500);
+  confere(/Treino/.test(await p.textContent("#pgrun .qtop")), "o treino continua na tela");
+  await p.click('#tabs button[data-t="prog"]');
+  confere(!(await p.$eval("#nvbox", e => e.hidden)), "tocar em Progresso durante uma rodada volta ao resumo");
+};
+
 testes["arquivo único abre direto do computador"] = async (p) => {
   await p.goto("file://" + path.join(RAIZ, "animais-8ano.html"));
   confere((await p.$$("#tabs button")).length === 5, "animais-8ano.html abre com o menu completo");

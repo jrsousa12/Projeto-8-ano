@@ -78,8 +78,10 @@ G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Arra
  const tira=(arr,f)=>{for(let i=arr.length-1;i>=0;i--)if(oc.has(f(arr[i])))arr.splice(i,1);};
  if(oc.size){G.forEach(g=>tira(g.pool,x=>idPerg(x.q,x.o)));tira(QZ,x=>idPerg(x[0],x[1]));
   [MQ0,MQX].forEach(M=>Object.keys(M).forEach(t=>tira(M[t],x=>idPerg(x[0],x[1]))));}
+ const limpa=t=>String(t).replace(/</g,"‹").replace(/>/g,"›");
  (Array.isArray(PROPRIO.perguntas)?PROPRIO.perguntas:[]).forEach(x=>{
-  if(!x||typeof x.q!=="string"||!Array.isArray(x.o)||x.o.length<2)return;const w=x.w||"";
+  if(!x||typeof x.q!=="string"||!Array.isArray(x.o)||x.o.length<2)return;
+  x={g:x.g,q:limpa(x.q),o:x.o.map(limpa),w:limpa(x.w||"")};const w=x.w;
   const g=G.find(y=>y.id===x.g);
   if(g)g.pool.push({q:x.q,o:x.o,a:0,w});
   else if(x.g==="final")QZ.push([x.q,x.o,0,w]);
@@ -97,26 +99,28 @@ function updScore(){if(typeof NV!=="undefined")NV.atualiza();
 const SALT="an8-prof-ivaldo-2026";
 
 const PK="an8v2",esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const PROF={cur:"",p:{}};let whoMode="",whoAnon=false;
+const PROF={cur:"",p:Object.create(null)};
+const nomeOk=n=>typeof n==="string"&&n.length>0&&n.length<=20&&!/^(__proto__|constructor|prototype)$/i.test(n);let whoMode="",whoAnon=false;
 const sigOf=(n,ids)=>hsh(n+"|"+ids+SALT);
 function writeAll(){try{localStorage.setItem(PK,JSON.stringify(PROF));}catch(e){}}
 function readAll(){try{const d=JSON.parse(localStorage.getItem(PK)||"null");
- if(d&&d.p&&typeof d.p==="object"){Object.keys(d.p).slice(0,30).forEach(n=>{const r=d.p[n];if(typeof n==="string"&&n.length<=20&&r&&typeof r.s==="string"&&r.k===sigOf(n,r.s))PROF.p[n]={s:r.s,k:r.k};});
-  if(typeof d.cur==="string"&&PROF.p[d.cur])PROF.cur=d.cur;}
+ if(d&&d.p&&typeof d.p==="object"){Object.keys(d.p).slice(0,30).forEach(n=>{const r=d.p[n];if(nomeOk(n)&&r&&typeof r.s==="string"&&r.k===sigOf(n,r.s))PROF.p[n]={s:r.s,k:r.k};});
+  if(nomeOk(d.cur)&&PROF.p[d.cur])PROF.cur=d.cur;}
  else{const o=JSON.parse(localStorage.getItem("an8v1")||"null");
   if(o&&typeof o.s==="string"&&o.k===hsh(o.s+SALT)&&o.s){PROF.p["Aluno"]={s:o.s,k:sigOf("Aluno",o.s)};PROF.cur="Aluno";writeAll();}}}catch(e){}}
 const profIds=n=>{const r=PROF.p[n];return r?(r.s?r.s.split(",").filter(id=>G.some(g=>g.id===id)):[]):[];};
 function saveProg(){if(!PROF.cur)return;const ids=[...stars].sort().join(",");PROF.p[PROF.cur]={s:ids,k:sigOf(PROF.cur,ids)};writeAll();}
-function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
+function loadProfile(){stars.clear();seen.clear();if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
  if(typeof PG!=="undefined"){PG.carregar();if(typeof NV!=="undefined")NV.recomeca();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
-function clearProg(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);saveProg();updScore();renderWho();}
+function clearProg(){stars.clear();seen.clear();saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
  if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · ⭐ ${stars.size}/13</span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
  if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as estrelas <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
  w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>⭐ ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
  $$(".wb",w).forEach(b=>b.onclick=()=>switchTo(b.dataset.n));
  const ok=()=>{const n=$("#wn").value.replace(/\s+/g," ").trim();if(!n){$("#wmsg").textContent="Escreva um nome para começar.";return;}
+  if(!nomeOk(n)){$("#wmsg").textContent="Escolha outro nome.";return;}
   const ex=Object.keys(PROF.p).find(x=>x.toLowerCase()===n.toLowerCase());if(ex){switchTo(ex);return;}
   if(names.length>=30){$("#wmsg").textContent="Limite de 30 alunos neste aparelho. Apague algum perfil.";return;}switchTo(n);};
  $("#wok").onclick=ok;$("#wn").onkeydown=e=>{if(e.key==="Enter")ok();};
@@ -150,7 +154,7 @@ function mkHint(od,okBtn,isDone,used){HF=false;const h=document.createElement("b
  const w=document.createElement("div");w.className="hintrow";w.appendChild(h);return w;}
 const hintLine=n=>n?`<p class="hintn">💡 Dicas usadas: <b>${n}</b></p>`:"";
 /* ---------- desafio: sorteia 5 do banco ---------- */
-const PASS=3,TLIM=20;let timerOn=false,soundOn=false;const RES={};
+const PASS=3;let soundOn=false;
 let AC=null;
 /* vibração (celular) e tema: preferências do aparelho */
 let vibOn=LSg("an8vib")!=="no";
@@ -179,7 +183,7 @@ function runChal(g,p){
   $("#cn",box).onclick=()=>{qi++;last?end():show();};$("#cn",box).focus();}
  function show(){
   const Q=qs[qi];let okBtn=null,answered=false;
-  box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div>${timerOn?`<div class="tbar"><i id="tb"></i></div>`:""}<p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
+  box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div><p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
   const od=$("#opts",box);
   shuffle(Q.o.map((t,k)=>({t,ok:k===Q.a}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okBtn=b;
    b.onclick=ev=>{
@@ -188,13 +192,9 @@ function runChal(g,p){
     else{b.classList.add("no");okBtn.classList.add("ok");beep("no");finish(Q,false,"🤔 Quase!");}};
    od.appendChild(b);});
   od.after(mkHint(od,okBtn,()=>answered,()=>{hints++;}));
-  if(timerOn){let t=TLIM;const tb=$("#tb",box);tb.style.width="100%";
-   tm=setInterval(()=>{if(!box.isConnected){clearInterval(tm);return;}t-=.25;tb.style.width=(t/TLIM*100)+"%";
-    if(t<=0){okBtn.classList.add("ok");beep("no");finish(Q,false,"⏰ <b>Tempo esgotado!</b>");}},250);}
  }
  function end(){
   clearInterval(tm);const ok=!review&&hits>=PASS;
-  if(!review){const r=RES[g.id]||(RES[g.id]={best:0,tries:0,last:0});r.tries++;r.last=hits;r.best=Math.max(r.best,hits);}
   const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A estrela vem das perguntas sorteadas.":(ok?"⭐ Muito bem! Você ganhou a estrela de "+g.n+".":"Para ganhar a estrela são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
   box.innerHTML=`<div class="cprog"><span>🏁 Resultado</span><span class="dots">${qs.map(()=>"<i class='d'></i>").join("")}</span></div><p>Você acertou ${fmt(hits)} de ${qs.length}.</p>${hintLine(hints)}<div class="why">${msg}</div><div id="cnx">${missed.length?`<button class="btn" id="rv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="cn">🔄 Jogar de novo (novas perguntas)</button></div>`;
   $("#cn",box).onclick=()=>{qi=0;hits=0;hints=0;review=false;missed=[];qs=shuffle(g.pool.slice()).slice(0,5);show();};
@@ -213,11 +213,6 @@ function openMd(title,html){
  $("#mdx").onclick=goBack;
  $("#mdp").onclick=()=>{document.body.classList.add("printing");window.print();setTimeout(()=>document.body.classList.remove("printing"),500);};
  $("#mdx").focus();}
-function resumo(){
- const rows=G.map(g=>{const r=RES[g.id];const st=r?(r.best>=PASS?"✅":"⚠️"):"—";
-  return `<tr><td>${g.n}</td><td>${r?r.tries:0}</td><td>${r?r.last+"/5":"—"}</td><td>${r?r.best+"/5":"—"}</td><td>${st}</td></tr>`}).join("");
- const rev=G.filter(g=>!RES[g.id]||RES[g.id].best<PASS).map(g=>g.n);
- openMd("📊 Resumo de desempenho",`<p>⭐ Estrelas: <b>${stars.size}/13</b> • Quiz “Classifique” e Desafio final não entram neste resumo.</p><table><tr><th>Grupo</th><th>Tentativas</th><th>Última</th><th>Melhor</th><th></th></tr>${rows}</table><p><b>Para revisar:</b> ${rev.length?rev.join(", "):"nenhum, parabéns!"}</p><p class="small">Os dados ficam só nesta página aberta e somem ao recarregar.</p>`);}
 function hidePanel(){$("#ov").classList.remove("show");document.body.style.overflow="";}
 function closePanel(){if($("#ov").classList.contains("show"))goBack();}
 $("#ov").addEventListener("click",e=>{if(e.target.id==="ov")closePanel();});
@@ -252,9 +247,9 @@ function irPara(t){const h=HUB[t]||"home";
  if(t==="home"){if(TABL){const k=LAY.length-hubIdx;if(k>0){try{history.go(-k);}catch(e){while(LAY.length>hubIdx)LAY.pop()();updBack();}}}else showTab("home");return;}
  if(!TABL){TABL=true;hubIdx=LAY.length;pushLayer(()=>{TABL=false;SUBL=false;showTab("home");});}
  if(t===h){if(SUBL){depois=t;goBack();}else showTab(t);return;}
- if(!SUBL){SUBL=true;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||HUB[abaAtual]||"home");});}
+ if(!SUBL){SUBL=true;const origem=(abaAtual!=="home"&&abaAtual===HUB[abaAtual])?abaAtual:h;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||origem);});}
  showTab(t);}
-$$("#tabs button").forEach(b=>b.onclick=()=>irPara(b.dataset.t));
+$$("#tabs button").forEach(b=>b.onclick=()=>{if(b.dataset.t==="prog"&&typeof prPausa==="function")prPausa();irPara(b.dataset.t);});
 $("#bk").onclick=goBack;
 
 /* ---------- ilustrações ---------- */
