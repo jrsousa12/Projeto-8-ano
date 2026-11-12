@@ -124,7 +124,7 @@ testes["caderno de erros: erros entram e saem depois de 2 acertos seguidos"] = a
   await finalCom(p, 2);
   await p.click('#tabs button[data-t="prog"]');
   confere(/2\s*perguntas para treinar/.test(await textoCaderno(p)), "2 perguntas no caderno");
-  confere((await p.$$("#pgbox .pgl")).length === 18, "desempenho com 18 temas");
+  confere((await p.$$("#pgbox .pgl")).length === 20, "desempenho com 20 temas");
   for (let volta = 0; volta < 2; volta++) {
     await p.click("#pg-erros");
     for (let i = 0; i < 2; i++) { await responder(p, "#pgrun", ".qq", true, "p"); await p.click("#qn-erros"); }
@@ -195,6 +195,32 @@ testes["opções: tema claro, vibração e compartilhar resultado"] = async (p) 
   await finalCom(p, 0);
   await p.click("#sh-final");
   confere(/acertei 10 de 10/.test(await p.evaluate(() => window.__txt)), "compartilha o texto do resultado");
+};
+
+testes["curiosidade, naturalistas, ciclos dos vermes e fontes"] = async (p) => {
+  const c1 = await p.textContent("#curi p");
+  confere(c1.length > 20, "curiosidade na tela inicial");
+  await p.click("#curn");
+  confere((await p.textContent("#curi p")) !== c1, "botão mostra outra curiosidade");
+  await p.click('#tabs button[data-t="nat"]');
+  confere((await p.$$("#natg .card")).length === 7, "7 naturalistas");
+  await p.click("#natg .card >> nth=6");
+  confere(/Museu Paraense Emílio Goeldi/.test(await p.textContent("#panel")), "painel do Goeldi abre");
+  await p.click("#panel .x");
+  for (let i = 0; i < 5; i++) { await responder(p, "#nat .mini", ".mqq", true, "m"); await p.click("#nat #mnb"); }
+  confere(/acertou\s*5\s*de 5/.test(await p.textContent("#nat .mini")), "desafio dos naturalistas");
+  await p.click('#tabs button[data-t="cic"]');
+  for (const m of ["esq", "ten", "lom"]) {
+    await p.click(`[data-c="${m}"]`);
+    const n = (await p.$$("#cdots .dot")).length;
+    await p.click(`#cdots .dot >> nth=${n - 1}`);
+    confere(n === 6 && /prevenir/.test(await p.textContent("#cT")), "ciclo " + m + ": 6 etapas até a prevenção");
+  }
+  await p.click('#tabs button[data-t="meta"]');
+  await p.click("#dots .dot >> nth=2");
+  confere(/Pupa/.test(await p.textContent("#stT")), "metamorfose continua funcionando");
+  await p.click("#op"); await p.click("#fo");
+  confere(/ICMBio/.test(await p.textContent("#md")), "tela de fontes");
 };
 
 testes["arquivo único abre direto do computador"] = async (p) => {

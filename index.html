@@ -23,6 +23,7 @@
     <button class="fs" id="tm" title="Muda as cores do app">🌙 Tema: escuro</button>
     <button class="fs" id="fs" aria-label="Tela cheia">⛶ Tela cheia</button>
     <button class="fs" id="zp" title="Apaga as estrelas do aluno atual">🗑️ Zerar estrelas do aluno</button>
+    <button class="fs" id="fo" title="Fontes do conteúdo do app">📚 Fontes e referências</button>
     <button class="fs" id="ai" title="Coloca o app na tela inicial">📲 Instalar na tela inicial</button>
     <button class="fs" id="af" aria-pressed="true" title="Abre em tela cheia no primeiro toque">⛶ Tela cheia automática: sim</button>
     <div class="opnote">💾 As estrelas ficam salvas neste aparelho, por aluno.</div>
@@ -37,6 +38,8 @@
  <button data-t="meta">🦋 Metamorfose</button>
  <button data-t="pa">🐊 Fauna do Pará</button>
  <button data-t="dis">🦠 Doenças</button>
+ <button data-t="cic">🔄 Ciclos dos vermes</button>
+ <button data-t="nat">🧑‍🔬 Naturalistas</button>
  <button data-t="fic">📄 Ficha da aula</button>
  <span class="ng">Praticar</span>
  <button data-t="prat">🧪 Atividades</button>
@@ -49,6 +52,7 @@
 <main>
  <section id="home" class="on">
   <div class="who" id="who"></div>
+  <div class="curi" id="curi"></div>
   <div class="hwel"><h2>O que vamos fazer hoje?</h2><p class="sub">Escolha uma atividade. Você pode voltar aqui a qualquer momento pelo botão <b>🏠 Início</b>.</p></div>
   <div class="hgrp"><h2>📚 Estudar<small>conheça os animais</small></h2><div class="htiles">
    <button class="ht" data-t="tree" style="--c:#14b8a6"><span class="ic">🌳</span><span><b>Árvore dos animais</b><span class="d">13 grupos, de esponjas a mamíferos</span></span></button>
@@ -57,6 +61,8 @@
    <button class="ht" data-t="pa" style="--c:#34d399"><span class="ic">🐊</span><span><b>Fauna do Pará</b><span class="d">12 animais da Amazônia</span></span></button>
    <button class="ht" data-t="fic" style="--c:#818cf8"><span class="ic">📄</span><span><b>Ficha da aula</b><span class="d">Resumo dos 13 grupos em um só lugar</span></span></button>
    <button class="ht" data-t="dis" style="--c:#fb7185"><span class="ic">🦠</span><span><b>Vermes e doenças</b><span class="d">Como se pega e como prevenir</span></span></button>
+   <button class="ht" data-t="cic" style="--c:#facc15"><span class="ic">🔄</span><span><b>Ciclos dos vermes</b><span class="d">Esquistossomo, tênia e lombriga, passo a passo</span></span></button>
+   <button class="ht" data-t="nat" style="--c:#22c55e"><span class="ic">🧑‍🔬</span><span><b>Naturalistas</b><span class="d">Quem estudou e classificou os animais</span></span></button>
   </div></div>
   <div class="hgrp"><h2>🧪 Praticar<small>mão na massa, individual</small></h2><div class="htiles">
    <button class="ht" data-t="prat" style="--c:#38bdf8"><span class="ic">🧪</span><span><b>Atividades práticas</b><span class="d">4 atividades simples para fazer sozinho</span></span></button>
@@ -116,6 +122,20 @@
    <div class="cards always" id="disg"></div>
    <p class="src">Fontes: Ministério da Saúde (folder Verminoses e Filariose Linfática), Secretaria de Saúde do Paraná (Teniose e Cisticercose), Agência Brasil/OMS (eliminação da filariose no Brasil, 2024), SciELO Saúde Pública (filariose em Belém nos anos 1950).</p></div></section>
 
+ <section id="cic"><div class="box"><h2>🔄 Ciclos dos vermes</h2>
+   <p class="sub">Veja, etapa por etapa, como cada verme passa de um hospedeiro para outro e onde dá para quebrar o ciclo.</p>
+   <div class="mode"><button class="btn on" data-c="esq">🐌 Esquistossomose</button><button class="btn" data-c="ten">🐖 Teníase e cisticercose</button><button class="btn" data-c="lom">🪱 Ascaridíase (lombriga)</button></div>
+   <div class="stagebox">
+    <div class="stage" id="cstg"></div>
+    <div><h3 id="cT" style="font-size:26px"></h3><p id="cD" style="margin-top:8px"></p>
+     <div class="dots" id="cdots"></div><button class="btn pri" id="cplay">▶ Reproduzir</button></div>
+   </div>
+   <p class="src">⚕️ Com sintomas, procure uma Unidade de Saúde. Remédio só com orientação profissional.</p></div></section>
+
+ <section id="nat"><div class="box"><h2>🧑‍🔬 Naturalistas</h2>
+   <p class="sub">Cientistas que observaram, descreveram e classificaram os animais. Três deles estudaram a Amazônia e o Pará. Toque em um cartão.</p>
+   <div class="cards always" id="natg"></div></div></section>
+
  <section id="prat"><div class="box"><h2>🧪 Atividades práticas</h2>
    <p class="sub">Quatro atividades simples, <b>individuais</b>, com material barato. Toque em uma atividade para ver o passo a passo.</p>
    <div class="cards always" id="pratg"></div></div></section>
@@ -133,6 +153,7 @@
 
 <script src="dados.js"></script>
 <script src="app.js"></script>
+<script src="extras.js"></script>
 <script src="progresso.js"></script>
 </body>
 </html>

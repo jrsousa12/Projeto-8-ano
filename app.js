@@ -415,7 +415,7 @@ MS.gaf=[
 let mode="ins",stI=0,timer=null;
 function renderStage(){const L=MS[mode],s=L[stI];$("#stg").innerHTML=s.s;$("#stT").textContent=s.t;$("#stD").textContent=s.d;
  $("#dots").innerHTML=L.map((x,i)=>`<button class="dot ${i===stI?"on":""}" data-i="${i}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
- $$(".dot").forEach(b=>b.onclick=()=>{stop();stI=+b.dataset.i;renderStage();});}
+ $$("#dots .dot").forEach(b=>b.onclick=()=>{stop();stI=+b.dataset.i;renderStage();});}
 function stop(){clearInterval(timer);timer=null;$("#play").textContent="▶ Reproduzir";}
 $("#play").onclick=()=>{if(timer){stop();return;}stI=0;renderStage();$("#play").textContent="⏸ Pausar";
  timer=setInterval(()=>{if(stI>=MS[mode].length-1){stop();burst(40);return;}stI++;renderStage();},2600);};

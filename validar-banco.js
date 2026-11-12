@@ -10,7 +10,7 @@ const ctx = { console };
 vm.createContext(ctx);
 let codigo = fs.readFileSync(D + "dados.js", "utf8");
 if (fs.existsSync(D + "banco-proprio.js")) codigo += "\n" + fs.readFileSync(D + "banco-proprio.js", "utf8");
-vm.runInContext(codigo + "\n;this.X={G,EXTRA,EXTRA2,BANK3,QZ,PA,NG,MQX,MQ0,DIS,PR,AN,EMJ,PROPRIO:typeof PROPRIO==='undefined'?null:PROPRIO};", ctx);
+vm.runInContext(codigo + "\n;this.X={G,EXTRA,EXTRA2,BANK3,QZ,PA,NG,MQX,MQ0,DIS,PR,AN,EMJ,CUR,NAT,FONTES,FONTES_MAIS,PROPRIO:typeof PROPRIO==='undefined'?null:PROPRIO};", ctx);
 const X = ctx.X;
 const erros = [], avisos = [];
 const ids = new Set(X.G.map(g => g.id));
@@ -71,6 +71,11 @@ X.AN.forEach((x, i) => { const k = x[0].toLowerCase(); if (nomes.has(k) && nomes
 X.PA.forEach((x, i) => { if (!txt(x[0]) || !txt(x[1]) || !X.NG[x[2]] || !txt(x[3])) erros.push("PA[" + i + "] " + x[0] + ": dados incompletos ou grupo inexistente " + x[2]); });
 X.DIS.forEach((x, i) => { if (!Array.isArray(x) || x.slice(0, 5).some(v => !txt(v))) erros.push("DIS[" + i + "]: campo vazio (o 6º, curiosidade, é opcional)"); });
 X.PR.forEach((x, i) => ["t", "o", "m", "p", "q", "c"].forEach(c => { if (!x[c] || (typeof x[c] === "string" && !x[c].trim())) erros.push("PR[" + i + "]: falta o campo " + c); }));
+
+/* curiosidades, naturalistas e fontes */
+X.CUR.forEach((x, i) => { if (!ids.has(x[0]) || !txt(x[1])) erros.push("CUR[" + i + "]: grupo inexistente ou texto vazio"); });
+X.NAT.forEach((x, i) => { if (x.slice(0, 6).some(v => !txt(v)) || !x[6] || !x[6].pele || !x[6].roupa) erros.push("NAT[" + i + "] " + x[0] + ": campo vazio ou retrato incompleto"); });
+[...X.FONTES, ...X.FONTES_MAIS].forEach((x, i) => { if (!txt(x[0]) || !txt(x[1])) erros.push("FONTES[" + i + "]: campo vazio"); });
 
 /* perguntas próprias do professor (banco-proprio.js, gerado pelo editor) */
 if (X.PROPRIO) {

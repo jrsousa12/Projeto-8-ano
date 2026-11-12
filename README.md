@@ -11,6 +11,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `tema-claro.css` | Tema claro (gerado por `build/tema_claro.py` a partir do `style.css`) |
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
+| `extras.js` | Curiosidade da tela inicial, aba Naturalistas (retratos desenhados no app), aba Ciclos dos vermes (animação passo a passo) e tela de Fontes |
 | `progresso.js` | Meu progresso: caderno de erros, desempenho por tema, treino inteligente, simulado, ranking, continuar de onde parou e código para levar o progresso a outro aparelho |
 | `animais-8ano.html` | O app inteiro em um só arquivo, para abrir direto ou mandar por WhatsApp (gerado automaticamente) |
 | `manifest.webmanifest`, `sw.js`, `icon-*.png` | Instalação no celular e uso sem internet |
@@ -42,6 +43,7 @@ Em **⚙️ Opções**: som, **vibração** (celular), **tema** escuro, claro ou
 - `MQ0` e `MQX`: mini desafios das abas (Temperatura, Metamorfose, Fauna do Pará, Verminoses). Primeira alternativa = correta.
 - `AN`: animais do jogo Classifique (`["nome", "grupo"]`). `EMJ`: animais do jogo Quem é este?.
 - `PA`: fauna do Pará. `DIS`: verminoses. `PR`: atividades práticas.
+- `CUR`: curiosidades da tela inicial (`["grupo", "texto"]`). `NAT`: naturalistas. `FONTES` e `FONTES_MAIS`: tela de fontes.
 
 Depois de editar, rode `node validar-banco.js` (precisa do Node.js). No GitHub, a mesma conferência roda sozinha.
 

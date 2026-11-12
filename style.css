@@ -333,3 +333,10 @@ ol.sim small{opacity:.8}
  .pgrl{grid-template-columns:1fr auto;}
  .pgrl .pgb{grid-column:1/-1;order:3}
 }
+
+/* ---------- curiosidade da tela inicial ---------- */
+.curi{display:flex;gap:14px;align-items:center;margin:0 auto 18px;max-width:900px;padding:12px 16px;border-radius:22px;background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(56,189,248,.14));border:1px solid rgba(251,191,36,.4)}
+.curi:empty{display:none}
+.curic svg{width:64px;height:64px;display:block}
+.curi>div:nth-child(2){flex:1}.curi p{font-size:16px;margin-top:2px}
+@media (max-width:760px){.curi{flex-wrap:wrap}.curic svg{width:48px;height:48px}}

@@ -698,3 +698,85 @@ const MQ0={
 ["A lombriga (Ascaris lumbricoides) é um…",["Nematódeo","Platelminto","Anelídeo","Molusco"],"Nematódeos têm corpo cilíndrico e não segmentado."],
 ["Qual mosquito transmite a filariose linfática?",["Culex quinquefasciatus","Anopheles","Aedes aegypti","Mosquito-pólvora"],"Ele é conhecido como pernilongo ou muriçoca."]]
 };
+
+/* ---------- curiosidades (cartão da tela inicial) ---------- */
+const CUR=[
+["porifero","As esponjas não têm tecidos verdadeiros nem órgãos: são os animais de corpo mais simples."],
+["cnidario","Os corais são animais! São cnidários que vivem em colônias e formam os recifes."],
+["cnidario","A água-viva Turritopsis dohrnii consegue voltar à fase de pólipo e recomeçar a vida. Por isso é chamada de água-viva imortal."],
+["molusco","O polvo tem três corações e sangue azulado."],
+["molusco","A lula-gigante tem um dos maiores olhos do reino animal."],
+["anelideo","A minhoca respira pela pele. Por isso a pele dela precisa ficar sempre úmida."],
+["anelideo","A sanguessuga produz uma substância que impede o sangue de coagular enquanto ela se alimenta."],
+["artropode","Os insetos formam o grupo com mais espécies conhecidas: são mais de 1 milhão."],
+["artropode","Caranguejos e camarões são artrópodes, parentes dos insetos e das aranhas."],
+["equinodermo","A estrela-do-mar não tem cérebro e consegue regenerar um braço perdido."],
+["peixe","Os tubarões existem há mais de 400 milhões de anos, desde antes dos dinossauros."],
+["peixe","O pirarucu precisa subir à superfície para respirar ar. Se não subir, ele se afoga."],
+["anfibio","A pele fina dos anfíbios perde água com facilidade. Por isso eles vivem em lugares úmidos."],
+["reptil","O ovo dos répteis tem casca, que protege o embrião e não deixa o ovo secar fora da água."],
+["ave","O beija-flor bate as asas dezenas de vezes por segundo e consegue voar para trás."],
+["ave","A harpia, ou gavião-real, é uma das águias mais fortes do mundo e caça macacos e preguiças nas copas das árvores."],
+["mamifero","Os morcegos são os únicos mamíferos que voam de verdade."],
+["mamifero","O ornitorrinco é um mamífero que bota ovos. Mesmo assim, amamenta os filhotes."],
+["mamifero","O boto-cor-de-rosa vira o pescoço com facilidade, porque as vértebras do pescoço dele não são grudadas."],
+["mamifero","O peixe-boi-da-amazônia é herbívoro: passa boa parte do dia comendo plantas aquáticas."]];
+
+/* ---------- naturalistas: [nome, anos, país, frase, texto, curiosidade, aparência do retrato] ---------- */
+const NAT=[
+["Aristóteles","384 a.C. – 322 a.C.","Grécia antiga","O primeiro a classificar os animais",
+ "Filósofo grego que observou e descreveu centenas de animais no livro <i>História dos Animais</i>. Ele separou os animais em dois grandes grupos: os <b>com sangue</b> e os <b>sem sangue</b>, uma divisão parecida com a de vertebrados e invertebrados.",
+ "Ele fez muitas observações de animais marinhos, como polvos e peixes.",
+ {pele:"#e8b48a",cab:"#d6d3d1",barba:"#d6d3d1",roupa:"#f5f5f4",careca:true}],
+["Lineu (Carl Linnaeus)","1707 – 1778","Suécia","O pai do nome científico",
+ "Criou a <b>nomenclatura binomial</b>: cada espécie tem um nome científico de duas palavras, em latim. A primeira é o gênero (com letra maiúscula) e a segunda é a espécie, escritas em itálico, como <i>Homo sapiens</i> e <i>Inia geoffrensis</i> (o boto-cor-de-rosa). Publicou o livro <i>Systema Naturae</i> em 1735.",
+ "Graças a ele, cientistas do mundo todo usam o mesmo nome para o mesmo ser vivo.",
+ {pele:"#f1c9a5",cab:"#f5f5f4",peruca:true,roupa:"#7c2d12"}],
+["Lamarck","1744 – 1829","França","Criou a palavra invertebrados",
+ "Jean-Baptiste de Lamarck estudou os animais sem coluna vertebral e criou o nome <b>invertebrados</b> para esse grupo. Também propôs uma das primeiras teorias sobre a mudança das espécies ao longo do tempo, que depois foi substituída pela teoria da seleção natural.",
+ "No fim da vida ele ficou cego e continuou o trabalho com a ajuda das filhas.",
+ {pele:"#f1c9a5",cab:"#a8a29e",roupa:"#1e3a8a"}],
+["Charles Darwin","1809 – 1882","Inglaterra","A teoria da seleção natural",
+ "Viajou ao redor do mundo no navio <i>Beagle</i> (1831–1836) e passou pelo Brasil. Observando os seres vivos, explicou como as espécies mudam ao longo do tempo por <b>seleção natural</b>, no livro <i>A Origem das Espécies</i> (1859).",
+ "Na viagem, ele conheceu a Mata Atlântica e ficou encantado com a floresta brasileira.",
+ {pele:"#f1c9a5",cab:"#e7e5e4",barba:"#e7e5e4",careca:true,roupa:"#292524"}],
+["Alfred Russel Wallace","1823 – 1913","Grã-Bretanha","Explorou a Amazônia",
+ "Explorou a Amazônia de 1848 a 1852, estudando rios, peixes, aves e insetos. Chegou à ideia da <b>seleção natural</b> ao mesmo tempo que Darwin, e os dois apresentaram a teoria juntos em 1858.",
+ "Na volta da Amazônia, o navio dele pegou fogo e quase toda a coleção se perdeu.",
+ {pele:"#f1c9a5",cab:"#78716c",barba:"#a8a29e",oculos:true,roupa:"#365314"}],
+["Henry Walter Bates","1825 – 1892","Inglaterra","11 anos na Amazônia",
+ "Chegou a Belém em 1848, junto com Wallace, e ficou cerca de 11 anos na Amazônia. Coletou mais de 14 mil espécies, a maioria insetos, e cerca de 8 mil eram novas para a ciência. Descreveu o <b>mimetismo batesiano</b>: animais inofensivos que imitam a aparência de espécies perigosas ou de gosto ruim.",
+ "Ele morou vários anos no Pará, em Belém e em outras cidades às margens dos rios.",
+ {pele:"#f1c9a5",cab:"#57534e",barba:"#57534e",roupa:"#78350f"}],
+["Emílio Goeldi","1859 – 1917","Suíça","O museu de Belém",
+ "Zoólogo suíço que veio trabalhar no Brasil. A partir de 1894 dirigiu o Museu Paraense, em Belém, e organizou pesquisas sobre a fauna da Amazônia. Hoje o museu se chama <b>Museu Paraense Emílio Goeldi</b>, uma das instituições de pesquisa mais antigas da Amazônia.",
+ "Um macaco da Amazônia, o mico-de-goeldi (<i>Callimico goeldii</i>), recebeu o nome dele.",
+ {pele:"#f1c9a5",cab:"#44403c",barba:"#44403c",oculos:true,roupa:"#0f766e"}]];
+
+/* ---------- fontes e referências ---------- */
+const FONTES=[
+["Fauna do Pará e da Amazônia","ICMBio (Livro Vermelho, SALVE e PAN Onça-pintada), National Geographic Brasil, Portal Amazônia, InfoEscola, UFPA/Instituto de Estudos Costeiros (Bragança)."],
+["Vermes e doenças","Ministério da Saúde (folder Verminoses e Filariose Linfática), Secretaria de Saúde do Paraná (Teniose e Cisticercose), Agência Brasil/OMS (eliminação da filariose no Brasil, 2024), SciELO Saúde Pública (filariose em Belém nos anos 1950)."]];
+const FONTES_MAIS=[
+["Museu Paraense Emílio Goeldi","pesquisa sobre a fauna amazônica e a história dos naturalistas na Amazônia."],
+["Fiocruz","informações de saúde sobre as verminoses e seus ciclos."],
+["ICMBio","espécies brasileiras ameaçadas e unidades de conservação."]];
+
+/* perguntas dos novos mini desafios */
+MQ0["Desafio dos naturalistas"]=[
+["Quem criou o nome científico de duas palavras, como Homo sapiens?",["Lineu","Charles Darwin","Aristóteles","Emílio Goeldi"],"Lineu propôs a nomenclatura binomial no século XVIII."],
+["Quem criou a palavra invertebrados?",["Lamarck","Lineu","Henry Bates","Wallace"],"Lamarck deu esse nome aos animais sem coluna vertebral."],
+["Qual naturalista viveu cerca de 11 anos na Amazônia e coletou milhares de insetos?",["Henry Walter Bates","Charles Darwin","Aristóteles","Lamarck"],"Bates chegou a Belém em 1848."],
+["O museu de pesquisa de Belém leva o nome de qual naturalista?",["Emílio Goeldi","Charles Darwin","Lineu","Wallace"],"É o Museu Paraense Emílio Goeldi."],
+["Qual livro de Darwin, de 1859, explicou a seleção natural?",["A Origem das Espécies","Systema Naturae","História dos Animais","Viagem ao Pará"],"Nele Darwin explica como as espécies mudam ao longo do tempo."],
+["Aristóteles separou os animais em dois grandes grupos. Quais?",["Com sangue e sem sangue","Com asas e sem asas","Grandes e pequenos","Da terra e do mar"],"Essa divisão lembra a de vertebrados e invertebrados."],
+["A que ideia Wallace chegou ao mesmo tempo que Darwin?",["Seleção natural","Nome científico","Classificação em com sangue e sem sangue","Mimetismo"],"Os dois apresentaram a teoria juntos em 1858."],
+["Como se escreve corretamente um nome científico?",["Em latim, com o gênero em maiúscula e em itálico","Todo em letras maiúsculas","Em português, com uma só palavra","Do jeito que cada país preferir"],"Exemplo: Inia geoffrensis, o boto-cor-de-rosa."]];
+MQ0["Desafio dos ciclos"]=[
+["Como a pessoa pega esquistossomose?",["A larva (cercária) entra pela pele na água doce contaminada","Comendo carne de porco crua","Pela picada de mosquito","Pelo ar"],"As cercárias saem do caramujo e nadam até a pele das pessoas."],
+["Qual animal é o hospedeiro intermediário do esquistossomo?",["Caramujo","Porco","Mosquito","Cachorro"],"O caramujo do gênero Biomphalaria."],
+["Como a pessoa pega teníase (a tênia no intestino)?",["Comendo carne de porco ou de boi crua ou mal passada com cisticercos","Nadando em lagoas","Pela picada de mosquito","Andando descalça"],"O cisticerco vira tênia adulta no intestino."],
+["O que causa a cisticercose humana?",["Engolir ovos da tênia do porco em água, alimentos ou mãos sujas","Comer carne bem passada","Nadar no mar","Tomar sol"],"Os ovos viram cisticercos no corpo da pessoa, às vezes até no cérebro."],
+["Por onde passam as larvas da lombriga antes de voltar ao intestino?",["Pelos pulmões","Pelo cérebro","Pelos ossos","Pelos olhos"],"Elas sobem pela traqueia e são engolidas de novo."],
+["Como os ovos da lombriga chegam à boca das pessoas?",["Por água, alimentos ou mãos contaminados com fezes","Pela picada de mosquito","Pelo contato com caramujos","Pelo ar"],"Por isso lavar as mãos e os alimentos protege."],
+["Qual medida previne as três verminoses dos ciclos?",["Saneamento básico e higiene","Usar protetor solar","Dormir cedo","Beber refrigerante"],"Esgoto tratado impede que os ovos cheguem à água e ao solo."]];
