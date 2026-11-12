@@ -26,15 +26,17 @@ function confere(cond, msg) { passos++; if (cond) console.log("  ok  " + msg); e
 
 /* Devolve o texto da alternativa correta de uma pergunta, procurando em todos os bancos do app. */
 /* fonte: "g" (grupos), "f" (desafio final) ou "m" (mini desafios); a mesma pergunta pode existir em mais de um banco */
-const CERTA = `(q,fonte)=>{q=q.trim();
+const CERTA = `(q,fonte,ops)=>{q=q.trim();
   if(fonte==="g")for(const g of G)for(const x of g.pool)if(x.q.trim()===q)return x.o[x.a];
   if(fonte==="f")for(const x of QZ)if(x[0].trim()===q)return x[1][x[2]];
   if(fonte==="m")for(const t in MINI)for(const x of MINI[t])if(x[0].trim()===q)return x[1][0];
+  if(fonte==="p"){const it=PG.item(PG.idDe(q,ops));return it?it.o[it.a]:null;}
   return null;}`;
 
 async function responder(p, caixa, seletorPergunta, certo, fonte) {
   const q = await p.$eval(caixa + " " + seletorPergunta, e => e.textContent);
-  const alvo = await p.evaluate(`(${CERTA})(${JSON.stringify(q)},${JSON.stringify(fonte)})`);
+  const ops = await p.$$eval(caixa + " .opt", bs => bs.map(b => b.textContent));
+  const alvo = await p.evaluate(`(${CERTA})(${JSON.stringify(q)},${JSON.stringify(fonte)},${JSON.stringify(ops)})`);
   if (alvo === null) throw new Error("pergunta não achada no banco: " + q);
   const opcoes = await p.$$(caixa + " .opt");
   for (const b of opcoes) {
@@ -75,11 +77,12 @@ testes["desafio final: 10 perguntas, resultado e revisão dos erros"] = async (p
   await p.click('#tabs button[data-t="quiz"]');
   for (let i = 0; i < 10; i++) {
     await responder(p, "#qbox", ".qq", i >= 2, "f");
-    await p.click("#qn");
+    await p.click("#qn-final");
   }
   const fim = await p.textContent("#qbox");
   confere(/Você acertou\s*8\s*de 10/.test(fim), "resultado 8 de 10");
-  confere(!!(await p.$("#rev")), "botão para rever os 2 erros");
+  confere(/Maior sequência de acertos:\s*8/.test(fim), "maior sequência 8");
+  confere(!!(await p.$("#rv-final")), "botão para rever os 2 erros");
 };
 
 testes["mini desafio de uma aba funciona"] = async (p) => {
@@ -107,6 +110,74 @@ testes["funciona sem internet depois da primeira visita"] = async (p, ctx, url) 
   await p.reload();
   confere((await p.title()).includes("Animais"), "app abre com a internet desligada");
   await ctx.setOffline(false);
+};
+
+async function perfil(p, nome) { await p.click('#tabs button[data-t="home"]'); await p.fill("#wn", nome); await p.click("#wok"); }
+async function finalCom(p, erros) {
+  await p.click('#tabs button[data-t="quiz"]');
+  for (let i = 0; i < 10; i++) { await responder(p, "#qbox", ".qq", i >= erros, "f"); await p.click("#qn-final"); }
+}
+const textoCaderno = p => p.textContent("#pgbox .pgc");
+
+testes["caderno de erros: erros entram e saem depois de 2 acertos seguidos"] = async (p) => {
+  await perfil(p, "Ana");
+  await finalCom(p, 2);
+  await p.click('#tabs button[data-t="prog"]');
+  confere(/2\s*perguntas para treinar/.test(await textoCaderno(p)), "2 perguntas no caderno");
+  confere((await p.$$("#pgbox .pgl")).length === 18, "desempenho com 18 temas");
+  for (let volta = 0; volta < 2; volta++) {
+    await p.click("#pg-erros");
+    for (let i = 0; i < 2; i++) { await responder(p, "#pgrun", ".qq", true, "p"); await p.click("#qn-erros"); }
+    await p.click("#vt-erros");
+  }
+  confere(/0\s*perguntas para treinar/.test(await textoCaderno(p)), "caderno vazio depois de 2 acertos seguidos em cada");
+  confere((await p.$$("#pgbox .pgrl")).length === 3, "3 rodadas no histórico");
+};
+
+testes["continua o desafio final de onde parou"] = async (p) => {
+  await perfil(p, "Bia");
+  await p.click('#tabs button[data-t="quiz"]');
+  for (let i = 0; i < 3; i++) { await responder(p, "#qbox", ".qq", true, "f"); await p.click("#qn-final"); }
+  await p.reload();
+  await p.click('#tabs button[data-t="quiz"]');
+  confere(/parou na pergunta\s*4 de 10/.test(await p.textContent("#qbox")), "oferece continuar da pergunta 4");
+  await p.click("#rt-final");
+  confere(/Pergunta 4\/10/.test(await p.textContent("#qbox .qtop")), "continua na pergunta 4");
+  confere(/⭐ 3/.test(await p.textContent("#qbox .qtop")), "mantém os 3 pontos");
+};
+
+testes["simulado: 20 perguntas, sem resposta conta na correção, ranking"] = async (p) => {
+  await perfil(p, "Caio");
+  await p.click('#tabs button[data-t="prog"]');
+  await p.click("#pg-sim");
+  confere(/Pergunta 1\/20/.test(await p.textContent("#pgrun .qtop")), "simulado com 20 perguntas");
+  confere(!(await p.$("#pgrun .hint")), "simulado sem dica");
+  for (let i = 0; i < 5; i++) await responder(p, "#pgrun", ".qq", true, "p");
+  for (let i = 5; i < 20; i++) await p.click("#qp-simulado");
+  const t = await p.textContent("#pgrun");
+  confere(/acertou\s*5\s*de 20/.test(t), "5 de 20");
+  confere((await p.$$("#pgrun ol.sim li")).length === 20 && /Sem resposta/.test(t), "correção completa com as sem resposta");
+  confere(/1º lugar/.test(t), "entra no ranking");
+};
+
+testes["leva o progresso para outro aparelho com um código"] = async (p) => {
+  await perfil(p, "Duda");
+  await finalCom(p, 1);
+  await p.click('#tabs button[data-t="prog"]');
+  await p.click("#pg-exp");
+  const cod = await p.inputValue("#pg-cod");
+  confere(cod.startsWith("AN8-"), "gera o código");
+  await p.evaluate(() => { localStorage.clear(); localStorage.setItem("an8inst", "no"); });
+  await p.reload();
+  await perfil(p, "Outro");
+  await p.click('#tabs button[data-t="prog"]');
+  await p.fill("#pg-cod", cod);
+  await p.click("#pg-imp");
+  confere(/Duda/.test(await p.textContent("#pgbox .sub")), "troca para o aluno do código");
+  confere(/1\s*pergunta para treinar/.test(await textoCaderno(p)), "caderno de erros veio junto");
+  await p.fill("#pg-cod", "AN8-bobagem");
+  await p.click("#pg-imp");
+  confere(/inválido/.test(await p.textContent("#pg-msg")), "código inválido é recusado");
 };
 
 testes["arquivo único abre direto do computador"] = async (p) => {

@@ -95,7 +95,8 @@ function readAll(){try{const d=JSON.parse(localStorage.getItem(PK)||"null");
   if(o&&typeof o.s==="string"&&o.k===hsh(o.s+SALT)&&o.s){PROF.p["Aluno"]={s:o.s,k:sigOf("Aluno",o.s)};PROF.cur="Aluno";writeAll();}}}catch(e){}}
 const profIds=n=>{const r=PROF.p[n];return r?(r.s?r.s.split(",").filter(id=>G.some(g=>g.id===id)):[]):[];};
 function saveProg(){if(!PROF.cur)return;const ids=[...stars].sort().join(",");PROF.p[PROF.cur]={s:ids,k:sigOf(PROF.cur,ids)};writeAll();}
-function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});}
+function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
+ if(typeof PG!=="undefined"){PG.carregar();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
 function clearProg(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
@@ -110,7 +111,7 @@ function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF
  if($("#wcn"))$("#wcn").onclick=()=>{whoMode="";renderWho();};
  if($("#wan"))$("#wan").onclick=()=>{whoAnon=true;whoMode="";renderWho();};
  if($("#wdel")){let t=0;$("#wdel").onclick=function(){if(!t){this.textContent="⚠️ Toque de novo para apagar";t=setTimeout(()=>{t=0;if(this.isConnected)this.textContent="🗑️ Apagar o perfil de "+cur;},4000);}
-  else{clearTimeout(t);delete PROF.p[cur];PROF.cur="";whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}};}}
+  else{clearTimeout(t);PG.apagar(cur);delete PROF.p[cur];PROF.cur="";whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}};}}
 
 /* ---------- painel do animal ---------- */
 let cur=0;
@@ -145,7 +146,7 @@ function runChal(g,p){
  const box=$("#chal",p);let qi=0,hits=0,tm=null,missed=[],hints=0,review=false;let qs=shuffle(g.pool.slice()).slice(0,5);
  const dots=()=>qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("");
  function finish(Q,right,why){
-  if(!right)missed.push(Q);clearInterval(tm);$$(".opt",box).forEach(x=>x.disabled=true);
+  if(!right)missed.push(Q);clearInterval(tm);if(!review)PG.registrar(Q.q,Q.o,right);$$(".opt",box).forEach(x=>x.disabled=true);
   $("#why",box).innerHTML=why+" "+Q.w;
   const last=qi===qs.length-1;
   $("#cnx",box).innerHTML=`<button class="btn pri" id="cn">${last?"Ver resultado":"Próxima pergunta ▶"}</button>`;
@@ -208,7 +209,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#md"))goBack();}
 /* ---------- abas ---------- */
 function showTab(t){$$("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===t));
  $$("main section").forEach(x=>x.classList.toggle("on",x.id===t));
- if(t==="quiz"&&!qState.started)startQuiz();if(t==="cls"&&!cS.started)startCls();if(t==="img"&&!iS.started)startImg();if(t==="fic"&&!$("#fbox").children.length)renderFic();
+ if(t==="quiz"&&!qState.started)startQuiz();if(t==="prog")prRender();if(t==="cls"&&!cS.started)startCls();if(t==="img"&&!iS.started)startImg();if(t==="fic"&&!$("#fbox").children.length)renderFic();
  window.scrollTo(0,0);const on=$("#tabs button.on");if(on)on.scrollIntoView({inline:"center",block:"nearest"});}
 $$("#tabs button").forEach(b=>b.onclick=()=>{const t=b.dataset.t;
  if(t==="home"){if(TABL)goBack();else showTab("home");}
@@ -408,21 +409,10 @@ renderStage();
 
 /* ---------- desafio final ---------- */
 
-const qState={started:false,order:[],i:0,score:0,wrong:[],missed:[],hints:0,review:false};
 
-function startQuiz(list){qState.started=true;qState.review=!!list;qState.order=list?shuffle(list):shuffle(QZ).slice(0,10);qState.i=0;qState.score=0;qState.wrong=[];qState.missed=[];qState.hints=0;renderQ();}
-function renderQ(){const box=$("#qbox"),S=qState;
- if(S.i>=S.order.length){const pct=S.score/S.order.length;
-  const m=pct>=.9?["🏆","Biólogo(a) Nível Máximo!"]:pct>=.7?["🌟","Muito bem, explorador(a)!"]:pct>=.5?["👍","Bom caminho! Revise a árvore dos animais."]:["🌱","Vamos explorar mais um pouquinho!"];
-  box.innerHTML=`<div class="final"><div class="big">${m[0]}</div><h2>${m[1]}</h2><p style="font-size:24px;margin:10px 0 18px">${S.review?"Revisão: ":""}Você acertou <b>${fmt(S.score)}</b> de ${S.order.length}</p>${hintLine(S.hints)}${S.wrong.length?`<div class="review"><b>📚 Revise estes pontos:</b><ul>${S.wrong.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}${S.missed.length?`<button class="btn" id="rev">🔎 Rever só os ${S.missed.length} que errei</button> `:""}<button class="btn pri" id="again">🔁 Jogar de novo</button></div>`;
-  $("#again").onclick=()=>startQuiz();if(S.missed.length)$("#rev").onclick=()=>startQuiz(S.missed.slice());if(pct>=.7)burst(180);return;}
- const [q,o,a,w]=S.order[S.i];
- box.innerHTML=`<div class="qtop"><span>Pergunta ${S.i+1}/${S.order.length}</span><span>⭐ ${fmt(S.score)}</span></div><div class="qbar"><i style="width:${S.i/S.order.length*100}%"></i></div><div class="qq">${q}</div><div id="qo"></div><div class="why" id="qw"></div><div style="margin-top:14px"><button class="btn pri" id="qn" style="display:none">Próxima ▶</button></div>`;
- const od=$("#qo");let qdone=false,okQ=null;shuffle(o.map((t,k)=>({t,ok:k===a}))).forEach(x=>{const b=document.createElement("button");b.className="opt";b.textContent=x.t;if(x.ok)okQ=b;
-  b.onclick=ev=>{if(!ev||!ev.isTrusted||qdone)return;qdone=true;$$(".opt",od).forEach(y=>y.disabled=true);
-   if(x.ok){b.classList.add("ok");S.score+=HF?.5:1;$("#qw").innerHTML="🎉 <b>Correto!</b> "+w;}
-   else{b.classList.add("no");S.missed.push(S.order[S.i]);S.wrong.push(q+" <b>"+o[a]+"</b>");$$(".opt",od).find(y=>y.textContent===o[a]).classList.add("ok");$("#qw").innerHTML="🤔 Não foi dessa vez. "+w;}
-   $("#qn").style.display="inline-block";$("#qn").onclick=()=>{S.i++;renderQ();};};od.appendChild(b);});od.after(mkHint(od,okQ,()=>qdone,()=>{S.hints++;}));}
+
+
+
 
 /* ---------- fauna do Pará ---------- */
 
@@ -439,14 +429,15 @@ const MINI={};
 function mini(sel,title,Q0){
  const bank=[...Q0,...(MQX[title]||[])];MINI[title]=bank;
  const box=document.createElement("div");box.className="mini";$(sel+" .box").appendChild(box);
- let qs,qi,hits,missed=[],hints=0;
- function start(){qs=shuffle(bank).slice(0,5);qi=0;hits=0;missed=[];hints=0;show();}
+ let qs,qi,hits,missed=[],hints=0,rv=false;
+ function start(){qs=shuffle(bank).slice(0,5);qi=0;hits=0;missed=[];hints=0;rv=false;show();}
  function show(){
   const q=qs[qi];
   box.innerHTML=`<h3>🎯 ${title}</h3><div class="cprog"><span>Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("")}</span></div><p class="mqq">${q[0]}</p><div class="mo"></div><div class="why"></div><div class="mnx"></div>`;
   const od=$(".mo",box),w=$(".why",box),nx=$(".mnx",box);let okB=null,done=false;
   shuffle(q[1].map((t,k)=>({t,ok:k===0}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okB=b;
    b.onclick=ev=>{if(!ev||!ev.isTrusted||done)return;done=true;$$(".opt",od).forEach(x=>x.disabled=true);
+    if(!rv)PG.registrar(q[0],q[1],o.ok);
     if(o.ok){hits+=HF?.5:1;b.classList.add("ok");beep("ok");}else{b.classList.add("no");okB.classList.add("ok");beep("no");missed.push(q);}
     w.innerHTML=(o.ok?"🎉 <b>Isso mesmo!</b> ":"🤔 Quase! ")+q[2];
     const last=qi===qs.length-1;nx.innerHTML=`<button class="btn pri" id="mnb">${last?"Ver resultado":"Próxima pergunta ▶"}</button>`;
@@ -455,7 +446,7 @@ function mini(sel,title,Q0){
   od.after(mkHint(od,okB,()=>done,()=>{hints++;}));}
  function end(){
   box.innerHTML=`<h3>🎯 ${title}</h3><p class="mres">🏁 Você acertou <b>${fmt(hits)}</b> de ${qs.length}.</p>${hintLine(hints)}${missed.length?`<button class="btn" id="mrv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="mrs">🔁 Jogar de novo (outras perguntas)</button>`;
-  if(missed.length)$("#mrv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;show();};
+  if(missed.length)$("#mrv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;rv=true;show();};
   if(hits===qs.length){burst(60);beep("star");}
   $("#mrs",box).onclick=start;}
  start();}
