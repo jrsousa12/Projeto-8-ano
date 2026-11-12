@@ -1,0 +1,38 @@
+/* Editor de questões (usa o visual do style.css) */
+main .box{margin-bottom:18px}
+a.fs{color:inherit;text-decoration:none;display:inline-block}
+.ed-intro ol{margin:6px 0 14px 22px;font-size:16px}
+.ed-intro li{margin:4px 0}
+code{background:rgba(0,0,0,.25);padding:1px 6px;border-radius:6px}
+.ed-acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+label.btn{cursor:pointer}
+.ed-msg{margin-top:10px;font-size:16px;min-height:22px}
+.ed-msg.ok{color:#6ee7b7}.ed-msg.erro{color:#fda4af}
+.ed-resumo{margin-top:6px;font-size:15px;opacity:.9}
+.ed-pend{color:#fde68a}
+.ed-form{display:grid;gap:10px;max-width:760px}
+.ed-form label{display:grid;gap:4px;font-weight:600;font-size:15px}
+.ed-form label.ok{color:#6ee7b7}
+.ed-form input,.ed-form textarea,.ed-form select,.ed-filtro input,.ed-filtro select{font:inherit;font-size:16px;font-weight:400;color:inherit;padding:9px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.2);background:rgba(0,0,0,.25);width:100%}
+.ed-form select option,.ed-filtro select option{color:#0f172a}
+.ed-dica{font-size:14px;opacity:.8}
+.ed-filtro{display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;margin-bottom:8px}
+.ed-q{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);margin:10px 0}
+.ed-q.minha{border-left:5px solid #a78bfa}
+.ed-q.oculta{opacity:.55}
+.ed-q ul{list-style:none;margin:6px 0;font-size:15px}
+.ed-q li.c{color:#6ee7b7}
+.ed-qt{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:4px}
+.ed-tag{padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.12)}
+.ed-tag.oc{background:rgba(251,113,133,.25)}
+.ed-lugar{opacity:.8}
+.ed-w{font-size:14px;opacity:.85}
+.ed-q .btn{padding:6px 12px;font-size:14px}
+@media (max-width:760px){.ed-filtro{grid-template-columns:1fr}}
+[data-theme=claro] .ed-msg.ok,[data-theme=claro] .ed-form label.ok,[data-theme=claro] .ed-q li.c{color:#047857}
+[data-theme=claro] .ed-msg.erro{color:#be123c}
+[data-theme=claro] .ed-pend{color:#a16207}
+[data-theme=claro] .ed-form input,[data-theme=claro] .ed-form textarea,[data-theme=claro] .ed-form select,[data-theme=claro] .ed-filtro input,[data-theme=claro] .ed-filtro select{background:#fff;border-color:rgba(15,23,42,.2)}
+[data-theme=claro] .ed-q{background:rgba(255,255,255,.8);border-color:rgba(15,23,42,.12)}
+[data-theme=claro] .ed-tag{background:rgba(15,23,42,.08)}
+[data-theme=claro] code{background:rgba(15,23,42,.08)}

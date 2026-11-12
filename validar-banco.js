@@ -8,7 +8,7 @@ const fs = require("fs"), vm = require("vm"), path = require("path");
 const D = __dirname + path.sep;
 const ctx = { console };
 vm.createContext(ctx);
-let codigo = fs.readFileSync(D + "dados.js", "utf8");
+let codigo = fs.readFileSync(D + "util.js", "utf8") + "\n" + fs.readFileSync(D + "dados.js", "utf8");
 if (fs.existsSync(D + "banco-proprio.js")) codigo += "\n" + fs.readFileSync(D + "banco-proprio.js", "utf8");
 vm.runInContext(codigo + "\n;this.X={G,EXTRA,EXTRA2,BANK3,QZ,PA,NG,MQX,MQ0,DIS,PR,AN,EMJ,CUR,NAT,FONTES,FONTES_MAIS,PROPRIO:typeof PROPRIO==='undefined'?null:PROPRIO};", ctx);
 const X = ctx.X;
@@ -84,6 +84,11 @@ if (X.PROPRIO) {
     if (x.g !== "final" && !ids.has(x.g) && !titulos.has(x.g)) erros.push(onde + ": destino inexistente " + x.g);
     pergunta(onde, x.q, x.o, 0, x.w); repetida(onde, x.q);
   });
+  const todas = new Set();
+  X.G.forEach(g => { todas.add(ctx.idPerg(g.q.q, g.q.o)); ["EXTRA", "EXTRA2", "BANK3"].forEach(n => (X[n][g.id] || []).forEach(x => todas.add(ctx.idPerg(x[0], x[1])))); });
+  X.QZ.forEach(x => todas.add(ctx.idPerg(x[0], x[1])));
+  titulos.forEach(t => [...(X.MQ0[t] || []), ...(X.MQX[t] || [])].forEach(x => todas.add(ctx.idPerg(x[0], x[1]))));
+  (X.PROPRIO.ocultas || []).forEach(id => { if (!todas.has(id)) avisos.push("banco-proprio: pergunta oculta " + id + " não existe mais no app"); });
 }
 
 const total = X.G.length + Object.values(X.EXTRA).flat().length + Object.values(X.EXTRA2).flat().length + Object.values(X.BANK3).flat().length + X.QZ.length + [...titulos].reduce((s, t) => s + (X.MQ0[t] || []).length + (X.MQX[t] || []).length, 0);

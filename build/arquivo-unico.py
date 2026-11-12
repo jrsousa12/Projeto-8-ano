@@ -13,10 +13,11 @@ def embutir_js(m):
     js = ler(f)
     assert '</script' not in js.lower(), f + ' contém </script'
     return '<script>\n' + js + '\n</script>'
+# no arquivo único não existe o editor (ele fica no site publicado)
+html = re.sub(r'\s*<a class="fs" id="ed"[^>]*>.*?</a>', '', html)
 html = re.sub(r'<script src="([^"]+)"></script>', embutir_js, html)
 html = re.sub(r'<link rel="stylesheet" href="([^"]+)">', lambda m: '<style>\n' + ler(m.group(1)) + '\n</style>', html)
 # no arquivo único os scripts ficam dentro da página, então a regra de segurança precisa permiti-los
 html = html.replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")
-assert 'src="' not in re.sub(r'<(img|svg)[^>]*>', '', html) or True
 open(A + 'animais-8ano.html', 'w', encoding='utf-8').write(html)
 print('animais-8ano.html:', len(html.encode()) // 1024, 'KB')

@@ -15,7 +15,7 @@ const PG = (() => {
   /* ---------- todas as perguntas do app, com id estável (tirado do texto) ---------- */
   let IDX = null, LISTA = null;
   /* id = texto da pergunta + alternativas (há perguntas com o mesmo texto e alternativas diferentes) */
-  const idDe = (t, o) => "q" + hsh(String(t).trim() + "|" + (o || []).map(x => String(x).trim()).sort().join("|"));
+  const idDe = idPerg;
   const AREAS = {};
   function indice() {
     if (IDX) return IDX;

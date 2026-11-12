@@ -5,6 +5,11 @@ O QUE TEM NESTA PASTA
   style.css                  visual (cores, tamanhos)
   dados.js                   conteúdo: grupos, perguntas, fauna, doenças e atividades
   app.js                     funcionamento do app
+  progresso.js, extras.js    progresso do aluno, naturalistas, ciclos e curiosidades
+  util.js                    funções comuns
+  banco-proprio.js           perguntas do professor (gerado pelo editor)
+  editor.html, editor.js, editor.css   editor de questões para o professor
+  tema-claro.css             cores do tema claro
   animais-8ano.html          o app inteiro em um só arquivo (gerado sozinho pelo GitHub)
   manifest.webmanifest       dados do app (nome, ícone, abre em tela cheia)
   sw.js                      guarda o app no aparelho para abrir sem internet

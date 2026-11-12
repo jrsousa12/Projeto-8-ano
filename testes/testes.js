@@ -223,6 +223,39 @@ testes["curiosidade, naturalistas, ciclos dos vermes e fontes"] = async (p) => {
   confere(/ICMBio/.test(await p.textContent("#md")), "tela de fontes");
 };
 
+testes["editor: cria e oculta perguntas e o app dos alunos recebe"] = async (p, ctx, url) => {
+  const ed = url.replace("index.html", "editor.html");
+  await p.goto(ed);
+  await p.click("#f-salvar");
+  confere(/Escreva a pergunta/.test(await p.textContent("#f-msg")), "não salva pergunta vazia");
+  await p.selectOption("#f-g", "porifero");
+  await p.fill("#f-q", "Pergunta de teste do professor?");
+  await p.fill("#f-o0", "Certa"); await p.fill("#f-o1", "Errada 1"); await p.fill("#f-o2", "Errada 1");
+  await p.fill("#f-w", "Explicação de teste.");
+  await p.click("#f-salvar");
+  confere(/repetidas/.test(await p.textContent("#f-msg")), "recusa alternativas repetidas");
+  await p.fill("#f-o2", "Errada 2");
+  await p.click("#f-salvar");
+  confere(/criada/.test(await p.textContent("#f-msg")), "cria a pergunta");
+  const oculta = await p.evaluate(() => QZ[0][0]);
+  await p.fill("#l-busca", oculta);
+  await p.click('#l-lista .ed-q:not(.minha) [data-a="ocultar"]');
+  confere(/1<\/b> ocultas/.test(await p.innerHTML("#ed-resumo")), "oculta uma pergunta do Desafio final");
+  await p.reload();
+  confere(/1<\/b> suas/.test(await p.innerHTML("#ed-resumo")), "o trabalho continua salvo no aparelho");
+  const [down] = await Promise.all([p.waitForEvent("download"), p.click("#ed-gerar")]);
+  const arq = fs.readFileSync(await down.path(), "utf8");
+  confere(down.suggestedFilename() === "banco-proprio.js" && /Pergunta de teste do professor/.test(arq), "gera o banco-proprio.js");
+  /* o app dos alunos com o arquivo novo (sem o cache do modo offline, para o navegador buscar o arquivo) */
+  await p.evaluate(async () => { for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister(); for (const k of await caches.keys()) await caches.delete(k); });
+  const q = await ctx.newPage();
+  await q.route("**/banco-proprio.js", r => r.fulfill({ status: 200, contentType: "text/javascript", body: arq }));
+  await q.goto(url);
+  confere(await q.evaluate(() => G.find(g => g.id === "porifero").pool.some(x => x.q === "Pergunta de teste do professor?")), "pergunta nova entra no desafio dos poríferos");
+  confere(await q.evaluate(t => !QZ.some(x => x[0] === t), oculta), "pergunta oculta sai do Desafio final");
+  await q.close();
+};
+
 testes["arquivo único abre direto do computador"] = async (p) => {
   await p.goto("file://" + path.join(RAIZ, "animais-8ano.html"));
   confere((await p.$$("#tabs button")).length >= 11, "animais-8ano.html abre com o menu completo");

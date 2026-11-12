@@ -9,6 +9,9 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `index.html` | Telas do app |
 | `style.css` | Visual (cores, tamanhos, animações) |
 | `tema-claro.css` | Tema claro (gerado por `build/tema_claro.py` a partir do `style.css`) |
+| `util.js` | Funções usadas pelo app e pelo editor (identificador das perguntas) |
+| `banco-proprio.js` | **Perguntas do professor** e perguntas ocultadas (gerado pelo editor) |
+| `editor.html`, `editor.js`, `editor.css` | Editor de questões para o professor |
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
 | `extras.js` | Curiosidade da tela inicial, aba Naturalistas (retratos desenhados no app), aba Ciclos dos vermes (animação passo a passo) e tela de Fontes |
@@ -34,6 +37,17 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 Sem perfil ("Jogar sem salvar"), nada disso é gravado.
 
 Em **⚙️ Opções**: som, **vibração** (celular), **tema** escuro, claro ou automático (segue o aparelho) e tela cheia. Os resultados do Desafio final, do treino e do simulado têm o botão **📤 Compartilhar resultado** (WhatsApp etc.; no computador, copia o texto).
+
+## Editor de questões (para o professor)
+
+Abra `editor.html` (no app: **⚙️ Opções → ✏️ Editor de questões**). Nele dá para:
+
+- **criar** perguntas para o desafio de qualquer um dos 13 grupos, para o Desafio final ou para os desafios das abas;
+- **editar** e **apagar** as suas perguntas;
+- **ocultar** perguntas do app que você não quer usar (e mostrar de novo depois);
+- usar uma pergunta do app **como modelo** para uma nova.
+
+O trabalho fica salvo no aparelho. Para os alunos receberem: **⬇️ Gerar arquivo para os alunos** baixa o `banco-proprio.js`; envie-o ao GitHub (Add file → Upload files), substituindo o antigo. O GitHub confere as perguntas e atualiza a versão do app sozinho. **Exportar/Importar cópia (JSON)** serve para levar o trabalho para outro computador.
 
 ## Onde ficam as perguntas (`dados.js`)
 

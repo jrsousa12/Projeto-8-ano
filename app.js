@@ -72,6 +72,18 @@ G.forEach(g=>{g.qs=[g.q,...EXTRA[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
 G.forEach(g=>{g.pool=[...g.qs,...EXTRA2[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
 
 G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id].map(x=>({q:x[0],o:x[1],a:0,w:x[2]}))];});
+/* perguntas do professor (banco-proprio.js, gerado pelo editor): acrescenta as novas e tira as ocultadas */
+(function(){if(typeof PROPRIO==="undefined"||!PROPRIO)return;
+ const oc=new Set(Array.isArray(PROPRIO.ocultas)?PROPRIO.ocultas:[]);
+ const tira=(arr,f)=>{for(let i=arr.length-1;i>=0;i--)if(oc.has(f(arr[i])))arr.splice(i,1);};
+ if(oc.size){G.forEach(g=>tira(g.pool,x=>idPerg(x.q,x.o)));tira(QZ,x=>idPerg(x[0],x[1]));
+  [MQ0,MQX].forEach(M=>Object.keys(M).forEach(t=>tira(M[t],x=>idPerg(x[0],x[1]))));}
+ (Array.isArray(PROPRIO.perguntas)?PROPRIO.perguntas:[]).forEach(x=>{
+  if(!x||typeof x.q!=="string"||!Array.isArray(x.o)||x.o.length<2)return;const w=x.w||"";
+  const g=G.find(y=>y.id===x.g);
+  if(g)g.pool.push({q:x.q,o:x.o,a:0,w});
+  else if(x.g==="final")QZ.push([x.q,x.o,0,w]);
+  else if(MQ0[x.g])(MQX[x.g]||(MQX[x.g]=[])).push([x.q,x.o,w]);});})();
 
 const stars=new Set(), seen=new Set();
 G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.id="card-"+g.id;b.style.cssText=`--c:${g.c};--i:${G.filter(x=>x.t===g.t).indexOf(g)}`;
@@ -83,8 +95,7 @@ function updScore(){$("#stars").textContent=stars.size;$("#sbar").style.width=(s
 
 /* ---------- progresso salvo neste aparelho (com assinatura) ---------- */
 const SALT="an8-prof-ivaldo-2026";
-function hsh(str){let h1=0x9e3779b9,h2=0x85ebca6b;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}
- h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);}
+
 const PK="an8v2",esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const PROF={cur:"",p:{}};let whoMode="",whoAnon=false;
 const sigOf=(n,ids)=>hsh(n+"|"+ids+SALT);

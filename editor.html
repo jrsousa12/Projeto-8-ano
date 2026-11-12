@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Segurança: só roda scripts e estilos deste site; não conversa com nenhum outro endereço. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>Editor de questões</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tema-claro.css">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<div class="bg"></div>
+<header>
+ <div class="brand"><h1>✏️ Editor de questões</h1><p>Animais 8º ano • para o professor</p></div>
+ <div class="hud"><a class="fs" href="index.html">◀ Voltar ao app</a></div>
+</header>
+<main>
+ <section class="on">
+  <div class="box ed-intro">
+   <h2>Como funciona</h2>
+   <ol>
+    <li><b>Crie</b> perguntas novas, <b>edite</b> as suas ou <b>oculte</b> perguntas do app que você não quer usar. Tudo fica salvo neste aparelho enquanto você trabalha.</li>
+    <li>Toque em <b>⬇️ Gerar arquivo para os alunos</b>. O navegador baixa o arquivo <code>banco-proprio.js</code>.</li>
+    <li>No GitHub, abra o repositório, toque em <b>Add file → Upload files</b> e envie esse arquivo (ele substitui o antigo). Em poucos minutos o app dos alunos é atualizado sozinho.</li>
+   </ol>
+   <div class="ed-acoes">
+    <button class="btn pri" id="ed-gerar">⬇️ Gerar arquivo para os alunos</button>
+    <button class="btn" id="ed-exp">💾 Exportar cópia (JSON)</button>
+    <label class="btn" for="ed-imp">📂 Importar cópia (JSON)</label><input type="file" id="ed-imp" accept=".json,application/json" hidden>
+    <button class="btn" id="ed-desfazer">↩️ Voltar ao arquivo publicado</button>
+   </div>
+   <p class="ed-msg" id="ed-msg" role="status"></p>
+   <p class="ed-resumo" id="ed-resumo"></p>
+  </div>
+
+  <div class="box" id="ed-form-box">
+   <h2 id="ed-form-tit">➕ Nova pergunta</h2>
+   <div class="ed-form">
+    <label>Onde a pergunta aparece<select id="f-g"></select></label>
+    <label>Pergunta<textarea id="f-q" rows="2" maxlength="300"></textarea></label>
+    <label class="ok">✅ Alternativa correta<input id="f-o0" maxlength="120"></label>
+    <label>❌ Alternativa errada<input id="f-o1" maxlength="120"></label>
+    <label>❌ Alternativa errada<input id="f-o2" maxlength="120"></label>
+    <label>❌ Alternativa errada (opcional)<input id="f-o3" maxlength="120"></label>
+    <label>Explicação (aparece depois da resposta)<textarea id="f-w" rows="2" maxlength="300"></textarea></label>
+    <p class="ed-dica">O app embaralha as alternativas ao mostrar a pergunta.</p>
+    <div class="ed-acoes"><button class="btn pri" id="f-salvar">Salvar pergunta</button><button class="btn" id="f-cancelar" hidden>Cancelar edição</button></div>
+    <p class="ed-msg" id="f-msg" role="status"></p>
+   </div>
+  </div>
+
+  <div class="box">
+   <h2>📚 Perguntas</h2>
+   <div class="ed-filtro">
+    <select id="l-g" aria-label="Filtrar por lugar"></select>
+    <input id="l-busca" placeholder="Buscar no texto..." aria-label="Buscar">
+    <select id="l-tipo" aria-label="Filtrar por tipo"><option value="">Todas</option><option value="minha">Só as minhas</option><option value="oculta">Só as ocultas</option></select>
+   </div>
+   <p class="ed-dica" id="l-cont"></p>
+   <div id="l-lista"></div>
+  </div>
+ </section>
+</main>
+<script src="util.js"></script>
+<script src="dados.js"></script>
+<script src="banco-proprio.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>
