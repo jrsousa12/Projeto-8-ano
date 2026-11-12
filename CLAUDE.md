@@ -15,6 +15,8 @@ Antes de criar, editar ou corrigir qualquer parte conceitual (textos dos grupos,
 
 ## Depois de qualquer mudança
 
+- **Publicação:** o dono do repositório autorizou que toda atualização vá direto para o `main` (sem pull request), depois que o verificador e os testes passarem.
+
 - `node validar-banco.js` (confere as perguntas).
 - `node testes/testes.js` (testes de navegador; precisa de `playwright@1.63.0`).
 - Se mudar o `style.css`: `python3 build/tema_claro.py`.
