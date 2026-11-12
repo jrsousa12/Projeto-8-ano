@@ -32,6 +32,10 @@ const publicado = () => ({
 let E;
 try { E = JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch (e) { E = null; }
 if (!E || !Array.isArray(E.perguntas) || !Array.isArray(E.ocultas)) E = publicado();
+/* descarta itens estragados (ex.: dados salvos por uma versão antiga) */
+E.perguntas = E.perguntas.filter(x => x && typeof x.q === "string" && Array.isArray(x.o) && x.o.length >= 2 && LUGARES.some(l => l[0] === x.g))
+  .map(x => ({ id: idPerg(x.q, x.o), g: x.g, q: x.q, o: x.o.map(String), w: String(x.w || "") }));
+E.ocultas = E.ocultas.filter(id => typeof id === "string");
 const salvar = () => { try { localStorage.setItem(CHAVE, JSON.stringify(E)); } catch (e) {} resumo(); };
 let editando = null;
 
@@ -56,9 +60,10 @@ function conferir(x, ignorar) {
   if ([...DOAPP, ...E.perguntas].some(y => y.id === id && y.id !== ignorar)) return "Essa pergunta já existe.";
   return "";
 }
+const semTags = t => String(t || "").replace(/<[^>]*>/g, "");
 function preencher(x) {
-  $("#f-g").value = x.g; $("#f-q").value = x.q; $("#f-w").value = x.w || "";
-  [0, 1, 2, 3].forEach(i => { $("#f-o" + i).value = x.o[i] || ""; });
+  $("#f-g").value = x.g; $("#f-q").value = semTags(x.q); $("#f-w").value = semTags(x.w);
+  [0, 1, 2, 3].forEach(i => { $("#f-o" + i).value = semTags(x.o[i]); });
 }
 function limparForm() { editando = null; preencher({ g: $("#f-g").value, q: "", o: [], w: "" }); $("#ed-form-tit").textContent = "➕ Nova pergunta"; $("#f-cancelar").hidden = true; $("#f-salvar").textContent = "Salvar pergunta"; }
 $("#f-salvar").onclick = () => {

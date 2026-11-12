@@ -445,19 +445,7 @@ renderStage();
 
 /* ---------- desafio final ---------- */
 
-
-
-
-
-
 /* ---------- fauna do Pará ---------- */
-
-PA.push(
-["Tartaruga-da-amazônia","Podocnemis expansa","reptil","Um dos maiores quelônios de água doce da América do Sul. Na seca, as fêmeas fazem covas nos bancos de areia dos rios e põem dezenas de ovos. A temperatura do ninho influencia o sexo dos filhotes."],
-["Guará","Eudocimus ruber","ave","Ave dos manguezais. No Brasil, a maior população está na costa norte (Amapá, Pará e Maranhão). O vermelho das penas vem dos carotenoides dos crustáceos de que se alimenta."],
-["Onça-pintada","Panthera onca","mamifero","Maior felino das Américas e terceiro maior do mundo. Mamífero carnívoro, predador de topo da cadeia alimentar. A maior parte da área adequada para ela está na Amazônia."],
-["Ariranha","Pteronura brasiliensis","mamifero","Também chamada de lontra-gigante. É um mamífero semiaquático que come peixes e vive em pequenos grupos. Está ameaçada de extinção."]);
-PA[7][3]="Anfíbio de pele rugosa, com glândulas parotoides atrás dos olhos que liberam uma secreção tóxica de defesa. A secreção só irrita se entrar em contato com olhos ou boca. Faz metamorfose: ovos → girino → adulto.";
 
 /* ---------- mini desafios por aba (1ª opção = correta) ---------- */
 const MINI={};
@@ -528,22 +516,6 @@ cardsFor("#pratg",PRL);
 
 /* ---------- classifique ---------- */
 
-AN.push(
-["Esponja-de-banho","porifero"],["Esponja-calcária","porifero"],["Esponja-de-água-doce","porifero"],["Esponja-barril","porifero"],["Esponja-vítrea","porifero"],
-["Hidra","cnidario"],["Caravela-portuguesa","cnidario"],["Gorgônia","cnidario"],["Vespa-do-mar","cnidario"],["Medusa-lua","cnidario"],["Coral-mole","cnidario"],
-["Tênia-do-porco","platelminto"],["Tênia-do-boi","platelminto"],["Fascíola-hepática","platelminto"],["Planária-de-água-doce","platelminto"],
-["Oxiúro","nematodeo"],["Filária","nematodeo"],["Tricocéfalo","nematodeo"],["Estrongiloide","nematodeo"],["Necator americanus","nematodeo"],
-["Lesma","molusco"],["Caracol","molusco"],["Mexilhão","molusco"],["Marisco","molusco"],["Sururu","molusco"],["Náutilo","molusco"],["Vieira","molusco"],["Choco","molusco"],["Nudibrânquio","molusco"],
-["Minhocuçu","anelideo"],["Poliqueta","anelideo"],["Nereis","anelideo"],["Sanguessuga-medicinal","anelideo"],["Minhoca-do-mar","anelideo"],
-["Camarão","artropode"],["Lagosta","artropode"],["Siri","artropode"],["Barata","artropode"],["Formiga","artropode"],["Abelha","artropode"],["Mosca","artropode"],["Mosquito","artropode"],["Gafanhoto","artropode"],["Besouro","artropode"],["Escorpião","artropode"],["Carrapato","artropode"],["Ácaro","artropode"],["Centopeia","artropode"],["Piolho-de-cobra","artropode"],["Tatuzinho-de-jardim","artropode"],["Libélula","artropode"],["Grilo","artropode"],["Cupim","artropode"],["Pulga","artropode"],["Louva-a-deus","artropode"],["Vaga-lume","artropode"],["Craca","artropode"],
-["Pepino-do-mar","equinodermo"],["Bolacha-da-praia","equinodermo"],["Lírio-do-mar","equinodermo"],["Ofiúro","equinodermo"],["Estrela-frágil","equinodermo"],
-["Tambaqui","peixe"],["Tucunaré","peixe"],["Piranha","peixe"],["Sardinha","peixe"],["Atum","peixe"],["Salmão","peixe"],["Bacalhau","peixe"],["Cavalo-marinho","peixe"],["Cação","peixe"],["Raia-manta","peixe"],["Peixe-palhaço","peixe"],["Poraquê","peixe"],["Pintado","peixe"],["Tubarão-martelo","peixe"],["Lambari","peixe"],
-["Rã","anfibio"],["Perereca","anfibio"],["Sapo-cururu","anfibio"],["Rã-touro","anfibio"],["Axolote","anfibio"],["Salamandra-de-fogo","anfibio"],
-["Lagarto","reptil"],["Iguana","reptil"],["Camaleão","reptil"],["Cobra-coral","reptil"],["Jiboia","reptil"],["Sucuri","reptil"],["Cascavel","reptil"],["Jararaca","reptil"],["Tartaruga-marinha","reptil"],["Cágado","reptil"],["Crocodilo","reptil"],["Gavial","reptil"],["Teiú","reptil"],["Lagartixa","reptil"],["Tartaruga-da-amazônia","reptil"],["Cobra-cipó","reptil"],["Geco","reptil"],
-["Pinguim","ave"],["Avestruz","ave"],["Tucano","ave"],["Papagaio","ave"],["Coruja","ave"],["Gavião","ave"],["Águia","ave"],["Pardal","ave"],["Pombo","ave"],["Galinha","ave"],["Pato","ave"],["Urubu","ave"],["Flamingo","ave"],["Guará","ave"],["Sabiá","ave"],["Bem-te-vi","ave"],["Cisne","ave"],["Pelicano","ave"],["Gaivota","ave"],["Seriema","ave"],["João-de-barro","ave"],["Canário","ave"],["Condor","ave"],
-["Cachorro","mamifero"],["Gato","mamifero"],["Onça-pintada","mamifero"],["Leão","mamifero"],["Elefante","mamifero"],["Girafa","mamifero"],["Morcego","mamifero"],["Golfinho","mamifero"],["Foca","mamifero"],["Macaco","mamifero"],["Gorila","mamifero"],["Preguiça","mamifero"],["Tatu","mamifero"],["Tamanduá-bandeira","mamifero"],["Capivara","mamifero"],["Ariranha","mamifero"],["Lobo-guará","mamifero"],["Gambá","mamifero"],["Coala","mamifero"],["Equidna","mamifero"],["Cavalo","mamifero"],["Coelho","mamifero"],["Orca","mamifero"],["Quati","mamifero"],["Lontra","mamifero"]
-);
-
 const cS={started:false,order:[],i:0,score:0,streak:0,best:0,wrong:[],missed:[],hints:0,review:false};
 function startCls(list){cS.started=true;cS.review=!!list;cS.order=list?shuffle(list):shuffle(AN).slice(0,10);cS.i=0;cS.score=0;cS.streak=0;cS.best=0;cS.wrong=[];cS.missed=[];cS.hints=0;renderCls();}
 function renderCls(){const box=$("#cbox"),S=cS;
@@ -555,8 +527,8 @@ function renderCls(){const box=$("#cbox"),S=cS;
  let okG=null,cdone=false;const opts=shuffle([g,...shuffle(G.filter(x=>x.id!==gid)).slice(0,3)]);
  opts.forEach(o=>{const b=document.createElement("button");b.className="opt";b.innerHTML=ICON[o.id]()+o.n;if(o===g)okG=b;
   b.onclick=ev=>{if(!ev||!ev.isTrusted||cdone)return;cdone=true;$$(".opt",$("#co")).forEach(x=>x.disabled=true);
-   if(o===g){b.classList.add("ok");S.score+=HF?.5:1;S.streak++;S.best=Math.max(S.best,S.streak);$("#cw").innerHTML=`🎉 <b>Isso!</b> ${nome} é do grupo dos ${g.n}. ${g.f[0]}.`;if(S.streak>=3)burst(30);}
-   else{b.classList.add("no");S.streak=0;S.missed.push(S.order[S.i]);S.wrong.push(`<b>${nome}</b>: ${g.n}`);okG.classList.add("ok");$("#cw").innerHTML=`🤔 Quase! ${nome} é do grupo dos <b>${g.n}</b>. ${g.f[0]}.`;}
+   if(o===g){b.classList.add("ok");S.score+=HF?.5:1;S.streak++;S.best=Math.max(S.best,S.streak);$("#cw").innerHTML=`🎉 <b>Isso!</b> ${nome}: grupo <b>${g.n}</b>. ${g.f[0]}.`;if(S.streak>=3)burst(30);}
+   else{b.classList.add("no");S.streak=0;S.missed.push(S.order[S.i]);S.wrong.push(`<b>${nome}</b>: ${g.n}`);okG.classList.add("ok");$("#cw").innerHTML=`🤔 Quase! ${nome}: grupo <b>${g.n}</b>. ${g.f[0]}.`;}
    $("#cn").style.display="inline-block";$("#cn").onclick=()=>{S.i++;renderCls();};};
   $("#co").appendChild(b);});
  $("#co").after(mkHint($("#co"),okG,()=>cdone,()=>{S.hints++;}));}

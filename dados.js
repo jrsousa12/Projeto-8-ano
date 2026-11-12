@@ -613,7 +613,7 @@ const PA=[
 ["Tracajá","Podocnemis unifilis","reptil","Quelônio de água doce (tem carapaça). Põe ovos com casca em praias de rio."],
 ["Caranguejo-uçá","Ucides cordatus","artropode","Crustáceo dos manguezais do litoral paraense (Bragança e Resex Caeté-Taperaçu). Sua presença indica manguezal saudável; só se coletam machos grandes e fora do defeso."],
 ["Harpia","Harpia harpyja","ave","Uma das maiores águias do mundo: as asas abertas podem passar de 2 metros. Ave endotérmica, de penas e ossos leves."],
-["Sapo-cururu","Rhinella marina","anfibio","Anfíbio de pele com glândulas de veneno. Faz metamorfose: ovos → girino → adulto."]];
+["Sapo-cururu","Rhinella marina","anfibio","Anfíbio de pele rugosa, com glândulas parotoides atrás dos olhos que liberam uma secreção tóxica de defesa. A secreção só irrita se entrar em contato com olhos ou boca. Faz metamorfose: ovos → girino → adulto."]];
 const NG={mamifero:"Mamífero",peixe:"Peixe",reptil:"Réptil",artropode:"Artrópode (crustáceo)",ave:"Ave",anfibio:"Anfíbio"};
 const MQX={
 "Desafio da temperatura":[
@@ -994,3 +994,25 @@ MQ0["Desafio dos naturalistas"].push(
 MQ0["Desafio dos ciclos"].push(
 ["No ciclo da tênia-do-porco, o que acontece no porco?",["Os ovos viram cisticercos na carne","A tênia adulta vive no intestino do porco","O porco elimina cercárias","O porco é picado por mosquitos"],"A pessoa pega teníase ao comer essa carne crua ou mal passada."],
 ["No ciclo da esquistossomose, o que sai do caramujo e nada na água?",["Cercárias","Ovos com casca","Tênias adultas","Mosquitos"],"As cercárias entram pela pele de quem está na água."]);
+
+/* mais animais da Fauna do Pará e do jogo Classifique */
+PA.push(
+["Tartaruga-da-amazônia","Podocnemis expansa","reptil","Um dos maiores quelônios de água doce da América do Sul. Na seca, as fêmeas fazem covas nos bancos de areia dos rios e põem dezenas de ovos. A temperatura do ninho influencia o sexo dos filhotes."],
+["Guará","Eudocimus ruber","ave","Ave dos manguezais. No Brasil, a maior população está na costa norte (Amapá, Pará e Maranhão). O vermelho das penas vem dos carotenoides dos crustáceos de que se alimenta."],
+["Onça-pintada","Panthera onca","mamifero","Maior felino das Américas e terceiro maior do mundo. Mamífero carnívoro, predador de topo da cadeia alimentar. A maior parte da área adequada para ela está na Amazônia."],
+["Ariranha","Pteronura brasiliensis","mamifero","Também chamada de lontra-gigante. É um mamífero semiaquático que come peixes e vive em pequenos grupos. Está ameaçada de extinção."]);
+AN.push(
+["Esponja-de-banho","porifero"],["Esponja-calcária","porifero"],["Esponja-de-água-doce","porifero"],["Esponja-barril","porifero"],["Esponja-vítrea","porifero"],
+["Hidra","cnidario"],["Caravela-portuguesa","cnidario"],["Gorgônia","cnidario"],["Vespa-do-mar","cnidario"],["Medusa-lua","cnidario"],["Coral-mole","cnidario"],
+["Tênia-do-porco","platelminto"],["Tênia-do-boi","platelminto"],["Fascíola-hepática","platelminto"],["Planária-de-água-doce","platelminto"],
+["Oxiúro","nematodeo"],["Filária","nematodeo"],["Tricocéfalo","nematodeo"],["Estrongiloide","nematodeo"],["Necátor","nematodeo"],
+["Lesma","molusco"],["Caracol","molusco"],["Mexilhão","molusco"],["Marisco","molusco"],["Sururu","molusco"],["Náutilo","molusco"],["Vieira","molusco"],["Choco","molusco"],["Nudibrânquio","molusco"],
+["Minhocuçu","anelideo"],["Poliqueta","anelideo"],["Nereis","anelideo"],["Sanguessuga-medicinal","anelideo"],["Minhoca-do-mar","anelideo"],
+["Camarão","artropode"],["Lagosta","artropode"],["Siri","artropode"],["Barata","artropode"],["Formiga","artropode"],["Abelha","artropode"],["Mosca","artropode"],["Mosquito","artropode"],["Gafanhoto","artropode"],["Besouro","artropode"],["Escorpião","artropode"],["Carrapato","artropode"],["Ácaro","artropode"],["Centopeia","artropode"],["Piolho-de-cobra","artropode"],["Tatuzinho-de-jardim","artropode"],["Libélula","artropode"],["Grilo","artropode"],["Cupim","artropode"],["Pulga","artropode"],["Louva-a-deus","artropode"],["Vaga-lume","artropode"],["Craca","artropode"],
+["Pepino-do-mar","equinodermo"],["Bolacha-da-praia","equinodermo"],["Lírio-do-mar","equinodermo"],["Ofiúro","equinodermo"],["Estrela-frágil","equinodermo"],
+["Tambaqui","peixe"],["Tucunaré","peixe"],["Piranha","peixe"],["Sardinha","peixe"],["Atum","peixe"],["Salmão","peixe"],["Bacalhau","peixe"],["Cavalo-marinho","peixe"],["Cação","peixe"],["Raia-manta","peixe"],["Peixe-palhaço","peixe"],["Poraquê","peixe"],["Pintado","peixe"],["Tubarão-martelo","peixe"],["Lambari","peixe"],
+["Rã","anfibio"],["Perereca","anfibio"],["Sapo-cururu","anfibio"],["Rã-touro","anfibio"],["Axolote","anfibio"],["Salamandra-de-fogo","anfibio"],
+["Lagarto","reptil"],["Iguana","reptil"],["Camaleão","reptil"],["Cobra-coral","reptil"],["Jiboia","reptil"],["Sucuri","reptil"],["Cascavel","reptil"],["Jararaca","reptil"],["Tartaruga-marinha","reptil"],["Cágado","reptil"],["Crocodilo","reptil"],["Gavial","reptil"],["Teiú","reptil"],["Lagartixa","reptil"],["Tartaruga-da-amazônia","reptil"],["Cobra-cipó","reptil"],["Geco","reptil"],
+["Pinguim","ave"],["Avestruz","ave"],["Tucano","ave"],["Papagaio","ave"],["Coruja","ave"],["Gavião","ave"],["Águia","ave"],["Pardal","ave"],["Pombo","ave"],["Galinha","ave"],["Pato","ave"],["Urubu","ave"],["Flamingo","ave"],["Guará","ave"],["Sabiá","ave"],["Bem-te-vi","ave"],["Cisne","ave"],["Pelicano","ave"],["Gaivota","ave"],["Seriema","ave"],["João-de-barro","ave"],["Canário","ave"],["Condor","ave"],
+["Cachorro","mamifero"],["Gato","mamifero"],["Onça-pintada","mamifero"],["Leão","mamifero"],["Elefante","mamifero"],["Girafa","mamifero"],["Morcego","mamifero"],["Golfinho","mamifero"],["Foca","mamifero"],["Macaco","mamifero"],["Gorila","mamifero"],["Preguiça","mamifero"],["Tatu","mamifero"],["Tamanduá-bandeira","mamifero"],["Capivara","mamifero"],["Ariranha","mamifero"],["Lobo-guará","mamifero"],["Gambá","mamifero"],["Coala","mamifero"],["Equidna","mamifero"],["Cavalo","mamifero"],["Coelho","mamifero"],["Orca","mamifero"],["Quati","mamifero"],["Lontra","mamifero"]
+);

@@ -65,7 +65,7 @@ section.on{display:block}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* painel */
-.overlay{position:fixed;inset:0;background:rgba(2,10,25,.8);backdrop-filter:blur(7px);display:none;place-items:center;padding:14px;z-index:50}
+.overlay{position:fixed;inset:0;background:rgba(2,10,25,.8);backdrop-filter:blur(7px);display:none;place-items:center;padding:14px;z-index:65}
 .overlay.show{display:grid}
 .panel{position:relative;width:min(1020px,100%);max-height:94vh;overflow:auto;border-radius:30px;background:linear-gradient(160deg,#10305a,#0a1b36);
  border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 90px -20px #000;animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
@@ -416,6 +416,7 @@ li.f .trp{opacity:.7}
  .nvcont{flex-wrap:wrap}
  .trs{grid-template-columns:1fr}
  #nvtoast{top:auto;bottom:86px;transform:translate(-50%,200%)}
+ #inst{bottom:calc(78px + env(safe-area-inset-bottom))}
  #nvtoast.show{transform:translate(-50%,0)}
 }
 [data-theme=claro] nav#tabs{background:rgba(255,255,255,.96);border-top-color:rgba(15,23,42,.12)}
