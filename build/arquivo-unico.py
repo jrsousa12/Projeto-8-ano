@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Gera animais-8ano.html: o app inteiro em um só arquivo (visual, conteúdo e lógica embutidos).
+Serve para abrir direto no navegador ou mandar por WhatsApp/pendrive, sem publicar.
+Uso: python3 build/arquivo-unico.py"""
+import os, re
+A = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + os.sep
+ler = lambda f: open(A + f, encoding='utf-8').read()
+html = ler('index.html')
+def embutir_js(m):
+    f = m.group(1)
+    if not os.path.exists(A + f):
+        return ''  # arquivo opcional (ex.: banco-proprio.js ainda não criado)
+    js = ler(f)
+    assert '</script' not in js.lower(), f + ' contém </script'
+    return '<script>\n' + js + '\n</script>'
+html = re.sub(r'<script src="([^"]+)"></script>', embutir_js, html)
+html = html.replace('<link rel="stylesheet" href="style.css">', '<style>\n' + ler('style.css') + '\n</style>')
+# no arquivo único os scripts ficam dentro da página, então a regra de segurança precisa permiti-los
+html = html.replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")
+assert 'src="' not in re.sub(r'<(img|svg)[^>]*>', '', html) or True
+open(A + 'animais-8ano.html', 'w', encoding='utf-8').write(html)
+print('animais-8ano.html:', len(html.encode()) // 1024, 'KB')

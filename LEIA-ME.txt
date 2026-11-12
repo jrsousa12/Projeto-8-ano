@@ -1,10 +1,15 @@
 ANIMAIS 8º ANO - COMO INSTALAR COMO APLICATIVO (tela cheia, funciona sem internet)
 
 O QUE TEM NESTA PASTA
-  index.html                 o aplicativo
+  index.html                 o aplicativo (telas)
+  style.css                  visual (cores, tamanhos)
+  dados.js                   conteúdo: grupos, perguntas, fauna, doenças e atividades
+  app.js                     funcionamento do app
+  animais-8ano.html          o app inteiro em um só arquivo (gerado sozinho pelo GitHub)
   manifest.webmanifest       dados do app (nome, ícone, abre em tela cheia)
   sw.js                      guarda o app no aparelho para abrir sem internet
   icon-192.png, icon-512.png, icon-maskable-512.png   ícones
+  validar-banco.js, testes/, build/, .github/   conferências automáticas (veja o README.md)
 
 IMPORTANTE
   - O arquivo único "animais-8ano.html" funciona direto no navegador, mas NÃO consegue se
@@ -33,6 +38,7 @@ PERFIS DOS ALUNOS
   Trocar de celular, de navegador ou limpar os dados do navegador apaga o progresso.
 
 ATENÇÃO
-  O index.html pode ser editado livremente (não há mais trava contra alteração).
-  Sempre que publicar uma versão nova, troque o número em sw.js (const V = "animais-8ano-v2",
-  depois v3, v4...). Sem isso, quem já instalou o app continua vendo a versão antiga.
+  Os arquivos podem ser editados livremente (não há trava contra alteração).
+  A versão do sw.js muda sozinha: a cada envio ao GitHub (branch main), o próprio GitHub
+  recalcula a versão e gera de novo o animais-8ano.html. Assim, quem já instalou o app recebe
+  a versão nova na próxima vez que abrir com internet.

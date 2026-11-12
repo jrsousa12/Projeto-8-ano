@@ -1,0 +1,25 @@
+name: Atualizar versão do app
+# A cada envio para o main: recalcula a versão do cache do sw.js (para os celulares baixarem a versão nova)
+# e gera de novo o arquivo único animais-8ano.html. Se algo mudou, grava um commit automático.
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  versao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Versão do cache e arquivo único
+        run: |
+          python3 build/versao.py
+          python3 build/arquivo-unico.py
+      - name: Gravar se mudou
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "Nada a atualizar."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Atualiza a versão do app (cache) e o arquivo único"
+          git push

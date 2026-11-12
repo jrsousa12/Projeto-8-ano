@@ -1,0 +1,22 @@
+name: Validar app
+# A cada envio: confere a sintaxe, o conteúdo (perguntas) e roda os testes de navegador.
+on: [push, pull_request]
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Sintaxe dos arquivos JavaScript
+        run: for f in *.js testes/*.js; do node --check "$f" || exit 1; done
+      - name: Conferir as perguntas
+        run: node validar-banco.js
+      - name: Instalar o navegador de testes
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Testes de navegador
+        run: node testes/testes.js
