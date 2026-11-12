@@ -87,8 +87,8 @@ mini("#cic", "Desafio dos ciclos", MQ0["Desafio dos ciclos"]);
 /* ---------- fontes ---------- */
 function abrirFontes() {
   $("#opm").classList.remove("show");
-  openMd("📚 Fontes e referências", `<p>O conteúdo do app foi escrito para as aulas e deve ser revisado pelo professor. As ilustrações e os retratos dos naturalistas são desenhos simples feitos no próprio app.</p>
-  <h3>Fontes usadas</h3><ul>${FONTES.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>
-  <h3>Para saber mais</h3><ul>${FONTES_MAIS.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>`);
+  const grupos = [...new Set(FONTES_MAIS.map(f => f[0]))];
+  openMd("📚 Fontes e referências", `<h3>Fontes usadas</h3><ul>${FONTES.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>
+  <h3>Fontes confiáveis para consulta</h3>${grupos.map(g => `<h4>${g}</h4><ul>${FONTES_MAIS.filter(f => f[0] === g).map(f => `<li><b>${f[3] ? `<a href="${f[3]}" target="_blank" rel="noopener noreferrer">${f[1]}</a>` : f[1]}:</b> ${f[2]}</li>`).join("")}</ul>`).join("")}`);
 }
 $("#fo").onclick = abrirFontes;

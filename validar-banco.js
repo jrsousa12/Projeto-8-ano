@@ -75,7 +75,8 @@ X.PR.forEach((x, i) => ["t", "o", "m", "p", "q", "c"].forEach(c => { if (!x[c] |
 /* curiosidades, naturalistas e fontes */
 X.CUR.forEach((x, i) => { if (!ids.has(x[0]) || !txt(x[1])) erros.push("CUR[" + i + "]: grupo inexistente ou texto vazio"); });
 X.NAT.forEach((x, i) => { if (x.slice(0, 6).some(v => !txt(v)) || !x[6] || !x[6].pele || !x[6].roupa) erros.push("NAT[" + i + "] " + x[0] + ": campo vazio ou retrato incompleto"); });
-[...X.FONTES, ...X.FONTES_MAIS].forEach((x, i) => { if (!txt(x[0]) || !txt(x[1])) erros.push("FONTES[" + i + "]: campo vazio"); });
+X.FONTES.forEach((x, i) => { if (!txt(x[0]) || !txt(x[1])) erros.push("FONTES[" + i + "]: campo vazio"); });
+X.FONTES_MAIS.forEach((x, i) => { if (![0, 1, 2].every(k => txt(x[k])) || (x[3] && !/^https:\/\//.test(x[3]))) erros.push("FONTES_MAIS[" + i + "]: campo vazio ou endereço sem https"); });
 
 /* perguntas próprias do professor (banco-proprio.js, gerado pelo editor) */
 if (X.PROPRIO) {

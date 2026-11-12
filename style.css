@@ -100,6 +100,7 @@ section.on{display:block}
 .mdbox{background:#0f1b3d;color:#fff;border-radius:20px;max-width:900px;width:100%;max-height:92vh;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.2)}
 .mdbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.15);flex-wrap:wrap}
 .mdbody{padding:16px 20px;overflow:auto}.mdbody table{width:100%;border-collapse:collapse}.mdbody th,.mdbody td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}
+.mdbody h4{margin:12px 0 4px;font-size:17px}.mdbody ul{padding-left:22px}.mdbody a{color:#7dd3fc}
 .mdbody h3{margin:16px 0 6px}.mdbody ol{padding-left:22px}.mdbody li{margin:6px 0}.small{opacity:.7;font-size:14px}
 @media print{body.printing>*:not(#md){display:none!important}body.printing{overflow:visible!important;background:#fff!important}body.printing .bg{display:none!important}
  body.printing #md{position:static;background:#fff;padding:0;display:block}body.printing .mdbox{background:#fff;color:#000;max-height:none;border:0;display:block}

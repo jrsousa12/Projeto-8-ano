@@ -221,6 +221,7 @@ testes["curiosidade, naturalistas, ciclos dos vermes e fontes"] = async (p) => {
   confere(/Pupa/.test(await p.textContent("#stT")), "metamorfose continua funcionando");
   await p.click("#op"); await p.click("#fo");
   confere(/ICMBio/.test(await p.textContent("#md")), "tela de fontes");
+  confere((await p.$$('#md a[href^="https://"]')).length >= 20 && !/revisado pelo professor/.test(await p.textContent("#md")), "fontes confiáveis com links e sem o aviso antigo");
 };
 
 testes["editor: cria e oculta perguntas e o app dos alunos recebe"] = async (p, ctx, url) => {

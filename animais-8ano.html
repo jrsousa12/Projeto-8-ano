@@ -109,6 +109,7 @@ section.on{display:block}
 .mdbox{background:#0f1b3d;color:#fff;border-radius:20px;max-width:900px;width:100%;max-height:92vh;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.2)}
 .mdbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.15);flex-wrap:wrap}
 .mdbody{padding:16px 20px;overflow:auto}.mdbody table{width:100%;border-collapse:collapse}.mdbody th,.mdbody td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}
+.mdbody h4{margin:12px 0 4px;font-size:17px}.mdbody ul{padding-left:22px}.mdbody a{color:#7dd3fc}
 .mdbody h3{margin:16px 0 6px}.mdbody ol{padding-left:22px}.mdbody li{margin:6px 0}.small{opacity:.7;font-size:14px}
 @media print{body.printing>*:not(#md){display:none!important}body.printing{overflow:visible!important;background:#fff!important}body.printing .bg{display:none!important}
  body.printing #md{position:static;background:#fff;padding:0;display:block}body.printing .mdbox{background:#fff;color:#000;max-height:none;border:0;display:block}
@@ -378,6 +379,7 @@ ol.sim small{opacity:.8}
 :where([data-theme=claro]) .mdbox{color:#0f172a;border:1px solid rgba(15,23,42,0.2)}
 :where([data-theme=claro]) .mdbar{border-bottom:1px solid rgba(15,23,42,0.155)}
 :where([data-theme=claro]) .mdbody th,:where([data-theme=claro]) .mdbody td{border-bottom:1px solid rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .mdbody a{color:#0369a1}
 :where([data-theme=claro]) .dc{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
 :where([data-theme=claro]) .mini{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
 :where([data-theme=claro]) .opt{background:rgba(15,23,42,0.101)}
@@ -1344,14 +1346,32 @@ const NAT=[
 /* ---------- fontes e referências ---------- */
 const FONTES=[
 ["Fauna do Pará e da Amazônia","ICMBio (Livro Vermelho, SALVE e PAN Onça-pintada), National Geographic Brasil, Portal Amazônia, InfoEscola, UFPA/Instituto de Estudos Costeiros (Bragança)."],
-["Vermes e doenças","Ministério da Saúde (folder Verminoses e Filariose Linfática), Secretaria de Saúde do Paraná (Teniose e Cisticercose), Agência Brasil/OMS (eliminação da filariose no Brasil, 2024), SciELO Saúde Pública (filariose em Belém nos anos 1950)."]];
+["Vermes e doenças","Ministério da Saúde (folder Verminoses e Filariose Linfática), Secretaria de Saúde do Paraná (Teniose e Cisticercose), Agência Brasil/OMS (eliminação da filariose no Brasil, 2024), SciELO Saúde Pública (filariose em Belém nos anos 1950)."],
+["Revisão do conteúdo (2026)","OPAS/OMS (eliminação da filariose no Brasil, 30/09/2024), Instituto Butantan (material educativo sobre quelônios), UNESP (aula de Zoologia sobre répteis) e Revista Pesquisa FAPESP (harpia)."]];
+/* fontes confiáveis para consulta (as mesmas de FONTES-CONFIAVEIS.md): [grupo, nome, para quê, endereço] */
 const FONTES_MAIS=[
-["Museu Paraense Emílio Goeldi","pesquisa sobre a fauna amazônica e a história dos naturalistas na Amazônia."],
-["Fiocruz","informações de saúde sobre as verminoses e seus ciclos."],
-["ICMBio (SALVE e Livro Vermelho)","espécies brasileiras ameaçadas e unidades de conservação."],
-["Ministério da Saúde e OPAS/OMS","transmissão e prevenção das verminoses; eliminação da filariose no Brasil (OPAS, 30/09/2024)."],
-["INPA, Instituto Mamirauá e Instituto Butantan","peixes, quelônios e mamíferos da Amazônia; répteis e animais peçonhentos."],
-["Animal Diversity Web e Encyclopaedia Britannica","características dos grupos animais e biografias dos naturalistas."]];
+["Órgãos oficiais brasileiros","Ministério da Saúde: Saúde de A a Z","transmissão e prevenção das verminoses","https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z"],
+["Órgãos oficiais brasileiros","Ministério da Saúde: Guia de Vigilância em Saúde","ciclos e vigilância das verminoses","https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes"],
+["Órgãos oficiais brasileiros","Fiocruz","parasitologia, verminoses e o caramujo Biomphalaria","https://portal.fiocruz.br"],
+["Órgãos oficiais brasileiros","ICMBio: SALVE","fichas das espécies brasileiras e risco de extinção","https://salve.icmbio.gov.br"],
+["Órgãos oficiais brasileiros","ICMBio: Livro Vermelho da Fauna Brasileira","espécies ameaçadas, como harpia, ariranha e peixe-boi","https://www.gov.br/icmbio"],
+["Órgãos oficiais brasileiros","BNCC (Base Nacional Comum Curricular)","o que se estuda em Ciências no Ensino Fundamental","https://basenacionalcomum.mec.gov.br"],
+["Museus e institutos de pesquisa","Museu Paraense Emílio Goeldi","fauna amazônica e do Pará e história dos naturalistas","https://www.gov.br/museugoeldi"],
+["Museus e institutos de pesquisa","INPA (Instituto Nacional de Pesquisas da Amazônia)","peixes, quelônios e mamíferos aquáticos da Amazônia","https://www.gov.br/inpa"],
+["Museus e institutos de pesquisa","Instituto Mamirauá","pirarucu, boto e peixe-boi na Amazônia","https://www.mamiraua.org.br"],
+["Museus e institutos de pesquisa","Instituto Butantan","serpentes, lagartos, quelônios e animais peçonhentos","https://butantan.gov.br"],
+["Museus e institutos de pesquisa","Universidades públicas (USP, UFPA, UNESP, UFRJ)","aulas e apostilas de Zoologia; manguezais do Pará (UFPA, Bragança)",""],
+["Museus e institutos de pesquisa","Livros didáticos aprovados no PNLD","conteúdo adequado ao 8º ano","https://www.gov.br/fnde"],
+["Saúde internacional","OPAS/OMS (em português)","situação das doenças no Brasil e nas Américas","https://www.paho.org/pt"],
+["Saúde internacional","OMS: fichas informativas","dados mundiais das verminoses","https://www.who.int/news-room/fact-sheets"],
+["Saúde internacional","CDC: DPDx (em inglês)","ciclos de vida dos parasitas, etapa por etapa","https://www.cdc.gov/dpdx"],
+["Zoologia e história da ciência","Animal Diversity Web (Universidade de Michigan)","características dos grupos e das espécies","https://animaldiversity.org"],
+["Zoologia e história da ciência","Lista Vermelha da IUCN","situação mundial das espécies","https://www.iucnredlist.org"],
+["Zoologia e história da ciência","Smithsonian (Museu de História Natural e Ocean Portal)","invertebrados marinhos, corais e peixes","https://ocean.si.edu"],
+["Zoologia e história da ciência","NOAA","corais e branqueamento","https://oceanservice.noaa.gov"],
+["Zoologia e história da ciência","Encyclopaedia Britannica","conceitos gerais e biografias dos naturalistas","https://www.britannica.com"],
+["Zoologia e história da ciência","Darwin Online e Wallace Online","obras e viagens de Darwin e Wallace","https://darwin-online.org.uk"],
+["Zoologia e história da ciência","Natural History Museum (Londres)","Bates, Wallace, Darwin e as coleções","https://www.nhm.ac.uk"]];
 
 /* perguntas dos novos mini desafios */
 MQ0["Desafio dos naturalistas"]=[
@@ -2110,9 +2130,9 @@ mini("#cic", "Desafio dos ciclos", MQ0["Desafio dos ciclos"]);
 /* ---------- fontes ---------- */
 function abrirFontes() {
   $("#opm").classList.remove("show");
-  openMd("📚 Fontes e referências", `<p>O conteúdo do app foi escrito para as aulas e deve ser revisado pelo professor. As ilustrações e os retratos dos naturalistas são desenhos simples feitos no próprio app.</p>
-  <h3>Fontes usadas</h3><ul>${FONTES.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>
-  <h3>Para saber mais</h3><ul>${FONTES_MAIS.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>`);
+  const grupos = [...new Set(FONTES_MAIS.map(f => f[0]))];
+  openMd("📚 Fontes e referências", `<h3>Fontes usadas</h3><ul>${FONTES.map(f => `<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>
+  <h3>Fontes confiáveis para consulta</h3>${grupos.map(g => `<h4>${g}</h4><ul>${FONTES_MAIS.filter(f => f[0] === g).map(f => `<li><b>${f[3] ? `<a href="${f[3]}" target="_blank" rel="noopener noreferrer">${f[1]}</a>` : f[1]}:</b> ${f[2]}</li>`).join("")}</ul>`).join("")}`);
 }
 $("#fo").onclick = abrirFontes;
 

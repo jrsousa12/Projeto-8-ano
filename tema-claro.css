@@ -23,6 +23,7 @@
 :where([data-theme=claro]) .mdbox{color:#0f172a;border:1px solid rgba(15,23,42,0.2)}
 :where([data-theme=claro]) .mdbar{border-bottom:1px solid rgba(15,23,42,0.155)}
 :where([data-theme=claro]) .mdbody th,:where([data-theme=claro]) .mdbody td{border-bottom:1px solid rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .mdbody a{color:#0369a1}
 :where([data-theme=claro]) .dc{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
 :where([data-theme=claro]) .mini{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
 :where([data-theme=claro]) .opt{background:rgba(15,23,42,0.101)}
