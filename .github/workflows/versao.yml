@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v5
       - name: Versão do cache e arquivo único
         run: |
+          python3 build/tema_claro.py
           python3 build/versao.py
           python3 build/arquivo-unico.py
       - name: Gravar se mudou

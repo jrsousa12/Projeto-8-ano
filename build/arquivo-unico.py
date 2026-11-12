@@ -14,7 +14,7 @@ def embutir_js(m):
     assert '</script' not in js.lower(), f + ' contém </script'
     return '<script>\n' + js + '\n</script>'
 html = re.sub(r'<script src="([^"]+)"></script>', embutir_js, html)
-html = html.replace('<link rel="stylesheet" href="style.css">', '<style>\n' + ler('style.css') + '\n</style>')
+html = re.sub(r'<link rel="stylesheet" href="([^"]+)">', lambda m: '<style>\n' + ler(m.group(1)) + '\n</style>', html)
 # no arquivo único os scripts ficam dentro da página, então a regra de segurança precisa permiti-los
 html = html.replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")
 assert 'src="' not in re.sub(r'<(img|svg)[^>]*>', '', html) or True

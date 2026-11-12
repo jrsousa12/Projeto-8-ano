@@ -1,6 +1,7 @@
 "use strict";
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 let pmode="g";
+const LSg=k=>{try{return localStorage.getItem(k);}catch(e){return null;}},LSs=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 
 /* ---------- fundo de bolhas ---------- */
@@ -140,7 +141,21 @@ const hintLine=n=>n?`<p class="hintn">💡 Dicas usadas: <b>${n}</b></p>`:"";
 /* ---------- desafio: sorteia 5 do banco ---------- */
 const PASS=3,TLIM=20;let timerOn=false,soundOn=false;const RES={};
 let AC=null;
-function beep(kind){if(!soundOn)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const seq=kind==="ok"?[[660,0],[880,.12]]:kind==="no"?[[200,0]]:[[660,0],[880,.12],[1100,.24]];
+/* vibração (celular) e tema: preferências do aparelho */
+let vibOn=LSg("an8vib")!=="no";
+function vibrar(kind){if(!vibOn||!navigator.vibrate)return;try{navigator.vibrate(kind==="ok"||kind===true?40:kind==="no"||kind===false?[70,50,70]:[30,40,30,40,120]);}catch(e){}}
+const TEMAS=[["escuro","🌙 Tema: escuro"],["claro","☀️ Tema: claro"],["auto","🌓 Tema: automático"]];
+let tema=LSg("an8tema")||"escuro";if(!TEMAS.some(t=>t[0]===tema))tema="escuro";
+function aplicaTema(){const claro=tema==="claro"||(tema==="auto"&&matchMedia("(prefers-color-scheme: light)").matches);
+ if(claro)document.documentElement.dataset.theme="claro";else delete document.documentElement.dataset.theme;
+ const b=$("#tm");if(b)b.textContent=TEMAS.find(t=>t[0]===tema)[1];}
+try{matchMedia("(prefers-color-scheme: light)").addEventListener("change",aplicaTema);}catch(e){}
+/* compartilhar um resultado: menu do celular (WhatsApp etc.) ou copia o texto */
+async function compartilhar(txt,btn){
+ if(navigator.share){try{await navigator.share({text:txt});return;}catch(e){if(e&&e.name==="AbortError")return;}}
+ let ok=false;try{await navigator.clipboard.writeText(txt);ok=true;}catch(e){}
+ if(btn){const t=btn.textContent;btn.textContent=ok?"✅ Texto copiado":"📋 "+txt;setTimeout(()=>{if(btn.isConnected)btn.textContent=t;},ok?2500:6000);}}
+function beep(kind){vibrar(kind);if(!soundOn)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const seq=kind==="ok"?[[660,0],[880,.12]]:kind==="no"?[[200,0]]:[[660,0],[880,.12],[1100,.24]];
  seq.forEach(([f,t])=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;o.type="sine";g.gain.value=.08;o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+t);o.stop(AC.currentTime+t+.18);});}catch(e){}}
 function runChal(g,p){
  const box=$("#chal",p);let qi=0,hits=0,tm=null,missed=[],hints=0,review=false;let qs=shuffle(g.pool.slice()).slice(0,5);
@@ -574,7 +589,6 @@ function renderImg(){const box=$("#ibox"),S=iS;
 /* ---------- instalar na tela inicial e tela cheia automática ---------- */
 const isWeb=/^https?:$/.test(location.protocol);
 const standalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: fullscreen)").matches||navigator.standalone===true;}catch(e){return false;}};
-const LSg=k=>{try{return localStorage.getItem(k);}catch(e){return null;}},LSs=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
 let dip=null,autoFs=LSg("an8fs")!=="no",instHid=false;
 if(isWeb){try{const l=document.createElement("link");l.rel="manifest";l.href="manifest.webmanifest";document.head.appendChild(l);
  if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});}catch(e){}}
@@ -601,6 +615,10 @@ setTimeout(()=>showInst(),1500);
 let zpT=0;$("#zp").onclick=function(ev){if(!ev||!ev.isTrusted)return;const b=this;
  if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";},4000);}
  else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";clearProg();$("#opm").classList.remove("show");}};
+$("#vb").onclick=function(){vibOn=!vibOn;LSs("an8vib",vibOn?"yes":"no");this.textContent="📳 Vibração: "+(vibOn?"sim":"não");this.setAttribute("aria-pressed",vibOn);if(vibOn)vibrar("ok");};
+{const b=$("#vb");b.textContent="📳 Vibração: "+(vibOn?"sim":"não");b.setAttribute("aria-pressed",vibOn);}
+$("#tm").onclick=()=>{tema=TEMAS[(TEMAS.findIndex(t=>t[0]===tema)+1)%TEMAS.length][0];LSs("an8tema",tema);aplicaTema();};
+aplicaTema();
 $("#sn").onclick=function(){soundOn=!soundOn;this.textContent=(soundOn?"🔊":"🔇")+" Som: "+(soundOn?"sim":"não");this.setAttribute("aria-pressed",soundOn);beep("ok");};
 $("#op").onclick=e=>{e.stopPropagation();const m=$("#opm");m.classList.toggle("show");$("#op").setAttribute("aria-expanded",m.classList.contains("show"));};
 document.addEventListener("click",e=>{if(!e.target.closest(".opw"))$("#opm").classList.remove("show");});

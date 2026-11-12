@@ -8,6 +8,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 |---|---|
 | `index.html` | Telas do app |
 | `style.css` | Visual (cores, tamanhos, animações) |
+| `tema-claro.css` | Tema claro (gerado por `build/tema_claro.py` a partir do `style.css`) |
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
 | `progresso.js` | Meu progresso: caderno de erros, desempenho por tema, treino inteligente, simulado, ranking, continuar de onde parou e código para levar o progresso a outro aparelho |
@@ -30,6 +31,8 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 - **Levar para outro aparelho:** o aluno copia um código (AN8-...) e cola no outro aparelho; vêm as estrelas, o caderno e o histórico.
 
 Sem perfil ("Jogar sem salvar"), nada disso é gravado.
+
+Em **⚙️ Opções**: som, **vibração** (celular), **tema** escuro, claro ou automático (segue o aparelho) e tela cheia. Os resultados do Desafio final, do treino e do simulado têm o botão **📤 Compartilhar resultado** (WhatsApp etc.; no computador, copia o texto).
 
 ## Onde ficam as perguntas (`dados.js`)
 

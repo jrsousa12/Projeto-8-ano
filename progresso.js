@@ -171,7 +171,7 @@ function mostrar(m) {
       if (ok) { st.sc += HF ? .5 : 1; st.seq++; st.best = Math.max(st.best, st.seq); } else { st.seq = 0; st.miss.push(it.id); }
       if (HF) st.h++;
       if (cfg.sim) { st.resp[it.id] = x.k; st.i++; PG.salvarRodada(m, st); mostrar(m); return; }
-      beep(ok ? "ok" : "no"); if (typeof vibrar === "function") vibrar(ok);
+      beep(ok ? "ok" : "no");
       if (ok) { b.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🎉 <b>Correto!</b> " + it.w; if (st.seq > 0 && st.seq % 5 === 0) burst(40); }
       else { b.classList.add("no"); okB.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🤔 Não foi dessa vez. " + it.w; }
       st.i++; if (!st.rev) PG.salvarRodada(m, st);

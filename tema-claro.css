@@ -1,0 +1,77 @@
+/* Tema claro: gerado por build/tema_claro.py a partir do style.css (não edite à mão as regras geradas).
+   As regras do fim (ajustes) são fixas no gerador. */
+:where([data-theme=claro]) body{color:#0f172a}
+:where([data-theme=claro]) .bubble{background:radial-gradient(circle at 30% 30%,rgba(15,23,42,0.515),rgba(15,23,42,0.074))}
+:where([data-theme=claro]) .score{background:rgba(15,23,42,0.11);border:1px solid rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .score .bar{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .fs{background:rgba(15,23,42,0.11);border:1px solid rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .fs:hover{background:rgba(15,23,42,0.2)}
+:where([data-theme=claro]) nav button{background:rgba(15,23,42,0.092);border:1px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) nav button:hover{background:rgba(15,23,42,0.164)}
+:where([data-theme=claro]) .card{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .card:hover{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .panel{border:1px solid rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .hero .tag{background:rgba(255,255,255,0.7)}
+:where([data-theme=claro]) .info h3{color:#0369a1}
+:where([data-theme=claro]) .chip{background:rgba(15,23,42,0.128);border:1px solid rgba(15,23,42,0.2)}
+:where([data-theme=claro]) .know b{color:#a16207}
+:where([data-theme=claro]) .chal{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
+:where([data-theme=claro]) .cprog .dots i{background:rgba(15,23,42,0.245)}
+:where([data-theme=claro]) .cprog .dots i.c{box-shadow:0 0 0 3px rgba(15,23,42,0.29)}
+:where([data-theme=claro]) .tbar{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) #md{background:rgba(255,255,255,1)}
+:where([data-theme=claro]) .mdbox{color:#0f172a;border:1px solid rgba(15,23,42,0.2)}
+:where([data-theme=claro]) .mdbar{border-bottom:1px solid rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .mdbody th,:where([data-theme=claro]) .mdbody td{border-bottom:1px solid rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .dc{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .mini{background:rgba(255,255,255,0.625);border:1px dashed rgba(15,23,42,0.29)}
+:where([data-theme=claro]) .opt{background:rgba(15,23,42,0.101)}
+:where([data-theme=claro]) .opt:hover:not(:disabled){background:rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .pnav{border-top:1px solid rgba(15,23,42,0.128)}
+:where([data-theme=claro]) .btn{background:rgba(15,23,42,0.128)}
+:where([data-theme=claro]) .btn:hover{background:rgba(15,23,42,0.236)}
+:where([data-theme=claro]) .x{background:rgba(255,255,255,1)}
+:where([data-theme=claro]) .box{background:rgba(15,23,42,0.083);border:1px solid rgba(15,23,42,0.164)}
+:where([data-theme=claro]) .tcol{background:rgba(255,255,255,0.55)}
+:where([data-theme=claro]) .tube{background:rgba(15,23,42,0.146);border:3px solid rgba(15,23,42,0.335)}
+:where([data-theme=claro]) .say{background:rgba(15,23,42,0.11)}
+:where([data-theme=claro]) .stage{background:radial-gradient(circle at 50% 40%,rgba(125,211,252,.28),rgba(255,255,255,0.7))}
+:where([data-theme=claro]) .dot{background:rgba(15,23,42,0.11)}
+:where([data-theme=claro]) .qbar{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .pa{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .streak{color:#b45309}
+:where([data-theme=claro]) .review{background:rgba(255,255,255,0.55)}
+:where([data-theme=claro]) .opm{border:1px solid rgba(15,23,42,0.245)}
+:where([data-theme=claro]) .ht{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .ht:hover{background:rgba(15,23,42,0.164)}
+:where([data-theme=claro]) .scene{border:2px solid rgba(15,23,42,0.245)}
+:where([data-theme=claro]) .pf{background:rgba(15,23,42,0.785)}
+:where([data-theme=claro]) .btn.hint{color:#a16207}
+:where([data-theme=claro]) .fcard{background:rgba(15,23,42,0.083);border:1px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .fcard:hover{background:rgba(15,23,42,0.128)}
+:where([data-theme=claro]) .who{background:rgba(15,23,42,0.092);border:1px solid rgba(15,23,42,0.164)}
+:where([data-theme=claro]) .who input{border:2px solid rgba(15,23,42,0.245);background:rgba(255,255,255,0.625);color:#0f172a}
+:where([data-theme=claro]) #inst{border:1px solid rgba(15,23,42,0.29)}
+:where([data-theme=claro]) .rel{color:#a16207}
+:where([data-theme=claro]) .rkmsg{color:#a16207}
+:where([data-theme=claro]) .rk{background:rgba(255,255,255,0.5)}
+:where([data-theme=claro]) .rk li.eu{color:#a16207}
+:where([data-theme=claro]) .pgc{background:rgba(15,23,42,0.092);border:2px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .pgl{background:rgba(15,23,42,0.074)}
+:where([data-theme=claro]) .pgb{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .pgx input,:where([data-theme=claro]) #pgbox input{border:2px solid rgba(15,23,42,0.2);background:rgba(255,255,255,0.625)}
+:where([data-theme=claro]) ol.sim li{background:rgba(255,255,255,0.375)}
+
+/* ---------- ajustes fixos do tema claro ---------- */
+[data-theme=claro]{color-scheme:light}
+[data-theme=claro] body{background:#eef6fb;color:#0f172a}
+[data-theme=claro] .bg{background:radial-gradient(1200px 700px at 12% -10%,#a5f3fc 0%,transparent 60%),radial-gradient(1000px 700px at 105% 15%,#ddd6fe 0%,transparent 55%),radial-gradient(900px 600px at 50% 125%,#bbf7d0 0%,transparent 60%),#eef6fb}
+[data-theme=claro] .bubble{background:radial-gradient(circle at 30% 30%,rgba(14,116,144,.25),rgba(14,116,144,.03))}
+[data-theme=claro] .brand h1{background:linear-gradient(90deg,#b45309,#0f766e,#4338ca);-webkit-background-clip:text;background-clip:text}
+[data-theme=claro] .btn.pri,[data-theme=claro] nav button.on,[data-theme=claro] .bbtn,[data-theme=claro] .hero,[data-theme=claro] .hero h2{color:#fff}
+[data-theme=claro] .panel,[data-theme=claro] .opm,[data-theme=claro] .mdbox,[data-theme=claro] #inst{background:#fff;color:#0f172a}
+[data-theme=claro] .box,[data-theme=claro] .card,[data-theme=claro] .ht,[data-theme=claro] .pgc,[data-theme=claro] nav button:not(.on),[data-theme=claro] .fs,[data-theme=claro] .score{background-color:rgba(255,255,255,.75)}
+[data-theme=claro] .opt.ok{background:rgba(52,211,153,.3)}
+[data-theme=claro] .opt.no{background:rgba(251,113,133,.28)}
+[data-theme=claro] .hero .tag{background:rgba(0,0,0,.28);color:#fff}
+[data-theme=claro] .know{background:linear-gradient(135deg,rgba(251,191,36,.25),rgba(251,113,133,.15))}

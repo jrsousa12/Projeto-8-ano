@@ -180,6 +180,23 @@ testes["leva o progresso para outro aparelho com um código"] = async (p) => {
   confere(/inválido/.test(await p.textContent("#pg-msg")), "código inválido é recusado");
 };
 
+testes["opções: tema claro, vibração e compartilhar resultado"] = async (p) => {
+  await p.click("#op"); await p.click("#tm");
+  confere((await p.getAttribute("html", "data-theme")) === "claro", "tema claro ligado");
+  await p.reload();
+  confere((await p.getAttribute("html", "data-theme")) === "claro", "tema claro continua depois de recarregar");
+  await p.click("#op"); await p.click("#tm");
+  confere(/automático/.test(await p.textContent("#tm")), "terceira opção: automático");
+  await p.click("#vb");
+  confere(/não/.test(await p.textContent("#vb")), "vibração desligada");
+  await p.reload();
+  confere(/não/.test(await p.textContent("#vb")), "vibração continua desligada depois de recarregar");
+  await p.evaluate(() => { window.__txt = null; Object.defineProperty(navigator, "share", { value: t => { window.__txt = t.text; return Promise.resolve(); }, configurable: true }); });
+  await finalCom(p, 0);
+  await p.click("#sh-final");
+  confere(/acertei 10 de 10/.test(await p.evaluate(() => window.__txt)), "compartilha o texto do resultado");
+};
+
 testes["arquivo único abre direto do computador"] = async (p) => {
   await p.goto("file://" + path.join(RAIZ, "animais-8ano.html"));
   confere((await p.$$("#tabs button")).length >= 11, "animais-8ano.html abre com o menu completo");
