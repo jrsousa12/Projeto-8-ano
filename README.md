@@ -17,6 +17,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
 | `extras.js` | Curiosidade da tela inicial, aba Naturalistas (retratos desenhados no app), aba Ciclos dos vermes (animação passo a passo) e tela de Fontes |
+| `nivel.js` | XP, níveis, atividades e trilhas |
 | `progresso.js` | Meu progresso: caderno de erros, desempenho por tema, treino inteligente, simulado, ranking, continuar de onde parou e código para levar o progresso a outro aparelho |
 | `animais-8ano.html` | O app inteiro em um só arquivo, para abrir direto ou mandar por WhatsApp (gerado automaticamente) |
 | `manifest.webmanifest`, `sw.js`, `icon-*.png` | Instalação no celular e uso sem internet |
@@ -26,7 +27,16 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `build/arquivo-unico.py` | Gera o `animais-8ano.html` |
 | `.github/workflows/` | Conferências automáticas no GitHub (aba **Actions**) |
 
-## Recursos do aluno (aba 📊 Meu progresso)
+## Menu, XP, níveis e trilhas
+
+O menu tem 5 seções: **🏠 Início**, **🧭 Trilhas**, **📚 Estudar**, **🎮 Jogar** e **📊 Progresso** (no celular, fica embaixo da tela). O caminho no alto (ex.: 📚 Estudar › Fauna do Pará) e o botão Voltar levam da tela para a seção e da seção para o Início.
+
+- **XP:** cada atividade concluída pela primeira vez vale XP: estudar um grupo (+10), ganhar a estrela de um grupo (+50), explorar uma tela ou um cartão (+10), vencer um desafio de tela (+30), um jogo (+40), completar uma trilha (+100). Cada pergunta acertada vale +5 na primeira vez e +1 nas seguintes (até 4).
+- **Níveis:** 1 Observador(a) → 9 Especialista da Amazônia, pelo XP. O nível 10, **🏆 Mestre dos Animais**, só é alcançado com pelo menos **70% das atividades** do app concluídas.
+- **Trilhas:** 7 caminhos guiados (Invertebrados; Vertebrados e temperatura; Metamorfose e ciclos; Saúde e prevenção; Amazônia e Pará; Naturalistas e classificação; Rumo ao topo). O botão **Continuar** leva direto ao próximo passo.
+- O XP é calculado a partir das estrelas e do histórico salvos, por isso vai junto no código AN8-... de levar o progresso.
+
+## Recursos do aluno (📊 Progresso)
 
 - **Caderno de erros:** toda pergunta errada (em qualquer desafio) entra no caderno. "Treinar com meus erros" refaz essas perguntas; cada uma sai depois de 2 acertos seguidos.
 - **Desempenho por tema:** perguntas vistas e dominadas em cada um dos 13 grupos e nos desafios das abas, com botão para treinar só aquele tema.

@@ -70,6 +70,7 @@ const CIC = {
 let cM = "esq", cI = 0, cT = null;
 function cRender() {
   const L = CIC[cM], s = L[cI];
+  if (cI === L.length - 1 && typeof NV !== "undefined") NV.marcar("cic:" + cM);
   $("#cstg").innerHTML = s.s; $("#cT").textContent = s.t; $("#cD").textContent = s.d;
   $("#cdots").innerHTML = L.map((x, i) => `<button class="dot ${i === cI ? "on" : ""}" data-i="${i}">${x.t.replace(/^\d+\.\s*/, "")}</button>`).join("");
   $$("#cdots .dot").forEach(b => b.onclick = () => { cStop(); cI = +b.dataset.i; cRender(); });

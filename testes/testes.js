@@ -48,11 +48,19 @@ async function responder(p, caixa, seletorPergunta, certo, fonte) {
 
 const testes = {};
 
+/* abre uma tela pelo menu: as seções pelo menu de baixo e as telas pelos cartões da seção */
+const HUBS = { tree: "estudar", fic: "estudar", temp: "estudar", meta: "estudar", pa: "estudar", dis: "estudar", cic: "estudar", nat: "estudar", prat: "estudar", quiz: "jogar", cls: "jogar", img: "jogar" };
+async function abrir(p, t) {
+  if (!HUBS[t]) { await p.click(`#tabs button[data-t="${t}"]`); return; }
+  await p.click(`#tabs button[data-t="${HUBS[t]}"]`);
+  await p.click(`#${HUBS[t]} .ht[data-t="${t}"]`);
+}
+
 testes["abre sem erros e mostra todas as abas"] = async (p) => {
-  const abas = await p.$$eval("#tabs button", bs => bs.map(b => b.dataset.t));
-  confere(abas.length >= 11, abas.length + " abas no menu");
-  for (const t of abas) {
-    await p.click(`#tabs button[data-t="${t}"]`);
+  const menu = await p.$$eval("#tabs button", bs => bs.map(b => b.dataset.t));
+  confere(menu.join() === "home,trilhas,estudar,jogar,prog", "menu com 5 seções");
+  for (const t of [...menu, ...Object.keys(HUBS)]) {
+    await abrir(p, t);
     const vis = await p.$eval("#" + t, e => getComputedStyle(e).display !== "none" && e.innerText.trim().length > 20);
     confere(vis, "aba " + t + " aparece com conteúdo");
   }
@@ -61,20 +69,22 @@ testes["abre sem erros e mostra todas as abas"] = async (p) => {
 testes["ganha a estrela de um grupo e ela fica salva no perfil"] = async (p) => {
   await p.fill("#wn", "Teste");
   await p.click("#wok");
-  await p.click('#tabs button[data-t="tree"]');
+  await abrir(p, "tree");
   await p.click("#b-inv .bbtn");
   await p.click("#card-porifero");
   for (let i = 0; i < 5; i++) {
     await responder(p, "#chal", "p", true, "g");
     await p.click("#chal #cn");
   }
-  confere((await p.textContent("#stars")) === "1", "contador mostra 1 estrela");
+  confere(await p.$eval("#card-porifero", e => e.classList.contains("star")), "cartão dos poríferos ganha a estrela");
+  confere(/Nível 2/.test(await p.textContent("#nvt")), "subiu para o nível 2 (estudar + estrela + acertos)");
   await p.reload();
-  confere((await p.textContent("#stars")) === "1", "estrela continua depois de recarregar");
+  confere(await p.$eval("#card-porifero", e => e.classList.contains("star")), "estrela continua depois de recarregar");
+  confere(/Nível 2/.test(await p.textContent("#nvt")), "nível continua depois de recarregar");
 };
 
 testes["desafio final: 10 perguntas, resultado e revisão dos erros"] = async (p) => {
-  await p.click('#tabs button[data-t="quiz"]');
+  await abrir(p, "quiz");
   for (let i = 0; i < 10; i++) {
     await responder(p, "#qbox", ".qq", i >= 2, "f");
     await p.click("#qn-final");
@@ -86,7 +96,7 @@ testes["desafio final: 10 perguntas, resultado e revisão dos erros"] = async (p
 };
 
 testes["mini desafio de uma aba funciona"] = async (p) => {
-  await p.click('#tabs button[data-t="temp"]');
+  await abrir(p, "temp");
   for (let i = 0; i < 5; i++) {
     await responder(p, "#temp .mini", ".mqq", true, "m");
     await p.click("#temp #mnb");
@@ -95,10 +105,10 @@ testes["mini desafio de uma aba funciona"] = async (p) => {
 };
 
 testes["classifique e quem é este? funcionam"] = async (p) => {
-  await p.click('#tabs button[data-t="cls"]');
+  await abrir(p, "cls");
   for (let i = 0; i < 10; i++) { await p.click("#co .opt >> nth=0"); await p.click("#cn"); }
   confere(/Você classificou/.test(await p.textContent("#cbox")), "classifique chega ao resultado");
-  await p.click('#tabs button[data-t="img"]');
+  await abrir(p, "img");
   confere((await p.$$("#ibox .opt")).length >= 2, "quem é este? mostra alternativas");
 };
 
@@ -112,9 +122,9 @@ testes["funciona sem internet depois da primeira visita"] = async (p, ctx, url) 
   await ctx.setOffline(false);
 };
 
-async function perfil(p, nome) { await p.click('#tabs button[data-t="home"]'); await p.fill("#wn", nome); await p.click("#wok"); }
+async function perfil(p, nome) { await abrir(p, "home"); await p.fill("#wn", nome); await p.click("#wok"); }
 async function finalCom(p, erros) {
-  await p.click('#tabs button[data-t="quiz"]');
+  await abrir(p, "quiz");
   for (let i = 0; i < 10; i++) { await responder(p, "#qbox", ".qq", i >= erros, "f"); await p.click("#qn-final"); }
 }
 const textoCaderno = p => p.textContent("#pgbox .pgc");
@@ -122,7 +132,7 @@ const textoCaderno = p => p.textContent("#pgbox .pgc");
 testes["caderno de erros: erros entram e saem depois de 2 acertos seguidos"] = async (p) => {
   await perfil(p, "Ana");
   await finalCom(p, 2);
-  await p.click('#tabs button[data-t="prog"]');
+  await abrir(p, "prog");
   confere(/2\s*perguntas para treinar/.test(await textoCaderno(p)), "2 perguntas no caderno");
   confere((await p.$$("#pgbox .pgl")).length === 20, "desempenho com 20 temas");
   for (let volta = 0; volta < 2; volta++) {
@@ -136,10 +146,10 @@ testes["caderno de erros: erros entram e saem depois de 2 acertos seguidos"] = a
 
 testes["continua o desafio final de onde parou"] = async (p) => {
   await perfil(p, "Bia");
-  await p.click('#tabs button[data-t="quiz"]');
+  await abrir(p, "quiz");
   for (let i = 0; i < 3; i++) { await responder(p, "#qbox", ".qq", true, "f"); await p.click("#qn-final"); }
   await p.reload();
-  await p.click('#tabs button[data-t="quiz"]');
+  await abrir(p, "quiz");
   confere(/parou na pergunta\s*4 de 10/.test(await p.textContent("#qbox")), "oferece continuar da pergunta 4");
   await p.click("#rt-final");
   confere(/Pergunta 4\/10/.test(await p.textContent("#qbox .qtop")), "continua na pergunta 4");
@@ -148,7 +158,7 @@ testes["continua o desafio final de onde parou"] = async (p) => {
 
 testes["simulado: 20 perguntas, sem resposta conta na correção, ranking"] = async (p) => {
   await perfil(p, "Caio");
-  await p.click('#tabs button[data-t="prog"]');
+  await abrir(p, "prog");
   await p.click("#pg-sim");
   confere(/Pergunta 1\/20/.test(await p.textContent("#pgrun .qtop")), "simulado com 20 perguntas");
   confere(!(await p.$("#pgrun .hint")), "simulado sem dica");
@@ -163,14 +173,14 @@ testes["simulado: 20 perguntas, sem resposta conta na correção, ranking"] = as
 testes["leva o progresso para outro aparelho com um código"] = async (p) => {
   await perfil(p, "Duda");
   await finalCom(p, 1);
-  await p.click('#tabs button[data-t="prog"]');
+  await abrir(p, "prog");
   await p.click("#pg-exp");
   const cod = await p.inputValue("#pg-cod");
   confere(cod.startsWith("AN8-"), "gera o código");
   await p.evaluate(() => { localStorage.clear(); localStorage.setItem("an8inst", "no"); });
   await p.reload();
   await perfil(p, "Outro");
-  await p.click('#tabs button[data-t="prog"]');
+  await abrir(p, "prog");
   await p.fill("#pg-cod", cod);
   await p.click("#pg-imp");
   confere(/Duda/.test(await p.textContent("#pgbox .sub")), "troca para o aluno do código");
@@ -202,21 +212,21 @@ testes["curiosidade, naturalistas, ciclos dos vermes e fontes"] = async (p) => {
   confere(c1.length > 20, "curiosidade na tela inicial");
   await p.click("#curn");
   confere((await p.textContent("#curi p")) !== c1, "botão mostra outra curiosidade");
-  await p.click('#tabs button[data-t="nat"]');
+  await abrir(p, "nat");
   confere((await p.$$("#natg .card")).length === 7, "7 naturalistas");
   await p.click("#natg .card >> nth=6");
   confere(/Museu Paraense Emílio Goeldi/.test(await p.textContent("#panel")), "painel do Goeldi abre");
   await p.click("#panel .x");
   for (let i = 0; i < 5; i++) { await responder(p, "#nat .mini", ".mqq", true, "m"); await p.click("#nat #mnb"); }
   confere(/acertou\s*5\s*de 5/.test(await p.textContent("#nat .mini")), "desafio dos naturalistas");
-  await p.click('#tabs button[data-t="cic"]');
+  await abrir(p, "cic");
   for (const m of ["esq", "ten", "lom"]) {
     await p.click(`[data-c="${m}"]`);
     const n = (await p.$$("#cdots .dot")).length;
     await p.click(`#cdots .dot >> nth=${n - 1}`);
     confere(n === 6 && /prevenir/.test(await p.textContent("#cT")), "ciclo " + m + ": 6 etapas até a prevenção");
   }
-  await p.click('#tabs button[data-t="meta"]');
+  await abrir(p, "meta");
   await p.click("#dots .dot >> nth=2");
   confere(/Pupa/.test(await p.textContent("#stT")), "metamorfose continua funcionando");
   await p.click("#op"); await p.click("#fo");
@@ -257,10 +267,46 @@ testes["editor: cria e oculta perguntas e o app dos alunos recebe"] = async (p, 
   await q.close();
 };
 
+testes["menu: voltar da tela para a seção e da seção para o início"] = async (p) => {
+  await abrir(p, "dis");
+  confere(/Estudar/.test(await p.textContent("#trilho")), "caminho mostra a seção Estudar");
+  await p.click("#bk");
+  await p.waitForFunction(() => document.querySelector("#estudar").classList.contains("on"));
+  confere(true, "Voltar leva da tela para a seção");
+  await p.click("#bk");
+  await p.waitForFunction(() => document.querySelector("#home").classList.contains("on"));
+  confere(true, "Voltar leva da seção para o início");
+  await abrir(p, "cic");
+  await p.click('#tabs button[data-t="jogar"]');
+  confere(await p.$eval("#jogar", e => e.classList.contains("on")), "trocar de seção pelo menu");
+  await p.click('#tabs button[data-t="home"]');
+  await p.waitForFunction(() => document.querySelector("#home").classList.contains("on"));
+  confere(true, "Início volta para a tela inicial");
+};
+
+testes["XP, níveis, atividades e trilhas"] = async (p) => {
+  await perfil(p, "Eva");
+  confere(/0 XP/.test(await p.textContent("#nvxp")), "começa com 0 XP");
+  await p.click("#nvgo");
+  confere(await p.$eval("#ov", e => e.classList.contains("show")), "Continuar a trilha abre o primeiro passo (Poríferos)");
+  await p.click("#panel .x");
+  confere(/10 XP/.test(await p.textContent("#nvxp")), "estudar um grupo vale 10 XP");
+  await abrir(p, "trilhas");
+  confere((await p.$$("#trbox .tr")).length === 7, "7 trilhas");
+  confere(/1 de 16 passos/.test(await p.textContent("#trbox .tr")), "trilha dos invertebrados com 1 passo feito");
+  await abrir(p, "prog");
+  confere(/1 de \d+ atividades/.test(await p.textContent("#nvbox")), "Progresso conta as atividades");
+  /* nível máximo só com 70% das atividades */
+  const r = await p.evaluate(() => { const ids = NV.ATV.map(a => a.id).filter(id => !id.startsWith("estrela:"));
+    const meta = Math.ceil(NV.META * NV.ATV.length); ids.slice(0, meta - 1).forEach(id => { PG.H.at[id] = 1; }); NV.atualiza(); const antes = NV.calcula().lv;
+    PG.H.at[ids[meta - 1]] = 1; NV.atualiza(); return [antes, NV.calcula().lv]; });
+  confere(r[0] < 10 && r[1] === 10, "nível 10 só com 70% das atividades (" + r.join(" → ") + ")");
+};
+
 testes["arquivo único abre direto do computador"] = async (p) => {
   await p.goto("file://" + path.join(RAIZ, "animais-8ano.html"));
-  confere((await p.$$("#tabs button")).length >= 11, "animais-8ano.html abre com o menu completo");
-  await p.click('#tabs button[data-t="quiz"]');
+  confere((await p.$$("#tabs button")).length === 5, "animais-8ano.html abre com o menu completo");
+  await abrir(p, "quiz");
   confere(!!(await p.$("#qbox .opt")), "desafio final funciona no arquivo único");
 };
 

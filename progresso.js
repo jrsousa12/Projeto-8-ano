@@ -9,7 +9,7 @@ const PG = (() => {
   const MEM = {};                          // sem perfil: só na memória
   const ler = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
   const gravar = (k, v) => { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-  const vazio = () => ({ q: {}, c: [], r: [] });
+  const vazio = () => ({ q: {}, c: [], r: [], at: {} });
   let H = vazio();
 
   /* ---------- todas as perguntas do app, com id estável (tirado do texto) ---------- */
@@ -36,6 +36,7 @@ const PG = (() => {
     if (!n) { H = MEM["~"] || (MEM["~"] = vazio()); return; }
     const d = ler(HK(n));
     H = d && d.q && Array.isArray(d.c) && Array.isArray(d.r) ? d : vazio();
+    if (!H.at || typeof H.at !== "object") H.at = {};
     if (typeof prRender === "function") prRender();
   }
   const salvar = () => { if (PROF.cur) gravar(HK(PROF.cur), H); };
@@ -47,7 +48,10 @@ const PG = (() => {
     if (ok) { r.a++; r.s++; if (r.s >= 2) H.c = H.c.filter(x => x !== id); }
     else { r.s = 0; if (!H.c.includes(id)) H.c.push(id); }
     salvar();
+    if (typeof NV !== "undefined") NV.atualiza();
   }
+  /* atividade concluída (para o XP, o nível e as trilhas) */
+  function marcar(a) { if (!H.at) H.at = {}; if (H.at[a]) return false; H.at[a] = Date.now(); salvar(); return true; }
   function rodadaFeita(m, sc, n) { H.r.push({ m, d: Date.now(), s: sc, n }); if (H.r.length > 60) H.r = H.r.slice(-60); salvar(); }
   const dominada = id => (H.q[id] || {}).s >= 2;
 
@@ -123,12 +127,13 @@ const PG = (() => {
     Object.keys(d.h.q).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
     if (Array.isArray(d.h.c)) atual.c = [...new Set([...atual.c, ...d.h.c.filter(id => typeof id === "string")])].filter(id => !(atual.q[id] && atual.q[id].s >= 2));
     if (Array.isArray(d.h.r)) { const vis = new Set(atual.r.map(x => x.d)); d.h.r.forEach(x => { if (x && typeof x.d === "number" && !vis.has(x.d)) atual.r.push({ m: String(x.m), d: x.d, s: +x.s || 0, n: +x.n || 0 }); }); atual.r.sort((a, b) => a.d - b.d); atual.r = atual.r.slice(-60); }
+    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (typeof k === "string" && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
     gravar(HK(n), atual);
     switchTo(n);
     return "";
   }
 
-  return { idDe, item, todas, carregar, registrar, rodadaFeita, dominada, resumo, sugerir, simulado, ranking, ranquear, lerRodada, salvarRodada, apagar, limparHistorico, exportar, importar, areas: () => (indice(), AREAS), get H() { return H; } };
+  return { idDe, item, todas, carregar, registrar, marcar, rodadaFeita, dominada, resumo, sugerir, simulado, ranking, ranquear, lerRodada, salvarRodada, apagar, limparHistorico, exportar, importar, areas: () => (indice(), AREAS), get H() { return H; } };
 })();
 
 /* ---------- rodada de perguntas (desafio final, caderno de erros, treino e simulado) ----------
@@ -202,12 +207,13 @@ function resultado(m) {
   let pos = -1;
   if (!st.rev && !st.fim) {
     st.fim = true;
+    if (typeof NV !== "undefined") { if (m === "final" && pct >= .7) NV.marcar("jogo:final"); if (m === "simulado" && pct >= .6) NV.marcar("jogo:simulado"); if (m === "treino") NV.marcar("jogo:treino"); }
     if (cfg.sim) st.ids.forEach(id => { const it = PG.item(id), r = st.resp[id]; if (it && (r === undefined || r === -1)) PG.registrar(it.q, it.o, false); });
     PG.rodadaFeita(m, sc, n); if (cfg.rank && sc > 0) pos = PG.ranquear(m, sc, n);
     PG.salvarRodada(m, null);
   }
   const erros = st.miss.map(id => PG.item(id)).filter(Boolean);
-  box.innerHTML = `<div class="final"><div class="big">${msg[0]}</div><h2>${msg[1]}</h2><p style="font-size:24px;margin:10px 0 6px">${st.rev ? "Revisão: " : ""}Você acertou <b>${fmt(sc)}</b> de ${n}</p>${cfg.sim ? (st.rest <= 0 ? `<p>⏰ O tempo acabou.</p>` : "") : `<p>🔥 Maior sequência de acertos: <b>${st.best}</b></p>`}${hintLine(st.h)}${pos >= 0 ? `<p class="rkmsg">🏆 Você ficou em <b>${pos + 1}º lugar</b> no ranking deste aparelho!</p>` : ""}${!cfg.sim && erros.length ? `<div class="review"><b>📚 Revise estes pontos:</b><ul>${erros.map(it => `<li>${it.q} <b>${it.o[it.a]}</b></li>`).join("")}</ul></div>` : ""}${revisao}${erros.length && !cfg.sim ? `<p class="hintn">📒 As perguntas que você errou foram para o seu caderno de erros (aba 📊 Meu progresso).</p>` : ""}<div class="rnav">${erros.length ? `<button class="btn" id="rv-${m}">🔎 Rever só os ${erros.length} que errei</button> ` : ""}<button class="btn pri" id="ag-${m}">🔁 Jogar de novo</button>${cfg.voltar ? ` <button class="btn" id="vt-${m}">${cfg.voltar[0]}</button>` : ""}${typeof compartilhar === "function" && !st.rev ? ` <button class="btn" id="sh-${m}">📤 Compartilhar resultado</button>` : ""}</div>${cfg.rank ? rankHtml(m) : ""}</div>`;
+  box.innerHTML = `<div class="final"><div class="big">${msg[0]}</div><h2>${msg[1]}</h2><p style="font-size:24px;margin:10px 0 6px">${st.rev ? "Revisão: " : ""}Você acertou <b>${fmt(sc)}</b> de ${n}</p>${cfg.sim ? (st.rest <= 0 ? `<p>⏰ O tempo acabou.</p>` : "") : `<p>🔥 Maior sequência de acertos: <b>${st.best}</b></p>`}${hintLine(st.h)}${pos >= 0 ? `<p class="rkmsg">🏆 Você ficou em <b>${pos + 1}º lugar</b> no ranking deste aparelho!</p>` : ""}${!cfg.sim && erros.length ? `<div class="review"><b>📚 Revise estes pontos:</b><ul>${erros.map(it => `<li>${it.q} <b>${it.o[it.a]}</b></li>`).join("")}</ul></div>` : ""}${revisao}${erros.length && !cfg.sim ? `<p class="hintn">📒 As perguntas que você errou foram para o seu caderno de erros (📊 Progresso).</p>` : ""}<div class="rnav">${erros.length ? `<button class="btn" id="rv-${m}">🔎 Rever só os ${erros.length} que errei</button> ` : ""}<button class="btn pri" id="ag-${m}">🔁 Jogar de novo</button>${cfg.voltar ? ` <button class="btn" id="vt-${m}">${cfg.voltar[0]}</button>` : ""}${typeof compartilhar === "function" && !st.rev ? ` <button class="btn" id="sh-${m}">📤 Compartilhar resultado</button>` : ""}</div>${cfg.rank ? rankHtml(m) : ""}</div>`;
   if (erros.length) $("#rv-" + m, box).onclick = () => rodada(Object.assign({}, cfg, { sim: false, tempo: 0, rank: false, rev: true }), shuffle(erros.map(it => it.id)));
   $("#ag-" + m, box).onclick = () => cfg.denovo();
   if (cfg.voltar) $("#vt-" + m, box).onclick = cfg.voltar[1];
@@ -261,6 +267,7 @@ function prIniciar(m, forcar, area) {
 }
 function prRender() {
   const box = $("#pgbox"); if (!box) return;
+  const nvb = $("#nvbox"); if (nvb) { nvb.hidden = !!prModo; if (!prModo && typeof NV !== "undefined") NV.aba("prog"); }
   if (prModo) { if (!$("#pgrun")) box.innerHTML = `<div id="pgrun"></div>`; return; }
   const H = PG.H, A = PG.resumo(), AR = PG.areas(), nome = PROF.cur;
   const erros = H.c.filter(id => PG.item(id)).length;
@@ -270,7 +277,7 @@ function prRender() {
   const rodadas = H.r.slice(-10).reverse();
   const NM = { final: "🎯 Desafio final", erros: "📒 Caderno de erros", treino: "🧠 Treino", simulado: "📝 Simulado" };
   const salvos = ["erros", "treino", "simulado"].filter(m => { const s = PG.lerRodada(m); return s && !s.fim && s.i < (s.ids || []).length; });
-  box.innerHTML = `<h2>📊 Meu progresso</h2>
+  box.innerHTML = `<h2>📒 Caderno, treino e simulado</h2>
   <p class="sub">${nome ? `👤 <b>${esc(nome)}</b> · tudo fica salvo neste aparelho.` : `👤 Sem nome: o progresso <b>não</b> será salvo. Escolha um aluno na tela 🏠 Início.`}</p>
   <div class="pgcards">
    <div class="pgc" style="--c:#fb7185"><h3>📒 Caderno de erros</h3><p><b>${erros}</b> pergunta${erros === 1 ? "" : "s"} para treinar. Cada uma sai do caderno depois de 2 acertos seguidos.</p><div class="pgbt"><button class="btn pri" id="pg-erros"${erros ? "" : " disabled"}>Treinar com meus erros</button>${erros ? `<button class="btn" id="pg-lista">Ver a lista</button>` : ""}</div></div>

@@ -15,7 +15,7 @@
  <div class="brand"><h1>🔬 Animais 8º ano</h1><p>Ciências • 8º ano • Invertebrados e Vertebrados</p></div>
  <div class="hud">
   <button class="fs" id="bk" hidden aria-label="Voltar">◀ Voltar</button>
-  <div class="score" title="Acerte os desafios para ganhar estrelas"><span>⭐ <b id="stars">0</b>/13</span><div class="bar"><i id="sbar"></i></div></div>
+  <button class="score" id="nvb" title="Seu nível e XP: toque para ver o progresso"><span id="nvt">🔍 Nível 1</span><div class="bar"><i id="nvbar"></i></div><b id="nvxp">0 XP</b></button>
   <div class="opw"><button class="fs" id="op" aria-expanded="false">⚙️ Opções ▾</button>
    <div class="opm" id="opm">
     <button class="fs" id="sn" aria-pressed="false" title="Liga os efeitos sonoros">🔇 Som: não</button>
@@ -27,55 +27,63 @@
     <button class="fs" id="fo" title="Fontes do conteúdo do app">📚 Fontes e referências</button>
     <button class="fs" id="ai" title="Coloca o app na tela inicial">📲 Instalar na tela inicial</button>
     <button class="fs" id="af" aria-pressed="true" title="Abre em tela cheia no primeiro toque">⛶ Tela cheia automática: sim</button>
-    <div class="opnote">💾 As estrelas ficam salvas neste aparelho, por aluno.</div>
+    <div class="opnote">💾 XP, estrelas e progresso ficam salvos neste aparelho, por aluno.</div>
    </div></div>
  </div>
 </header>
-<nav id="tabs">
- <button class="on" data-t="home">🏠 Início</button>
- <span class="ng">Estudar</span>
- <button data-t="tree">🌳 Árvore</button>
- <button data-t="temp">🌡️ Temperatura</button>
- <button data-t="meta">🦋 Metamorfose</button>
- <button data-t="pa">🐊 Fauna do Pará</button>
- <button data-t="dis">🦠 Doenças</button>
- <button data-t="cic">🔄 Ciclos dos vermes</button>
- <button data-t="nat">🧑‍🔬 Naturalistas</button>
- <button data-t="fic">📄 Ficha da aula</button>
- <span class="ng">Praticar</span>
- <button data-t="prat">🧪 Atividades</button>
- <button data-t="prog">📊 Meu progresso</button>
- <span class="ng">Jogar</span>
- <button data-t="cls">🧩 Classifique</button>
- <button data-t="img">🖼️ Quem é este?</button>
- <button data-t="quiz">🎯 Desafio final</button>
+<nav id="tabs" aria-label="Menu principal">
+ <button class="on" data-t="home"><i>🏠</i><span>Início</span></button>
+ <button data-t="trilhas"><i>🧭</i><span>Trilhas</span></button>
+ <button data-t="estudar"><i>📚</i><span>Estudar</span></button>
+ <button data-t="jogar"><i>🎮</i><span>Jogar</span></button>
+ <button data-t="prog"><i>📊</i><span>Progresso</span></button>
 </nav>
 <main>
+ <div id="trilho" hidden></div>
  <section id="home" class="on">
   <div class="who" id="who"></div>
+  <div class="hnv" id="hnv"></div>
   <div class="curi" id="curi"></div>
-  <div class="hwel"><h2>O que vamos fazer hoje?</h2><p class="sub">Escolha uma atividade. Você pode voltar aqui a qualquer momento pelo botão <b>🏠 Início</b>.</p></div>
-  <div class="hgrp"><h2>📚 Estudar<small>conheça os animais</small></h2><div class="htiles">
-   <button class="ht" data-t="tree" style="--c:#14b8a6"><span class="ic">🌳</span><span><b>Árvore dos animais</b><span class="d">13 grupos, de esponjas a mamíferos</span></span></button>
-   <button class="ht" data-t="temp" style="--c:#f59e0b"><span class="ic">🌡️</span><span><b>Temperatura do corpo</b><span class="d">Veja como cada animal reage ao frio e ao calor</span></span></button>
-   <button class="ht" data-t="meta" style="--c:#a78bfa"><span class="ic">🦋</span><span><b>Metamorfose</b><span class="d">Borboleta, gafanhoto e sapo</span></span></button>
-   <button class="ht" data-t="pa" style="--c:#34d399"><span class="ic">🐊</span><span><b>Fauna do Pará</b><span class="d">12 animais da Amazônia</span></span></button>
-   <button class="ht" data-t="fic" style="--c:#818cf8"><span class="ic">📄</span><span><b>Ficha da aula</b><span class="d">Resumo dos 13 grupos em um só lugar</span></span></button>
-   <button class="ht" data-t="dis" style="--c:#fb7185"><span class="ic">🦠</span><span><b>Vermes e doenças</b><span class="d">Como se pega e como prevenir</span></span></button>
-   <button class="ht" data-t="cic" style="--c:#facc15"><span class="ic">🔄</span><span><b>Ciclos dos vermes</b><span class="d">Esquistossomo, tênia e lombriga, passo a passo</span></span></button>
-   <button class="ht" data-t="nat" style="--c:#22c55e"><span class="ic">🧑‍🔬</span><span><b>Naturalistas</b><span class="d">Quem estudou e classificou os animais</span></span></button>
-  </div></div>
-  <div class="hgrp"><h2>🧪 Praticar<small>mão na massa, individual</small></h2><div class="htiles">
-   <button class="ht" data-t="prat" style="--c:#38bdf8"><span class="ic">🧪</span><span><b>Atividades práticas</b><span class="d">4 atividades simples para fazer sozinho</span></span></button>
-   <button class="ht" data-t="prog" style="--c:#a78bfa"><span class="ic">📊</span><span><b>Meu progresso</b><span class="d">Caderno de erros, treino e simulado</span></span></button>
-  </div></div>
-  <div class="hgrp"><h2>🎮 Jogar<small>teste o que aprendeu</small></h2><div class="htiles">
-   <button class="ht" data-t="cls" style="--c:#fbbf24"><span class="ic">🧩</span><span><b>Classifique</b><span class="d">Em qual grupo o animal está?</span></span></button>
-   <button class="ht" data-t="img" style="--c:#22d3ee"><span class="ic">🖼️</span><span><b>Quem é este?</b><span class="d">Descubra o animal pela imagem</span></span></button>
-   <button class="ht" data-t="quiz" style="--c:#f472b6"><span class="ic">🎯</span><span><b>Desafio final</b><span class="d">Perguntas de todos os temas</span></span></button>
+  <div class="hgrp"><h2>Para onde vamos?</h2><div class="htiles">
+   <button class="ht" data-t="trilhas" style="--c:#f59e0b"><span class="ic">🧭</span><span><b>Trilhas</b><span class="d">Caminhos guiados, passo a passo</span></span></button>
+   <button class="ht" data-t="estudar" style="--c:#14b8a6"><span class="ic">📚</span><span><b>Estudar</b><span class="d">Árvore, temperatura, metamorfose, fauna, doenças e mais</span></span></button>
+   <button class="ht" data-t="jogar" style="--c:#f472b6"><span class="ic">🎮</span><span><b>Jogar</b><span class="d">Desafios, classifique, simulado e treino</span></span></button>
+   <button class="ht" data-t="prog" style="--c:#a78bfa"><span class="ic">📊</span><span><b>Progresso</b><span class="d">Nível, XP, atividades e caderno de erros</span></span></button>
   </div></div>
  </section>
- <section id="tree">
+ <section id="trilhas"><div class="box" id="trbox"></div></section>
+ <section id="estudar"><div class="box">
+  <h2>📚 Estudar</h2><p class="sub">Conheça os animais. Cada tela que você explora vale XP.</p>
+  <h3 class="hsub">Os animais</h3><div class="htiles">
+   <button class="ht" data-t="tree" style="--c:#14b8a6"><span class="ic">🌳</span><span><b>Árvore dos animais</b><span class="d">13 grupos, de esponjas a mamíferos</span></span></button>
+   <button class="ht" data-t="fic" style="--c:#818cf8"><span class="ic">📄</span><span><b>Ficha da aula</b><span class="d">Resumo dos 13 grupos em um só lugar</span></span></button>
+   <button class="ht" data-t="temp" style="--c:#f59e0b"><span class="ic">🌡️</span><span><b>Temperatura do corpo</b><span class="d">Ectotérmicos e endotérmicos</span></span></button>
+   <button class="ht" data-t="meta" style="--c:#a78bfa"><span class="ic">🦋</span><span><b>Metamorfose</b><span class="d">Borboleta, gafanhoto e sapo</span></span></button>
+  </div>
+  <h3 class="hsub">Amazônia e saúde</h3><div class="htiles">
+   <button class="ht" data-t="pa" style="--c:#34d399"><span class="ic">🐊</span><span><b>Fauna do Pará</b><span class="d">12 animais da Amazônia</span></span></button>
+   <button class="ht" data-t="dis" style="--c:#fb7185"><span class="ic">🦠</span><span><b>Vermes e doenças</b><span class="d">Como se pega e como prevenir</span></span></button>
+   <button class="ht" data-t="cic" style="--c:#facc15"><span class="ic">🔄</span><span><b>Ciclos dos vermes</b><span class="d">Esquistossomo, tênia e lombriga</span></span></button>
+  </div>
+  <h3 class="hsub">Ciência na prática</h3><div class="htiles">
+   <button class="ht" data-t="nat" style="--c:#22c55e"><span class="ic">🧑‍🔬</span><span><b>Naturalistas</b><span class="d">Quem estudou e classificou os animais</span></span></button>
+   <button class="ht" data-t="prat" style="--c:#38bdf8"><span class="ic">🧪</span><span><b>Atividades práticas</b><span class="d">4 atividades para fazer sozinho</span></span></button>
+  </div>
+ </div></section>
+ <section id="jogar"><div class="box">
+  <h2>🎮 Jogar</h2><p class="sub">Teste o que aprendeu. Cada acerto vale XP.</p>
+  <h3 class="hsub">Jogos</h3><div class="htiles">
+   <button class="ht" data-t="quiz" style="--c:#f472b6"><span class="ic">🎯</span><span><b>Desafio final</b><span class="d">Perguntas de todos os temas</span></span></button>
+   <button class="ht" data-t="cls" style="--c:#fbbf24"><span class="ic">🧩</span><span><b>Classifique</b><span class="d">Em qual grupo o animal está?</span></span></button>
+   <button class="ht" data-t="img" style="--c:#22d3ee"><span class="ic">🖼️</span><span><b>Quem é este?</b><span class="d">Descubra o animal pela imagem</span></span></button>
+  </div>
+  <h3 class="hsub">Treinar</h3><div class="htiles">
+   <button class="ht" data-pr="simulado" style="--c:#38bdf8"><span class="ic">📝</span><span><b>Simulado</b><span class="d">20 perguntas em 20 minutos</span></span></button>
+   <button class="ht" data-pr="treino" style="--c:#a78bfa"><span class="ic">🧠</span><span><b>Treino inteligente</b><span class="d">10 perguntas escolhidas para você</span></span></button>
+   <button class="ht" data-pr="erros" style="--c:#fb7185"><span class="ic">📒</span><span><b>Caderno de erros</b><span class="d">Refaça as perguntas que errou</span></span></button>
+  </div>
+ </div></section>
+  <section id="tree">
   <div class="root">🌍 ANIMAIS</div>
   <p class="hint">👇 Toque em um ramo para abrir. Depois toque em um animal e descubra os segredos dele!</p>
   <div class="stem"></div>
@@ -146,7 +154,7 @@
  <section id="fic"><div class="box" id="fbox"></div></section>
  <section id="img"><div class="box" id="ibox"></div></section>
  <section id="quiz"><div class="box" id="qbox"></div></section>
- <section id="prog"><div class="box" id="pgbox"></div></section>
+ <section id="prog"><div class="box" id="nvbox"></div><div class="box" id="pgbox"></div></section>
 </main>
 
 <div class="overlay" id="ov"><div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Detalhes do grupo animal"></div></div>
@@ -158,5 +166,6 @@
 <script src="app.js"></script>
 <script src="extras.js"></script>
 <script src="progresso.js"></script>
+<script src="nivel.js"></script>
 </body>
 </html>

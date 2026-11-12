@@ -90,7 +90,7 @@ G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.
  b.innerHTML=ICON[g.id]()+`<b>${g.n}</b>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
 $$(".bbtn").forEach(btn=>btn.onclick=()=>{const br=btn.parentElement;br.classList.toggle("open");
  if(br.classList.contains("open")){$$(".card",br).forEach(c=>{c.style.animation="none";void c.offsetWidth;c.style.animation=""});}});
-function updScore(){$("#stars").textContent=stars.size;$("#sbar").style.width=(stars.size/13*100)+"%";
+function updScore(){if(typeof NV!=="undefined")NV.atualiza();
  G.forEach(g=>{const c=$("#card-"+g.id);c.classList.toggle("star",stars.has(g.id));c.classList.toggle("seen",seen.has(g.id)&&!stars.has(g.id));});}
 
 /* ---------- progresso salvo neste aparelho (com assinatura) ---------- */
@@ -108,7 +108,7 @@ function readAll(){try{const d=JSON.parse(localStorage.getItem(PK)||"null");
 const profIds=n=>{const r=PROF.p[n];return r?(r.s?r.s.split(",").filter(id=>G.some(g=>g.id===id)):[]):[];};
 function saveProg(){if(!PROF.cur)return;const ids=[...stars].sort().join(",");PROF.p[PROF.cur]={s:ids,k:sigOf(PROF.cur,ids)};writeAll();}
 function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
- if(typeof PG!=="undefined"){PG.carregar();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
+ if(typeof PG!=="undefined"){PG.carregar();if(typeof NV!=="undefined")NV.recomeca();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
 function clearProg(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
@@ -127,7 +127,7 @@ function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF
 
 /* ---------- painel do animal ---------- */
 let cur=0;
-function openPanel(i){pmode="g";cur=i;const g=G[i];seen.add(g.id);updScore();
+function openPanel(i){pmode="g";cur=i;const g=G[i];seen.add(g.id);if(typeof NV!=="undefined")NV.marcar("estudar:"+g.id);updScore();
  const p=$("#panel");p.style.setProperty("--c",g.c);
  let sp="";for(let k=0;k<9;k++)sp+=`<i class="spark" style="left:${8+Math.random()*84}%;top:${8+Math.random()*84}%;animation-delay:${Math.random()*3}s"></i>`;
  p.innerHTML=`<button class="x" aria-label="Fechar">✕</button><div class="pgrid">
@@ -233,13 +233,28 @@ window.addEventListener("popstate",e=>{const l=(e.state&&typeof e.state.l==="num
 try{history.replaceState({l:0},"");}catch(e){}
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#md"))goBack();});
 /* ---------- abas ---------- */
-function showTab(t){$$("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===t));
+/* cada tela pertence a uma seção do menu */
+const HUB={home:"home",trilhas:"trilhas",estudar:"estudar",jogar:"jogar",prog:"prog",tree:"estudar",fic:"estudar",temp:"estudar",meta:"estudar",pa:"estudar",dis:"estudar",cic:"estudar",nat:"estudar",prat:"estudar",quiz:"jogar",cls:"jogar",img:"jogar"};
+const HUBN={trilhas:"🧭 Trilhas",estudar:"📚 Estudar",jogar:"🎮 Jogar",prog:"📊 Progresso"};
+let abaAtual="home";
+function trilho(t){const el=$("#trilho");if(!el)return;const h=HUB[t]||"home";
+ if(t===h||h==="home"){el.hidden=true;return;}
+ const ht=$('#'+h+' .ht[data-t="'+t+'"] b');el.hidden=false;
+ el.innerHTML=`<button class="trl" data-h="${h}">${HUBN[h]}</button> <span>›</span> <b>${ht?ht.textContent:t}</b>`;
+ $(".trl",el).onclick=()=>irPara(h);}
+function showTab(t){abaAtual=t;$$("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===(HUB[t]||t)));trilho(t);if(typeof NV!=="undefined")NV.aba(t);
  $$("main section").forEach(x=>x.classList.toggle("on",x.id===t));
  if(t==="quiz"&&!qState.started)startQuiz();if(t==="prog")prRender();if(t==="cls"&&!cS.started)startCls();if(t==="img"&&!iS.started)startImg();if(t==="fic"&&!$("#fbox").children.length)renderFic();
  window.scrollTo(0,0);const on=$("#tabs button.on");if(on)on.scrollIntoView({inline:"center",block:"nearest"});}
-$$("#tabs button").forEach(b=>b.onclick=()=>{const t=b.dataset.t;
- if(t==="home"){if(TABL)goBack();else showTab("home");}
- else{if(!TABL){TABL=true;pushLayer(()=>{TABL=false;showTab("home");});}showTab(t);}});
+/* Voltar: de uma tela volta para a seção dela; da seção volta para o Início */
+let SUBL=false,depois=null,hubIdx=0;
+function irPara(t){const h=HUB[t]||"home";
+ if(t==="home"){if(TABL){const k=LAY.length-hubIdx;if(k>0){try{history.go(-k);}catch(e){while(LAY.length>hubIdx)LAY.pop()();updBack();}}}else showTab("home");return;}
+ if(!TABL){TABL=true;hubIdx=LAY.length;pushLayer(()=>{TABL=false;SUBL=false;showTab("home");});}
+ if(t===h){if(SUBL){depois=t;goBack();}else showTab(t);return;}
+ if(!SUBL){SUBL=true;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||HUB[abaAtual]||"home");});}
+ showTab(t);}
+$$("#tabs button").forEach(b=>b.onclick=()=>irPara(b.dataset.t));
 $("#bk").onclick=goBack;
 
 /* ---------- ilustrações ---------- */
@@ -424,7 +439,7 @@ MS.gaf=[
 {t:"2. Ninfa",d:"Nasce a ninfa: parece um adulto em miniatura, mas sem asas. Cresce trocando de exoesqueleto (muda ou ecdise).",s:GAF(.62,false)},
 {t:"3. Adulto",d:"Depois de várias mudas surgem as asas e o animal fica adulto. Metamorfose incompleta: ovo, ninfa e adulto.",s:GAF(1,true)}];
 let mode="ins",stI=0,timer=null;
-function renderStage(){const L=MS[mode],s=L[stI];$("#stg").innerHTML=s.s;$("#stT").textContent=s.t;$("#stD").textContent=s.d;
+function renderStage(){const L=MS[mode],s=L[stI];if(stI===L.length-1&&typeof NV!=="undefined")NV.marcar("meta:"+mode);$("#stg").innerHTML=s.s;$("#stT").textContent=s.t;$("#stD").textContent=s.d;
  $("#dots").innerHTML=L.map((x,i)=>`<button class="dot ${i===stI?"on":""}" data-i="${i}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
  $$("#dots .dot").forEach(b=>b.onclick=()=>{stop();stI=+b.dataset.i;renderStage();});}
 function stop(){clearInterval(timer);timer=null;$("#play").textContent="▶ Reproduzir";}
@@ -474,6 +489,7 @@ function mini(sel,title,Q0){
   box.innerHTML=`<h3>🎯 ${title}</h3><p class="mres">🏁 Você acertou <b>${fmt(hits)}</b> de ${qs.length}.</p>${hintLine(hints)}${missed.length?`<button class="btn" id="mrv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="mrs">🔁 Jogar de novo (outras perguntas)</button>`;
   if(missed.length)$("#mrv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;rv=true;show();};
   if(hits===qs.length){burst(60);beep("star");}
+  if(!rv&&hits>=3&&typeof NV!=="undefined")NV.marcar("mini:"+title);
   $("#mrs",box).onclick=start;}
  start();}
 mini("#temp","Desafio da temperatura",MQ0["Desafio da temperatura"]);
@@ -493,7 +509,7 @@ const PRIC=["#34d399","#a78bfa","#fbbf24","#38bdf8"],PREM=["🔎","🦋","🥤",
 
 /* ---------- painel genérico (igual ao dos grupos) ---------- */
 let LD=[],curD=0;
-function openDet(L,i){pmode="d";LD=L;curD=i;const x=L[i];const p=$("#panel");p.style.setProperty("--c",x.c);
+function openDet(L,i){pmode="d";LD=L;curD=i;const x=L[i];if(x.aid&&typeof NV!=="undefined")NV.marcar(x.aid);const p=$("#panel");p.style.setProperty("--c",x.c);
  let sp="";for(let k=0;k<9;k++)sp+=`<i class="spark" style="left:${8+Math.random()*84}%;top:${8+Math.random()*84}%;animation-delay:${Math.random()*3}s"></i>`;
  p.innerHTML=`<button class="x" aria-label="Fechar">✕</button><div class="pgrid"><div class="hero">${sp}${x.svg}<h2>${x.name}</h2><span class="tag">${x.tag}</span><p style="opacity:.9">${x.sub||""}</p></div><div class="info">${x.html}</div></div>
  <div class="pnav"><button class="btn" id="pv">◀ Anterior</button><button class="btn pri" id="nx">Próximo ▶</button></div>`;
@@ -538,7 +554,7 @@ function startCls(list){cS.started=true;cS.review=!!list;cS.order=list?shuffle(l
 function renderCls(){const box=$("#cbox"),S=cS;
  if(S.i>=S.order.length){const pct=S.score/S.order.length;
   box.innerHTML=`<div class="final"><div class="big">${pct>=.9?"🏆":pct>=.6?"🌟":"🌱"}</div><h2>${S.review?"Revisão: ":""}Você classificou ${fmt(S.score)} de ${S.order.length}</h2><p style="margin:8px 0">🔥 Maior sequência: <b>${S.best}</b></p>${hintLine(S.hints)}${S.wrong.length?`<div class="review"><b>📚 Revise:</b><ul>${S.wrong.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}${S.missed.length?`<button class="btn" id="crev">🔎 Rever só os ${S.missed.length} que errei</button> `:""}<button class="btn pri" id="cagain">🔁 Jogar de novo</button></div>`;
-  $("#cagain").onclick=()=>startCls();if(S.missed.length)$("#crev").onclick=()=>startCls(S.missed.slice());if(pct>=.7)burst(160);return;}
+  if(!S.review&&pct>=.7&&typeof NV!=="undefined")NV.marcar("jogo:cls");$("#cagain").onclick=()=>startCls();if(S.missed.length)$("#crev").onclick=()=>startCls(S.missed.slice());if(pct>=.7)burst(160);return;}
  const [nome,gid]=S.order[S.i],g=G.find(x=>x.id===gid);
  box.innerHTML=`<h2>🧩 Em qual grupo ele está?</h2><p class="sub">Leia o nome do animal e escolha o grupo certo.</p><div class="qtop"><span>Animal ${S.i+1}/${S.order.length}</span><span>⭐ ${fmt(S.score)} <span class="streak">🔥 ${S.streak}</span></span></div><div class="qbar"><i style="width:${S.i/S.order.length*100}%"></i></div><div class="big-name">${nome}</div><div id="co"></div><div class="why" id="cw"></div><div style="margin-top:14px"><button class="btn pri" id="cn" style="display:none">Próximo ▶</button></div>`;
  let okG=null,cdone=false;const opts=shuffle([g,...shuffle(G.filter(x=>x.id!==gid)).slice(0,3)]);
@@ -582,6 +598,7 @@ function startImg(list){iS.started=true;iS.review=!!list;iS.order=list?shuffle(l
 function renderImg(){const box=$("#ibox"),S=iS;
  if(S.i>=S.order.length){const pct=S.score/S.order.length;
   box.innerHTML=`<div class="final"><div class="big">${pct>=.9?"🏆":pct>=.6?"🌟":"🌱"}</div><h2>${S.review?"Revisão: ":""}Você acertou ${fmt(S.score)} de ${S.order.length}</h2>${hintLine(S.hints)}${S.missed.length?`<button class="btn" id="irev">🔎 Rever só os ${S.missed.length} que errei</button> `:""}<button class="btn pri" id="iagain">🔁 Jogar de novo</button></div>`;
+  if(!S.review&&pct>=.7&&typeof NV!=="undefined")NV.marcar("jogo:img");
   $("#iagain").onclick=()=>startImg();if(S.missed.length)$("#irev").onclick=()=>startImg(S.missed.slice());if(pct>=.7)burst(140);return;}
  const it=S.order[S.i];let svg,ask,right,pool;
  if(it.k==="n"){svg=ART[PAK[it.i]]();ask="Que animal da Amazônia é este?";right=PA[it.i][0];pool=PA.filter((_,j)=>j!==it.i).map(x=>x[0]);}
@@ -633,4 +650,4 @@ aplicaTema();
 $("#sn").onclick=function(){soundOn=!soundOn;this.textContent=(soundOn?"🔊":"🔇")+" Som: "+(soundOn?"sim":"não");this.setAttribute("aria-pressed",soundOn);beep("ok");};
 $("#op").onclick=e=>{e.stopPropagation();const m=$("#opm");m.classList.toggle("show");$("#op").setAttribute("aria-expanded",m.classList.contains("show"));};
 document.addEventListener("click",e=>{if(!e.target.closest(".opw"))$("#opm").classList.remove("show");});
-$$(".ht").forEach(b=>b.onclick=()=>$('#tabs button[data-t="'+b.dataset.t+'"]').click());
+$$(".ht").forEach(b=>b.onclick=()=>{if(b.dataset.pr){irPara("prog");prIniciar(b.dataset.pr);}else irPara(b.dataset.t);});

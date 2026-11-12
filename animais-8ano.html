@@ -350,7 +350,86 @@ ol.sim small{opacity:.8}
 .curi:empty{display:none}
 .curic svg{width:64px;height:64px;display:block}
 .curi>div:nth-child(2){flex:1}.curi p{font-size:16px;margin-top:2px}
-@media (max-width:760px){.curi{flex-wrap:wrap}.curic svg{width:48px;height:48px}}
+@media (max-width:760px){.curi{flex-wrap:wrap}.curic svg{width:48px;height:48px}.curi>div:nth-child(2){flex:1 1 calc(100% - 70px)}.curi>button{margin-left:auto}}
+
+/* ---------- menu de 5 seções ---------- */
+nav#tabs{flex-wrap:nowrap;gap:8px}
+nav#tabs button{display:flex;align-items:center;gap:8px;flex:1;justify-content:center;font-size:17px}
+nav#tabs button i{font-style:normal;font-size:20px}
+#trilho{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:16px;flex-wrap:wrap}
+#trilho[hidden]{display:none}
+#trilho span{opacity:.6}
+.trl{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-weight:600}
+.trl:hover{background:rgba(255,255,255,.2)}
+.hsub{font-size:18px;margin:18px 0 10px;opacity:.9}
+.hsub:first-of-type{margin-top:6px}
+button.score{font:inherit;color:inherit;cursor:pointer;text-align:left}
+button.score:hover{background:rgba(255,255,255,.18)}
+#nvt{font-weight:700;white-space:nowrap}
+#nvxp{white-space:nowrap;font-size:14px;opacity:.9}
+.score .bar i#nvbar{background:linear-gradient(90deg,#34d399,#38bdf8)}
+
+/* ---------- nível ---------- */
+.nvcard{display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:24px;background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(139,92,246,.18));border:1px solid rgba(139,92,246,.4);margin-bottom:14px}
+.nvic{font-size:52px;line-height:1;animation:floaty 3s ease-in-out infinite}
+.nvinfo{flex:1;min-width:0}
+.nvtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:19px}
+.nvtop span{font-weight:700;color:#7dd3fc;white-space:nowrap}
+.nvinfo p{font-size:15px;margin-top:6px}
+.nvpct{opacity:.85}
+.nvbar{display:block;height:12px;border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden;margin-top:8px}
+.nvbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#34d399,#38bdf8);transition:width .6s}
+.nvcont{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(251,191,36,.45);margin-bottom:16px}
+.nvcont small{display:block;font-size:14px;opacity:.85}.nvcont b{font-size:17px}
+.hnv{max-width:900px;margin:0 auto}
+#nvtoast{position:fixed;left:50%;top:14px;transform:translate(-50%,-140%);z-index:300;padding:12px 20px;border-radius:999px;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#fff;font-weight:700;box-shadow:0 14px 34px -10px rgba(0,0,0,.6);transition:transform .35s;max-width:calc(100vw - 32px);text-align:center;pointer-events:none}
+#nvtoast.show{transform:translate(-50%,0)}
+#nvtoast.leve{background:rgba(15,23,42,.92);border:1px solid rgba(52,211,153,.6);font-weight:600}
+
+/* ---------- trilhas ---------- */
+.trs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tr{padding:16px;border-radius:22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:6px}
+.tr.ok{border-color:rgba(52,211,153,.7)}
+.trh{display:flex;gap:12px;align-items:center}
+.tric{font-size:36px}
+.trh b{display:block;font-size:18px}.trh small{display:block;font-size:14px;opacity:.85}
+.trf{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;margin-top:4px}
+.tr details,.nvcat{font-size:15px}
+.tr summary,.nvcat summary{cursor:pointer;opacity:.85;margin-top:4px}
+.tr ol{margin:6px 0 0 4px;list-style:none}
+.trp{display:block;width:100%;text-align:left;padding:5px 8px;border-radius:10px}
+.trp:hover{background:rgba(255,255,255,.1)}
+li.f .trp{opacity:.7}
+.trp small{opacity:.7}
+.nvtr{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.nvt{text-align:left;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.nvt.ok{border-color:rgba(52,211,153,.7)}
+.nvt small{opacity:.75;font-size:13px}
+.nvcats{display:grid;gap:8px}
+.nvcat{padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.06)}
+.nvcat summary{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;list-style:none;opacity:1}
+.nvcat summary .nvbar{grid-column:1/-1;margin-top:2px;height:8px}
+.nvcat ul{list-style:none;margin-top:6px}
+#prog>.box{margin-bottom:16px}
+#nvbox[hidden]{display:none}
+
+@media (max-width:760px){
+ nav#tabs{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0;padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:2px;z-index:60;background:rgba(6,14,38,.96);border-top:1px solid rgba(255,255,255,.12);overflow:visible}
+ nav#tabs button{flex-direction:column;gap:2px;padding:6px 2px;font-size:12px;border-radius:12px;border:0;background:transparent;min-width:0}
+ nav#tabs button i{font-size:22px}
+ nav#tabs button.on{background:linear-gradient(135deg,#0ea5e9,#8b5cf6);box-shadow:none}
+ main{padding-bottom:110px}
+ #nvb{gap:6px;padding:8px 12px}
+ #nvb .bar{display:none}
+ #nvb #nvxp{margin-left:auto}
+ .nvcard{padding:12px 14px;gap:12px}.nvic{font-size:40px}.nvtop{font-size:17px}
+ .nvcont{flex-wrap:wrap}
+ .trs{grid-template-columns:1fr}
+ #nvtoast{top:auto;bottom:86px;transform:translate(-50%,200%)}
+ #nvtoast.show{transform:translate(-50%,0)}
+}
+[data-theme=claro] nav#tabs{background:rgba(255,255,255,.96);border-top-color:rgba(15,23,42,.12)}
+[data-theme=claro] #nvtoast.leve{background:#fff;color:#0f172a}
 
 </style>
 <style>
@@ -418,6 +497,19 @@ ol.sim small{opacity:.8}
 :where([data-theme=claro]) .pgb{background:rgba(15,23,42,0.155)}
 :where([data-theme=claro]) .pgx input,:where([data-theme=claro]) #pgbox input{border:2px solid rgba(15,23,42,0.2);background:rgba(255,255,255,0.625)}
 :where([data-theme=claro]) ol.sim li{background:rgba(255,255,255,0.375)}
+:where([data-theme=claro]) .trl{background:rgba(15,23,42,0.11);border:1px solid rgba(15,23,42,0.164)}
+:where([data-theme=claro]) .trl:hover{background:rgba(15,23,42,0.2)}
+:where([data-theme=claro]) button.score:hover{background:rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .nvtop span{color:#0369a1}
+:where([data-theme=claro]) .nvbar{background:rgba(15,23,42,0.155)}
+:where([data-theme=claro]) .nvcont{background:rgba(15,23,42,0.083)}
+:where([data-theme=claro]) #nvtoast{color:#0f172a;box-shadow:0 14px 34px -10px rgba(255,255,255,1)}
+:where([data-theme=claro]) .tr{background:rgba(15,23,42,0.083);border:1px solid rgba(15,23,42,0.146)}
+:where([data-theme=claro]) .trp:hover{background:rgba(15,23,42,0.11)}
+:where([data-theme=claro]) .nvt{background:rgba(15,23,42,0.074);border:1px solid rgba(15,23,42,0.128)}
+:where([data-theme=claro]) .nvcat{background:rgba(15,23,42,0.074)}
+@media (max-width:760px){:where([data-theme=claro]) nav#tabs{border-top:1px solid rgba(15,23,42,0.128)}}
+:where([data-theme=claro]) [data-theme=claro] nav#tabs{background:rgba(15,23,42,0.884)}
 
 /* ---------- ajustes fixos do tema claro ---------- */
 [data-theme=claro]{color-scheme:light}
@@ -441,7 +533,7 @@ ol.sim small{opacity:.8}
  <div class="brand"><h1>🔬 Animais 8º ano</h1><p>Ciências • 8º ano • Invertebrados e Vertebrados</p></div>
  <div class="hud">
   <button class="fs" id="bk" hidden aria-label="Voltar">◀ Voltar</button>
-  <div class="score" title="Acerte os desafios para ganhar estrelas"><span>⭐ <b id="stars">0</b>/13</span><div class="bar"><i id="sbar"></i></div></div>
+  <button class="score" id="nvb" title="Seu nível e XP: toque para ver o progresso"><span id="nvt">🔍 Nível 1</span><div class="bar"><i id="nvbar"></i></div><b id="nvxp">0 XP</b></button>
   <div class="opw"><button class="fs" id="op" aria-expanded="false">⚙️ Opções ▾</button>
    <div class="opm" id="opm">
     <button class="fs" id="sn" aria-pressed="false" title="Liga os efeitos sonoros">🔇 Som: não</button>
@@ -452,55 +544,63 @@ ol.sim small{opacity:.8}
     <button class="fs" id="fo" title="Fontes do conteúdo do app">📚 Fontes e referências</button>
     <button class="fs" id="ai" title="Coloca o app na tela inicial">📲 Instalar na tela inicial</button>
     <button class="fs" id="af" aria-pressed="true" title="Abre em tela cheia no primeiro toque">⛶ Tela cheia automática: sim</button>
-    <div class="opnote">💾 As estrelas ficam salvas neste aparelho, por aluno.</div>
+    <div class="opnote">💾 XP, estrelas e progresso ficam salvos neste aparelho, por aluno.</div>
    </div></div>
  </div>
 </header>
-<nav id="tabs">
- <button class="on" data-t="home">🏠 Início</button>
- <span class="ng">Estudar</span>
- <button data-t="tree">🌳 Árvore</button>
- <button data-t="temp">🌡️ Temperatura</button>
- <button data-t="meta">🦋 Metamorfose</button>
- <button data-t="pa">🐊 Fauna do Pará</button>
- <button data-t="dis">🦠 Doenças</button>
- <button data-t="cic">🔄 Ciclos dos vermes</button>
- <button data-t="nat">🧑‍🔬 Naturalistas</button>
- <button data-t="fic">📄 Ficha da aula</button>
- <span class="ng">Praticar</span>
- <button data-t="prat">🧪 Atividades</button>
- <button data-t="prog">📊 Meu progresso</button>
- <span class="ng">Jogar</span>
- <button data-t="cls">🧩 Classifique</button>
- <button data-t="img">🖼️ Quem é este?</button>
- <button data-t="quiz">🎯 Desafio final</button>
+<nav id="tabs" aria-label="Menu principal">
+ <button class="on" data-t="home"><i>🏠</i><span>Início</span></button>
+ <button data-t="trilhas"><i>🧭</i><span>Trilhas</span></button>
+ <button data-t="estudar"><i>📚</i><span>Estudar</span></button>
+ <button data-t="jogar"><i>🎮</i><span>Jogar</span></button>
+ <button data-t="prog"><i>📊</i><span>Progresso</span></button>
 </nav>
 <main>
+ <div id="trilho" hidden></div>
  <section id="home" class="on">
   <div class="who" id="who"></div>
+  <div class="hnv" id="hnv"></div>
   <div class="curi" id="curi"></div>
-  <div class="hwel"><h2>O que vamos fazer hoje?</h2><p class="sub">Escolha uma atividade. Você pode voltar aqui a qualquer momento pelo botão <b>🏠 Início</b>.</p></div>
-  <div class="hgrp"><h2>📚 Estudar<small>conheça os animais</small></h2><div class="htiles">
-   <button class="ht" data-t="tree" style="--c:#14b8a6"><span class="ic">🌳</span><span><b>Árvore dos animais</b><span class="d">13 grupos, de esponjas a mamíferos</span></span></button>
-   <button class="ht" data-t="temp" style="--c:#f59e0b"><span class="ic">🌡️</span><span><b>Temperatura do corpo</b><span class="d">Veja como cada animal reage ao frio e ao calor</span></span></button>
-   <button class="ht" data-t="meta" style="--c:#a78bfa"><span class="ic">🦋</span><span><b>Metamorfose</b><span class="d">Borboleta, gafanhoto e sapo</span></span></button>
-   <button class="ht" data-t="pa" style="--c:#34d399"><span class="ic">🐊</span><span><b>Fauna do Pará</b><span class="d">12 animais da Amazônia</span></span></button>
-   <button class="ht" data-t="fic" style="--c:#818cf8"><span class="ic">📄</span><span><b>Ficha da aula</b><span class="d">Resumo dos 13 grupos em um só lugar</span></span></button>
-   <button class="ht" data-t="dis" style="--c:#fb7185"><span class="ic">🦠</span><span><b>Vermes e doenças</b><span class="d">Como se pega e como prevenir</span></span></button>
-   <button class="ht" data-t="cic" style="--c:#facc15"><span class="ic">🔄</span><span><b>Ciclos dos vermes</b><span class="d">Esquistossomo, tênia e lombriga, passo a passo</span></span></button>
-   <button class="ht" data-t="nat" style="--c:#22c55e"><span class="ic">🧑‍🔬</span><span><b>Naturalistas</b><span class="d">Quem estudou e classificou os animais</span></span></button>
-  </div></div>
-  <div class="hgrp"><h2>🧪 Praticar<small>mão na massa, individual</small></h2><div class="htiles">
-   <button class="ht" data-t="prat" style="--c:#38bdf8"><span class="ic">🧪</span><span><b>Atividades práticas</b><span class="d">4 atividades simples para fazer sozinho</span></span></button>
-   <button class="ht" data-t="prog" style="--c:#a78bfa"><span class="ic">📊</span><span><b>Meu progresso</b><span class="d">Caderno de erros, treino e simulado</span></span></button>
-  </div></div>
-  <div class="hgrp"><h2>🎮 Jogar<small>teste o que aprendeu</small></h2><div class="htiles">
-   <button class="ht" data-t="cls" style="--c:#fbbf24"><span class="ic">🧩</span><span><b>Classifique</b><span class="d">Em qual grupo o animal está?</span></span></button>
-   <button class="ht" data-t="img" style="--c:#22d3ee"><span class="ic">🖼️</span><span><b>Quem é este?</b><span class="d">Descubra o animal pela imagem</span></span></button>
-   <button class="ht" data-t="quiz" style="--c:#f472b6"><span class="ic">🎯</span><span><b>Desafio final</b><span class="d">Perguntas de todos os temas</span></span></button>
+  <div class="hgrp"><h2>Para onde vamos?</h2><div class="htiles">
+   <button class="ht" data-t="trilhas" style="--c:#f59e0b"><span class="ic">🧭</span><span><b>Trilhas</b><span class="d">Caminhos guiados, passo a passo</span></span></button>
+   <button class="ht" data-t="estudar" style="--c:#14b8a6"><span class="ic">📚</span><span><b>Estudar</b><span class="d">Árvore, temperatura, metamorfose, fauna, doenças e mais</span></span></button>
+   <button class="ht" data-t="jogar" style="--c:#f472b6"><span class="ic">🎮</span><span><b>Jogar</b><span class="d">Desafios, classifique, simulado e treino</span></span></button>
+   <button class="ht" data-t="prog" style="--c:#a78bfa"><span class="ic">📊</span><span><b>Progresso</b><span class="d">Nível, XP, atividades e caderno de erros</span></span></button>
   </div></div>
  </section>
- <section id="tree">
+ <section id="trilhas"><div class="box" id="trbox"></div></section>
+ <section id="estudar"><div class="box">
+  <h2>📚 Estudar</h2><p class="sub">Conheça os animais. Cada tela que você explora vale XP.</p>
+  <h3 class="hsub">Os animais</h3><div class="htiles">
+   <button class="ht" data-t="tree" style="--c:#14b8a6"><span class="ic">🌳</span><span><b>Árvore dos animais</b><span class="d">13 grupos, de esponjas a mamíferos</span></span></button>
+   <button class="ht" data-t="fic" style="--c:#818cf8"><span class="ic">📄</span><span><b>Ficha da aula</b><span class="d">Resumo dos 13 grupos em um só lugar</span></span></button>
+   <button class="ht" data-t="temp" style="--c:#f59e0b"><span class="ic">🌡️</span><span><b>Temperatura do corpo</b><span class="d">Ectotérmicos e endotérmicos</span></span></button>
+   <button class="ht" data-t="meta" style="--c:#a78bfa"><span class="ic">🦋</span><span><b>Metamorfose</b><span class="d">Borboleta, gafanhoto e sapo</span></span></button>
+  </div>
+  <h3 class="hsub">Amazônia e saúde</h3><div class="htiles">
+   <button class="ht" data-t="pa" style="--c:#34d399"><span class="ic">🐊</span><span><b>Fauna do Pará</b><span class="d">12 animais da Amazônia</span></span></button>
+   <button class="ht" data-t="dis" style="--c:#fb7185"><span class="ic">🦠</span><span><b>Vermes e doenças</b><span class="d">Como se pega e como prevenir</span></span></button>
+   <button class="ht" data-t="cic" style="--c:#facc15"><span class="ic">🔄</span><span><b>Ciclos dos vermes</b><span class="d">Esquistossomo, tênia e lombriga</span></span></button>
+  </div>
+  <h3 class="hsub">Ciência na prática</h3><div class="htiles">
+   <button class="ht" data-t="nat" style="--c:#22c55e"><span class="ic">🧑‍🔬</span><span><b>Naturalistas</b><span class="d">Quem estudou e classificou os animais</span></span></button>
+   <button class="ht" data-t="prat" style="--c:#38bdf8"><span class="ic">🧪</span><span><b>Atividades práticas</b><span class="d">4 atividades para fazer sozinho</span></span></button>
+  </div>
+ </div></section>
+ <section id="jogar"><div class="box">
+  <h2>🎮 Jogar</h2><p class="sub">Teste o que aprendeu. Cada acerto vale XP.</p>
+  <h3 class="hsub">Jogos</h3><div class="htiles">
+   <button class="ht" data-t="quiz" style="--c:#f472b6"><span class="ic">🎯</span><span><b>Desafio final</b><span class="d">Perguntas de todos os temas</span></span></button>
+   <button class="ht" data-t="cls" style="--c:#fbbf24"><span class="ic">🧩</span><span><b>Classifique</b><span class="d">Em qual grupo o animal está?</span></span></button>
+   <button class="ht" data-t="img" style="--c:#22d3ee"><span class="ic">🖼️</span><span><b>Quem é este?</b><span class="d">Descubra o animal pela imagem</span></span></button>
+  </div>
+  <h3 class="hsub">Treinar</h3><div class="htiles">
+   <button class="ht" data-pr="simulado" style="--c:#38bdf8"><span class="ic">📝</span><span><b>Simulado</b><span class="d">20 perguntas em 20 minutos</span></span></button>
+   <button class="ht" data-pr="treino" style="--c:#a78bfa"><span class="ic">🧠</span><span><b>Treino inteligente</b><span class="d">10 perguntas escolhidas para você</span></span></button>
+   <button class="ht" data-pr="erros" style="--c:#fb7185"><span class="ic">📒</span><span><b>Caderno de erros</b><span class="d">Refaça as perguntas que errou</span></span></button>
+  </div>
+ </div></section>
+  <section id="tree">
   <div class="root">🌍 ANIMAIS</div>
   <p class="hint">👇 Toque em um ramo para abrir. Depois toque em um animal e descubra os segredos dele!</p>
   <div class="stem"></div>
@@ -571,7 +671,7 @@ ol.sim small{opacity:.8}
  <section id="fic"><div class="box" id="fbox"></div></section>
  <section id="img"><div class="box" id="ibox"></div></section>
  <section id="quiz"><div class="box" id="qbox"></div></section>
- <section id="prog"><div class="box" id="pgbox"></div></section>
+ <section id="prog"><div class="box" id="nvbox"></div><div class="box" id="pgbox"></div></section>
 </main>
 
 <div class="overlay" id="ov"><div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Detalhes do grupo animal"></div></div>
@@ -1687,7 +1787,7 @@ G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.
  b.innerHTML=ICON[g.id]()+`<b>${g.n}</b>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
 $$(".bbtn").forEach(btn=>btn.onclick=()=>{const br=btn.parentElement;br.classList.toggle("open");
  if(br.classList.contains("open")){$$(".card",br).forEach(c=>{c.style.animation="none";void c.offsetWidth;c.style.animation=""});}});
-function updScore(){$("#stars").textContent=stars.size;$("#sbar").style.width=(stars.size/13*100)+"%";
+function updScore(){if(typeof NV!=="undefined")NV.atualiza();
  G.forEach(g=>{const c=$("#card-"+g.id);c.classList.toggle("star",stars.has(g.id));c.classList.toggle("seen",seen.has(g.id)&&!stars.has(g.id));});}
 
 /* ---------- progresso salvo neste aparelho (com assinatura) ---------- */
@@ -1705,7 +1805,7 @@ function readAll(){try{const d=JSON.parse(localStorage.getItem(PK)||"null");
 const profIds=n=>{const r=PROF.p[n];return r?(r.s?r.s.split(",").filter(id=>G.some(g=>g.id===id)):[]):[];};
 function saveProg(){if(!PROF.cur)return;const ids=[...stars].sort().join(",");PROF.p[PROF.cur]={s:ids,k:sigOf(PROF.cur,ids)};writeAll();}
 function loadProfile(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);if(PROF.cur)profIds(PROF.cur).forEach(id=>{stars.add(id);seen.add(id);});
- if(typeof PG!=="undefined"){PG.carregar();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
+ if(typeof PG!=="undefined"){PG.carregar();if(typeof NV!=="undefined")NV.recomeca();qState.started=false;if($("#quiz").classList.contains("on"))startQuiz();}}
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
 function clearProg(){stars.clear();seen.clear();Object.keys(RES).forEach(k=>delete RES[k]);saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
@@ -1724,7 +1824,7 @@ function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF
 
 /* ---------- painel do animal ---------- */
 let cur=0;
-function openPanel(i){pmode="g";cur=i;const g=G[i];seen.add(g.id);updScore();
+function openPanel(i){pmode="g";cur=i;const g=G[i];seen.add(g.id);if(typeof NV!=="undefined")NV.marcar("estudar:"+g.id);updScore();
  const p=$("#panel");p.style.setProperty("--c",g.c);
  let sp="";for(let k=0;k<9;k++)sp+=`<i class="spark" style="left:${8+Math.random()*84}%;top:${8+Math.random()*84}%;animation-delay:${Math.random()*3}s"></i>`;
  p.innerHTML=`<button class="x" aria-label="Fechar">✕</button><div class="pgrid">
@@ -1830,13 +1930,28 @@ window.addEventListener("popstate",e=>{const l=(e.state&&typeof e.state.l==="num
 try{history.replaceState({l:0},"");}catch(e){}
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#md"))goBack();});
 /* ---------- abas ---------- */
-function showTab(t){$$("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===t));
+/* cada tela pertence a uma seção do menu */
+const HUB={home:"home",trilhas:"trilhas",estudar:"estudar",jogar:"jogar",prog:"prog",tree:"estudar",fic:"estudar",temp:"estudar",meta:"estudar",pa:"estudar",dis:"estudar",cic:"estudar",nat:"estudar",prat:"estudar",quiz:"jogar",cls:"jogar",img:"jogar"};
+const HUBN={trilhas:"🧭 Trilhas",estudar:"📚 Estudar",jogar:"🎮 Jogar",prog:"📊 Progresso"};
+let abaAtual="home";
+function trilho(t){const el=$("#trilho");if(!el)return;const h=HUB[t]||"home";
+ if(t===h||h==="home"){el.hidden=true;return;}
+ const ht=$('#'+h+' .ht[data-t="'+t+'"] b');el.hidden=false;
+ el.innerHTML=`<button class="trl" data-h="${h}">${HUBN[h]}</button> <span>›</span> <b>${ht?ht.textContent:t}</b>`;
+ $(".trl",el).onclick=()=>irPara(h);}
+function showTab(t){abaAtual=t;$$("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===(HUB[t]||t)));trilho(t);if(typeof NV!=="undefined")NV.aba(t);
  $$("main section").forEach(x=>x.classList.toggle("on",x.id===t));
  if(t==="quiz"&&!qState.started)startQuiz();if(t==="prog")prRender();if(t==="cls"&&!cS.started)startCls();if(t==="img"&&!iS.started)startImg();if(t==="fic"&&!$("#fbox").children.length)renderFic();
  window.scrollTo(0,0);const on=$("#tabs button.on");if(on)on.scrollIntoView({inline:"center",block:"nearest"});}
-$$("#tabs button").forEach(b=>b.onclick=()=>{const t=b.dataset.t;
- if(t==="home"){if(TABL)goBack();else showTab("home");}
- else{if(!TABL){TABL=true;pushLayer(()=>{TABL=false;showTab("home");});}showTab(t);}});
+/* Voltar: de uma tela volta para a seção dela; da seção volta para o Início */
+let SUBL=false,depois=null,hubIdx=0;
+function irPara(t){const h=HUB[t]||"home";
+ if(t==="home"){if(TABL){const k=LAY.length-hubIdx;if(k>0){try{history.go(-k);}catch(e){while(LAY.length>hubIdx)LAY.pop()();updBack();}}}else showTab("home");return;}
+ if(!TABL){TABL=true;hubIdx=LAY.length;pushLayer(()=>{TABL=false;SUBL=false;showTab("home");});}
+ if(t===h){if(SUBL){depois=t;goBack();}else showTab(t);return;}
+ if(!SUBL){SUBL=true;pushLayer(()=>{SUBL=false;const d=depois;depois=null;showTab(d||HUB[abaAtual]||"home");});}
+ showTab(t);}
+$$("#tabs button").forEach(b=>b.onclick=()=>irPara(b.dataset.t));
 $("#bk").onclick=goBack;
 
 /* ---------- ilustrações ---------- */
@@ -2021,7 +2136,7 @@ MS.gaf=[
 {t:"2. Ninfa",d:"Nasce a ninfa: parece um adulto em miniatura, mas sem asas. Cresce trocando de exoesqueleto (muda ou ecdise).",s:GAF(.62,false)},
 {t:"3. Adulto",d:"Depois de várias mudas surgem as asas e o animal fica adulto. Metamorfose incompleta: ovo, ninfa e adulto.",s:GAF(1,true)}];
 let mode="ins",stI=0,timer=null;
-function renderStage(){const L=MS[mode],s=L[stI];$("#stg").innerHTML=s.s;$("#stT").textContent=s.t;$("#stD").textContent=s.d;
+function renderStage(){const L=MS[mode],s=L[stI];if(stI===L.length-1&&typeof NV!=="undefined")NV.marcar("meta:"+mode);$("#stg").innerHTML=s.s;$("#stT").textContent=s.t;$("#stD").textContent=s.d;
  $("#dots").innerHTML=L.map((x,i)=>`<button class="dot ${i===stI?"on":""}" data-i="${i}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
  $$("#dots .dot").forEach(b=>b.onclick=()=>{stop();stI=+b.dataset.i;renderStage();});}
 function stop(){clearInterval(timer);timer=null;$("#play").textContent="▶ Reproduzir";}
@@ -2071,6 +2186,7 @@ function mini(sel,title,Q0){
   box.innerHTML=`<h3>🎯 ${title}</h3><p class="mres">🏁 Você acertou <b>${fmt(hits)}</b> de ${qs.length}.</p>${hintLine(hints)}${missed.length?`<button class="btn" id="mrv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="mrs">🔁 Jogar de novo (outras perguntas)</button>`;
   if(missed.length)$("#mrv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;rv=true;show();};
   if(hits===qs.length){burst(60);beep("star");}
+  if(!rv&&hits>=3&&typeof NV!=="undefined")NV.marcar("mini:"+title);
   $("#mrs",box).onclick=start;}
  start();}
 mini("#temp","Desafio da temperatura",MQ0["Desafio da temperatura"]);
@@ -2090,7 +2206,7 @@ const PRIC=["#34d399","#a78bfa","#fbbf24","#38bdf8"],PREM=["🔎","🦋","🥤",
 
 /* ---------- painel genérico (igual ao dos grupos) ---------- */
 let LD=[],curD=0;
-function openDet(L,i){pmode="d";LD=L;curD=i;const x=L[i];const p=$("#panel");p.style.setProperty("--c",x.c);
+function openDet(L,i){pmode="d";LD=L;curD=i;const x=L[i];if(x.aid&&typeof NV!=="undefined")NV.marcar(x.aid);const p=$("#panel");p.style.setProperty("--c",x.c);
  let sp="";for(let k=0;k<9;k++)sp+=`<i class="spark" style="left:${8+Math.random()*84}%;top:${8+Math.random()*84}%;animation-delay:${Math.random()*3}s"></i>`;
  p.innerHTML=`<button class="x" aria-label="Fechar">✕</button><div class="pgrid"><div class="hero">${sp}${x.svg}<h2>${x.name}</h2><span class="tag">${x.tag}</span><p style="opacity:.9">${x.sub||""}</p></div><div class="info">${x.html}</div></div>
  <div class="pnav"><button class="btn" id="pv">◀ Anterior</button><button class="btn pri" id="nx">Próximo ▶</button></div>`;
@@ -2135,7 +2251,7 @@ function startCls(list){cS.started=true;cS.review=!!list;cS.order=list?shuffle(l
 function renderCls(){const box=$("#cbox"),S=cS;
  if(S.i>=S.order.length){const pct=S.score/S.order.length;
   box.innerHTML=`<div class="final"><div class="big">${pct>=.9?"🏆":pct>=.6?"🌟":"🌱"}</div><h2>${S.review?"Revisão: ":""}Você classificou ${fmt(S.score)} de ${S.order.length}</h2><p style="margin:8px 0">🔥 Maior sequência: <b>${S.best}</b></p>${hintLine(S.hints)}${S.wrong.length?`<div class="review"><b>📚 Revise:</b><ul>${S.wrong.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}${S.missed.length?`<button class="btn" id="crev">🔎 Rever só os ${S.missed.length} que errei</button> `:""}<button class="btn pri" id="cagain">🔁 Jogar de novo</button></div>`;
-  $("#cagain").onclick=()=>startCls();if(S.missed.length)$("#crev").onclick=()=>startCls(S.missed.slice());if(pct>=.7)burst(160);return;}
+  if(!S.review&&pct>=.7&&typeof NV!=="undefined")NV.marcar("jogo:cls");$("#cagain").onclick=()=>startCls();if(S.missed.length)$("#crev").onclick=()=>startCls(S.missed.slice());if(pct>=.7)burst(160);return;}
  const [nome,gid]=S.order[S.i],g=G.find(x=>x.id===gid);
  box.innerHTML=`<h2>🧩 Em qual grupo ele está?</h2><p class="sub">Leia o nome do animal e escolha o grupo certo.</p><div class="qtop"><span>Animal ${S.i+1}/${S.order.length}</span><span>⭐ ${fmt(S.score)} <span class="streak">🔥 ${S.streak}</span></span></div><div class="qbar"><i style="width:${S.i/S.order.length*100}%"></i></div><div class="big-name">${nome}</div><div id="co"></div><div class="why" id="cw"></div><div style="margin-top:14px"><button class="btn pri" id="cn" style="display:none">Próximo ▶</button></div>`;
  let okG=null,cdone=false;const opts=shuffle([g,...shuffle(G.filter(x=>x.id!==gid)).slice(0,3)]);
@@ -2179,6 +2295,7 @@ function startImg(list){iS.started=true;iS.review=!!list;iS.order=list?shuffle(l
 function renderImg(){const box=$("#ibox"),S=iS;
  if(S.i>=S.order.length){const pct=S.score/S.order.length;
   box.innerHTML=`<div class="final"><div class="big">${pct>=.9?"🏆":pct>=.6?"🌟":"🌱"}</div><h2>${S.review?"Revisão: ":""}Você acertou ${fmt(S.score)} de ${S.order.length}</h2>${hintLine(S.hints)}${S.missed.length?`<button class="btn" id="irev">🔎 Rever só os ${S.missed.length} que errei</button> `:""}<button class="btn pri" id="iagain">🔁 Jogar de novo</button></div>`;
+  if(!S.review&&pct>=.7&&typeof NV!=="undefined")NV.marcar("jogo:img");
   $("#iagain").onclick=()=>startImg();if(S.missed.length)$("#irev").onclick=()=>startImg(S.missed.slice());if(pct>=.7)burst(140);return;}
  const it=S.order[S.i];let svg,ask,right,pool;
  if(it.k==="n"){svg=ART[PAK[it.i]]();ask="Que animal da Amazônia é este?";right=PA[it.i][0];pool=PA.filter((_,j)=>j!==it.i).map(x=>x[0]);}
@@ -2230,7 +2347,7 @@ aplicaTema();
 $("#sn").onclick=function(){soundOn=!soundOn;this.textContent=(soundOn?"🔊":"🔇")+" Som: "+(soundOn?"sim":"não");this.setAttribute("aria-pressed",soundOn);beep("ok");};
 $("#op").onclick=e=>{e.stopPropagation();const m=$("#opm");m.classList.toggle("show");$("#op").setAttribute("aria-expanded",m.classList.contains("show"));};
 document.addEventListener("click",e=>{if(!e.target.closest(".opw"))$("#opm").classList.remove("show");});
-$$(".ht").forEach(b=>b.onclick=()=>$('#tabs button[data-t="'+b.dataset.t+'"]').click());
+$$(".ht").forEach(b=>b.onclick=()=>{if(b.dataset.pr){irPara("prog");prIniciar(b.dataset.pr);}else irPara(b.dataset.t);});
 
 </script>
 <script>
@@ -2306,6 +2423,7 @@ const CIC = {
 let cM = "esq", cI = 0, cT = null;
 function cRender() {
   const L = CIC[cM], s = L[cI];
+  if (cI === L.length - 1 && typeof NV !== "undefined") NV.marcar("cic:" + cM);
   $("#cstg").innerHTML = s.s; $("#cT").textContent = s.t; $("#cD").textContent = s.d;
   $("#cdots").innerHTML = L.map((x, i) => `<button class="dot ${i === cI ? "on" : ""}" data-i="${i}">${x.t.replace(/^\d+\.\s*/, "")}</button>`).join("");
   $$("#cdots .dot").forEach(b => b.onclick = () => { cStop(); cI = +b.dataset.i; cRender(); });
@@ -2342,7 +2460,7 @@ const PG = (() => {
   const MEM = {};                          // sem perfil: só na memória
   const ler = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
   const gravar = (k, v) => { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-  const vazio = () => ({ q: {}, c: [], r: [] });
+  const vazio = () => ({ q: {}, c: [], r: [], at: {} });
   let H = vazio();
 
   /* ---------- todas as perguntas do app, com id estável (tirado do texto) ---------- */
@@ -2369,6 +2487,7 @@ const PG = (() => {
     if (!n) { H = MEM["~"] || (MEM["~"] = vazio()); return; }
     const d = ler(HK(n));
     H = d && d.q && Array.isArray(d.c) && Array.isArray(d.r) ? d : vazio();
+    if (!H.at || typeof H.at !== "object") H.at = {};
     if (typeof prRender === "function") prRender();
   }
   const salvar = () => { if (PROF.cur) gravar(HK(PROF.cur), H); };
@@ -2380,7 +2499,10 @@ const PG = (() => {
     if (ok) { r.a++; r.s++; if (r.s >= 2) H.c = H.c.filter(x => x !== id); }
     else { r.s = 0; if (!H.c.includes(id)) H.c.push(id); }
     salvar();
+    if (typeof NV !== "undefined") NV.atualiza();
   }
+  /* atividade concluída (para o XP, o nível e as trilhas) */
+  function marcar(a) { if (!H.at) H.at = {}; if (H.at[a]) return false; H.at[a] = Date.now(); salvar(); return true; }
   function rodadaFeita(m, sc, n) { H.r.push({ m, d: Date.now(), s: sc, n }); if (H.r.length > 60) H.r = H.r.slice(-60); salvar(); }
   const dominada = id => (H.q[id] || {}).s >= 2;
 
@@ -2456,12 +2578,13 @@ const PG = (() => {
     Object.keys(d.h.q).forEach(id => { const x = d.h.q[id]; if (!x || typeof x.v !== "number") return; if (!atual.q[id] || (x.u || 0) > (atual.q[id].u || 0)) atual.q[id] = { v: +x.v || 0, a: +x.a || 0, s: +x.s || 0, u: +x.u || 0 }; });
     if (Array.isArray(d.h.c)) atual.c = [...new Set([...atual.c, ...d.h.c.filter(id => typeof id === "string")])].filter(id => !(atual.q[id] && atual.q[id].s >= 2));
     if (Array.isArray(d.h.r)) { const vis = new Set(atual.r.map(x => x.d)); d.h.r.forEach(x => { if (x && typeof x.d === "number" && !vis.has(x.d)) atual.r.push({ m: String(x.m), d: x.d, s: +x.s || 0, n: +x.n || 0 }); }); atual.r.sort((a, b) => a.d - b.d); atual.r = atual.r.slice(-60); }
+    if (d.h.at && typeof d.h.at === "object") { atual.at = atual.at || {}; Object.keys(d.h.at).forEach(k => { if (typeof k === "string" && k.length < 60 && !atual.at[k]) atual.at[k] = +d.h.at[k] || Date.now(); }); }
     gravar(HK(n), atual);
     switchTo(n);
     return "";
   }
 
-  return { idDe, item, todas, carregar, registrar, rodadaFeita, dominada, resumo, sugerir, simulado, ranking, ranquear, lerRodada, salvarRodada, apagar, limparHistorico, exportar, importar, areas: () => (indice(), AREAS), get H() { return H; } };
+  return { idDe, item, todas, carregar, registrar, marcar, rodadaFeita, dominada, resumo, sugerir, simulado, ranking, ranquear, lerRodada, salvarRodada, apagar, limparHistorico, exportar, importar, areas: () => (indice(), AREAS), get H() { return H; } };
 })();
 
 /* ---------- rodada de perguntas (desafio final, caderno de erros, treino e simulado) ----------
@@ -2535,12 +2658,13 @@ function resultado(m) {
   let pos = -1;
   if (!st.rev && !st.fim) {
     st.fim = true;
+    if (typeof NV !== "undefined") { if (m === "final" && pct >= .7) NV.marcar("jogo:final"); if (m === "simulado" && pct >= .6) NV.marcar("jogo:simulado"); if (m === "treino") NV.marcar("jogo:treino"); }
     if (cfg.sim) st.ids.forEach(id => { const it = PG.item(id), r = st.resp[id]; if (it && (r === undefined || r === -1)) PG.registrar(it.q, it.o, false); });
     PG.rodadaFeita(m, sc, n); if (cfg.rank && sc > 0) pos = PG.ranquear(m, sc, n);
     PG.salvarRodada(m, null);
   }
   const erros = st.miss.map(id => PG.item(id)).filter(Boolean);
-  box.innerHTML = `<div class="final"><div class="big">${msg[0]}</div><h2>${msg[1]}</h2><p style="font-size:24px;margin:10px 0 6px">${st.rev ? "Revisão: " : ""}Você acertou <b>${fmt(sc)}</b> de ${n}</p>${cfg.sim ? (st.rest <= 0 ? `<p>⏰ O tempo acabou.</p>` : "") : `<p>🔥 Maior sequência de acertos: <b>${st.best}</b></p>`}${hintLine(st.h)}${pos >= 0 ? `<p class="rkmsg">🏆 Você ficou em <b>${pos + 1}º lugar</b> no ranking deste aparelho!</p>` : ""}${!cfg.sim && erros.length ? `<div class="review"><b>📚 Revise estes pontos:</b><ul>${erros.map(it => `<li>${it.q} <b>${it.o[it.a]}</b></li>`).join("")}</ul></div>` : ""}${revisao}${erros.length && !cfg.sim ? `<p class="hintn">📒 As perguntas que você errou foram para o seu caderno de erros (aba 📊 Meu progresso).</p>` : ""}<div class="rnav">${erros.length ? `<button class="btn" id="rv-${m}">🔎 Rever só os ${erros.length} que errei</button> ` : ""}<button class="btn pri" id="ag-${m}">🔁 Jogar de novo</button>${cfg.voltar ? ` <button class="btn" id="vt-${m}">${cfg.voltar[0]}</button>` : ""}${typeof compartilhar === "function" && !st.rev ? ` <button class="btn" id="sh-${m}">📤 Compartilhar resultado</button>` : ""}</div>${cfg.rank ? rankHtml(m) : ""}</div>`;
+  box.innerHTML = `<div class="final"><div class="big">${msg[0]}</div><h2>${msg[1]}</h2><p style="font-size:24px;margin:10px 0 6px">${st.rev ? "Revisão: " : ""}Você acertou <b>${fmt(sc)}</b> de ${n}</p>${cfg.sim ? (st.rest <= 0 ? `<p>⏰ O tempo acabou.</p>` : "") : `<p>🔥 Maior sequência de acertos: <b>${st.best}</b></p>`}${hintLine(st.h)}${pos >= 0 ? `<p class="rkmsg">🏆 Você ficou em <b>${pos + 1}º lugar</b> no ranking deste aparelho!</p>` : ""}${!cfg.sim && erros.length ? `<div class="review"><b>📚 Revise estes pontos:</b><ul>${erros.map(it => `<li>${it.q} <b>${it.o[it.a]}</b></li>`).join("")}</ul></div>` : ""}${revisao}${erros.length && !cfg.sim ? `<p class="hintn">📒 As perguntas que você errou foram para o seu caderno de erros (📊 Progresso).</p>` : ""}<div class="rnav">${erros.length ? `<button class="btn" id="rv-${m}">🔎 Rever só os ${erros.length} que errei</button> ` : ""}<button class="btn pri" id="ag-${m}">🔁 Jogar de novo</button>${cfg.voltar ? ` <button class="btn" id="vt-${m}">${cfg.voltar[0]}</button>` : ""}${typeof compartilhar === "function" && !st.rev ? ` <button class="btn" id="sh-${m}">📤 Compartilhar resultado</button>` : ""}</div>${cfg.rank ? rankHtml(m) : ""}</div>`;
   if (erros.length) $("#rv-" + m, box).onclick = () => rodada(Object.assign({}, cfg, { sim: false, tempo: 0, rank: false, rev: true }), shuffle(erros.map(it => it.id)));
   $("#ag-" + m, box).onclick = () => cfg.denovo();
   if (cfg.voltar) $("#vt-" + m, box).onclick = cfg.voltar[1];
@@ -2594,6 +2718,7 @@ function prIniciar(m, forcar, area) {
 }
 function prRender() {
   const box = $("#pgbox"); if (!box) return;
+  const nvb = $("#nvbox"); if (nvb) { nvb.hidden = !!prModo; if (!prModo && typeof NV !== "undefined") NV.aba("prog"); }
   if (prModo) { if (!$("#pgrun")) box.innerHTML = `<div id="pgrun"></div>`; return; }
   const H = PG.H, A = PG.resumo(), AR = PG.areas(), nome = PROF.cur;
   const erros = H.c.filter(id => PG.item(id)).length;
@@ -2603,7 +2728,7 @@ function prRender() {
   const rodadas = H.r.slice(-10).reverse();
   const NM = { final: "🎯 Desafio final", erros: "📒 Caderno de erros", treino: "🧠 Treino", simulado: "📝 Simulado" };
   const salvos = ["erros", "treino", "simulado"].filter(m => { const s = PG.lerRodada(m); return s && !s.fim && s.i < (s.ids || []).length; });
-  box.innerHTML = `<h2>📊 Meu progresso</h2>
+  box.innerHTML = `<h2>📒 Caderno, treino e simulado</h2>
   <p class="sub">${nome ? `👤 <b>${esc(nome)}</b> · tudo fica salvo neste aparelho.` : `👤 Sem nome: o progresso <b>não</b> será salvo. Escolha um aluno na tela 🏠 Início.`}</p>
   <div class="pgcards">
    <div class="pgc" style="--c:#fb7185"><h3>📒 Caderno de erros</h3><p><b>${erros}</b> pergunta${erros === 1 ? "" : "s"} para treinar. Cada uma sai do caderno depois de 2 acertos seguidos.</p><div class="pgbt"><button class="btn pri" id="pg-erros"${erros ? "" : " disabled"}>Treinar com meus erros</button>${erros ? `<button class="btn" id="pg-lista">Ver a lista</button>` : ""}</div></div>
@@ -2634,6 +2759,172 @@ function prRender() {
 }
 
 PG.carregar();
+
+</script>
+<script>
+/* XP, níveis, atividades e trilhas.
+   - Cada atividade concluída pela primeira vez vale XP (estudar um grupo, ganhar uma estrela, explorar uma tela,
+     vencer um desafio...). Cada pergunta acertada também vale XP (mais na primeira vez).
+   - Os níveis 1 a 9 dependem do XP. O nível 10 (o último) só é alcançado com pelo menos 70% de todas as atividades.
+   - O XP é calculado a partir do que está salvo (estrelas e histórico), por isso vai junto no código AN8-... */
+"use strict";
+const NV = (() => {
+  const META = 0.7;
+  const NIVEIS = [
+    [0, "🔍", "Observador(a)"], [60, "🧭", "Explorador(a)"], [150, "🌿", "Coletor(a) da mata"], [300, "📓", "Naturalista júnior"],
+    [500, "🔬", "Pesquisador(a)"], [750, "🐾", "Zoólogo(a) aprendiz"], [1050, "🦎", "Zoólogo(a)"], [1400, "🌳", "Biólogo(a) de campo"],
+    [1800, "🐊", "Especialista da Amazônia"], [Infinity, "🏆", "Mestre dos Animais"]];
+  const XPC = { estudar: 10, estrela: 50, explorar: 10, mini: 30, jogo: 40, trilha: 100 };
+
+  /* mini desafios: título → tela */
+  const MINIS = [["Desafio da temperatura", "temp"], ["Desafio da metamorfose", "meta"], ["Desafio da fauna do Pará", "pa"], ["Desafio das verminoses", "dis"], ["Desafio dos ciclos", "cic"], ["Desafio dos naturalistas", "nat"]];
+  const nomeMini = t => t.replace(/^Desafio (da|das|do|dos) /, "").replace(/^./, c => c.toUpperCase());
+
+  /* listas de cartões ganham o id da atividade (contado quando o cartão é aberto) */
+  [[PAL, "pa"], [DISL, "dis"], [PRL, "prat"], [NATL, "nat"]].forEach(([L, k]) => L.forEach((x, i) => { x.aid = k + ":" + i; }));
+
+  /* ---------- catálogo de atividades ---------- */
+  const ATV = [];
+  const add = (id, cat, nome, xp, ir) => ATV.push({ id, cat, nome, xp, ir });
+  const abrirGrupo = (g, desafio) => () => {
+    irPara("tree"); const br = $("#b-" + g.t); if (!br.classList.contains("open")) br.classList.add("open");
+    openPanel(G.indexOf(g)); if (desafio) setTimeout(() => { const c = $("#chal"); if (c) c.scrollIntoView({ behavior: "smooth", block: "center" }); }, 350);
+  };
+  G.forEach(g => add("estudar:" + g.id, "Estudar os grupos", g.n, XPC.estudar, abrirGrupo(g)));
+  G.forEach(g => add("estrela:" + g.id, "Estrelas dos grupos", "⭐ " + g.n + " (3 de 5 no desafio)", XPC.estrela, abrirGrupo(g, true)));
+  const cartao = (L, t, i) => () => { irPara(t); openDet(L, i); };
+  add("temp", "Explorar", "Temperatura: mexa no controle", XPC.explorar, () => irPara("temp"));
+  [["ins", "Metamorfose da borboleta"], ["gaf", "Metamorfose do gafanhoto"], ["sapo", "Metamorfose do sapo"]].forEach(([m, n]) => add("meta:" + m, "Explorar", n + " até o fim", XPC.explorar, () => { irPara("meta"); const b = $('[data-m="' + m + '"]'); if (b) b.click(); }));
+  [["esq", "Ciclo da esquistossomose"], ["ten", "Ciclo da tênia"], ["lom", "Ciclo da lombriga"]].forEach(([m, n]) => add("cic:" + m, "Explorar", n + " até a prevenção", XPC.explorar, () => { irPara("cic"); const b = $('[data-c="' + m + '"]'); if (b) b.click(); }));
+  add("fic", "Explorar", "Ficha da aula", XPC.explorar, () => irPara("fic"));
+  PAL.forEach((x, i) => add(x.aid, "Fauna do Pará", x.name, XPC.explorar, cartao(PAL, "pa", i)));
+  DISL.forEach((x, i) => add(x.aid, "Vermes e doenças", x.name, XPC.explorar, cartao(DISL, "dis", i)));
+  NATL.forEach((x, i) => add(x.aid, "Naturalistas", x.name, XPC.explorar, cartao(NATL, "nat", i)));
+  PRL.forEach((x, i) => add(x.aid, "Atividades práticas", x.name, XPC.explorar, cartao(PRL, "prat", i)));
+  MINIS.forEach(([t, aba]) => add("mini:" + t, "Desafios das telas", "🎯 " + t + " (3 de 5)", XPC.mini, () => { irPara(aba); setTimeout(() => { const m = $("#" + aba + " .mini"); if (m) m.scrollIntoView({ behavior: "smooth", block: "center" }); }, 300); }));
+  add("jogo:final", "Jogos", "🎯 Desafio final com 70% ou mais", XPC.jogo, () => irPara("quiz"));
+  add("jogo:cls", "Jogos", "🧩 Classifique com 70% ou mais", XPC.jogo, () => irPara("cls"));
+  add("jogo:img", "Jogos", "🖼️ Quem é este? com 70% ou mais", XPC.jogo, () => irPara("img"));
+  add("jogo:treino", "Jogos", "🧠 Terminar um treino inteligente", XPC.jogo, () => { irPara("prog"); prIniciar("treino"); });
+  add("jogo:simulado", "Jogos", "📝 Simulado com 60% ou mais", XPC.jogo, () => { irPara("prog"); prIniciar("simulado"); });
+  const PORID = Object.fromEntries(ATV.map(a => [a.id, a]));
+
+  /* ---------- trilhas ---------- */
+  const inv = G.filter(g => g.t === "inv"), vert = G.filter(g => g.t === "vert");
+  const TRILHAS = [
+    { id: "inv", ic: "🐚", n: "Invertebrados", d: "Das esponjas às estrelas-do-mar: estude cada grupo e ganhe a estrela dele.", p: inv.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]) },
+    { id: "vert", ic: "🦴", n: "Vertebrados e temperatura", d: "Peixes, anfíbios, répteis, aves e mamíferos, e quem esquenta sozinho.", p: [...vert.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]), "temp", "mini:Desafio da temperatura"] },
+    { id: "meta", ic: "🦋", n: "Metamorfose e ciclos", d: "Como os animais mudam de forma e como os vermes passam de um hospedeiro a outro.", p: ["meta:ins", "meta:gaf", "meta:sapo", "mini:Desafio da metamorfose", "cic:esq", "cic:ten", "cic:lom", "mini:Desafio dos ciclos"] },
+    { id: "saude", ic: "🦠", n: "Saúde e prevenção", d: "As verminoses, como se pega e como evitar.", p: [...DISL.map(x => x.aid), "mini:Desafio das verminoses"] },
+    { id: "amaz", ic: "🐊", n: "Amazônia e Pará", d: "Conheça a fauna da nossa região.", p: [...PAL.map(x => x.aid), "mini:Desafio da fauna do Pará"] },
+    { id: "nat", ic: "🧑‍🔬", n: "Naturalistas e classificação", d: "Quem estudou os animais e como eles são classificados.", p: [...NATL.map(x => x.aid), "mini:Desafio dos naturalistas", "jogo:cls", "jogo:img"] },
+    { id: "final", ic: "🏆", n: "Rumo ao topo", d: "Os grandes desafios: tudo o que você aprendeu.", p: ["fic", ...PRL.map(x => x.aid), "jogo:treino", "jogo:final", "jogo:simulado"] }];
+
+  /* ---------- estado ---------- */
+  const feita = id => id.startsWith("estrela:") ? stars.has(id.slice(8)) : !!(PG.H.at && PG.H.at[id]);
+  function calcula() {
+    let xp = 0, n = 0;
+    ATV.forEach(a => { if (feita(a.id)) { xp += a.xp; n++; } });
+    const trOk = TRILHAS.filter(t => t.p.every(feita));
+    xp += trOk.length * XPC.trilha;
+    Object.values(PG.H.q || {}).forEach(r => { if (r.a > 0) xp += 5 + Math.min(r.a - 1, 4); });
+    const pct = n / ATV.length;
+    let lv = 1; for (let i = 0; i < 9; i++) if (xp >= NIVEIS[i][0]) lv = i + 1;
+    if (pct >= META) lv = 10;
+    return { xp, n, tot: ATV.length, pct, lv, trOk };
+  }
+  let ult = null, iniciado = false;
+  function atualiza() {
+    if (typeof PG === "undefined" || !PG.H) return;
+    const e = calcula();
+    const [base, ic, nome] = NIVEIS[e.lv - 1];
+    const prox = e.lv < 9 ? NIVEIS[e.lv][0] : null;
+    const fr = e.lv >= 10 ? 1 : e.lv === 9 ? Math.min(1, e.pct / META) : (e.xp - base) / (prox - base);
+    $("#nvt").textContent = ic + " Nível " + e.lv;
+    $("#nvxp").textContent = e.xp + " XP";
+    $("#nvbar").style.width = Math.round(fr * 100) + "%";
+    if (iniciado && ult && e.lv > ult.lv) subiu(e.lv);
+    if (iniciado && ult && e.trOk.length > ult.trOk.length) { const t = e.trOk.find(x => !ult.trOk.includes(x)); if (t) aviso("🎉 Trilha concluída: " + t.ic + " " + t.n + " (+" + XPC.trilha + " XP)"); }
+    ult = e;
+    if ($("#home").classList.contains("on")) renderHome();
+    if ($("#trilhas").classList.contains("on")) renderTrilhas();
+    if ($("#prog").classList.contains("on")) renderNv();
+  }
+  function marcar(id) {
+    if (!PORID[id] || id.startsWith("estrela:")) return;
+    if (PG.marcar(id)) { aviso("✅ " + PORID[id].nome + " · +" + PORID[id].xp + " XP", true); atualiza(); }
+  }
+  /* quando o perfil muda, o nível é recalculado sem festa */
+  function recomeca() { ult = null; atualiza(); }
+  function subiu(lv) {
+    const [, ic, nome] = NIVEIS[lv - 1];
+    aviso(`⬆️ Você subiu para o nível ${lv}: ${ic} ${nome}!`);
+    burst(lv === 10 ? 300 : 120); beep("star");
+  }
+  let avT = null;
+  function aviso(txt, leve) {
+    let el = $("#nvtoast");
+    if (!el) { el = document.createElement("div"); el.id = "nvtoast"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+    el.textContent = txt; el.className = "show" + (leve ? " leve" : "");
+    clearTimeout(avT); avT = setTimeout(() => { el.className = ""; }, leve ? 1800 : 3600);
+  }
+  function aba(t) {
+    if (t === "fic") marcar("fic");
+    if (t === "home") renderHome();
+    if (t === "trilhas") renderTrilhas();
+    if (t === "prog") renderNv();
+  }
+
+  /* ---------- telas ---------- */
+  const barra = (f, c) => `<span class="nvbar"><i style="width:${Math.round(f * 100)}%${c ? ";background:" + c : ""}"></i></span>`;
+  function cartaoNivel(e) {
+    const [base, ic, nome] = NIVEIS[e.lv - 1];
+    const prox = e.lv < 9 ? NIVEIS[e.lv] : null;
+    const falta = e.lv < 9 ? `Faltam <b>${prox[0] - e.xp} XP</b> para o nível ${e.lv + 1} (${prox[1]} ${prox[2]}).`
+      : e.lv === 9 ? `Para o último nível (🏆 ${NIVEIS[9][2]}), conclua <b>${Math.ceil(META * e.tot)}</b> das ${e.tot} atividades. Faltam <b>${Math.max(0, Math.ceil(META * e.tot) - e.n)}</b>.`
+        : "Você chegou ao nível máximo! 🎉";
+    const fr = e.lv >= 10 ? 1 : e.lv === 9 ? Math.min(1, e.pct / META) : (e.xp - base) / (prox[0] - base);
+    return `<div class="nvcard"><div class="nvic">${ic}</div><div class="nvinfo"><div class="nvtop"><b>Nível ${e.lv} · ${nome}</b><span>${e.xp} XP</span></div>${barra(fr)}<p>${falta}</p><p class="nvpct">✅ ${e.n} de ${e.tot} atividades concluídas (${Math.round(e.pct * 100)}%) · o último nível pede 70%.</p></div></div>`;
+  }
+  function proximoPasso() {
+    for (const t of TRILHAS) { const i = t.p.findIndex(id => !feita(id)); if (i >= 0 && t.p.slice(0, i).length) return [t, t.p[i]]; }
+    for (const t of TRILHAS) { const id = t.p.find(x => !feita(x)); if (id) return [t, id]; }
+    return null;
+  }
+  function renderHome() {
+    const el = $("#hnv"); if (!el) return;
+    const e = ult || calcula(), pp = proximoPasso();
+    el.innerHTML = cartaoNivel(e) + (pp ? `<div class="nvcont"><div><small>🧭 Continue a trilha ${pp[0].ic} ${pp[0].n}</small><b>${PORID[pp[1]].nome}</b></div><button class="btn pri" id="nvgo">▶ Continuar</button></div>` : "");
+    if (pp) $("#nvgo").onclick = () => PORID[pp[1]].ir();
+  }
+  function renderTrilhas() {
+    const box = $("#trbox"); if (!box) return;
+    box.innerHTML = `<h2>🧭 Trilhas</h2><p class="sub">Caminhos guiados: siga os passos em ordem. Cada passo vale XP e cada trilha completa vale <b>+${XPC.trilha} XP</b>.</p><div class="trs">${TRILHAS.map(t => {
+      const ok = t.p.filter(feita).length, prox = t.p.find(x => !feita(x));
+      return `<div class="tr${ok === t.p.length ? " ok" : ""}"><div class="trh"><span class="tric">${t.ic}</span><div><b>${t.n}</b><small>${t.d}</small></div></div>${barra(ok / t.p.length)}<div class="trf"><span>${ok} de ${t.p.length} passos${ok === t.p.length ? " · ✅ concluída" : ""}</span>${prox ? `<button class="btn pri" data-go="${esc(prox)}">${ok ? "▶ Continuar" : "▶ Começar"}</button>` : ""}</div><details><summary>Ver os passos</summary><ol>${t.p.map(id => `<li class="${feita(id) ? "f" : ""}"><button class="trp" data-go="${esc(id)}">${feita(id) ? "✅" : "⬜"} ${PORID[id].nome}</button></li>`).join("")}</ol></details></div>`;
+    }).join("")}</div>`;
+    $$("[data-go]", box).forEach(b => b.onclick = () => PORID[b.dataset.go].ir());
+  }
+  function renderNv() {
+    const box = $("#nvbox"); if (!box) return;
+    box.hidden = !!prModo;
+    if (prModo) return;
+    const e = ult || calcula();
+    const cats = [...new Set(ATV.map(a => a.cat))];
+    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · ⭐ ${stars.size}/13 estrelas` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
+     <h3 class="pgh">🧭 Trilhas</h3><div class="nvtr">${TRILHAS.map(t => { const ok = t.p.filter(feita).length; return `<button class="nvt${ok === t.p.length ? " ok" : ""}" data-tr="1"><span>${t.ic} ${t.n}</span>${barra(ok / t.p.length)}<small>${ok}/${t.p.length}</small></button>`; }).join("")}</div>
+     <h3 class="pgh">✅ Atividades</h3><p class="sub">Toque em uma atividade que falta para ir até ela.</p>
+     <div class="nvcats">${cats.map(c => { const L = ATV.filter(a => a.cat === c), ok = L.filter(a => feita(a.id)).length; return `<details class="nvcat"><summary><b>${c}</b><span>${ok}/${L.length}</span>${barra(ok / L.length)}</summary><ul>${L.map(a => `<li class="${feita(a.id) ? "f" : ""}"><button class="trp" data-go="${esc(a.id)}">${feita(a.id) ? "✅" : "⬜"} ${a.nome} <small>+${a.xp} XP</small></button></li>`).join("")}</ul></details>`; }).join("")}</div>
+     <p class="hintn">Como ganhar XP: estudar um grupo +${XPC.estudar} · estrela de um grupo +${XPC.estrela} · explorar uma tela ou cartão +${XPC.explorar} · desafio de tela +${XPC.mini} · jogo +${XPC.jogo} · trilha completa +${XPC.trilha} · cada pergunta acertada pela primeira vez +5 (e +1 nas próximas vezes, até 4).</p>`;
+    $$("[data-go]", box).forEach(b => b.onclick = () => PORID[b.dataset.go].ir());
+    $$("[data-tr]", box).forEach(b => b.onclick = () => irPara("trilhas"));
+  }
+
+  $("#sl").addEventListener("input", () => marcar("temp"));
+  $("#nvb").onclick = () => irPara("prog");
+  atualiza(); iniciado = true; renderHome();
+  return { atualiza, marcar, recomeca, aba, calcula, ATV, TRILHAS, NIVEIS, META };
+})();
 
 </script>
 </body>
