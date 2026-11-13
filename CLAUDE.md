@@ -36,6 +36,7 @@ Antes de criar, editar ou corrigir qualquer parte conceitual (textos dos grupos,
 
 - **Publicação:** o dono do repositório autorizou que toda atualização vá direto para o `main` (sem pull request), depois que o verificador e os testes passarem.
 - **Antes de publicar:** rode os comandos de "Contexto do projeto": tema claro (se mudou o `style.css`) → validar perguntas → testes de navegador. Para testar localmente a versão do cache e o arquivo único, use os scripts de `build/`.
+- **Robô do `main`:** depois de cada push, o GitHub faz um commit no `main` (versão do cache e arquivo único). Antes de publicar de novo: `git fetch origin main`, `git rebase origin/main`, testes outra vez. Nunca force o push no `main`.
 - **Commits que vão junto:** antes de enviar ao `main`, liste com `git log --oneline origin/main..HEAD` e informe ao usuário todos os commits enviados. Envie também ao branch da sessão.
 - **Tarefas em etapas:** um único commit no final, salvo pedido do usuário.
 - **Arquivo novo (`.js`, `.css`, `.html`):** acrescente-o à lista `ARQ` do `sw.js` (manual) e confira se o `build/arquivo-unico.py` o inclui. Imagens: `.webp` em `img/animais/` (a lista `IMGS` é gerada pelo `versao.py`).
@@ -53,7 +54,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 ## Tamanho de arquivo e alertas de contexto
 
 - Código novo: até 300 linhas por arquivo (ideal: menos de 200), cada arquivo com uma responsabilidade.
-- Arquivos já acima do limite (hoje `app.js`, `style.css`, `progresso.js`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
+- Arquivos já acima do limite (hoje `style.css`, `progresso.js`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
 - Fora do limite: `dados.js` (dados) e os arquivos gerados (`animais-8ano.html`, `tema-claro.css`).
 - Avise em uma frase (o que cresceu e por que importa) e sugira a ação:
   - mesma tarefa, conversa longa → `/compact` com direcionamento (ex.: `/compact mantenha as decisões e os arquivos alterados`);
