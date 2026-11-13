@@ -5,6 +5,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 ## Contexto do projeto
 
 - **App:** Ciências do 8º ano (Animais), usado por alunos no Pará (13 a 14 anos). Todo o texto em português do Brasil, com linguagem simples.
+- **Textos para os alunos:** explique cada termo técnico na primeira vez que aparecer; prefira frases curtas.
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
 - **Comandos:**
   - Validar perguntas: `node validar-banco.js`
@@ -30,10 +31,14 @@ Antes de criar, editar ou corrigir qualquer parte conceitual (textos dos grupos,
 5. Nas perguntas, confira também que **nenhuma alternativa errada pode ser considerada correta** e que a explicação não contradiz outra parte do app (use `grep` em `dados.js`, `app.js` e `extras.js`).
 6. Se a informação vier de uma fonte que ainda não está no app, acrescente-a em `FONTES` ou `FONTES_MAIS` (`dados.js`).
 7. Na resposta ao usuário, diga quais fontes foram consultadas para cada mudança conceitual.
+
 ## Depois de qualquer mudança
 
 - **Publicação:** o dono do repositório autorizou que toda atualização vá direto para o `main` (sem pull request), depois que o verificador e os testes passarem.
 - **Antes de publicar:** rode os comandos de "Contexto do projeto": tema claro (se mudou o `style.css`) → validar perguntas → testes de navegador. Para testar localmente a versão do cache e o arquivo único, use os scripts de `build/`.
+- **Commits que vão junto:** antes de enviar ao `main`, liste com `git log --oneline origin/main..HEAD` e informe ao usuário todos os commits enviados. Envie também ao branch da sessão.
+- **Tarefas em etapas:** um único commit no final, salvo pedido do usuário.
+- **Arquivo novo (`.js`, `.css`, `.html`):** acrescente-o à lista `ARQ` do `sw.js` (manual) e confira se o `build/arquivo-unico.py` o inclui. Imagens: `.webp` em `img/animais/` (a lista `IMGS` é gerada pelo `versao.py`).
 
 ## Formato das perguntas (`dados.js`)
 
@@ -59,6 +64,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 ## Saída de terminal
 
 - Use flags de silêncio (`-q`, `--silent`) ou filtre a saída (ex.: `| tail -20`, `| grep -E "FAIL|Erro"`).
+- No `sw.js` e no `animais-8ano.html` (linhas enormes), corte a saída das buscas (ex.: `grep ... | cut -c1-200`).
 - Filtrar não é esconder: sempre relate falhas e erros ao usuário.
 
 ## Manutenção deste arquivo
