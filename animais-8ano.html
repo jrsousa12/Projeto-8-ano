@@ -2471,9 +2471,7 @@ $("#fo").onclick = abrirFontes;
 
 </script>
 <script>
-/* Progresso do aluno: histórico de cada pergunta, caderno de erros, desempenho por área,
-   treino adaptativo, simulado, ranking, sequência de acertos e "continuar de onde parou".
-   Tudo fica salvo só neste aparelho, por aluno (perfil). Sem perfil ("Jogar sem salvar"), nada é gravado. */
+/* Dados de progresso do aluno (objeto PG): histórico, caderno de erros, desempenho por área. Usado por progresso.js. */
 "use strict";
 const PG = (() => {
   const HK = n => "an8h:" + n;            // histórico do aluno
@@ -2610,6 +2608,12 @@ const PG = (() => {
   return { idDe, item, todas, carregar, registrar, marcar, rodadaFeita, dominada, resumo, sugerir, simulado, ranking, ranquear, lerRodada, salvarRodada, apagar, limparHistorico, exportar, importar, areas: () => (indice(), AREAS), get H() { return H; } };
 })();
 
+</script>
+<script>
+/* Progresso do aluno: histórico de cada pergunta, caderno de erros, desempenho por área,
+   treino adaptativo, simulado, ranking, sequência de acertos e "continuar de onde parou".
+   Tudo fica salvo só neste aparelho, por aluno (perfil). Sem perfil ("Jogar sem salvar"), nada é gravado. */
+"use strict";
 /* ---------- rodada de perguntas (desafio final, caderno de erros, treino e simulado) ----------
    cfg: { m: modo, box, titulo, sim: true no simulado (sem dica e sem correção até o fim), tempo: segundos (simulado),
           rank: true para entrar no ranking, fim: função chamada no resultado, voltar: rótulo e ação do botão extra } */
