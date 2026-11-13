@@ -119,6 +119,9 @@ testes["funciona sem internet depois da primeira visita"] = async (p, ctx, url) 
   await ctx.setOffline(true);
   await p.reload();
   confere((await p.title()).includes("Animais"), "app abre com a internet desligada");
+  await abrir(p, "img");
+  await p.waitForTimeout(500);
+  confere(await p.evaluate(() => (L => L.length > 0 && L.every(i => !i.complete || i.naturalWidth > 0))([...document.querySelectorAll("img")])), "imagens carregam com a internet desligada");
   await ctx.setOffline(false);
 };
 

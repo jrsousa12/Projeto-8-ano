@@ -8,5 +8,16 @@ self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => Pro
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
-  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(r => r || fetch(e.request).then(n => { if (n.ok) { const cp = n.clone(); caches.open(V).then(c => c.put(e.request, cp)); } return n; }).catch(() => e.request.mode === "navigate" ? caches.match("./index.html") : Response.error())));
+  // Internet primeiro: com internet, sempre a versão nova (e a cópia é atualizada).
+  // Sem internet, ou se a rede demorar mais de 4 s, usa a cópia guardada no aparelho.
+  const guardar = n => { if (n.ok) { const cp = n.clone(); caches.open(V).then(c => c.put(e.request, cp)); } return n; };
+  const copia = () => caches.match(e.request, { ignoreSearch: true }).then(r => r || (e.request.mode === "navigate" ? caches.match("./index.html") : null));
+  e.respondWith(new Promise(responder => {
+    let feito = false;
+    const fim = r => { if (!feito && r) { feito = true; responder(r); } };
+    const espera = setTimeout(() => copia().then(fim), 4000);
+    fetch(e.request, { cache: "no-cache" }).then(guardar)
+      .then(n => { clearTimeout(espera); fim(n); })
+      .catch(() => { clearTimeout(espera); copia().then(r => fim(r || Response.error())); });
+  }));
 });
