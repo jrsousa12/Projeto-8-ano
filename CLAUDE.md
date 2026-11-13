@@ -54,7 +54,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 ## Tamanho de arquivo e alertas de contexto
 
 - Código novo: até 300 linhas por arquivo (ideal: menos de 200), cada arquivo com uma responsabilidade.
-- Arquivos já acima do limite (hoje `style.css`, `progresso.js`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
+- Arquivos já acima do limite (hoje `style.css`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
 - Fora do limite: `dados.js` (dados) e os arquivos gerados (`animais-8ano.html`, `tema-claro.css`).
 - Avise em uma frase (o que cresceu e por que importa) e sugira a ação:
   - mesma tarefa, conversa longa → `/compact` com direcionamento (ex.: `/compact mantenha as decisões e os arquivos alterados`);
