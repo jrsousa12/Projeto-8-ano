@@ -23,7 +23,9 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `img/animais/` | Ilustrações dos animais em WebP: as da apresentação do 8º ano e as feitas no Canva no mesmo estilo (fauna do Pará e jogo Quem é este?) |
 | `manifest.webmanifest`, `sw.js`, `icon-*.png` | Instalação no celular e uso sem internet |
 | `validar-banco.js` | Confere as perguntas (gabarito, alternativas repetidas ou vazias, grupos inexistentes) |
-| `testes/testes.js` | Testes de navegador: abrem o app no Chromium e conferem telas e jogos |
+| `testes/testes.js` | Roda os testes de navegador (abrem o app no Chromium e conferem telas e jogos) |
+| `testes/t_*.js` | Os testes, um arquivo por assunto: telas, jogos, conteúdo, progresso, editor, sem internet |
+| `testes/apoio.js` | Peças comuns dos testes (servidor local, responder perguntas, abrir telas) |
 | `build/versao.py` | Recalcula a versão do cache do `sw.js` |
 | `build/arquivo-unico.py` | Gera o `animais-8ano.html` |
 | `.github/workflows/` | Conferências automáticas no GitHub (aba **Actions**) |
@@ -88,3 +90,5 @@ npm install --no-save playwright@1.63.0
 npx playwright install chromium
 node testes/testes.js
 ```
+
+Para rodar só um assunto: `node testes/testes.js t_jogos` (ou vários: `t_jogos t_telas`). Para rodar só os testes com um trecho no nome: `node testes/testes.js "simulado"`.

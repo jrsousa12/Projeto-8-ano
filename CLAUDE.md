@@ -10,7 +10,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
 - **Comandos:**
   - Validar perguntas: `node validar-banco.js`
-  - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`)
+  - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`; ~70 s). Só um assunto: `node testes/testes.js t_jogos`. Os testes ficam em `testes/t_*.js` (um por assunto); peças comuns em `testes/apoio.js`. Teste novo entra no arquivo do assunto.
   - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
   - Teste local de versão e arquivo único: `python3 build/versao.py` e `python3 build/arquivo-unico.py`
   - Lint: não há.
@@ -67,7 +67,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 ## Tamanho de arquivo e alertas de contexto
 
 - Código novo: até 300 linhas por arquivo (ideal: menos de 200), cada arquivo com uma responsabilidade.
-- Arquivos já acima do limite (hoje `style.css` e `testes/testes.js`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
+- Arquivos já acima do limite (hoje `style.css`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
 - Fora do limite: `dados.js` (dados) e os arquivos gerados (`animais-8ano.html`, `tema-claro.css`).
 - Avise em uma frase (o que cresceu e por que importa) e sugira a ação:
   - mesma tarefa, conversa longa → `/compact` com direcionamento (ex.: `/compact mantenha as decisões e os arquivos alterados`);
