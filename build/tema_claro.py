@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Gera tema-claro.css a partir do style.css.
+"""Gera tema-claro.css a partir dos estilo-*.css.
 O visual original é escuro, com superfícies brancas translúcidas (rgba(255,255,255,x)).
 No tema claro, cada uma dessas regras ganha uma versão com superfícies escuras translúcidas
 e textos escuros, valendo só quando <html data-theme="claro">.
-Rode de novo depois de mudar cores no style.css: python3 build/tema_claro.py"""
+Rode de novo depois de mudar cores nos estilo-*.css: python3 build/tema_claro.py"""
 import os, re
 A = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + os.sep
-css = open(A + 'style.css', encoding='utf-8').read()
+ARQS = ['estilo-base.css', 'estilo-painel.css', 'estilo-telas.css', 'estilo-progresso.css']  # mesma ordem do index.html
+css = '\n'.join(open(A + f, encoding='utf-8').read() for f in ARQS)
 css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
 
 # cores claras de texto (boas no fundo escuro) -> versões escuras legíveis no fundo claro
@@ -59,7 +60,7 @@ for m in re.finditer(r'@media[^{]+\{((?:[^{}]*\{[^{}]*\})*)\s*\}', css):
     pos = m.end()
 regras(css[pos:])
 
-FIXO = '''/* Tema claro: gerado por build/tema_claro.py a partir do style.css (não edite à mão as regras geradas).
+FIXO = '''/* Tema claro: gerado por build/tema_claro.py a partir dos estilo-*.css (não edite à mão as regras geradas).
    As regras do fim (ajustes) são fixas no gerador. */
 '''
 AJUSTES = '''

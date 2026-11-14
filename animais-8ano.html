@@ -73,6 +73,8 @@ section.on{display:block}
 .card.star::before{content:"⭐";position:absolute;top:4px;right:6px;font-size:20px;animation:spin 3s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+</style>
+<style>
 /* painel */
 .overlay{position:fixed;inset:0;background:rgba(2,10,25,.8);backdrop-filter:blur(7px);display:none;place-items:center;padding:14px;z-index:65}
 .overlay.show{display:grid}
@@ -207,6 +209,8 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
+</style>
+<style>
 /* menu e início */
 .opw{position:relative}
 .opm{display:none;position:absolute;right:0;top:112%;z-index:70;min-width:230px;padding:10px;border-radius:18px;background:#10305a;border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 40px -10px #000;flex-direction:column;gap:8px}
@@ -299,6 +303,8 @@ header{position:relative}
 #inst .it{display:flex;flex-direction:column;gap:2px;font-size:14px}#inst .it b{font-size:16px}#inst .ib{display:flex;gap:8px;flex-wrap:wrap}#inst .btn{padding:8px 12px;font-size:14px}
 .opm{max-height:72vh;overflow:auto}
 
+</style>
+<style>
 /* ---------- progresso: caderno de erros, treino, simulado, ranking ---------- */
 .rnav{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .qtop .rnav{margin:0}
@@ -446,7 +452,7 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 
 </style>
 <style>
-/* Tema claro: gerado por build/tema_claro.py a partir do style.css (não edite à mão as regras geradas).
+/* Tema claro: gerado por build/tema_claro.py a partir dos estilo-*.css (não edite à mão as regras geradas).
    As regras do fim (ajustes) são fixas no gerador. */
 :where([data-theme=claro]) body{color:#0f172a}
 :where([data-theme=claro]) .bubble{background:radial-gradient(circle at 30% 30%,rgba(15,23,42,0.515),rgba(15,23,42,0.074))}

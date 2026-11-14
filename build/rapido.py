@@ -7,7 +7,7 @@ Uso (na pasta do projeto):
   python3 build/rapido.py --tudo    → roda a bateria completa (antes de publicar)
 
 Sempre roda: node --check nos .js mudados e node validar-banco.js.
-Se o style.css mudou, roda antes o build/tema_claro.py (gera o tema-claro.css).
+Se algum estilo-*.css mudou, roda antes o build/tema_claro.py (gera o tema-claro.css).
 Arquivo que não está no MAPA → roda todos os testes (seguro, mas mais lento).
 """
 import fnmatch, os, subprocess, sys
@@ -34,8 +34,8 @@ MAPA = [
     (["tema-claro.css", "build/tema_claro.py"], ["t_telas"]),
     (["animais-8ano.html", "build/arquivo-unico.py", "build/versao.py"], ["t_offline"]),
     (["build/rapido.py", "build/buscar.js", "build/tudo.sh"], []),
-    # dados.js, util.js, app.js, style.css, index.html, sw.js, manifesto e ícones: usados por tudo
-    (["dados.js", "util.js", "app.js", "style.css", "index.html", "sw.js", "manifest.webmanifest", "icon-*"], TODOS),
+    # dados.js, util.js, app.js, estilo-*.css, index.html, sw.js, manifesto e ícones: usados por tudo
+    (["dados.js", "util.js", "app.js", "estilo-*.css", "index.html", "sw.js", "manifest.webmanifest", "icon-*"], TODOS),
 ]
 
 
@@ -104,7 +104,7 @@ def main():
     if listar:
         return 0
     ok = True
-    if "style.css" in arquivos or tudo:
+    if any(a.startswith("estilo-") for a in arquivos) or tudo:
         ok &= etapa("tema claro", ["python3", "build/tema_claro.py"])
     for f in js:
         ok &= etapa("sintaxe " + f, ["node", "--check", f])

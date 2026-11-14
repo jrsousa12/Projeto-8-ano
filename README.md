@@ -7,8 +7,11 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | Arquivo | Para que serve |
 |---|---|
 | `index.html` | Telas do app |
-| `style.css` | Visual (cores, tamanhos, animações) |
-| `tema-claro.css` | Tema claro (gerado por `build/tema_claro.py` a partir do `style.css`) |
+| `estilo-base.css` | Visual: básico, fundo, cabeçalho, menu e árvore |
+| `estilo-painel.css` | Visual: painel, abas extras e animações dos desenhos |
+| `estilo-telas.css` | Visual: início, cartões, cenas da temperatura e leitura em sala |
+| `estilo-progresso.css` | Visual: progresso, nível, trilhas e ilustrações dos slides |
+| `tema-claro.css` | Tema claro (gerado por `build/tema_claro.py` a partir dos `estilo-*.css`) |
 | `util.js` | Funções usadas pelo app e pelo editor (identificador das perguntas) |
 | `banco-proprio.js` | **Perguntas do professor** e perguntas ocultadas (gerado pelo editor) |
 | `editor.html`, `editor.js`, `editor.css` | Editor de questões para o professor |

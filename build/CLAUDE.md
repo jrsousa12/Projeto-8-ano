@@ -4,7 +4,7 @@
 
 - Olha o que mudou desde o `origin/main` (commits + arquivos não enviados) e roda só o necessário.
 - `--listar` mostra o plano sem rodar; `--tudo` roda a bateria completa.
-- Sempre roda: `node --check` nos `.js` mudados e `node validar-banco.js`. Se o `style.css` mudou, roda antes o `tema_claro.py`.
+- Sempre roda: `node --check` nos `.js` mudados e `node validar-banco.js`. Se algum `estilo-*.css` mudou, roda antes o `tema_claro.py`.
 - A regra "o que mudou → testes" vive no `MAPA` do `rapido.py` (a primeira regra que combina vale):
 
 | Mudou | Testes de navegador |
@@ -22,7 +22,7 @@
 | `tema-claro.css`, `tema_claro.py` | `t_telas` |
 | `animais-8ano.html`, `arquivo-unico.py`, `versao.py` | `t_offline` |
 | um `testes/t_*.js` | ele mesmo |
-| `dados.js`, `util.js`, `app.js`, `style.css`, `index.html`, `sw.js`, manifesto, ícones, `testes/apoio.js`, `testes/testes.js` | todos |
+| `dados.js`, `util.js`, `app.js`, `estilo-*.css`, `index.html`, `sw.js`, manifesto, ícones, `testes/apoio.js`, `testes/testes.js` | todos |
 | arquivo fora do mapa | todos (seguro, mas mais lento) |
 
 - Arquivo novo do app, de teste ou ferramenta: acrescente-o ao `MAPA` e a esta tabela.
@@ -43,7 +43,7 @@
 
 ## Scripts de geração (os mesmos que o robô roda no `main`)
 
-- `tema_claro.py`: gera o `tema-claro.css` a partir do `style.css`.
+- `tema_claro.py`: gera o `tema-claro.css` a partir dos `estilo-*.css` (lista `ARQS`, na ordem do `index.html`).
 - `versao.py`: recalcula a versão do cache e a lista `IMGS` do `sw.js`.
 - `arquivo-unico.py`: gera o `animais-8ano.html` (app inteiro em um arquivo, com as imagens embutidas, sem o editor).
 

@@ -15,9 +15,8 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
-- **Próximas tarefas** (detalhes e decisões em `NOTAS.md`):
-  1. Dividir o `style.css` (436 linhas) em arquivos menores por parte do app. Antes: plano em passos aprovado pelo dono. Depois: gerar o tema claro, atualizar `ARQ` do `sw.js`, `build/arquivo-unico.py`, o `MAPA` do `build/rapido.py` e rodar `bash build/tudo.sh`.
-  2. A decidir pelo dono: gerador de perguntas (como o `novas.py` da Física).
+- **Visual:** dividido em `estilo-base.css`, `estilo-painel.css`, `estilo-telas.css` e `estilo-progresso.css`, carregados nessa ordem (a ordem importa). Estilo novo vai no arquivo da parte do app; arquivo de estilo novo entra no `index.html`, no `editor.html`, no `ARQ` do `sw.js` e na lista `ARQS` do `build/tema_claro.py`.
+- **Próxima tarefa** (detalhes em `NOTAS.md`): a decidir pelo dono, gerador de perguntas (como o `novas.py` da Física).
 
 ## Onde ficam as regras
 
@@ -69,7 +68,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 ## Tamanho de arquivo e alertas de contexto
 
 - Código novo: até 300 linhas por arquivo (ideal: menos de 200), cada arquivo com uma responsabilidade.
-- Arquivos já acima do limite (hoje `style.css`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
+- Arquivos já acima do limite (hoje nenhum): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
 - Fora do limite: `dados.js` (dados) e os arquivos gerados (`animais-8ano.html`, `tema-claro.css`).
 - Avise em uma frase (o que cresceu e por que importa) e sugira a ação:
   - mesma tarefa, conversa longa → `/compact` com direcionamento (ex.: `/compact mantenha as decisões e os arquivos alterados`);
