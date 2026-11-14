@@ -8,16 +8,12 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 - **Dono:** professor que não programa. Responda sempre em português do Brasil simples, sem jargão (inclusive resumos, avisos e commits).
 - **Textos para os alunos:** explique cada termo técnico na primeira vez que aparecer; prefira frases curtas.
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
-- **Comandos:**
-  - **Conferência rápida (use sempre durante o trabalho):** `python3 build/rapido.py` roda só o ligado ao que mudou desde o `origin/main` (`--listar` só mostra o plano; `--tudo` roda tudo). Arquivo novo do app ou de teste: acrescente no `MAPA` do `rapido.py`.
-  - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]` (`--tudo` mostra a pergunta inteira; entre aspas = frase exata).
-  - Validar perguntas: `node validar-banco.js`
-  - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`; ~70 s). Só um assunto: `node testes/testes.js t_jogos`. Os testes ficam em `testes/t_*.js` (um por assunto); peças comuns em `testes/apoio.js`. Teste novo entra no arquivo do assunto.
-  - **Antes de publicar:** `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo; ~80 s).
-  - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
-  - Teste local de versão e arquivo único: `python3 build/versao.py` e `python3 build/arquivo-unico.py`
-  - Lint: não há.
-  - Comando `/protocolo-token`: reaplica estas regras (`.claude/skills/protocolo-token/`; origem oficial no projeto de Física).
+- **Comandos** (detalhes em `build/CLAUDE.md` e `testes/CLAUDE.md`):
+  - Durante o trabalho: `python3 build/rapido.py` (só o ligado ao que mudou).
+  - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]`.
+  - Antes de publicar: `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo).
+  - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
+  - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
 
 ## Onde ficam as regras
@@ -64,7 +60,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 - **Testes guardados:** todo teste criado numa tarefa vira parte permanente da bateria (um arquivo por assunto). Antes de criar, procure um teste existente e amplie-o; não reescreva testes que já existem.
 - **Testes seletivos:** durante a tarefa, `python3 build/rapido.py`; a bateria completa (`--tudo`), no fim e antes de publicar.
 - **Relatórios longos** vão para arquivo (`.md`/`.txt`); na conversa, só o resumo.
-- **Memória do projeto:** decisões e pendências em `NOTAS.md`, para não perguntar de novo.
+- **Memória do projeto:** decisões e pendências em `NOTAS.md`; leia antes de propor algo e anote ali cada decisão nova do dono.
 - Tipos de motor e de recurso de apoio: seções 8 e 9 de `.claude/skills/protocolo-token/modelo-CLAUDE.md` (ler só quando for propor um).
 
 ## Tamanho de arquivo e alertas de contexto

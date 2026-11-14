@@ -13,6 +13,8 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `banco-proprio.js` | **Perguntas do professor** e perguntas ocultadas (gerado pelo editor) |
 | `editor.html`, `editor.js`, `editor.css` | Editor de questões para o professor |
 | `FONTES-CONFIAVEIS.md` | Fontes confiáveis para conferir e corrigir o conteúdo |
+| `NOTAS.md` | Decisões tomadas e pendências do projeto |
+| `CLAUDE.md`, `build/CLAUDE.md`, `testes/CLAUDE.md` | Regras para o Claude (economia de tokens, pesquisa de fontes, ferramentas e testes) |
 | `CLAUDE.md` | Regras para o Claude ao editar o app (inclui a pesquisa padrão nessas fontes) |
 | `dados.js` | **Conteúdo**: os 13 grupos, todas as perguntas, fauna do Pará, doenças e atividades práticas |
 | `app.js` | Funcionamento do app (jogos, estrelas, perfis, telas) |
