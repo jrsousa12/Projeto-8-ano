@@ -15,6 +15,9 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
+- **Próximas tarefas** (detalhes e decisões em `NOTAS.md`):
+  1. Dividir o `style.css` (436 linhas) em arquivos menores por parte do app. Antes: plano em passos aprovado pelo dono. Depois: gerar o tema claro, atualizar `ARQ` do `sw.js`, `build/arquivo-unico.py`, o `MAPA` do `build/rapido.py` e rodar `bash build/tudo.sh`.
+  2. A decidir pelo dono: gerador de perguntas (como o `novas.py` da Física).
 
 ## Onde ficam as regras
 
