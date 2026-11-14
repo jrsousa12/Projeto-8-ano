@@ -9,6 +9,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 - **Textos para os alunos:** explique cada termo técnico na primeira vez que aparecer; prefira frases curtas.
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
 - **Comandos:**
+  - **Conferência rápida (use sempre durante o trabalho):** `python3 build/rapido.py` roda só o ligado ao que mudou desde o `origin/main` (`--listar` só mostra o plano; `--tudo` roda tudo). Arquivo novo do app ou de teste: acrescente no `MAPA` do `rapido.py`.
   - Validar perguntas: `node validar-banco.js`
   - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`; ~70 s). Só um assunto: `node testes/testes.js t_jogos`. Os testes ficam em `testes/t_*.js` (um por assunto); peças comuns em `testes/apoio.js`. Teste novo entra no arquivo do assunto.
   - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
@@ -59,7 +60,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 
 - **Motor** = script que faz um trabalho repetido (gerar, converter, conferir, corrigir em lote) e devolve só um resumo curto. Se a mesma tarefa for feita à mão pela 2ª ou 3ª vez, proponha um motor; crie só com aprovação, pequeno e testado, e anote em "Comandos".
 - **Testes guardados:** todo teste criado numa tarefa vira parte permanente da bateria (um arquivo por assunto). Antes de criar, procure um teste existente e amplie-o; não reescreva testes que já existem.
-- **Testes seletivos:** durante a tarefa, rode só os testes ligados ao que mudou; a bateria completa, no fim e antes de publicar.
+- **Testes seletivos:** durante a tarefa, `python3 build/rapido.py`; a bateria completa (`--tudo`), no fim e antes de publicar.
 - **Relatórios longos** vão para arquivo (`.md`/`.txt`); na conversa, só o resumo.
 - **Memória do projeto:** decisões e pendências em `NOTAS.md`, para não perguntar de novo.
 - Tipos de motor e de recurso de apoio: seções 8 e 9 de `.claude/skills/protocolo-token/modelo-CLAUDE.md` (ler só quando for propor um).
