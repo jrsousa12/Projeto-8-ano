@@ -33,7 +33,7 @@ MAPA = [
     (["nivel.js"], ["t_progresso", "t_jogos"]),
     (["tema-claro.css", "build/tema_claro.py"], ["t_telas"]),
     (["animais-8ano.html", "build/arquivo-unico.py", "build/versao.py"], ["t_offline"]),
-    (["build/rapido.py"], []),
+    (["build/rapido.py", "build/buscar.js"], []),
     # dados.js, util.js, app.js, style.css, index.html, sw.js, manifesto e ícones: usados por tudo
     (["dados.js", "util.js", "app.js", "style.css", "index.html", "sw.js", "manifest.webmanifest", "icon-*"], TODOS),
 ]

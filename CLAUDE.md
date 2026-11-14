@@ -10,6 +10,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
 - **Comandos:**
   - **Conferência rápida (use sempre durante o trabalho):** `python3 build/rapido.py` roda só o ligado ao que mudou desde o `origin/main` (`--listar` só mostra o plano; `--tudo` roda tudo). Arquivo novo do app ou de teste: acrescente no `MAPA` do `rapido.py`.
+  - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]` (`--tudo` mostra a pergunta inteira; entre aspas = frase exata).
   - Validar perguntas: `node validar-banco.js`
   - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`; ~70 s). Só um assunto: `node testes/testes.js t_jogos`. Os testes ficam em `testes/t_*.js` (um por assunto); peças comuns em `testes/apoio.js`. Teste novo entra no arquivo do assunto.
   - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
@@ -27,11 +28,11 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 
 Antes de criar, editar ou corrigir qualquer parte conceitual (textos dos grupos, perguntas e explicações, fauna, verminoses, ciclos, curiosidades, naturalistas, atividades):
 
-1. Primeiro procure no próprio app (`grep` em `dados.js` e no `FONTES-CONFIAVEIS.md`). Se o fato já está lá e a tarefa não é alterá-lo nem corrigi-lo, reaproveite-o sem pesquisar de novo.
+1. Primeiro procure no próprio app com `node build/buscar.js palavra [outra]` (procura no `dados.js`, nos outros arquivos do app e no `FONTES-CONFIAVEIS.md`; não use `grep` no `dados.js`, que tem linhas enormes). Se o fato já está lá e a tarefa não é alterá-lo nem corrigi-lo, reaproveite-o sem pesquisar de novo.
 2. Para conteúdo novo, alterado ou corrigido, consulte as fontes de `FONTES-CONFIAVEIS.md`, na ordem e com as regras de lá. Use WebSearch/WebFetch com `allowed_domains` restrito aos domínios listados nesse arquivo.
 3. Números e datas precisam de duas fontes que concordem; se divergirem, use a forma mais cautelosa.
 4. Conteúdo de saúde só a partir do Ministério da Saúde, da Fiocruz ou da OPAS/OMS. Nunca indique remédio; oriente a procurar a Unidade de Saúde.
-5. Nas perguntas, confira também que **nenhuma alternativa errada pode ser considerada correta** e que a explicação não contradiz outra parte do app (use `grep` em `dados.js`, `app.js` e `extras.js`).
+5. Nas perguntas, confira também que **nenhuma alternativa errada pode ser considerada correta** e que a explicação não contradiz outra parte do app (use `node build/buscar.js`).
 6. Se a informação vier de uma fonte que ainda não está no app, acrescente-a em `FONTES` ou `FONTES_MAIS` (`dados.js`).
 7. Na resposta ao usuário, diga quais fontes foram consultadas para cada mudança conceitual.
 
