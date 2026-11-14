@@ -28,6 +28,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `testes/apoio.js` | Peças comuns dos testes (servidor local, responder perguntas, abrir telas) |
 | `build/buscar.js` | Procura um fato no app (perguntas, textos, fontes) e mostra só o trecho achado |
 | `build/rapido.py` | Conferência rápida: roda só as conferências e os testes ligados ao que mudou (`--tudo` roda tudo) |
+| `build/tudo.sh` | Comando único antes de publicar: gera tema claro, versão do cache e arquivo único e roda todas as conferências |
 | `build/versao.py` | Recalcula a versão do cache do `sw.js` |
 | `build/arquivo-unico.py` | Gera o `animais-8ano.html` |
 | `.github/workflows/` | Conferências automáticas no GitHub (aba **Actions**) |

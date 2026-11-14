@@ -13,6 +13,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]` (`--tudo` mostra a pergunta inteira; entre aspas = frase exata).
   - Validar perguntas: `node validar-banco.js`
   - Testes de navegador: `node testes/testes.js` (precisa de `playwright@1.63.0`; ~70 s). Só um assunto: `node testes/testes.js t_jogos`. Os testes ficam em `testes/t_*.js` (um por assunto); peças comuns em `testes/apoio.js`. Teste novo entra no arquivo do assunto.
+  - **Antes de publicar:** `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo; ~80 s).
   - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
   - Teste local de versão e arquivo único: `python3 build/versao.py` e `python3 build/arquivo-unico.py`
   - Lint: não há.
@@ -39,7 +40,7 @@ Antes de criar, editar ou corrigir qualquer parte conceitual (textos dos grupos,
 ## Depois de qualquer mudança
 
 - **Publicação:** o dono do repositório autorizou que toda atualização vá direto para o `main` (sem pull request), depois que o verificador e os testes passarem.
-- **Antes de publicar:** rode os comandos de "Contexto do projeto": tema claro (se mudou o `style.css`) → validar perguntas → testes de navegador. Para testar localmente a versão do cache e o arquivo único, use os scripts de `build/`.
+- **Antes de publicar:** `bash build/tudo.sh` (tema claro → versão do cache → arquivo único → sintaxe → perguntas → todos os testes) precisa terminar em "Tudo certo.". Os arquivos gerados que ele mudar vão no commit.
 - **Robô do `main`:** depois de cada push, o GitHub faz um commit no `main` (versão do cache e arquivo único). Antes de publicar de novo: `git fetch origin main`, `git rebase origin/main`, testes outra vez. Nunca force o push no `main`.
 - **Commits que vão junto:** antes de enviar ao `main`, liste com `git log --oneline origin/main..HEAD` e informe ao usuário todos os commits enviados. Envie também ao branch da sessão.
 - **Tarefas em etapas:** um único commit no final, salvo pedido do usuário.
