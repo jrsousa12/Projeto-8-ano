@@ -5,6 +5,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 ## Contexto do projeto
 
 - **App:** Ciências do 8º ano (Animais), usado por alunos no Pará (13 a 14 anos). Todo o texto em português do Brasil, com linguagem simples.
+- **Dono:** professor que não programa. Responda sempre em português do Brasil simples, sem jargão (inclusive resumos, avisos e commits).
 - **Textos para os alunos:** explique cada termo técnico na primeira vez que aparecer; prefira frases curtas.
 - **Stack:** PWA em HTML + CSS + JavaScript puro (sem framework nem bundler); scripts de apoio em Python 3 e Node.
 - **Comandos:**
@@ -13,6 +14,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Tema claro (se mudar o `style.css`): `python3 build/tema_claro.py`
   - Teste local de versão e arquivo único: `python3 build/versao.py` e `python3 build/arquivo-unico.py`
   - Lint: não há.
+  - Comando `/protocolo-token`: reaplica estas regras (`.claude/skills/protocolo-token/`; origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
 
 ## Onde ficam as regras
@@ -50,17 +52,29 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 - Prefira edições pontuais a reescrever o arquivo inteiro.
 - Leia só o necessário: localize com `grep -n` e leia o trecho (offset/limit). Não releia o que já foi lido na sessão.
 - Em tarefas complexas, apresente o plano em passos e valide com o usuário antes de editar.
+- O dono pode indicar arquivos com `@nome`.
+- Arquivos de dados ou gerados (linhas longas): vale o tamanho, não o número de linhas. Nunca leia inteiro.
+
+## Motores, testes e recursos de apoio
+
+- **Motor** = script que faz um trabalho repetido (gerar, converter, conferir, corrigir em lote) e devolve só um resumo curto. Se a mesma tarefa for feita à mão pela 2ª ou 3ª vez, proponha um motor; crie só com aprovação, pequeno e testado, e anote em "Comandos".
+- **Testes guardados:** todo teste criado numa tarefa vira parte permanente da bateria (um arquivo por assunto). Antes de criar, procure um teste existente e amplie-o; não reescreva testes que já existem.
+- **Testes seletivos:** durante a tarefa, rode só os testes ligados ao que mudou; a bateria completa, no fim e antes de publicar.
+- **Relatórios longos** vão para arquivo (`.md`/`.txt`); na conversa, só o resumo.
+- **Memória do projeto:** decisões e pendências em `NOTAS.md`, para não perguntar de novo.
+- Tipos de motor e de recurso de apoio: seções 8 e 9 de `.claude/skills/protocolo-token/modelo-CLAUDE.md` (ler só quando for propor um).
 
 ## Tamanho de arquivo e alertas de contexto
 
 - Código novo: até 300 linhas por arquivo (ideal: menos de 200), cada arquivo com uma responsabilidade.
-- Arquivos já acima do limite (hoje `style.css`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
+- Arquivos já acima do limite (hoje `style.css` e `testes/testes.js`): avise uma vez por sessão e sugira a divisão, sem travar a tarefa. Só divida com aprovação do usuário; dividir exige atualizar `sw.js`, `build/arquivo-unico.py` e os testes.
 - Fora do limite: `dados.js` (dados) e os arquivos gerados (`animais-8ano.html`, `tema-claro.css`).
 - Avise em uma frase (o que cresceu e por que importa) e sugira a ação:
   - mesma tarefa, conversa longa → `/compact` com direcionamento (ex.: `/compact mantenha as decisões e os arquivos alterados`);
   - tarefa concluída ou assunto novo → `/clear` (só sugerir: o usuário executa);
   - arquivo grande demais → propor a divisão.
 - Avise também ao perceber que está relendo trechos sem necessidade.
+- Dicas ao dono (uma frase, quando couber): uma tarefa por conversa; `@nome` quando souber o arquivo; pedidos diretos; "sim"/"não" basta.
 
 ## Saída de terminal
 
