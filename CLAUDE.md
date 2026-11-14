@@ -12,11 +12,12 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Durante o trabalho: `python3 build/rapido.py` (só o ligado ao que mudou).
   - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]`.
   - Antes de publicar: `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo).
+  - Perguntas novas: `python3 build/novas.py modelo <destino> [n]` → preencher o rascunho em `build/novas/` → `verificar` → `aplicar` (grava no `dados.js`).
   - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
 - **Visual:** dividido em `estilo-base.css`, `estilo-painel.css`, `estilo-telas.css` e `estilo-progresso.css`, carregados nessa ordem (a ordem importa). Estilo novo vai no arquivo da parte do app; arquivo de estilo novo entra no `index.html`, no `editor.html`, no `ARQ` do `sw.js` e na lista `ARQS` do `build/tema_claro.py`.
-- **Próxima tarefa** (detalhes em `NOTAS.md`): a decidir pelo dono, gerador de perguntas (como o `novas.py` da Física).
+- **Próxima tarefa** (detalhes em `NOTAS.md`): a decidir pelo dono.
 
 ## Onde ficam as regras
 

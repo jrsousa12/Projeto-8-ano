@@ -34,9 +34,17 @@
 - `--tudo` mostra o item inteiro; `--max N` muda o limite (20); entre aspas = frase exata.
 - Não procura no `animais-8ano.html` nem no `sw.js` (gerados).
 
+## Gerador de perguntas — `python3 build/novas.py`
+
+- `modelo <destino> [n]` cria `build/novas/<destino>_DATA.json`; destino = id do grupo, `final` ou parte do nome de um desafio das abas.
+- Campos: `q`, `certa`, `erradas` (3), `e`, `fontes` (`nome`, `para`, `url`), `onde_conferi`.
+- `verificar [arq]`: erro bloqueia (molde não preenchido, fonte fora do `FONTES-CONFIAVEIS.md`, saúde sem MS/Fiocruz/OPAS, remédio, repetida, alternativas repetidas ou "todas/nenhuma das anteriores"); aviso alerta (frase > 25 palavras, certa muito mais comprida, número com uma fonte só, pergunta parecida). Relatório em `build/novas/relatorio.md` (fora do git).
+- `aplicar arq`: grava em `BANK4.<grupo>`, `QZ` (posição da certa varia) ou `MQX.<aba>`; fonte nova vai para `FONTES_MAIS`; roda o `validar-banco.js` e desfaz se falhar; o rascunho vai para `build/novas/aplicadas/`.
+- `teste`: confere o gerador numa cópia temporária (rodado pelo `rapido.py` quando ele muda e pelo `tudo.sh`).
+
 ## Comando único — `bash build/tudo.sh`
 
-- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → todos os testes de navegador.
+- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → todos os testes de navegador.
 - O arquivo único é gerado antes dos testes, para o `t_offline` testar a versão nova.
 - Os gerados (`tema-claro.css`, `sw.js`, `animais-8ano.html`) saem iguais aos do robô do GitHub; se mudarem, vão no commit.
 - Termina em "Tudo certo." ou "Há falhas" (com o teste e a verificação que falharam).

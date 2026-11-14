@@ -7,6 +7,7 @@ Uso (na pasta do projeto):
   python3 build/rapido.py --tudo    → roda a bateria completa (antes de publicar)
 
 Sempre roda: node --check nos .js mudados e node validar-banco.js.
+Se o build/novas.py mudou (ou com --tudo), roda o teste do gerador de perguntas.
 Se algum estilo-*.css mudou, roda antes o build/tema_claro.py (gera o tema-claro.css).
 Arquivo que não está no MAPA → roda todos os testes (seguro, mas mais lento).
 """
@@ -33,7 +34,7 @@ MAPA = [
     (["nivel.js"], ["t_progresso", "t_jogos"]),
     (["tema-claro.css", "build/tema_claro.py"], ["t_telas"]),
     (["animais-8ano.html", "build/arquivo-unico.py", "build/versao.py"], ["t_offline"]),
-    (["build/rapido.py", "build/buscar.js", "build/tudo.sh"], []),
+    (["build/rapido.py", "build/buscar.js", "build/tudo.sh", "build/novas.py"], []),
     # dados.js, util.js, app.js, estilo-*.css, index.html, sw.js, manifesto e ícones: usados por tudo
     (["dados.js", "util.js", "app.js", "estilo-*.css", "index.html", "sw.js", "manifest.webmanifest", "icon-*"], TODOS),
 ]
@@ -109,6 +110,8 @@ def main():
     for f in js:
         ok &= etapa("sintaxe " + f, ["node", "--check", f])
     ok &= etapa("perguntas", ["node", "validar-banco.js"])
+    if tudo or "build/novas.py" in arquivos:
+        ok &= etapa("gerador de perguntas", ["python3", "build/novas.py", "teste"])
     if testes:
         ok &= etapa("testes de navegador", ["node", "testes/testes.js"] + ([] if testes == TODOS else testes))
     print("\nTudo certo." if ok else "\nHá falhas (veja acima).")
