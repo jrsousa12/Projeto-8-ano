@@ -16,7 +16,10 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 ## Pendências (esperando decisão do dono)
 
-- **Próxima tarefa (escolhida pelo dono em 15/11/2026): revisão das perguntas existentes.** Procurar alternativas erradas que possam ser consideradas certas e explicações que contradizem outra parte do app (`node build/buscar.js`). Fazer por banco ou por grupo, gravar o relatório em arquivo e mostrar só o resumo; corrigir só depois do "sim" do dono, conferindo nas fontes confiáveis.
+- **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
+- **Próxima tarefa:** ainda não escolhida. Ideias: melhorias opcionais `QZ[18]` e `QZ[129]`; revisar os textos que não são perguntas (fauna do Pará, naturalistas, verminoses, curiosidades).
+
+- **Concluída (15/11/2026): revisão das perguntas existentes.** Procurar alternativas erradas que possam ser consideradas certas e explicações que contradizem outra parte do app (`node build/buscar.js`). Fazer por banco ou por grupo, gravar o relatório em arquivo e mostrar só o resumo; corrigir só depois do "sim" do dono, conferindo nas fontes confiáveis.
   - **Feito (15/11/2026):** os 13 grupos (EXTRA, EXTRA2, BANK3, BANK4; 390 perguntas) foram revisados (`revisao/rodada-1` a `rodada-3`) e as correções aplicadas com o "sim" do dono.
   - **A fazer (decisão do dono em 15/11/2026):** revisar o Desafio final (`QZ`, 209 perguntas, blocos de ~50, relatório `revisao/rodada-4-qz-1a50.md` e seguintes) e depois `MQX`/`MQ0`.
   - **Feito (15/11/2026):** bloco 1 do `QZ` (perguntas 1–50) revisado: `revisao/rodada-4-qz-1a50.md` (1 ponto a corrigir, 2 de baixo risco).
