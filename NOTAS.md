@@ -17,7 +17,8 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 ## Pendências (esperando decisão do dono)
 
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
-- **Próxima tarefa:** ainda não escolhida. Ideias: melhorias opcionais `QZ[18]` e `QZ[129]`; revisar os textos que não são perguntas (fauna do Pará, naturalistas, verminoses, curiosidades).
+- **Próxima tarefa (15/11/2026):** criar um motor de revisão dos textos que não são perguntas (fauna do Pará, naturalistas, verminoses, curiosidades) e atualizar o protocolo-token a partir da Física. Plano esperando o "sim" do dono.
+- **Decisão (15/11/2026):** `QZ[18]` e `QZ[129]` ficam como estão (o dono não quer as melhorias opcionais).
 
 - **Concluída (15/11/2026): revisão das perguntas existentes.** Procurar alternativas erradas que possam ser consideradas certas e explicações que contradizem outra parte do app (`node build/buscar.js`). Fazer por banco ou por grupo, gravar o relatório em arquivo e mostrar só o resumo; corrigir só depois do "sim" do dono, conferindo nas fontes confiáveis.
   - **Feito (15/11/2026):** os 13 grupos (EXTRA, EXTRA2, BANK3, BANK4; 390 perguntas) foram revisados (`revisao/rodada-1` a `rodada-3`) e as correções aplicadas com o "sim" do dono.
