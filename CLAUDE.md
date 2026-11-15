@@ -17,7 +17,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
 - **Visual:** dividido em `estilo-base.css`, `estilo-painel.css`, `estilo-telas.css` e `estilo-progresso.css`, carregados nessa ordem (a ordem importa). Estilo novo vai no arquivo da parte do app; arquivo de estilo novo entra no `index.html`, no `editor.html`, no `ARQ` do `sw.js` e na lista `ARQS` do `build/tema_claro.py`.
-- **Próxima tarefa** (detalhes em `NOTAS.md`): continuar a revisão das perguntas no Desafio final (`QZ`, 209 perguntas, em blocos de ~50) e depois nos desafios temáticos (`MQX`/`MQ0`). Os 13 grupos já foram revisados e corrigidos (relatórios em `revisao/`). Resultado em relatório curto; corrigir só com o "sim" do dono.
+- **Próxima tarefa:** ainda não escolhida pelo dono. A revisão de todas as perguntas terminou em 15/11/2026 (grupos, `QZ`, `MQX`/`MQ0`; relatórios em `revisao/`). Pendências e ideias em `NOTAS.md`.
 
 ## Onde ficam as regras
 
