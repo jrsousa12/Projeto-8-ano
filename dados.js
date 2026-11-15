@@ -96,13 +96,13 @@ const G=[
 ];
 const EXTRA={
 porifero:[
-["Do que é feito o esqueleto das esponjas?",["Espículas (de cálcio ou sílica) ou fibras de espongina","Ossos","Carapaça de quitina","Cartilagem"],"As espículas ou a espongina sustentam o corpo. As esponjas de banho são feitas de espongina."],
+["Do que é feito o esqueleto das esponjas?",["Espículas (de calcário ou sílica) ou fibras de espongina","Ossos","Carapaça de quitina","Cartilagem"],"As espículas ou a espongina sustentam o corpo. As esponjas de banho são feitas de espongina."],
 ["Os poríferos adultos são animais…",["Sésseis (ficam fixos)","Voadores","Que andam com patas","Que nadam rápido"],"Eles ficam presos ao fundo, rochas ou outros apoios."],
 ["Os poríferos têm tecidos e órgãos verdadeiros?",["Não, não têm","Sim, vários órgãos","Sim, só um cérebro simples","Sim, só um coração"],"São os animais mais simples: não têm tecidos verdadeiros nem órgãos."],
 ["Qual destas é uma forma de reprodução assexuada das esponjas?",["Brotamento","Metamorfose completa","Cópula","Ovo com casca dura"],"Um novo indivíduo se forma a partir de um broto da esponja “mãe”."]],
 cnidario:[
 ["Quais são as duas formas do corpo dos cnidários?",["Pólipo e medusa","Larva e pupa","Girino e adulto","Concha e manto"],"O pólipo vive fixo; a medusa nada livremente."],
-["Qual destes cnidários vive apenas como pólipo?",["Coral","Água-viva","Polvo","Esponja"],"Corais e anêmonas só têm a forma de pólipo. A água-viva é medusa."],
+["Qual destes animais vive apenas como pólipo?",["Coral","Água-viva","Polvo","Esponja"],"Corais e anêmonas só têm a forma de pólipo. A água-viva é medusa."],
 ["Como é o tubo digestório dos cnidários?",["Tem boca, mas não tem ânus","Tem boca e ânus","Não tem boca","Tem só ânus"],"Há uma única abertura, que serve de boca e de saída."],
 ["Qual é a simetria do corpo dos cnidários?",["Radial","Bilateral","Assimétrica","Pentarradial"],"A simetria radial divide o corpo em partes iguais ao redor de um eixo."]],
 platelminto:[
@@ -123,7 +123,7 @@ molusco:[
 anelideo:[
 ["O corpo dos anelídeos é dividido em…",["Anéis (metâmeros)","Placas rígidas","Braços","Duas valvas"],"Por isso o nome: anel."],
 ["A minhoca pertence a qual classe de anelídeos?",["Oligoquetas","Hirudíneos","Poliquetas","Gastrópodes"],"Oligoquetas têm poucas cerdas."],
-["Qual destas descrições combina com a sanguessuga?",["Anelídeo sem cerdas e com ventosas","Anelídeo com muitas cerdas, marinho","Molusco de concha","Verme achatado"],"As sanguessugas são hirudíneos. Têm ventosas e não têm cerdas."],
+["Qual destas descrições combina com a sanguessuga?",["Anelídeo sem cerdas e com ventosas","Anelídeo com muitas cerdas, marinho","Molusco de concha","Verme cilíndrico sem anéis"],"As sanguessugas são hirudíneos. Têm ventosas e não têm cerdas."],
 ["Como a minhoca se reproduz?",["É hermafrodita, com fecundação cruzada","Tem sexos separados e se autofecunda","Só por brotamento","Bota ovos de casca dura"],"Cada minhoca tem os dois sexos, mas precisa de outra para trocar gametas. O clitelo participa disso."]],
 artropode:[
 ["O que o nome “artrópode” indica?",["Patas articuladas","Corpo mole","Concha dura","Muitos braços"],"Artro quer dizer articulação e podos quer dizer pés."],
@@ -176,7 +176,7 @@ platelminto:[
 ["Como uma planária pode se reproduzir de forma assexuada?",["Dividindo o corpo em partes","Soltando esporos","Botando ovos de casca dura","Por metamorfose"],"Pode ocorrer um estrangulamento do corpo, e cada parte forma uma planária nova."]],
 nematodeo:[
 ["Qual destes parasitas é um nematódeo?",["Ancilóstomo","Tênia","Esquistossomo","Planária"],"Ancilóstomo, lombriga e oxiúro são nematódeos."],
-["Qual doença é causada pelo Ascaris lumbricoides?",["Ascaridíase","Esquistossomose","Teníase","Cisticercose"],"É a verminose intestinal humana mais disseminada no mundo."],
+["Qual doença é causada pelo Ascaris lumbricoides?",["Ascaridíase","Esquistossomose","Teníase","Cisticercose"],"É uma das verminoses intestinais mais comuns no mundo."],
 ["Como a filariose (elefantíase) é transmitida?",["Por picada de mosquito","Por água com ovos","Por caramujo","Por carne de porco"],"Evitar água parada ajuda a prevenir o mosquito."]],
 molusco:[
 ["Caracóis e lesmas são…",["Gastrópodes","Bivalves","Cefalópodes","Equinodermos"],"Gastrópodes são a classe mais numerosa de moluscos."],
@@ -185,7 +185,7 @@ molusco:[
 anelideo:[
 ["Qual é a função do clitelo da minhoca?",["Participar da reprodução","Respirar","Digerir","Ajudar a enxergar"],"É uma faixa mais grossa do corpo. Libera muco na união de duas minhocas e forma o casulo onde ficam os ovos."],
 ["Onde vivem, em geral, os poliquetas?",["No ambiente marinho","No solo seco","No ar","Só em rios"],"Eles têm cerdas bem evidentes, e os nereis são exemplos."],
-["As sanguessugas têm algum uso na medicina?",["Sim, na hirudoterapia","Nunca","Só como adubo","Só como alimento"],"Algumas espécies são usadas em tratamentos médicos, por exemplo depois de cirurgias."]],
+["Onde vive a maioria das sanguessugas?",["Em água doce","Na areia seca dos desertos","Dentro do gelo polar","Só no fundo do mar profundo"],"A maioria vive em rios, lagos e brejos. Algumas vivem no mar ou em lugares úmidos na terra."]],
 artropode:[
 ["De que é feito o exoesqueleto dos artrópodes?",["Quitina","Osso","Cartilagem","Espongina"],"Ele protege o corpo e precisa ser trocado na muda."],
 ["A lacraia é…",["Um quilópode, com 1 par de patas por segmento","Um diplópode","Um inseto","Um crustáceo"],"Quilópodes são carnívoros e têm forcípulas com veneno."],
@@ -195,7 +195,7 @@ equinodermo:[
 ["O que muitas estrelas-do-mar podem fazer com um braço perdido?",["Regenerá-lo","Nada, nunca","Transformá-lo em ovo","Usá-lo como concha"],"Elas têm grande capacidade de regeneração."],
 ["O pepino-do-mar é…",["Um animal equinoderma","Uma planta","Uma alga","Um molusco"],"Os pepinos-do-mar são holotúrias."]],
 peixe:[
-["Como os peixes respiram?",["Por brânquias","Por pulmões","Só pela pele","Por traqueias"],"As brânquias retiram o oxigênio dissolvido na água."],
+["Como a maioria dos peixes respira?",["Por brânquias","Por pulmões","Só pela pele","Por traqueias"],"As brânquias retiram o oxigênio dissolvido na água."],
 ["Quanto à temperatura do corpo, os peixes são…",["Ectotérmicos","Endotérmicos","Sempre a 40 °C","Parecidos com as aves"],"A temperatura do corpo varia com o ambiente."],
 ["Qual destes é um peixe cartilaginoso?",["Arraia","Lambari","Carpa","Piranha"],"Arraias e tubarões têm esqueleto de cartilagem."]],
 anfibio:[
@@ -205,7 +205,7 @@ anfibio:[
 reptil:[
 ["O jacaré pertence a qual grupo?",["Répteis crocodilianos","Anfíbios","Mamíferos","Peixes"],"Jacarés, crocodilos e gaviais são répteis."],
 ["Como é o coração dos crocodilianos?",["Tem 4 câmaras, mas ainda há mistura de sangue","Tem 3 câmaras","Tem 2 câmaras","Não tem coração"],"Nos outros répteis o coração tem dois átrios e um ventrículo."],
-["Cobras e lagartos fazem parte de qual ordem?",["Squamata","Crocodylia","Testudines","Sphenodontia"],"São os répteis de corpo coberto por escamas."]],
+["Cobras e lagartos fazem parte de qual ordem?",["Squamata","Crocodylia","Testudines","Sphenodontia"],"Squamata quer dizer “com escamas”. Cobras e lagartos trocam a pele de tempos em tempos (ecdise)."]],
 ave:[
 ["Para que serve a glândula uropigiana?",["Produzir óleo que impermeabiliza as penas","Digerir o alimento","Produzir ovos","Produzir a voz"],"A ave espalha o óleo nas penas com o bico."],
 ["Para que serve a quilha do esterno?",["Prender os fortes músculos do voo","Guardar ovos","Respirar","Triturar o alimento"],"Nas aves que voam, o esterno forma uma quilha."],
@@ -223,7 +223,7 @@ porifero:[
 ["Como é a digestão nas esponjas?",["Dentro das células (intracelular)","Em um estômago","Em um intestino","Fora do corpo"],"Coanócitos e amebócitos digerem o alimento dentro das próprias células."],
 ["O que fazem os amebócitos da esponja?",["Distribuem nutrientes e ajudam em várias funções","Fazem fotossíntese","Produzem leite","Formam a concha"],"São células móveis que levam o alimento digerido para as outras células."],
 ["Como se chama a abertura por onde a água ENTRA na esponja?",["Poro (óstio)","Ósculo","Boca","Cloaca"],"A água entra pelos poros e sai pelo ósculo."],
-["O que são as espículas?",["Pequenas peças que sustentam o corpo da esponja","Tentáculos urticantes","Dentes","Ovos"],"São feitas de cálcio ou sílica e ficam no corpo da esponja."],
+["O que são as espículas?",["Pequenas peças que sustentam o corpo da esponja","Tentáculos urticantes","Dentes","Ovos"],"São feitas de calcário ou sílica e ficam no corpo da esponja."],
 ["O que é uma esponja de banho natural?",["O esqueleto de espongina de uma esponja","Uma alga seca","Um coral","Um fungo"],"As esponjas de banho usam as fibras de espongina."],
 ["Qual é uma importância das esponjas no ambiente?",["Filtram a água e servem de abrigo para pequenos animais","Produzem oxigênio como as plantas","Caçam peixes grandes","Fixam nitrogênio no solo"],"Elas limpam a água e abrigam outros animais."],
 ["Como é a reprodução sexuada das esponjas?",["Com óvulos e espermatozoides","Por brotamento","Por fragmentação","Por cópula"],"Brotamento e fragmentação são formas de reprodução assexuada."],
@@ -253,13 +253,13 @@ cnidario:[
 platelminto:[
 ["Qual é a simetria do corpo dos platelmintos?",["Bilateral","Radial","Pentarradial","Sem simetria"],"Têm um lado direito e um esquerdo."],
 ["Quantos folhetos embrionários têm os platelmintos?",["Três (triblásticos)","Dois","Um","Quatro"],"Ectoderme, mesoderme e endoderme."],
-["Qual destes platelmintos vive em água doce e é de vida livre?",["Planária","Tênia","Esquistossomo","Lombriga"],"A tênia e o esquistossomo são parasitas."],
+["Qual destes vermes vive em água doce e é de vida livre?",["Planária","Tênia","Esquistossomo","Lombriga"],"A tênia e o esquistossomo são parasitas."],
 ["Como é o sistema digestório da planária?",["Incompleto, com uma só abertura","Completo, com ânus","Em forma de bolsa de ar","Com rádula"],"Ela tem boca, mas não tem ânus."],
 ["A tênia tem sistema digestório?",["Não; absorve o alimento pela superfície do corpo","Sim, completo","Sim, só estômago","Sim, só boca"],"Ela vive no intestino, onde o alimento já está digerido."],
 ["O que é o escólex da tênia?",["A cabeça, com estruturas de fixação","A cauda","O ovo","O estômago"],"Ele prende a tênia à parede do intestino."],
 ["Como se chama o parasita que vive dentro do corpo do hospedeiro?",["Endoparasita","Ectoparasita","Predador","Decompositor"],"Ecto significa fora e endo significa dentro."],
 ["Qual é o hospedeiro definitivo do esquistossomo?",["O ser humano","O caramujo","O porco","O boi"],"O caramujo é o hospedeiro intermediário."],
-["Qual doença é transmitida pelo contato com água contaminada de lagoas e rios?",["Esquistossomose","Ascaridíase","Teníase","Amarelão"],"A larva do esquistossomo penetra pela pele na água."],
+["Qual doença é transmitida pelo contato com água contaminada de lagoas e rios?",["Esquistossomose","Oxiurose","Teníase","Amarelão"],"A larva do esquistossomo penetra pela pele na água."],
 ["Como prevenir a teníase?",["Comer carne bem cozida e de origem inspecionada","Usar repelente","Evitar picadas de mosquito","Beber só água mineral"],"A cocção mata as larvas da tênia na carne."],
 ["A cisticercose é causada por…",["Ingerir ovos da Taenia solium","Beber água com cistos de ameba","Picada de mosquito","Larvas do solo pela pele"],"Pode ocorrer com mãos sujas ou alimentos e água contaminados."],
 ["Quanto ao sexo, as planárias são…",["Hermafroditas","Só machos","Só fêmeas","Sempre de sexos separados"],"Cada animal tem órgãos reprodutores masculinos e femininos."],
@@ -268,7 +268,7 @@ platelminto:[
 ["Onde vive a tênia adulta?",["No intestino de vertebrados","Em folhas","No solo seco","Na água do mar"],"É um parasita intestinal."],
 ["As planárias pertencem a qual classe?",["Turbelários","Cestódeos","Trematódeos","Nematódeos"],"Turbelários são os platelmintos de vida livre."]],
 nematodeo:[
-["O corpo dos nematódeos é revestido por…",["Uma cutícula resistente","Concha calcária","Penas","Escamas ósseas"],"A cutícula protege o corpo, inclusive dos parasitas dentro do hospedeiro."],
+["O corpo dos nematódeos é revestido por…",["Uma cutícula resistente","Concha calcária","Penas","Escamas ósseas"],"A cutícula protege o corpo. Nos vermes parasitas, ela ajuda a resistir dentro do corpo do hospedeiro."],
 ["Como é o tubo digestório dos nematódeos?",["Completo, com boca e ânus","Incompleto","Ausente","Só com boca"],"O alimento segue em uma só direção."],
 ["Qual verminose é causada pelo Ancylostoma?",["Ancilostomíase (amarelão)","Esquistossomose","Teníase","Cisticercose"],"As larvas penetram pela pele do pé."],
 ["O amarelão pode causar…",["Anemia e palidez","Fraturas","Febre amarela","Perda de pelos"],"O parasita se alimenta de sangue no intestino."],
@@ -299,7 +299,7 @@ molusco:[
 ["Por que as lesmas precisam de lugares úmidos?",["A pele fina perde água com facilidade","Respiram por brânquias externas","Comem plantas aquáticas","Precisam de sol"],"Por isso elas aparecem mais à noite e na chuva."],
 ["Quantos braços tem um polvo?",["Oito","Dez","Seis","Quatro"],"A lula tem oito braços e dois tentáculos."],
 ["Qual é a maior classe de moluscos em número de espécies?",["Gastrópodes","Cefalópodes","Bivalves","Escafópodes"],"Incluem caracóis, caramujos e lesmas."],
-["O caramujo Biomphalaria é hospedeiro de qual parasita?",["Esquistossomo","Tênia","Ancilóstomo","Filária"],"Ele transmite a esquistossomose."],
+["O caramujo Biomphalaria é hospedeiro de qual parasita?",["Esquistossomo","Tênia","Ancilóstomo","Filária"],"Na água, ele libera as larvas que entram pela pele das pessoas."],
 ["O pé dos moluscos serve principalmente para…",["Locomoção","Respiração","Visão","Reprodução"],"No polvo, o pé se transformou em braços."]],
 anelideo:[
 ["Como se chama cada anel do corpo dos anelídeos?",["Segmento (metâmero)","Clitelo","Manto","Escólex"],"Dividir o corpo em segmentos é a metameria."],
@@ -307,11 +307,11 @@ anelideo:[
 ["Como é o sistema circulatório dos anelídeos?",["Fechado","Aberto","Ausente","Com coração de quatro cavidades"],"O sangue circula dentro de vasos."],
 ["Como é o tubo digestório dos anelídeos?",["Completo","Incompleto","Ausente","Em forma de saco"],"A boca fica na frente e o ânus no último segmento."],
 ["Como é a reprodução da minhoca quanto ao sexo?",["Hermafrodita, com fecundação cruzada","Só macho","Só fêmea","Por partenogênese"],"Duas minhocas trocam espermatozoides."],
-["Qual parte da minhoca forma o húmus?",["As fezes","As cerdas","O clitelo","Os ovos"],"As fezes enriquecem o solo."],
+["O que a minhoca produz que vira húmus?",["As fezes","As cerdas","O clitelo","Os ovos"],"As fezes enriquecem o solo."],
 ["Qual substância da saliva da sanguessuga impede a coagulação do sangue?",["Hirudina","Insulina","Clorofila","Queratina"],"É um anticoagulante."],
 ["Quantas ventosas tem a sanguessuga?",["Duas, uma em cada ponta do corpo","Uma, só na cauda","Oito","Nenhuma"],"Elas servem para fixar e se locomover."],
 ["Onde vivem os poliquetas?",["Principalmente na água, no mar","Só no solo seco","No ar","Em árvores"],"Têm muitas cerdas laterais."],
-["O que é o minhocuçu?",["Uma minhoca gigante","Um molusco","Uma sanguessuga","Um nematódeo"],"Pode passar de um metro de comprimento."],
+["O que é o minhocuçu?",["Uma minhoca gigante","Um molusco","Uma sanguessuga","Um nematódeo"],"Pode passar de meio metro de comprimento."],
 ["Qual é a simetria dos anelídeos?",["Bilateral","Radial","Pentarradial","Esférica"],"Têm lado direito e esquerdo."],
 ["De que as minhocas se alimentam?",["Matéria orgânica em decomposição","Sangue","Plâncton","Folhas vivas"],"Elas ingerem terra e restos orgânicos."],
 ["Quais anelídeos não têm cerdas?",["Hirudíneos (sanguessugas)","Poliquetas","Oligoquetas","Todos têm"],"Hirudíneos têm ventosas no lugar."],
@@ -379,7 +379,7 @@ anfibio:[
 ["Como o girino se movimenta?",["Com a cauda","Com patas","Com asas","Com ventosas"],"Depois nascem as patas."],
 ["O que acontece com a cauda do girino de sapo?",["É reabsorvida","Cresce mais","Vira asa","Vira concha"],"O sapo adulto não tem cauda."],
 ["Qual destes é um anfíbio?",["Perereca","Lagarto","Jacaré","Tartaruga"],"Os outros são répteis."],
-["Qual característica distingue anfíbios de répteis?",["Pele úmida e sem escamas","Ovos com casca dura","Respiração só por pulmões","Coração com quatro câmaras"],"Répteis têm pele seca com escamas."],
+["Qual característica distingue anfíbios de répteis?",["Pele fina e úmida","Ovos com casca dura","Respiração só por pulmões","Coração com quatro câmaras"],"Répteis têm pele seca com escamas."],
 ["Qual anfíbio tem corpo alongado, cauda e quatro patas?",["Salamandra","Sapo","Rã","Cobra-cega"],"É um urodelo."],
 ["Para que servem as glândulas da pele dos anfíbios?",["Manter a pele úmida e, em alguns, produzir substâncias de defesa","Produzir leite","Produzir penas","Produzir teia"],"Alguns sapos têm secreções tóxicas."],
 ["O canto dos sapos serve principalmente para…",["Atrair parceiros para a reprodução","Respirar","Digerir","Caçar peixes"],"Em geral, os machos é que cantam."],
@@ -428,7 +428,7 @@ mamifero:[
 ["Qual mamífero consegue voar de verdade?",["Morcego","Esquilo-voador","Gambá","Lêmure"],"O esquilo-voador apenas plana."],
 ["Qual mamífero totalmente aquático da Amazônia come plantas?",["Peixe-boi","Boto","Ariranha","Capivara"],"O boto come peixes e a ariranha também."],
 ["Como o filhote de mamífero é alimentado no começo da vida?",["Com leite da mãe","Com insetos","Com sementes","Com peixes regurgitados"],"As glândulas mamárias são exclusivas dos mamíferos."],
-["Como são os dentes dos mamíferos?",["De vários tipos: incisivos, caninos e molares","Todos iguais","Ausentes","Só em forma de bico"],"Isso permite diferentes dietas."],
+["Como são os dentes da maioria dos mamíferos?",["De vários tipos: incisivos, caninos e molares","Todos iguais","Só em forma de garra","Só em forma de bico"],"Isso permite diferentes dietas."],
 ["Qual destes é um mamífero placentário?",["Cachorro","Canguru","Ornitorrinco","Gambá"],"O canguru e o gambá são marsupiais."],
 ["Qual destes é um marsupial brasileiro?",["Gambá","Capivara","Onça-pintada","Tatu"],"O gambá carrega os filhotes em uma bolsa."],
 ["O que é o marsúpio?",["A bolsa onde o filhote termina o desenvolvimento","Um tipo de dente","Uma glândula do leite","Um órgão do olfato"],"Os filhotes nascem muito pequenos."],
@@ -767,7 +767,7 @@ const FONTES_MAIS=[
 ["Órgãos oficiais brasileiros","ICMBio: SALVE","fichas das espécies brasileiras e risco de extinção","https://salve.icmbio.gov.br"],
 ["Órgãos oficiais brasileiros","ICMBio: Livro Vermelho da Fauna Brasileira","espécies ameaçadas, como harpia, ariranha e peixe-boi","https://www.gov.br/icmbio"],
 ["Órgãos oficiais brasileiros","Ibama: espécies exóticas invasoras","javali, caramujo-gigante-africano e outras espécies invasoras","https://www.gov.br/ibama"],
-["Órgãos oficiais brasileiros","BNCC (Base Nacional Comum Curricular)","o que se estuda em Ciências no Ensino Fundamental","https://basenacionalcomum.mec.gov.br"],
+["Órgãos oficiais brasileiros","BNCC (Base Nacional Comum Curricular)","o que se estuda em Ciências no Ensino Fundamental","https://basenacionalcomum.mec.gov.br"],["Órgãos oficiais brasileiros","MEC: Portal do Professor","aulas de Ciências (ex.: tamanho do minhocuçu)","https://portaldoprofessor.mec.gov.br"],
 ["Museus e institutos de pesquisa","Museu Paraense Emílio Goeldi","fauna amazônica e do Pará e história dos naturalistas","https://www.gov.br/museugoeldi"],
 ["Museus e institutos de pesquisa","INPA (Instituto Nacional de Pesquisas da Amazônia)","peixes, quelônios e mamíferos aquáticos da Amazônia","https://www.gov.br/inpa"],
 ["Museus e institutos de pesquisa","Instituto Mamirauá","pirarucu, boto e peixe-boi na Amazônia","https://www.mamiraua.org.br"],
@@ -810,7 +810,7 @@ porifero:[
 ["O que quer dizer o nome porífero?",["Portador de poros","Animal com espinhos","Corpo mole","Pés articulados"],"A água entra no corpo da esponja por muitos poros."],
 ["O que são as gêmulas de algumas esponjas de água doce?",["Estruturas de resistência que depois formam uma nova esponja","Ovos com casca dura","Células urticantes","Tentáculos de defesa"],"Elas aguentam a seca e o frio e, quando o ambiente melhora, originam uma esponja."],
 ["Como é a larva das esponjas?",["Ciliada e nada livremente","Fixa no fundo desde o início","Parecida com um girino","Coberta por uma concha"],"Depois de nadar um tempo, a larva se fixa e forma a esponja adulta."],
-["Além do alimento, o que a corrente de água traz para a esponja?",["Oxigênio","Luz","Sangue","Areia para o esqueleto"],"A água traz oxigênio e leva embora os resíduos pelo ósculo."],
+["Além do alimento, o que a corrente de água traz para a esponja?",["Oxigênio","Luz","Sangue","Pedras para a concha"],"A água traz oxigênio e leva embora os resíduos pelo ósculo."],
 ["A qual reino pertencem as esponjas?",["Animal (Animalia)","Plantas (Plantae)","Fungos (Fungi)","Bactérias"],"Esponjas são animais, mesmo sem se mover quando adultas."],
 ["Na Amazônia, como se chama a esponja de água doce cujas espículas são misturadas ao barro na cerâmica indígena?",["Cauxi","Pirarucu","Tracajá","Sururu"],"As espículas do cauxi são de sílica, um material duro, e há muito tempo fazem parte da cerâmica de povos indígenas."],
 ["Em 2016, cientistas descreveram um grande sistema de recifes, com muitas esponjas, em frente à foz de qual rio?",["Amazonas","São Francisco","Paraná","Tietê"],"Esse sistema de recifes vai do Maranhão até a Guiana Francesa."]],
@@ -835,7 +835,7 @@ nematodeo:[
 ["Como os nematódeos de vida livre ajudam o solo?",["Participam da decomposição e da reciclagem de nutrientes","Deixam o solo duro","Produzem oxigênio","Comem as raízes de todas as plantas"],"Eles são muito numerosos no solo, mesmo sem a gente conseguir ver."],
 ["Qual problema alguns nematódeos causam na agricultura?",["Atacam as raízes das plantas","Picam os agricultores","Secam os rios","Comem as sementes no armazém"],"Esses nematódeos formam caroços (galhas) nas raízes."],
 ["Na lombriga, quem costuma ser maior?",["A fêmea","O macho","São sempre do mesmo tamanho","A lombriga não tem sexos"],"Nos nematódeos, macho e fêmea costumam ser diferentes."],
-["Quantos ovos uma fêmea de lombriga pode pôr por dia?",["Cerca de 200 mil","Só 1","Cerca de 10","Nenhum"],"Os ovos saem nas fezes; por isso o saneamento é tão importante."],
+["Quantos ovos uma fêmea de lombriga pode pôr por dia?",["Milhares","Só 1","Cerca de 10","Nenhum"],"Os ovos saem nas fezes; por isso o saneamento é tão importante."],
 ["Como se pega a oxiurose?",["Engolindo ovos que ficam nas mãos, nas unhas e nas roupas","Pela picada de mosquito","Nadando em lagoas","Comendo carne de boi"],"Lavar as mãos e manter as unhas curtas e limpas ajuda a evitar."],
 ["Por que muitas lombrigas podem deixar uma criança desnutrida?",["Os vermes aproveitam parte dos nutrientes dos alimentos","As lombrigas comem os ossos","Elas impedem a respiração","Elas tiram a água do sangue"],"Com sintomas, procure uma Unidade de Saúde."]],
 molusco:[
@@ -868,7 +868,7 @@ equinodermo:[
 ["Do que o pepino-do-mar se alimenta?",["De restos de matéria orgânica no fundo do mar","De peixes grandes","De algas fora da água","De sangue"],"Assim ele ajuda a limpar o fundo do mar."],
 ["Onde fica a boca da estrela-do-mar?",["Na parte de baixo do corpo","Na ponta de um braço","Na parte de cima","Ela não tem boca"],"A parte de baixo fica encostada no fundo."],
 ["Qual equinoderma tem braços finos e flexíveis que se movem como serpentes?",["Ofiúro (estrela-serpente)","Pepino-do-mar","Bolacha-da-praia","Lírio-do-mar"],"Ele se move rápido balançando os braços."],
-["Por que os ouriços-do-mar são importantes nos recifes?",["Comem algas e controlam o crescimento delas","Produzem areia para as praias","Caçam tubarões","Fazem fotossíntese"],"Sem eles, as algas podem cobrir os corais."],
+["Por que os ouriços-do-mar são importantes nos recifes?",["Comem algas e controlam o crescimento delas","Produzem água doce","Caçam tubarões","Fazem fotossíntese"],"Sem eles, as algas podem cobrir os corais."],
 ["Como funcionam os pés ambulacrais?",["Com a pressão da água dentro de pequenos tubos","Com ossos e articulações","Com ar","Com eletricidade"],"A água entra pelo madreporito e enche os pés."]],
 peixe:[
 ["O que é um cardume?",["Um grupo de peixes que nadam juntos","Um tipo de rede","Uma doença de peixe","Um peixe gigante"],"Nadar em grupo ajuda a se proteger dos predadores."],
