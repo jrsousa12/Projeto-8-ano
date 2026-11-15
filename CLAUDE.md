@@ -17,7 +17,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
 - **Arquivos gerados (não editar à mão):** `animais-8ano.html` e a versão do cache em `sw.js` (atualizados pelo GitHub no `main`), `tema-claro.css`.
 - **Visual:** dividido em `estilo-base.css`, `estilo-painel.css`, `estilo-telas.css` e `estilo-progresso.css`, carregados nessa ordem (a ordem importa). Estilo novo vai no arquivo da parte do app; arquivo de estilo novo entra no `index.html`, no `editor.html`, no `ARQ` do `sw.js` e na lista `ARQS` do `build/tema_claro.py`.
-- **Próxima tarefa** (detalhes em `NOTAS.md`): a decidir pelo dono.
+- **Próxima tarefa** (detalhes em `NOTAS.md`): revisar as perguntas que já existem (alternativa errada que pode ser considerada certa; explicação que contradiz outra parte do app). Resultado em relatório curto; corrigir só com o "sim" do dono.
 
 ## Onde ficam as regras
 

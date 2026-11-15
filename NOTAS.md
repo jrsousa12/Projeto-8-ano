@@ -16,4 +16,6 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 ## Pendências (esperando decisão do dono)
 
+- **Próxima tarefa (escolhida pelo dono em 15/11/2026): revisão das perguntas existentes.** Procurar alternativas erradas que possam ser consideradas certas e explicações que contradizem outra parte do app (`node build/buscar.js`). Fazer por banco ou por grupo, gravar o relatório em arquivo e mostrar só o resumo; corrigir só depois do "sim" do dono, conferindo nas fontes confiáveis.
+
 - **Endereço do repositório:** o GitHub avisa que ele agora se chama `jrsousa12/Projeto-8-ano` (com P maiúsculo). Os envios funcionam pelo nome antigo; não é preciso fazer nada.
