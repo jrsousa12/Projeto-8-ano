@@ -60,6 +60,7 @@ const app = M.carregar(), itens = M.cartoes(app);
 for (const b of M.BLOCOS) caso(`bloco ${b} tem cartões`, itens.some(i => i.bloco === b));
 caso("os ciclos (extras.js) foram lidos", itens.filter(i => i.bloco === "CIC").every(i => i.textos.length >= 10));
 caso("textos sem marcas de HTML", itens.every(i => i.textos.every(t => !/<\/?[a-z]/.test(t.s))));
+caso("DIS: o nome do grupo ([2]) fica fora da revisão", itens.filter(i => i.bloco === "DIS").every(i => i.textos.every(t => !/\]\[2\]$/.test(t.onde))));
 let av = []; try { av = M.analisar(itens, ficha, []); } catch (e) { console.log("  " + e.message); }
 caso("o pente-fino roda no app inteiro", av.length > 0);
 

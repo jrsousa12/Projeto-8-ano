@@ -17,7 +17,8 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 ## Pendências (esperando decisão do dono)
 
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
-- **Próxima tarefa:** revisar os textos com o relatório do motor (`revisao/textos.md`), um bloco por vez (sugestão: `DIS` e `CIC` primeiro, por serem de saúde), conferindo nas fontes confiáveis; corrigir só com o "sim" do dono.
+- **Próxima tarefa:** continuar a revisão dos textos com o motor (`revisao/textos.md`), um bloco por vez: agora `CIC` (ciclos), depois os outros; conferir nas fontes confiáveis e corrigir só com o "sim" do dono.
+- **Feito (15/11/2026, com o "sim" do dono):** bloco `DIS` revisado (`revisao/textos-DIS-sugestoes.md`): datas da filariose conferidas (OMS, Fiocruz, OPAS, Ministério da Saúde), "procure uma Unidade de Saúde" nos 4 cartões que faltavam, "parasita" e "larvas" explicados em cada cartão, frase longa dividida, curiosidade de Belém e Recife. O motor deixa de olhar o nome do grupo (`DIS[i][2]`). Os 3 avisos de número que sobram já foram conferidos.
 - **Feito (15/11/2026, com o "sim" do dono):** motor de revisão dos textos (`build/revisar_textos.js`, ficha `build/fichas/textos.json`, teste `build/t_revisar_textos.js`, ligado ao `rapido.py` e ao `tudo.sh`). 1ª rodada: 64 cartões, 110 avisos (41 números, 59 termos, 4 exageros, 2 frases longas, 4 verminoses sem orientar a procurar a Unidade de Saúde).
 - **Feito (15/11/2026):** protocolo-token atualizado a partir da Física (`main` em `c03ad5e`): 5 arquivos em `.claude/skills/protocolo-token/`, barra de contexto e preparo da sessão na nuvem (`.claude/settings.json` + `.claude/hooks/`), dicas novas no `CLAUDE.md`. Motor de item único e trava de leitura: não precisa (maior linha do `dados.js` ~1 000 letras).
 - **Decisão (15/11/2026):** `QZ[18]` e `QZ[129]` ficam como estão (o dono não quer as melhorias opcionais).

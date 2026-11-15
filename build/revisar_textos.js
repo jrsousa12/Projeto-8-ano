@@ -49,7 +49,8 @@ function cartoes({ ctx, CIC }) {
     L.push({ bloco, id, nome, cient, textos: campos.filter(([, s]) => typeof s === "string" && s.trim()).map(([o, s]) => ({ onde: o, s: limpa(s) })) });
   ctx.G.forEach((g, i) => add("G", `G[${i}] ${g.n}`, g.n, "", [["sub", g.sub], ...g.f.map((s, j) => [`f[${j}]`, s]), ["r", g.r], ["p", g.p], ["k", g.k]].map(([o, s]) => [`G[${i}].${o}`, s])));
   ctx.PA.forEach((p, i) => add("PA", `PA[${i}] ${p[0]}`, p[0], p[1], p.map((s, j) => [`PA[${i}][${j}]`, s]).filter((_, j) => j >= 3)));
-  ctx.DIS.forEach((d, i) => add("DIS", `DIS[${i}] ${d[0]}`, d[0], d[1], d.map((s, j) => [`DIS[${i}][${j}]`, s]).filter((_, j) => j >= 2)));
+  // DIS[i][2] é só o nome do grupo (ex.: "Nematódeo"), já explicado no cartão do grupo: não entra
+  ctx.DIS.forEach((d, i) => add("DIS", `DIS[${i}] ${d[0]}`, d[0], d[1], d.map((s, j) => [`DIS[${i}][${j}]`, s]).filter((_, j) => j >= 3)));
   for (const k in CIC) add("CIC", `CIC.${k}`, "", "", CIC[k].flatMap((m, j) => [[`CIC.${k}[${j}].t`, m[1]], [`CIC.${k}[${j}].d`, m[2]]]));
   ctx.CUR.forEach((c, i) => add("CUR", `CUR[${i}] (${c[0]})`, "", "", [[`CUR[${i}][1]`, c[1]]]));
   ctx.NAT.forEach((n, i) => add("NAT", `NAT[${i}] ${n[0]}`, n[0], "", n.map((s, j) => [`NAT[${i}][${j}]`, s]).filter((_, j) => j >= 1)));
