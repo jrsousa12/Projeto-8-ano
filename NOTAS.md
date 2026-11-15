@@ -22,6 +22,7 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
   - **Feito (15/11/2026):** bloco 1 do `QZ` (perguntas 1–50) revisado: `revisao/rodada-4-qz-1a50.md` (1 ponto a corrigir, 2 de baixo risco).
   - **Feito (15/11/2026):** bloco 2 do `QZ` (perguntas 51–100) revisado: `revisao/rodada-5-qz-51a100.md` (1 ponto a corrigir, 2 de baixo risco).
   - **Feito (15/11/2026):** bloco 3 do `QZ` (perguntas 101–150) revisado: `revisao/rodada-6-qz-101a150.md` (nenhum ponto grave, 3 de baixo risco).
+  - **Feito (15/11/2026):** bloco 4 do `QZ` (perguntas 151–209) revisado: `revisao/rodada-7-qz-151a209.md` (nenhum ponto grave). Falta corrigir `QZ[46]` e `QZ[99]` (e, se o dono quiser, `QZ[18]` e `QZ[129]`) com o "sim" do dono.
   - **Passos para a revisão do Desafio final (é só o dono dizer "sim" para começar):**
     1. Revisar em blocos de ~50 perguntas (1–50, 51–100, 101–150, 151–209). Um relatório por bloco: `revisao/rodada-4-qz-1a50.md`, `rodada-5-qz-51a100.md` e assim por diante. Para listar o bloco, use `node` com `vm` (como nas rodadas 1–3); no `QZ`, o 3º campo é a posição da correta.
     2. Procurar alternativa errada que possa ser defendida como certa e explicação que contradiz outra parte do app (`node build/buscar.js`). Conferir números (2 fontes) e saúde (só MS, Fiocruz ou OPAS/OMS).
