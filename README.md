@@ -33,6 +33,8 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 | `testes/apoio.js` | Peças comuns dos testes (servidor local, responder perguntas, abrir telas) |
 | `build/novas.py` | Gerador de perguntas novas: cria o molde, confere (fonte, saúde, repetidas, alternativas) e grava no `dados.js` |
 | `build/buscar.js` | Procura um fato no app (perguntas, textos, fontes) e mostra só o trecho achado |
+| `build/revisar_textos.js`, `build/t_revisar_textos.js`, `build/fichas/textos.json` | Motor de revisão dos textos que não são perguntas (só avisa; relatório em `revisao/textos.md`), seu teste e a ficha que o calibra |
+| `.claude/settings.json`, `.claude/hooks/`, `.claude/skills/protocolo-token/` | Barra de contexto, preparo da sessão na nuvem e o comando `/protocolo-token` |
 | `build/rapido.py` | Conferência rápida: roda só as conferências e os testes ligados ao que mudou (`--tudo` roda tudo) |
 | `build/tudo.sh` | Comando único antes de publicar: gera tema claro, versão do cache e arquivo único e roda todas as conferências |
 | `build/versao.py` | Recalcula a versão do cache do `sw.js` |

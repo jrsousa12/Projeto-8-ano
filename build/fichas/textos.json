@@ -1,0 +1,21 @@
+{
+  "_leia": "Ficha do motor de revisão dos textos (build/revisar_textos.js). Edite à vontade, sem programar. termos: começo de palavras técnicas que precisam de explicação na 1ª vez em cada cartão (ex.: \"sésse\" pega séssil e sésseis). exageros: palavras que podem deixar a frase errada. remedio: palavras que indicam remédio (proibido indicar). saude_ok: expressões que orientam a procurar atendimento. palavras_max: tamanho máximo de uma frase.",
+  "palavras_max": 25,
+  "termos": [
+    "sésse", "bentônic", "espícula", "espongina", "gemulação", "brotamento", "regenera",
+    "cnidócito", "pólipo", "medusa", "hermafrodita", "autofecundação", "fecundação cruzada",
+    "metamorfose", "endotérmic", "ectotérmic", "exoesqueleto", "endoesqueleto", "celoma",
+    "hospedeiro intermediário", "hospedeiro definitivo", "miracídio", "cercária", "cisticerco",
+    "proglote", "rádula", "clitelo", "ecdise", "simetria radial", "simetria bilateral",
+    "ovípar", "vivípar", "ovovivípar", "placenta", "brânquia", "bexiga natatória", "linha lateral",
+    "cloaca", "quelícera", "notocorda", "bioindicador", "filtrador", "trematódeo", "cestódeo",
+    "nematódeo", "anelídeo", "artrópode", "equinoderm", "molusco", "cnidário", "platelminto",
+    "porífero", "invertebrado", "vertebrado", "larva", "parasita", "hematófag", "plâncton",
+    "endêmic", "estivação", "hibernação"
+  ],
+  "exageros": ["sempre", "nunca", "único", "única", "exclusivo", "exclusiva", "todos", "todas",
+    "nenhum", "nenhuma", "jamais", "apenas"],
+  "remedio": ["remédio", "medicamento", "vermífugo", "albendazol", "mebendazol", "praziquantel",
+    "ivermectina", "comprimido", "dose", "xarope", "automedica"],
+  "saude_ok": ["unidade de saúde", "posto de saúde", "sus", "médic", "serviço de saúde", "agente de saúde"]
+}

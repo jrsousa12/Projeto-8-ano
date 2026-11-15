@@ -31,6 +31,7 @@ sintaxe() { for f in *.js testes/*.js build/*.js; do node --check "$f" || return
 etapa "sintaxe" sintaxe
 etapa "perguntas" node validar-banco.js
 etapa "gerador de perguntas" python3 build/novas.py teste
+etapa "motor de revisão dos textos" node build/t_revisar_textos.js
 etapa "testes de navegador" node testes/testes.js
 
 gerados=$(git status --short tema-claro.css sw.js animais-8ano.html | cut -c4-)

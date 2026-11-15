@@ -34,6 +34,14 @@
 - `--tudo` mostra o item inteiro; `--max N` muda o limite (20); entre aspas = frase exata.
 - Não procura no `animais-8ano.html` nem no `sw.js` (gerados).
 
+## Revisão dos textos — `node build/revisar_textos.js [bloco ...]`
+
+- Revisa os textos que não são perguntas: `G` (grupos), `PA` (fauna do Pará), `DIS` (verminoses), `CIC` (ciclos, lidos do `extras.js`), `CUR`, `NAT`, `PR`. Sem bloco = todos.
+- Só avisa, nunca altera. Avisos: `numero` (conferir em 2 fontes), `diverge` (mesmo fato com número diferente em outra parte do app, perguntas inclusive), `termo` (técnico sem explicação na 1ª vez no cartão), `frase` (> `palavras_max`), `remedio`, `saude` (verminose sem orientar atendimento), `exagero`, `cientifico`.
+- Resumo de uma linha por tipo; relatório em `revisao/textos.md` (ou `textos-<blocos>.md`). Ler só o resumo e o trecho do bloco em revisão.
+- Calibrar = editar `build/fichas/textos.json` (termos, exageros, remédio, orientação de saúde, tamanho da frase), sem programar.
+- Teste guardado: `node build/t_revisar_textos.js` (rodado pelo `rapido.py` quando o motor, a ficha, o `dados.js` ou o `extras.js` mudam, e pelo `tudo.sh`).
+
 ## Gerador de perguntas — `python3 build/novas.py`
 
 - `modelo <destino> [n]` cria `build/novas/<destino>_DATA.json`; destino = id do grupo, `final` ou parte do nome de um desafio das abas.
@@ -44,7 +52,7 @@
 
 ## Comando único — `bash build/tudo.sh`
 
-- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → todos os testes de navegador.
+- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → teste do motor de revisão dos textos → todos os testes de navegador.
 - O arquivo único é gerado antes dos testes, para o `t_offline` testar a versão nova.
 - Os gerados (`tema-claro.css`, `sw.js`, `animais-8ano.html`) saem iguais aos do robô do GitHub; se mudarem, vão no commit.
 - Termina em "Tudo certo." ou "Há falhas" (com o teste e a verificação que falharam).

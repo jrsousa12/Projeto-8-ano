@@ -11,6 +11,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 - **Comandos** (detalhes em `build/CLAUDE.md` e `testes/CLAUDE.md`):
   - Durante o trabalho: `python3 build/rapido.py` (só o ligado ao que mudou).
   - Procurar um fato no app: `node build/buscar.js palavra [outra] [--tudo]`.
+  - Revisar os textos (não perguntas): `node build/revisar_textos.js [bloco]` → resumo curto; relatório em `revisao/textos*.md`; calibrar em `build/fichas/textos.json`. Só avisa, nunca altera.
   - Antes de publicar: `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo).
   - Perguntas novas: `python3 build/novas.py modelo <destino> [n]` → preencher o rascunho em `build/novas/` → `verificar` → `aplicar` (grava no `dados.js`).
   - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
@@ -63,6 +64,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 - **Testes guardados:** todo teste criado numa tarefa vira parte permanente da bateria (um arquivo por assunto). Antes de criar, procure um teste existente e amplie-o; não reescreva testes que já existem.
 - **Testes seletivos:** durante a tarefa, `python3 build/rapido.py`; a bateria completa (`--tudo`), no fim e antes de publicar.
 - **Relatórios longos** vão para arquivo (`.md`/`.txt`); na conversa, só o resumo.
+- **Barra de contexto e início de sessão:** `.claude/settings.json` + `.claude/hooks/` (mostra o % da conversa usado; na nuvem, instala o Playwright se faltar).
 - **Memória do projeto:** decisões e pendências em `NOTAS.md`; leia antes de propor algo e anote ali cada decisão nova do dono.
 - Tipos de motor e de recurso de apoio: seções 8 e 9 de `.claude/skills/protocolo-token/modelo-CLAUDE.md` (ler só quando for propor um).
 
@@ -76,7 +78,7 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
   - tarefa concluída ou assunto novo → `/clear` (só sugerir: o usuário executa);
   - arquivo grande demais → propor a divisão.
 - Avise também ao perceber que está relendo trechos sem necessidade.
-- Dicas ao dono (uma frase, quando couber): uma tarefa por conversa; `@nome` quando souber o arquivo; pedidos diretos; "sim"/"não" basta.
+- Dicas ao dono (uma frase, quando couber): uma tarefa por conversa; `@nome` quando souber o arquivo; pedidos diretos; "sim"/"não" basta; tarefa simples (corrigir um texto, trocar um valor) → `/model` com Sonnet ou Haiku; barra de contexto perto de 50% → `/compact`.
 
 ## Saída de terminal
 
