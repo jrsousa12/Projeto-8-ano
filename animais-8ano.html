@@ -453,6 +453,20 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 .stage img.ani{width:78%;height:78%;margin:auto;animation:cardin .6s both}
 @media (max-width:760px){.curic img.ani{width:56px;height:56px}.hero img.heroimg{width:min(240px,70%)}}
 
+/* Insígnias dos grupos: medalha com a ilustração do grupo (no cartão e no menu "Minhas insígnias") */
+.card.star::before{content:none}
+.card .ins{display:none;position:absolute;top:4px;right:4px;width:34px;height:34px;border-radius:50%;background:#fff3c4;border:3px solid #fbbf24;box-shadow:0 2px 6px rgba(0,0,0,.35);overflow:hidden;place-items:center}
+.card.star .ins{display:grid}
+.card .ins img.ani,.card .ins svg{width:26px;height:26px;margin:0;border-radius:50%;object-fit:cover}
+.insb{padding:4px 10px;font-size:14px}
+.insg{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.insc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border-radius:14px;border:2px dashed rgba(128,128,128,.4);text-align:center;opacity:.55}
+.insc .insm{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:#e5e7eb;border:4px solid #9ca3af;overflow:hidden;filter:grayscale(1)}
+.insc.ok{opacity:1;border:2px solid #fbbf24;background:rgba(251,191,36,.12)}
+.insc.ok .insm{background:#fff3c4;border-color:#fbbf24;filter:none;box-shadow:0 0 12px rgba(251,191,36,.6)}
+.insc .insm img.ani,.insc .insm svg{width:62px;height:62px;margin:0;border-radius:50%;object-fit:cover}
+.insc small{font-size:12px;opacity:.85}
+
 </style>
 <style>
 /* Tema claro: gerado por build/tema_claro.py a partir dos estilo-*.css (não edite à mão as regras geradas).
@@ -533,6 +547,7 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 @media (max-width:760px){:where([data-theme=claro]) nav#tabs{border-top:1px solid rgba(15,23,42,0.128)}}
 :where([data-theme=claro]) [data-theme=claro] nav#tabs{background:rgba(15,23,42,0.884)}
 :where([data-theme=claro]) .hero img.heroimg{box-shadow:0 18px 34px -12px rgba(255,255,255,1)}
+:where([data-theme=claro]) .card .ins{box-shadow:0 2px 6px rgba(255,255,255,0.875)}
 
 /* ---------- ajustes fixos do tema claro ---------- */
 [data-theme=claro]{color-scheme:light}
@@ -563,11 +578,11 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
     <button class="fs" id="vb" aria-pressed="true" title="Vibra ao acertar e errar (celular)">📳 Vibração: sim</button>
     <button class="fs" id="tm" title="Muda as cores do app">🌙 Tema: escuro</button>
     <button class="fs" id="fs" aria-label="Tela cheia">⛶ Tela cheia</button>
-    <button class="fs" id="zp" title="Apaga as estrelas do aluno atual">🗑️ Zerar estrelas do aluno</button>
+    <button class="fs" id="zp" title="Apaga as insígnias do aluno atual">🗑️ Zerar insígnias do aluno</button>
     <button class="fs" id="fo" title="Fontes do conteúdo do app">📚 Fontes e referências</button>
     <button class="fs" id="ai" title="Coloca o app na tela inicial">📲 Instalar na tela inicial</button>
     <button class="fs" id="af" aria-pressed="true" title="Abre em tela cheia no primeiro toque">⛶ Tela cheia automática: sim</button>
-    <div class="opnote">💾 XP, estrelas e progresso ficam salvos neste aparelho, por aluno.</div>
+    <div class="opnote">💾 XP, insígnias e progresso ficam salvos neste aparelho, por aluno.</div>
    </div></div>
  </div>
 </header>
@@ -597,14 +612,14 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
     <li><b>Trilhas:</b> seguir caminhos guiados, passo a passo.</li>
     <li><b>Estudar:</b> árvore dos animais (13 grupos), ficha da aula, temperatura do corpo, metamorfose, fauna do Pará, vermes e doenças, ciclos dos vermes, naturalistas e atividades práticas.</li>
     <li><b>Jogar:</b> desafio final, simulado, treino, Classifique (em qual grupo está o animal?) e Quem é este? (descobrir o animal pela imagem).</li>
-    <li><b>Progresso:</b> ver o nível, as estrelas, as atividades feitas e o caderno de erros (as perguntas que errou, para refazer).</li>
+    <li><b>Progresso:</b> ver o nível, as insígnias, as atividades feitas e o caderno de erros (as perguntas que errou, para refazer).</li>
     <li>Imprimir resumos, ver as fontes e referências e ajustar o som, a vibração e o tema claro ou escuro.</li>
    </ul>
    <h3>Cuidados com os dados do seu filho (LGPD)</h3>
    <p>A LGPD é a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709, de 14 de agosto de 2018). Ela protege as informações pessoais, com cuidado especial para crianças e adolescentes.</p>
    <ul>
     <li>O app <b>não pede</b> CPF, e-mail, telefone, foto nem localização. Não há cadastro nem senha.</li>
-    <li>Para salvar as estrelas, o aluno escreve um nome na tela “Quem vai jogar?”. Oriente seu filho a usar <b>um apelido ou só o primeiro nome</b>. Ele também pode escolher “Jogar sem salvar”. Num aparelho usado por vários alunos, os nomes aparecem na lista de alunos e no ranking (classificação) desse aparelho.</li>
+    <li>Para salvar as insígnias, o aluno escreve um nome na tela “Quem vai jogar?”. Oriente seu filho a usar <b>um apelido ou só o primeiro nome</b>. Ele também pode escolher “Jogar sem salvar”. Num aparelho usado por vários alunos, os nomes aparecem na lista de alunos e no ranking (classificação) desse aparelho.</li>
     <li>Esse nome e o progresso ficam guardados <b>só no próprio aparelho</b>. O app não envia nada para a internet.</li>
     <li>Para levar o progresso a outro aparelho, o aluno copia um código e cola no outro, por conta própria. O código leva só o nome escolhido e o progresso.</li>
     <li>O botão “Compartilhar” só manda a nota da atividade, e só se o aluno quiser.</li>
@@ -1939,7 +1954,7 @@ G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Arra
 
 const stars=new Set(), seen=new Set();
 G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.id="card-"+g.id;b.style.cssText=`--c:${g.c};--i:${G.filter(x=>x.t===g.t).indexOf(g)}`;
- b.innerHTML=ICON[g.id]()+`<b>${g.n}</b>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
+ b.innerHTML=ICON[g.id]()+`<b>${g.n}</b><span class="ins" title="Insígnia conquistada">${ICON[g.id]()}</span>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
 $$(".bbtn").forEach(btn=>btn.onclick=()=>{const br=btn.parentElement;br.classList.toggle("open");
  if(br.classList.contains("open")){$$(".card",br).forEach(c=>{c.style.animation="none";void c.offsetWidth;c.style.animation=""});}});
 function updScore(){if(typeof NV!=="undefined")NV.atualiza();
@@ -1965,9 +1980,9 @@ function loadProfile(){stars.clear();seen.clear();if(PROF.cur)profIds(PROF.cur).
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
 function clearProg(){stars.clear();seen.clear();saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
- if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · ⭐ ${stars.size}/13</span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
- if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as estrelas <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
- w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>⭐ ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
+ if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · <button class="btn insb" id="wins" title="Ver minhas insígnias">🏅 ${stars.size}/13 insígnias</button></span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wins").onclick=abrirInsignias;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
+ if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as insígnias <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
+ w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>🏅 ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
  $$(".wb",w).forEach(b=>b.onclick=()=>switchTo(b.dataset.n));
  const ok=()=>{const n=$("#wn").value.replace(/\s+/g," ").trim();if(!n){$("#wmsg").textContent="Escreva um nome para começar.";return;}
   if(!nomeOk(n)){$("#wmsg").textContent="Escolha outro nome.";return;}
@@ -2045,7 +2060,7 @@ function runChal(g,p){
  }
  function end(){
   clearInterval(tm);const ok=!review&&hits>=PASS;
-  const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A estrela vem das perguntas sorteadas.":(ok?"⭐ Muito bem! Você ganhou a estrela de "+g.n+".":"Para ganhar a estrela são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
+  const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A insígnia vem das perguntas sorteadas.":(ok?"🏅 Muito bem! Você ganhou a insígnia de "+g.n+".":"Para ganhar a insígnia são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
   box.innerHTML=`<div class="cprog"><span>🏁 Resultado</span><span class="dots">${qs.map(()=>"<i class='d'></i>").join("")}</span></div><p>Você acertou ${fmt(hits)} de ${qs.length}.</p>${hintLine(hints)}<div class="why">${msg}</div><div id="cnx">${missed.length?`<button class="btn" id="rv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="cn">🔄 Jogar de novo (novas perguntas)</button></div>`;
   $("#cn",box).onclick=()=>{qi=0;hits=0;hints=0;review=false;missed=[];qs=shuffle(g.pool.slice()).slice(0,5);show();};
   if(missed.length)$("#rv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;review=true;show();};
@@ -2054,6 +2069,8 @@ function runChal(g,p){
  show();
 }
 /* ---------- janelas: resumo e gabarito (funcionam offline, imprimíveis) ---------- */
+function abrirInsignias(){const n=stars.size;
+ openMd("🏅 Minhas insígnias",`<p>${n===13?"🎉 Você conquistou todas as insígnias!":`Você tem <b>${n} de 13</b>. Cada insígnia é de um grupo de animais: passe no desafio do grupo (${PASS} de 5) para ganhá-la.`}</p><div class="insg">${G.map(g=>{const ok=stars.has(g.id);return `<div class="insc${ok?" ok":""}" style="--c:${g.c}"><span class="insm">${ICON[g.id]()}</span><b>${g.n}</b><small>${ok?"Conquistada":"Ainda não"}</small></div>`;}).join("")}</div>`);}
 function openMd(title,html){
  let m=$("#md");const had=!!m;if(m)m.remove();
  m=document.createElement("div");m.id="md";m.setAttribute("role","dialog");m.setAttribute("aria-label",title);
@@ -2116,8 +2133,8 @@ function renderFic(){const box=$("#fbox");
  $$(".ffil .btn",box).forEach(b=>b.onclick=()=>{$$(".ffil .btn",box).forEach(x=>x.classList.toggle("on",x===b));const f=b.dataset.f;
   $$(".fcard",box).forEach(c=>{const g=G[+c.dataset.i];c.style.display=(f==="all"||(f==="inv"&&g.t==="inv")||(f==="ver"&&g.t!=="inv"))?"":"none";});});}
 let zpT=0;$("#zp").onclick=function(ev){if(!ev||!ev.isTrusted)return;const b=this;
- if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";},4000);}
- else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";clearProg();$("#opm").classList.remove("show");}};
+ if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar insígnias do aluno";},4000);}
+ else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar insígnias do aluno";clearProg();$("#opm").classList.remove("show");}};
 $("#vb").onclick=function(){vibOn=!vibOn;LSs("an8vib",vibOn?"yes":"no");this.textContent="📳 Vibração: "+(vibOn?"sim":"não");this.setAttribute("aria-pressed",vibOn);if(vibOn)vibrar("ok");};
 {const b=$("#vb");b.textContent="📳 Vibração: "+(vibOn?"sim":"não");b.setAttribute("aria-pressed",vibOn);}
 $("#tm").onclick=()=>{tema=TEMAS[(TEMAS.findIndex(t=>t[0]===tema)+1)%TEMAS.length][0];LSs("an8tema",tema);aplicaTema();};
@@ -2817,7 +2834,7 @@ function prRender() {
   ${rodadas.length ? `<div class="pgr">${rodadas.map(r => `<div class="pgrl"><span>${NM[r.m] || r.m}</span><span class="pgb"><i style="width:${r.n ? r.s / r.n * 100 : 0}%"></i></span><b>${fmt(r.s)}/${r.n}</b><small>${new Date(r.d).toLocaleDateString("pt-BR")}</small></div>`).join("")}</div>` : `<p class="sub">Nenhuma rodada ainda. Jogue o 🎯 Desafio final, o treino ou o simulado.</p>`}
   ${rankHtml("final") ? `<h3 class="pgh">🏆 Ranking deste aparelho</h3><div class="pgrk"><div><h4>🎯 Desafio final</h4>${rankHtml("final")}</div>${rankHtml("simulado") ? `<div><h4>📝 Simulado</h4>${rankHtml("simulado")}</div>` : ""}</div>` : ""}
   ${nome ? `<h3 class="pgh">📲 Levar meu progresso para outro aparelho</h3>
-  <p class="sub">Copie o código e cole no outro aparelho (estrelas, caderno de erros e histórico).</p>
+  <p class="sub">Copie o código e cole no outro aparelho (insígnias, caderno de erros e histórico).</p>
   <div class="pgx"><button class="btn" id="pg-exp">📋 Copiar meu código</button> <input id="pg-cod" placeholder="Cole aqui um código AN8-..." autocomplete="off"> <button class="btn" id="pg-imp">Trazer progresso</button></div><p class="hintn" id="pg-msg"></p>
   <p style="margin-top:14px"><button class="btn" id="pg-del">🗑️ Apagar o histórico de ${esc(nome)}</button></p>` : ""}`;
   $("#pg-erros").onclick = () => prIniciar("erros");
@@ -2840,7 +2857,7 @@ PG.carregar();
    - Cada atividade concluída pela primeira vez vale XP (estudar um grupo, ganhar uma estrela, explorar uma tela,
      vencer um desafio...). Cada pergunta acertada também vale XP (mais na primeira vez).
    - Os níveis 1 a 9 dependem do XP. O nível 10 (o último) só é alcançado com pelo menos 50% de todas as atividades.
-   - O XP é calculado a partir do que está salvo (estrelas e histórico), por isso vai junto no código AN8-... */
+   - O XP é calculado a partir do que está salvo (insígnias e histórico), por isso vai junto no código AN8-... */
 "use strict";
 const NV = (() => {
   const META = 0.5;
@@ -2865,7 +2882,7 @@ const NV = (() => {
     openPanel(G.indexOf(g)); if (desafio) setTimeout(() => { const c = $("#chal"); if (c) c.scrollIntoView({ behavior: "smooth", block: "center" }); }, 350);
   };
   G.forEach(g => add("estudar:" + g.id, "Estudar os grupos", g.n, XPC.estudar, abrirGrupo(g)));
-  G.forEach(g => add("estrela:" + g.id, "Estrelas dos grupos", "⭐ " + g.n + " (3 de 5 no desafio)", XPC.estrela, abrirGrupo(g, true)));
+  G.forEach(g => add("estrela:" + g.id, "Insígnias dos grupos", "🏅 " + g.n + " (3 de 5 no desafio)", XPC.estrela, abrirGrupo(g, true)));
   const cartao = (L, t, i) => () => { irPara(t); openDet(L, i); };
   add("temp", "Explorar", "Temperatura: mexa no controle", XPC.explorar, () => irPara("temp"));
   [["ins", "Metamorfose da borboleta"], ["gaf", "Metamorfose do gafanhoto"], ["sapo", "Metamorfose do sapo"]].forEach(([m, n]) => add("meta:" + m, "Explorar", n + " até o fim", XPC.explorar, () => { irPara("meta"); const b = $('[data-m="' + m + '"]'); if (b) b.click(); }));
@@ -2886,7 +2903,7 @@ const NV = (() => {
   /* ---------- trilhas ---------- */
   const inv = G.filter(g => g.t === "inv"), vert = G.filter(g => g.t === "vert");
   const TRILHAS = [
-    { id: "inv", ic: "🐚", n: "Invertebrados", d: "Das esponjas às estrelas-do-mar: estude cada grupo e ganhe a estrela dele.", p: inv.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]) },
+    { id: "inv", ic: "🐚", n: "Invertebrados", d: "Das esponjas às estrelas-do-mar: estude cada grupo e ganhe a insígnia dele.", p: inv.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]) },
     { id: "vert", ic: "🦴", n: "Vertebrados e temperatura", d: "Peixes, anfíbios, répteis, aves e mamíferos, e quem esquenta sozinho.", p: [...vert.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]), "temp", "mini:Desafio da temperatura"] },
     { id: "meta", ic: "🦋", n: "Metamorfose e ciclos", d: "Como os animais mudam de forma e como os vermes passam de um hospedeiro a outro.", p: ["meta:ins", "meta:gaf", "meta:sapo", "mini:Desafio da metamorfose", "cic:esq", "cic:ten", "cic:lom", "mini:Desafio dos ciclos"] },
     { id: "saude", ic: "🦠", n: "Saúde e prevenção", d: "As verminoses, como se pega e como evitar.", p: [...DISL.map(x => x.aid), "mini:Desafio das verminoses"] },
@@ -2985,11 +3002,11 @@ const NV = (() => {
     if (prModo) return;
     const e = ult || calcula();
     const cats = [...new Set(ATV.map(a => a.cat))];
-    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · ⭐ ${stars.size}/14 estrelas` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
+    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · 🏅 ${stars.size}/13 insígnias` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
      <h3 class="pgh">🧭 Trilhas</h3><div class="nvtr">${TRILHAS.map(t => { const ok = t.p.filter(feita).length; return `<button class="nvt${ok === t.p.length ? " ok" : ""}" data-tr="1"><span>${t.ic} ${t.n}</span>${barra(ok / t.p.length)}<small>${ok}/${t.p.length}</small></button>`; }).join("")}</div>
      <h3 class="pgh">✅ Atividades</h3><p class="sub">Toque em uma atividade que falta para ir até ela.</p>
      <div class="nvcats">${cats.map(c => { const L = ATV.filter(a => a.cat === c), ok = L.filter(a => feita(a.id)).length; return `<details class="nvcat"><summary><b>${c}</b><span>${ok}/${L.length}</span>${barra(ok / L.length)}</summary><ul>${L.map(a => `<li class="${feita(a.id) ? "f" : ""}"><button class="trp" data-go="${esc(a.id)}">${feita(a.id) ? "✅" : "⬜"} ${a.nome} <small>+${a.xp} XP</small></button></li>`).join("")}</ul></details>`; }).join("")}</div>
-     <p class="hintn">Como ganhar XP: estudar um grupo +${XPC.estudar} · estrela de um grupo +${XPC.estrela} · explorar uma tela ou cartão +${XPC.explorar} · desafio de tela +${XPC.mini} · jogo +${XPC.jogo} · trilha completa +${XPC.trilha} · cada pergunta acertada pela primeira vez +5 (e +1 nas próximas vezes, até 4).</p>`;
+     <p class="hintn">Como ganhar XP: estudar um grupo +${XPC.estudar} · insígnia de um grupo +${XPC.estrela} · explorar uma tela ou cartão +${XPC.explorar} · desafio de tela +${XPC.mini} · jogo +${XPC.jogo} · trilha completa +${XPC.trilha} · cada pergunta acertada pela primeira vez +5 (e +1 nas próximas vezes, até 4).</p>`;
     $$("[data-go]", box).forEach(b => b.onclick = () => PORID[b.dataset.go].ir());
     $$("[data-tr]", box).forEach(b => b.onclick = () => irPara("trilhas"));
   }
