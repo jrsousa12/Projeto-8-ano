@@ -64,11 +64,11 @@ testes["XP, níveis, atividades e trilhas"] = async (p) => {
   confere(/1 de 16 passos/.test(await p.textContent("#trbox .tr")), "trilha dos invertebrados com 1 passo feito");
   await abrir(p, "prog");
   confere(/1 de \d+ atividades/.test(await p.textContent("#nvbox")), "Progresso conta as atividades");
-  /* nível máximo só com 70% das atividades */
+  /* nível máximo só com 50% das atividades */
   const r = await p.evaluate(() => { const ids = NV.ATV.map(a => a.id).filter(id => !id.startsWith("estrela:"));
     const meta = Math.ceil(NV.META * NV.ATV.length); ids.slice(0, meta - 1).forEach(id => { PG.H.at[id] = 1; }); NV.atualiza(); const antes = NV.calcula().lv;
     PG.H.at[ids[meta - 1]] = 1; NV.atualiza(); return [antes, NV.calcula().lv]; });
-  confere(r[0] < 10 && r[1] === 10, "nível 10 só com 70% das atividades (" + r.join(" → ") + ")");
+  confere(r[0] < 10 && r[1] === 10, "nível 10 só com 50% das atividades (" + r.join(" → ") + ")");
 };
 
 module.exports = testes;

@@ -1,11 +1,11 @@
 /* XP, níveis, atividades e trilhas.
    - Cada atividade concluída pela primeira vez vale XP (estudar um grupo, ganhar uma estrela, explorar uma tela,
      vencer um desafio...). Cada pergunta acertada também vale XP (mais na primeira vez).
-   - Os níveis 1 a 9 dependem do XP. O nível 10 (o último) só é alcançado com pelo menos 70% de todas as atividades.
+   - Os níveis 1 a 9 dependem do XP. O nível 10 (o último) só é alcançado com pelo menos 50% de todas as atividades.
    - O XP é calculado a partir do que está salvo (estrelas e histórico), por isso vai junto no código AN8-... */
 "use strict";
 const NV = (() => {
-  const META = 0.7;
+  const META = 0.5;
   const NIVEIS = [
     [0, "🔍", "Observador(a)"], [60, "🧭", "Explorador(a)"], [150, "🌿", "Coletor(a) da mata"], [300, "📓", "Naturalista júnior"],
     [500, "🔬", "Pesquisador(a)"], [750, "🐾", "Zoólogo(a) aprendiz"], [1050, "🦎", "Zoólogo(a)"], [1400, "🌳", "Biólogo(a) de campo"],

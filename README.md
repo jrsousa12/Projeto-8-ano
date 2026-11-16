@@ -46,7 +46,7 @@ Aplicativo de Ciências do 8º ano: **Animais (invertebrados e vertebrados)**. F
 O menu tem 5 seções: **🏠 Início**, **🧭 Trilhas**, **📚 Estudar**, **🎮 Jogar** e **📊 Progresso** (no celular, fica embaixo da tela). O caminho no alto (ex.: 📚 Estudar › Fauna do Pará) e o botão Voltar levam da tela para a seção e da seção para o Início.
 
 - **XP:** cada atividade concluída pela primeira vez vale XP: estudar um grupo (+10), ganhar a estrela de um grupo (+50), explorar uma tela ou um cartão (+10), vencer um desafio de tela (+30), um jogo (+40), completar uma trilha (+100). Cada pergunta acertada vale +5 na primeira vez e +1 nas seguintes (até 4).
-- **Níveis:** 1 Observador(a) → 9 Especialista da Amazônia, pelo XP. O nível 10, **🏆 Mestre dos Animais**, só é alcançado com pelo menos **70% das atividades** do app concluídas.
+- **Níveis:** 1 Observador(a) → 9 Especialista da Amazônia, pelo XP. O nível 10, **🏆 Mestre dos Animais**, só é alcançado com pelo menos **50% das atividades** do app concluídas.
 - **Trilhas:** 7 caminhos guiados (Invertebrados; Vertebrados e temperatura; Metamorfose e ciclos; Saúde e prevenção; Amazônia e Pará; Naturalistas e classificação; Rumo ao topo). O botão **Continuar** leva direto ao próximo passo.
 - O XP é calculado a partir das estrelas e do histórico salvos, por isso vai junto no código AN8-... de levar o progresso.
 
