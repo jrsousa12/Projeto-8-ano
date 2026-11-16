@@ -147,7 +147,7 @@ const NV = (() => {
     if (prModo) return;
     const e = ult || calcula();
     const cats = [...new Set(ATV.map(a => a.cat))];
-    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · ⭐ ${stars.size}/13 estrelas` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
+    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · ⭐ ${stars.size}/14 estrelas` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
      <h3 class="pgh">🧭 Trilhas</h3><div class="nvtr">${TRILHAS.map(t => { const ok = t.p.filter(feita).length; return `<button class="nvt${ok === t.p.length ? " ok" : ""}" data-tr="1"><span>${t.ic} ${t.n}</span>${barra(ok / t.p.length)}<small>${ok}/${t.p.length}</small></button>`; }).join("")}</div>
      <h3 class="pgh">✅ Atividades</h3><p class="sub">Toque em uma atividade que falta para ir até ela.</p>
      <div class="nvcats">${cats.map(c => { const L = ATV.filter(a => a.cat === c), ok = L.filter(a => feita(a.id)).length; return `<details class="nvcat"><summary><b>${c}</b><span>${ok}/${L.length}</span>${barra(ok / L.length)}</summary><ul>${L.map(a => `<li class="${feita(a.id) ? "f" : ""}"><button class="trp" data-go="${esc(a.id)}">${feita(a.id) ? "✅" : "⬜"} ${a.nome} <small>+${a.xp} XP</small></button></li>`).join("")}</ul></details>`; }).join("")}</div>
