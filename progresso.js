@@ -88,7 +88,7 @@ function resultado(m) {
   if (erros.length) $("#rv-" + m, box).onclick = () => rodada(Object.assign({}, cfg, { sim: false, tempo: 0, rank: false, rev: true }), shuffle(erros.map(it => it.id)));
   $("#ag-" + m, box).onclick = () => cfg.denovo();
   if (cfg.voltar) $("#vt-" + m, box).onclick = cfg.voltar[1];
-  const sh = $("#sh-" + m, box); if (sh) sh.onclick = () => compartilhar(`${cfg.titulo} (Animais 8º ano): acertei ${fmt(sc)} de ${n}! 🔬`, sh);
+  const sh = $("#sh-" + m, box); if (sh) sh.onclick = () => compartilhar(`${cfg.titulo} (Animais): acertei ${fmt(sc)} de ${n}! 🔬`, sh);
   if (pct >= .7 && !st.rev) burst(180);
 }
 function rankHtml(m) {
