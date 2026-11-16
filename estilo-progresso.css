@@ -142,3 +142,17 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 .curic img.ani{width:72px;height:72px;border-radius:14px}
 .stage img.ani{width:78%;height:78%;margin:auto;animation:cardin .6s both}
 @media (max-width:760px){.curic img.ani{width:56px;height:56px}.hero img.heroimg{width:min(240px,70%)}}
+
+/* Insígnias dos grupos: medalha com a ilustração do grupo (no cartão e no menu "Minhas insígnias") */
+.card.star::before{content:none}
+.card .ins{display:none;position:absolute;top:4px;right:4px;width:34px;height:34px;border-radius:50%;background:#fff3c4;border:3px solid #fbbf24;box-shadow:0 2px 6px rgba(0,0,0,.35);overflow:hidden;place-items:center}
+.card.star .ins{display:grid}
+.card .ins img.ani,.card .ins svg{width:26px;height:26px;margin:0;border-radius:50%;object-fit:cover}
+.insb{padding:4px 10px;font-size:14px}
+.insg{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.insc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border-radius:14px;border:2px dashed rgba(128,128,128,.4);text-align:center;opacity:.55}
+.insc .insm{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:#e5e7eb;border:4px solid #9ca3af;overflow:hidden;filter:grayscale(1)}
+.insc.ok{opacity:1;border:2px solid #fbbf24;background:rgba(251,191,36,.12)}
+.insc.ok .insm{background:#fff3c4;border-color:#fbbf24;filter:none;box-shadow:0 0 12px rgba(251,191,36,.6)}
+.insc .insm img.ani,.insc .insm svg{width:62px;height:62px;margin:0;border-radius:50%;object-fit:cover}
+.insc small{font-size:12px;opacity:.85}

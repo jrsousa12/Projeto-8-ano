@@ -169,7 +169,7 @@ function prRender() {
   ${rodadas.length ? `<div class="pgr">${rodadas.map(r => `<div class="pgrl"><span>${NM[r.m] || r.m}</span><span class="pgb"><i style="width:${r.n ? r.s / r.n * 100 : 0}%"></i></span><b>${fmt(r.s)}/${r.n}</b><small>${new Date(r.d).toLocaleDateString("pt-BR")}</small></div>`).join("")}</div>` : `<p class="sub">Nenhuma rodada ainda. Jogue o 🎯 Desafio final, o treino ou o simulado.</p>`}
   ${rankHtml("final") ? `<h3 class="pgh">🏆 Ranking deste aparelho</h3><div class="pgrk"><div><h4>🎯 Desafio final</h4>${rankHtml("final")}</div>${rankHtml("simulado") ? `<div><h4>📝 Simulado</h4>${rankHtml("simulado")}</div>` : ""}</div>` : ""}
   ${nome ? `<h3 class="pgh">📲 Levar meu progresso para outro aparelho</h3>
-  <p class="sub">Copie o código e cole no outro aparelho (estrelas, caderno de erros e histórico).</p>
+  <p class="sub">Copie o código e cole no outro aparelho (insígnias, caderno de erros e histórico).</p>
   <div class="pgx"><button class="btn" id="pg-exp">📋 Copiar meu código</button> <input id="pg-cod" placeholder="Cole aqui um código AN8-..." autocomplete="off"> <button class="btn" id="pg-imp">Trazer progresso</button></div><p class="hintn" id="pg-msg"></p>
   <p style="margin-top:14px"><button class="btn" id="pg-del">🗑️ Apagar o histórico de ${esc(nome)}</button></p>` : ""}`;
   $("#pg-erros").onclick = () => prIniciar("erros");

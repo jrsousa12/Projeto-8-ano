@@ -76,6 +76,7 @@
 @media (max-width:760px){:where([data-theme=claro]) nav#tabs{border-top:1px solid rgba(15,23,42,0.128)}}
 :where([data-theme=claro]) [data-theme=claro] nav#tabs{background:rgba(15,23,42,0.884)}
 :where([data-theme=claro]) .hero img.heroimg{box-shadow:0 18px 34px -12px rgba(255,255,255,1)}
+:where([data-theme=claro]) .card .ins{box-shadow:0 2px 6px rgba(255,255,255,0.875)}
 
 /* ---------- ajustes fixos do tema claro ---------- */
 [data-theme=claro]{color-scheme:light}

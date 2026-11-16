@@ -2,7 +2,7 @@
    - Cada atividade concluída pela primeira vez vale XP (estudar um grupo, ganhar uma estrela, explorar uma tela,
      vencer um desafio...). Cada pergunta acertada também vale XP (mais na primeira vez).
    - Os níveis 1 a 9 dependem do XP. O nível 10 (o último) só é alcançado com pelo menos 50% de todas as atividades.
-   - O XP é calculado a partir do que está salvo (estrelas e histórico), por isso vai junto no código AN8-... */
+   - O XP é calculado a partir do que está salvo (insígnias e histórico), por isso vai junto no código AN8-... */
 "use strict";
 const NV = (() => {
   const META = 0.5;
@@ -27,7 +27,7 @@ const NV = (() => {
     openPanel(G.indexOf(g)); if (desafio) setTimeout(() => { const c = $("#chal"); if (c) c.scrollIntoView({ behavior: "smooth", block: "center" }); }, 350);
   };
   G.forEach(g => add("estudar:" + g.id, "Estudar os grupos", g.n, XPC.estudar, abrirGrupo(g)));
-  G.forEach(g => add("estrela:" + g.id, "Estrelas dos grupos", "⭐ " + g.n + " (3 de 5 no desafio)", XPC.estrela, abrirGrupo(g, true)));
+  G.forEach(g => add("estrela:" + g.id, "Insígnias dos grupos", "🏅 " + g.n + " (3 de 5 no desafio)", XPC.estrela, abrirGrupo(g, true)));
   const cartao = (L, t, i) => () => { irPara(t); openDet(L, i); };
   add("temp", "Explorar", "Temperatura: mexa no controle", XPC.explorar, () => irPara("temp"));
   [["ins", "Metamorfose da borboleta"], ["gaf", "Metamorfose do gafanhoto"], ["sapo", "Metamorfose do sapo"]].forEach(([m, n]) => add("meta:" + m, "Explorar", n + " até o fim", XPC.explorar, () => { irPara("meta"); const b = $('[data-m="' + m + '"]'); if (b) b.click(); }));
@@ -48,7 +48,7 @@ const NV = (() => {
   /* ---------- trilhas ---------- */
   const inv = G.filter(g => g.t === "inv"), vert = G.filter(g => g.t === "vert");
   const TRILHAS = [
-    { id: "inv", ic: "🐚", n: "Invertebrados", d: "Das esponjas às estrelas-do-mar: estude cada grupo e ganhe a estrela dele.", p: inv.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]) },
+    { id: "inv", ic: "🐚", n: "Invertebrados", d: "Das esponjas às estrelas-do-mar: estude cada grupo e ganhe a insígnia dele.", p: inv.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]) },
     { id: "vert", ic: "🦴", n: "Vertebrados e temperatura", d: "Peixes, anfíbios, répteis, aves e mamíferos, e quem esquenta sozinho.", p: [...vert.flatMap(g => ["estudar:" + g.id, "estrela:" + g.id]), "temp", "mini:Desafio da temperatura"] },
     { id: "meta", ic: "🦋", n: "Metamorfose e ciclos", d: "Como os animais mudam de forma e como os vermes passam de um hospedeiro a outro.", p: ["meta:ins", "meta:gaf", "meta:sapo", "mini:Desafio da metamorfose", "cic:esq", "cic:ten", "cic:lom", "mini:Desafio dos ciclos"] },
     { id: "saude", ic: "🦠", n: "Saúde e prevenção", d: "As verminoses, como se pega e como evitar.", p: [...DISL.map(x => x.aid), "mini:Desafio das verminoses"] },
@@ -147,11 +147,11 @@ const NV = (() => {
     if (prModo) return;
     const e = ult || calcula();
     const cats = [...new Set(ATV.map(a => a.cat))];
-    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · ⭐ ${stars.size}/14 estrelas` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
+    box.innerHTML = `<h2>📊 Progresso</h2><p class="sub">${PROF.cur ? `👤 <b>${esc(PROF.cur)}</b> · 🏅 ${stars.size}/13 insígnias` : "👤 Sem nome: o progresso não será salvo."}</p>${cartaoNivel(e)}
      <h3 class="pgh">🧭 Trilhas</h3><div class="nvtr">${TRILHAS.map(t => { const ok = t.p.filter(feita).length; return `<button class="nvt${ok === t.p.length ? " ok" : ""}" data-tr="1"><span>${t.ic} ${t.n}</span>${barra(ok / t.p.length)}<small>${ok}/${t.p.length}</small></button>`; }).join("")}</div>
      <h3 class="pgh">✅ Atividades</h3><p class="sub">Toque em uma atividade que falta para ir até ela.</p>
      <div class="nvcats">${cats.map(c => { const L = ATV.filter(a => a.cat === c), ok = L.filter(a => feita(a.id)).length; return `<details class="nvcat"><summary><b>${c}</b><span>${ok}/${L.length}</span>${barra(ok / L.length)}</summary><ul>${L.map(a => `<li class="${feita(a.id) ? "f" : ""}"><button class="trp" data-go="${esc(a.id)}">${feita(a.id) ? "✅" : "⬜"} ${a.nome} <small>+${a.xp} XP</small></button></li>`).join("")}</ul></details>`; }).join("")}</div>
-     <p class="hintn">Como ganhar XP: estudar um grupo +${XPC.estudar} · estrela de um grupo +${XPC.estrela} · explorar uma tela ou cartão +${XPC.explorar} · desafio de tela +${XPC.mini} · jogo +${XPC.jogo} · trilha completa +${XPC.trilha} · cada pergunta acertada pela primeira vez +5 (e +1 nas próximas vezes, até 4).</p>`;
+     <p class="hintn">Como ganhar XP: estudar um grupo +${XPC.estudar} · insígnia de um grupo +${XPC.estrela} · explorar uma tela ou cartão +${XPC.explorar} · desafio de tela +${XPC.mini} · jogo +${XPC.jogo} · trilha completa +${XPC.trilha} · cada pergunta acertada pela primeira vez +5 (e +1 nas próximas vezes, até 4).</p>`;
     $$("[data-go]", box).forEach(b => b.onclick = () => PORID[b.dataset.go].ir());
     $$("[data-tr]", box).forEach(b => b.onclick = () => irPara("trilhas"));
   }

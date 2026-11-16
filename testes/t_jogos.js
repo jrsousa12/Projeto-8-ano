@@ -18,6 +18,11 @@ testes["ganha a estrela de um grupo e ela fica salva no perfil"] = async (p) => 
   await p.reload();
   confere(await p.$eval("#card-porifero", e => e.classList.contains("star")), "estrela continua depois de recarregar");
   confere(/Nível 2/.test(await p.textContent("#nvt")), "nível continua depois de recarregar");
+  /* insígnia: medalha no cartão e menu "Minhas insígnias" (toque no contador) */
+  confere(await p.$eval("#card-porifero .ins", e => getComputedStyle(e).display !== "none" && !!e.querySelector("img")), "cartão mostra a insígnia com a ilustração do grupo");
+  await p.click("#wins");
+  confere(await p.$$eval("#md .insc", l => l.length) === 13, "menu das insígnias lista os 13 grupos");
+  confere(await p.$$eval("#md .insc.ok", l => l.length) === 1, "só a insígnia do grupo concluído aparece conquistada");
 };
 
 testes["desafio final: 10 perguntas, resultado e revisão dos erros"] = async (p) => {

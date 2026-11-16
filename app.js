@@ -94,7 +94,7 @@ G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Arra
 
 const stars=new Set(), seen=new Set();
 G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.id="card-"+g.id;b.style.cssText=`--c:${g.c};--i:${G.filter(x=>x.t===g.t).indexOf(g)}`;
- b.innerHTML=ICON[g.id]()+`<b>${g.n}</b>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
+ b.innerHTML=ICON[g.id]()+`<b>${g.n}</b><span class="ins" title="Insígnia conquistada">${ICON[g.id]()}</span>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
 $$(".bbtn").forEach(btn=>btn.onclick=()=>{const br=btn.parentElement;br.classList.toggle("open");
  if(br.classList.contains("open")){$$(".card",br).forEach(c=>{c.style.animation="none";void c.offsetWidth;c.style.animation=""});}});
 function updScore(){if(typeof NV!=="undefined")NV.atualiza();
@@ -120,9 +120,9 @@ function loadProfile(){stars.clear();seen.clear();if(PROF.cur)profIds(PROF.cur).
 function switchTo(n){PROF.cur=n;if(!PROF.p[n])PROF.p[n]={s:"",k:sigOf(n,"")};whoMode="";whoAnon=false;writeAll();loadProfile();updScore();renderWho();}
 function clearProg(){stars.clear();seen.clear();saveProg();updScore();renderWho();}
 function renderWho(){const w=$("#who");if(!w)return;const names=Object.keys(PROF.p),cur=PROF.cur;
- if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · ⭐ ${stars.size}/13</span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
- if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as estrelas <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
- w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>⭐ ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
+ if(cur&&whoMode!=="pick"){w.innerHTML=`<span>👤 <b>${esc(cur)}</b> · <button class="btn insb" id="wins" title="Ver minhas insígnias">🏅 ${stars.size}/13 insígnias</button></span><button class="btn" id="wsw">Trocar aluno</button>`;$("#wins").onclick=abrirInsignias;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
+ if(!cur&&whoAnon&&whoMode!=="pick"){w.innerHTML=`<span>👤 Sem nome · as insígnias <b>não</b> serão salvas</span><button class="btn" id="wsw">Escolher aluno</button>`;$("#wsw").onclick=()=>{whoMode="pick";renderWho();};return;}
+ w.innerHTML=`<div class="wtt">${cur?"Trocar de aluno":"👤 Quem vai jogar?"}</div>${names.length?`<div class="wlist">${names.map(n=>`<button class="btn wb" data-n="${esc(n)}">${esc(n)} <small>🏅 ${profIds(n).length}</small></button>`).join("")}</div>`:""}<div class="wnew"><input id="wn" maxlength="20" placeholder="Digite um nome novo" autocomplete="off"><button class="btn pri" id="wok">Começar</button></div><div class="wex">${cur?`<button class="btn" id="wcn">Voltar</button> <button class="btn" id="wdel">🗑️ Apagar o perfil de ${esc(cur)}</button>`:`<button class="btn" id="wan">Jogar sem salvar</button>`}</div><p class="wnote" id="wmsg">💾 As estrelas ficam salvas só neste aparelho.</p>`;
  $$(".wb",w).forEach(b=>b.onclick=()=>switchTo(b.dataset.n));
  const ok=()=>{const n=$("#wn").value.replace(/\s+/g," ").trim();if(!n){$("#wmsg").textContent="Escreva um nome para começar.";return;}
   if(!nomeOk(n)){$("#wmsg").textContent="Escolha outro nome.";return;}
@@ -200,7 +200,7 @@ function runChal(g,p){
  }
  function end(){
   clearInterval(tm);const ok=!review&&hits>=PASS;
-  const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A estrela vem das perguntas sorteadas.":(ok?"⭐ Muito bem! Você ganhou a estrela de "+g.n+".":"Para ganhar a estrela são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
+  const msg=review?"🔎 Revisão concluída! Você treinou de novo os pontos que errou. A insígnia vem das perguntas sorteadas.":(ok?"🏅 Muito bem! Você ganhou a insígnia de "+g.n+".":"Para ganhar a insígnia são necessários "+PASS+" acertos. Leia de novo o painel e tente outra vez!");
   box.innerHTML=`<div class="cprog"><span>🏁 Resultado</span><span class="dots">${qs.map(()=>"<i class='d'></i>").join("")}</span></div><p>Você acertou ${fmt(hits)} de ${qs.length}.</p>${hintLine(hints)}<div class="why">${msg}</div><div id="cnx">${missed.length?`<button class="btn" id="rv">🔎 Rever só os que errei</button> `:""}<button class="btn pri" id="cn">🔄 Jogar de novo (novas perguntas)</button></div>`;
   $("#cn",box).onclick=()=>{qi=0;hits=0;hints=0;review=false;missed=[];qs=shuffle(g.pool.slice()).slice(0,5);show();};
   if(missed.length)$("#rv",box).onclick=()=>{qs=shuffle(missed.slice());missed=[];qi=0;hits=0;review=true;show();};
@@ -209,6 +209,8 @@ function runChal(g,p){
  show();
 }
 /* ---------- janelas: resumo e gabarito (funcionam offline, imprimíveis) ---------- */
+function abrirInsignias(){const n=stars.size;
+ openMd("🏅 Minhas insígnias",`<p>${n===13?"🎉 Você conquistou todas as insígnias!":`Você tem <b>${n} de 13</b>. Cada insígnia é de um grupo de animais: passe no desafio do grupo (${PASS} de 5) para ganhá-la.`}</p><div class="insg">${G.map(g=>{const ok=stars.has(g.id);return `<div class="insc${ok?" ok":""}" style="--c:${g.c}"><span class="insm">${ICON[g.id]()}</span><b>${g.n}</b><small>${ok?"Conquistada":"Ainda não"}</small></div>`;}).join("")}</div>`);}
 function openMd(title,html){
  let m=$("#md");const had=!!m;if(m)m.remove();
  m=document.createElement("div");m.id="md";m.setAttribute("role","dialog");m.setAttribute("aria-label",title);
@@ -271,8 +273,8 @@ function renderFic(){const box=$("#fbox");
  $$(".ffil .btn",box).forEach(b=>b.onclick=()=>{$$(".ffil .btn",box).forEach(x=>x.classList.toggle("on",x===b));const f=b.dataset.f;
   $$(".fcard",box).forEach(c=>{const g=G[+c.dataset.i];c.style.display=(f==="all"||(f==="inv"&&g.t==="inv")||(f==="ver"&&g.t!=="inv"))?"":"none";});});}
 let zpT=0;$("#zp").onclick=function(ev){if(!ev||!ev.isTrusted)return;const b=this;
- if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";},4000);}
- else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar estrelas do aluno";clearProg();$("#opm").classList.remove("show");}};
+ if(!zpT){b.textContent="⚠️ Toque de novo para apagar";zpT=setTimeout(()=>{zpT=0;b.textContent="🗑️ Zerar insígnias do aluno";},4000);}
+ else{clearTimeout(zpT);zpT=0;b.textContent="🗑️ Zerar insígnias do aluno";clearProg();$("#opm").classList.remove("show");}};
 $("#vb").onclick=function(){vibOn=!vibOn;LSs("an8vib",vibOn?"yes":"no");this.textContent="📳 Vibração: "+(vibOn?"sim":"não");this.setAttribute("aria-pressed",vibOn);if(vibOn)vibrar("ok");};
 {const b=$("#vb");b.textContent="📳 Vibração: "+(vibOn?"sim":"não");b.setAttribute("aria-pressed",vibOn);}
 $("#tm").onclick=()=>{tema=TEMAS[(TEMAS.findIndex(t=>t[0]===tema)+1)%TEMAS.length][0];LSs("an8tema",tema);aplicaTema();};
