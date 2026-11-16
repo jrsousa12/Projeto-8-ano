@@ -89,3 +89,6 @@ header{position:relative}
 #inst{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(560px,calc(100vw - 20px));z-index:80;padding:12px 14px;border-radius:18px;background:#10305a;border:1px solid rgba(255,255,255,.3);box-shadow:0 18px 40px -8px #000;display:flex;flex-direction:column;gap:8px}
 #inst .it{display:flex;flex-direction:column;gap:2px;font-size:14px}#inst .it b{font-size:16px}#inst .ib{display:flex;gap:8px;flex-wrap:wrap}#inst .btn{padding:8px 12px;font-size:14px}
 .opm{max-height:72vh;overflow:auto}
+.pais{max-width:900px;margin:0 auto 18px;padding:12px 16px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);font-size:16px}
+.pais summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.pais h3{font-size:17px;margin:12px 0 4px}.pais p{margin:6px 0}.pais ul{margin:4px 0 6px 22px}.pais li{margin:3px 0}
