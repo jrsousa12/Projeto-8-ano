@@ -52,3 +52,4 @@ Use estas fontes para conferir ou corrigir qualquer parte conceitual do app: tex
 | Encyclopaedia Britannica | Conceitos gerais e biografias dos naturalistas | https://www.britannica.com |
 | Darwin Online e Wallace Online | Obras e viagens de Darwin e Wallace | https://darwin-online.org.uk e https://wallace-online.org |
 | Natural History Museum (Londres) | Naturalistas (Bates, Wallace, Darwin) e coleções | https://www.nhm.ac.uk |
+| Museu Nacional de História Natural (Paris) | Lamarck e a história da Zoologia | https://www.mnhn.fr |
