@@ -606,13 +606,13 @@ QZ.push(
 ["Qual grupo apresenta a maior diversidade de espécies conhecidas?",["Artrópodes","Mamíferos","Aves","Répteis"],0,"Os insetos, que são artrópodes, formam o maior grupo animal."]
 );
 const PA=[
-["Boto-cor-de-rosa","Inia geoffrensis","mamifero","Golfinho de água doce exclusivo da bacia amazônica. É mamífero: respira ar pelos pulmões e amamenta os filhotes."],
+["Boto-cor-de-rosa","Inia geoffrensis","mamifero","Golfinho de água doce dos rios da Amazônia e também da bacia do rio Orinoco (Venezuela e Colômbia). É mamífero: respira ar pelos pulmões e amamenta os filhotes."],
 ["Peixe-boi-da-Amazônia","Trichechus inunguis","mamifero","Apesar do nome, não é peixe. É um mamífero aquático herbívoro dos rios e lagos da Amazônia."],
 ["Pirarucu","Arapaima gigas","peixe","Um dos maiores peixes de água doce do mundo, pode passar de 2 metros. O nome vem do tupi: pira (peixe) + urucum (vermelho)."],
 ["Jacaré-açu","Melanosuchus niger","reptil","Réptil crocodiliano no topo da cadeia alimentar amazônica. Ectotérmico: toma sol para se aquecer."],
 ["Tracajá","Podocnemis unifilis","reptil","Quelônio de água doce (tem carapaça). Põe ovos com casca em praias de rio."],
 ["Caranguejo-uçá","Ucides cordatus","artropode","Crustáceo dos manguezais do litoral paraense (Bragança e Resex Caeté-Taperaçu). Sua presença indica manguezal saudável; só se coletam machos grandes e fora do defeso."],
-["Harpia","Harpia harpyja","ave","Uma das maiores águias do mundo: as asas abertas podem passar de 2 metros. Ave endotérmica, de penas e ossos leves."],
+["Harpia","Harpia harpyja","ave","Uma das maiores águias do mundo: as asas abertas chegam a cerca de 2 metros. Ave endotérmica (mantém o corpo quente sozinha), de penas e ossos leves."],
 ["Sapo-cururu","Rhinella marina","anfibio","Anfíbio de pele rugosa, com glândulas parotoides atrás dos olhos que liberam uma secreção tóxica de defesa. A secreção só irrita se entrar em contato com olhos ou boca. Faz metamorfose: ovos → girino → adulto."]];
 const NG={mamifero:"Mamífero",peixe:"Peixe",reptil:"Réptil",artropode:"Artrópode (crustáceo)",ave:"Ave",anfibio:"Anfíbio"};
 const MQX={
