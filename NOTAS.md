@@ -16,6 +16,8 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 ## Pendências (esperando decisão do dono)
 
+- **Feito (18/11/2026):** protocolo-token reaplicado a partir da Física: comando já igual; `CLAUDE.md` ganhou 2 regras (teste novo no `MAPA` do `rapido.py`; `NOTAS.md` acima de ~150 linhas → histórico). Sem arquivo de código acima de 300 linhas; `dados.js` tem linhas curtas (máx. ~1 000 caracteres), então não precisa de motor de item único nem de trava.
+
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
 - **Próxima tarefa:** aplicar os 3 ajustes do bloco `PA` (`revisao/textos-PA-sugestoes.md`), só com o "sim" do dono: `PA[0]` boto também vive na bacia do Orinoco (tirar "exclusivo"); `PA[6]` harpia "asas chegam a cerca de 2 metros"; `PA[6]` explicar "endotérmica (mantém o corpo quente sozinha)". Depois, continuar a revisão dos textos com o motor (`revisao/textos.md`), um bloco por vez: `NAT` e `PR`; conferir nas fontes confiáveis e corrigir só com o "sim" do dono.
 - **Feito (18/11/2026):** bloco `PA` revisado (`revisao/textos-PA-sugestoes.md`): 1 erro (boto "exclusivo da bacia amazônica"; Animal Diversity Web, Britannica, Mamirauá), harpia com a forma mais cautelosa (Britannica, Animal Diversity Web), "endotérmica" a explicar. Pirarucu, onça-pintada e guará conferidos, sem mudança.

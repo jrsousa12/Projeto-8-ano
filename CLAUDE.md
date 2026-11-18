@@ -62,10 +62,10 @@ Ver o README.md. Na maioria dos bancos, a primeira alternativa é a correta (o a
 
 - **Motor** = script que faz um trabalho repetido (gerar, converter, conferir, corrigir em lote) e devolve só um resumo curto. Se a mesma tarefa for feita à mão pela 2ª ou 3ª vez, proponha um motor; crie só com aprovação, pequeno e testado, e anote em "Comandos".
 - **Testes guardados:** todo teste criado numa tarefa vira parte permanente da bateria (um arquivo por assunto). Antes de criar, procure um teste existente e amplie-o; não reescreva testes que já existem.
-- **Testes seletivos:** durante a tarefa, `python3 build/rapido.py`; a bateria completa (`--tudo`), no fim e antes de publicar.
+- **Testes seletivos:** durante a tarefa, `python3 build/rapido.py`; a bateria completa (`--tudo`), no fim e antes de publicar. Teste ou arquivo novo entra na hora no `MAPA` do `build/rapido.py`.
 - **Relatórios longos** vão para arquivo (`.md`/`.txt`); na conversa, só o resumo.
 - **Barra de contexto e início de sessão:** `.claude/settings.json` + `.claude/hooks/` (mostra o % da conversa usado; na nuvem, instala o Playwright se faltar).
-- **Memória do projeto:** decisões e pendências em `NOTAS.md`; leia antes de propor algo e anote ali cada decisão nova do dono.
+- **Memória do projeto:** decisões e pendências em `NOTAS.md`; leia antes de propor algo e anote ali cada decisão nova do dono. Passou de ~150 linhas: mover o que já foi feito para um arquivo de histórico.
 - Tipos de motor e de recurso de apoio: seções 8 e 9 de `.claude/skills/protocolo-token/modelo-CLAUDE.md` (ler só quando for propor um).
 
 ## Tamanho de arquivo e alertas de contexto
