@@ -1,0 +1,92 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "nome",
+    "cientif",
+    "duas",
+    "palavras"
+   ],
+   "ideia": "Charles Darwin",
+   "por_que": "Quem criou o nome científico de duas palavras foi Lineu.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "darwin",
+    "origem",
+    "especies",
+    "1859"
+   ],
+   "ideia": "Lamarck",
+   "por_que": "A Origem das Espécies (1859) é de Charles Darwin.",
+   "fonte": "Darwin Online"
+  },
+  {
+   "palavras": [
+    "bates",
+    "mimetismo",
+    "imita",
+    "perigos"
+   ],
+   "ideia": "Um animal perigoso imitar outro inofensivo",
+   "por_que": "No mimetismo de Bates, o inofensivo imita o perigoso.",
+   "fonte": "Natural History Museum (Londres)"
+  },
+  {
+   "palavras": [
+    "wallace",
+    "darwin",
+    "selecao",
+    "natural"
+   ],
+   "ideia": "Wallace copiou a ideia de um livro de Darwin",
+   "por_que": "Wallace chegou à seleção natural por conta própria; as ideias foram apresentadas juntas em 1858.",
+   "fonte": "Wallace Online"
+  },
+  {
+   "palavras": [
+    "goeldi",
+    "museu",
+    "cidade",
+    "belem"
+   ],
+   "ideia": "Manaus",
+   "por_que": "O Museu Paraense Emílio Goeldi fica em Belém.",
+   "fonte": "Museu Paraense Emílio Goeldi"
+  },
+  {
+   "palavras": [
+    "aristoteles",
+    "sangue",
+    "grupos",
+    "separou"
+   ],
+   "ideia": "Vertebrados e invertebrados",
+   "por_que": "Aristóteles separou os animais em com sangue e sem sangue; a palavra invertebrados é de Lamarck.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "nome",
+    "cientif",
+    "escreve",
+    "italico"
+   ],
+   "ideia": "Com as duas palavras em letra maiúscula",
+   "por_que": "Só o gênero tem maiúscula; a 2ª palavra vai em minúscula, e o nome todo em itálico.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "darwin",
+    "beagle",
+    "navio",
+    "viagem"
+   ],
+   "ideia": "Titanic",
+   "por_que": "Darwin viajou ao redor do mundo no navio Beagle.",
+   "fonte": "Darwin Online"
+  }
+ ]
+}

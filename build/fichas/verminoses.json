@@ -1,0 +1,87 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "esquistossom",
+    "caramujo",
+    "hospedeiro"
+   ],
+   "ideia": "O caramujo é o verme que causa a doença",
+   "por_que": "O verme é o esquistossomo; o caramujo Biomphalaria é o hospedeiro intermediário.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "teniase",
+    "tenia",
+    "carne"
+   ],
+   "ideia": "Pela picada de um mosquito",
+   "por_que": "A teníase vem de comer carne de porco ou de boi crua ou mal passada com larvas da tênia.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "amarelao",
+    "ancilost",
+    "preven",
+    "calcad"
+   ],
+   "ideia": "Tomando vacina",
+   "por_que": "Não há vacina; previne-se com calçados, saneamento e higiene.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "filariose",
+    "mosquito",
+    "culex",
+    "transmit"
+   ],
+   "ideia": "O Aedes aegypti",
+   "por_que": "No Brasil, a filariose foi transmitida pelo mosquito Culex quinquefasciatus.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "verminose",
+    "tratamento",
+    "remedio",
+    "profissional"
+   ],
+   "ideia": "Tomar remédio por conta própria",
+   "por_que": "Só um profissional de saúde indica o tratamento; procure a Unidade de Saúde.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "beber",
+    "tratada",
+    "ferv"
+   ],
+   "ideia": "Água de rio transparente pode ser bebida sem tratar",
+   "por_que": "Água transparente pode ter ovos e larvas de vermes; deve ser tratada, filtrada ou fervida.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "cisticercose",
+    "tenia",
+    "larva"
+   ],
+   "ideia": "A tênia adulta vivendo no intestino",
+   "por_que": "Isso é a teníase; na cisticercose, larvas da tênia se alojam em tecidos do corpo.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "lombriga",
+    "ascarid",
+    "verdura"
+   ],
+   "ideia": "A lombriga entra pela pele dos pés",
+   "por_que": "Os ovos da lombriga são engolidos com água, alimentos ou mãos sujos de fezes.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  }
+ ]
+}

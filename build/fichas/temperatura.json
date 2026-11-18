@@ -1,0 +1,87 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "ectoterm",
+    "sangue",
+    "frio"
+   ],
+   "ideia": "O sangue deles é sempre gelado",
+   "por_que": "Ectotérmico tem a temperatura que varia com o ambiente; ao sol, um lagarto pode ficar bem quente.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "ectoterm",
+    "endoterm",
+    "energia"
+   ],
+   "ideia": "O ectotérmico precisa de mais comida",
+   "por_que": "O ectotérmico gasta menos energia, pois não produz o próprio calor; precisa de menos alimento.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "pena",
+    "pelo",
+    "calor"
+   ],
+   "ideia": "Penas e pelos produzem calor",
+   "por_que": "Penas e pelos não produzem calor: prendem ar e ajudam a conservar o calor do corpo.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "lagarto",
+    "sol",
+    "aquec",
+    "manha"
+   ],
+   "ideia": "Para se bronzear",
+   "por_que": "O lagarto toma sol para se aquecer, pois depende do calor do ambiente.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "cachorro",
+    "suor",
+    "ofeg",
+    "calor"
+   ],
+   "ideia": "Suando pelo corpo todo",
+   "por_que": "O cachorro tem poucas glândulas de suor; perde calor ofegando.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "peixe",
+    "temperatura",
+    "agua"
+   ],
+   "ideia": "Fica sempre mais quente que a água",
+   "por_que": "Na maioria dos peixes, a temperatura do corpo é parecida com a da água.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "beija-flor",
+    "tamanho",
+    "energia"
+   ],
+   "ideia": "Animais pequenos comem menos para o seu tamanho",
+   "por_que": "Animais endotérmicos pequenos, como o beija-flor, perdem calor depressa e precisam comer mais para o seu tamanho.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "arrepia",
+    "pena",
+    "frio",
+    "ar"
+   ],
+   "ideia": "Para perder calor",
+   "por_que": "No frio, a ave arrepia as penas para prender ar e se aquecer.",
+   "fonte": "Encyclopaedia Britannica"
+  }
+ ]
+}

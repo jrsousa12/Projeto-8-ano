@@ -1,0 +1,79 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "esponja",
+    "porifer",
+    "planta",
+    "vegetal"
+   ],
+   "ideia": "São plantas aquáticas",
+   "por_que": "Esponjas são animais: não fazem fotossíntese e comem filtrando a água.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "tentacul"
+   ],
+   "ideia": "Caçando com tentáculos",
+   "por_que": "Tentáculos são dos cnidários; a esponja filtra a água que passa pelo corpo.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "adulta",
+    "fixa",
+    "nada",
+    "locomo"
+   ],
+   "ideia": "Nadam livremente quando adultas",
+   "por_que": "A esponja adulta vive fixa no fundo (séssil); só a larva nada.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "esqueleto",
+    "espicul",
+    "espongina"
+   ],
+   "ideia": "Têm esqueleto de quitina",
+   "por_que": "O esqueleto da esponja é de espículas (minerais) ou espongina (proteína); quitina é dos artrópodes.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "mar",
+    "agua doce"
+   ],
+   "ideia": "A maioria vive em água doce",
+   "por_que": "A maioria das esponjas vive no mar; poucas vivem em água doce.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "tecido",
+    "orgao",
+    "verdadeir"
+   ],
+   "ideia": "Têm órgãos como coração e estômago",
+   "por_que": "As esponjas não têm tecidos verdadeiros nem órgãos: são os animais de corpo mais simples.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esponja",
+    "regenera",
+    "broto",
+    "gemula"
+   ],
+   "ideia": "Reproduzem-se apenas de forma sexuada",
+   "por_que": "Elas também se reproduzem sem sexo: por brotamento, gemulação ou regeneração.",
+   "fonte": "Animal Diversity Web"
+  }
+ ]
+}

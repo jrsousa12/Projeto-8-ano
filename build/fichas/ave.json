@@ -1,0 +1,71 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "morcego",
+    "mamifer"
+   ],
+   "ideia": "O morcego é uma ave",
+   "por_que": "O morcego é um mamífero: tem pelos e amamenta.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "osso",
+    "pneumat",
+    "leve"
+   ],
+   "ideia": "Os ossos das aves são pesados e maciços",
+   "por_que": "Os ossos das aves são ocos (pneumáticos), o que deixa o esqueleto leve.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "dente",
+    "bico",
+    "mastiga"
+   ],
+   "ideia": "Mastigam com dentes",
+   "por_que": "As aves não têm dentes; usam o bico.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "ema",
+    "avestruz"
+   ],
+   "ideia": "Ema e avestruz não são aves porque não voam",
+   "por_que": "São aves: têm penas, bico e põem ovos com casca, mesmo sem voar.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "ave",
+    "endoterm",
+    "ectoterm"
+   ],
+   "ideia": "A temperatura delas varia com o ambiente",
+   "por_que": "As aves são endotérmicas: mantêm o corpo quente sozinhas.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "pinguim",
+    "nada"
+   ],
+   "ideia": "O pinguim é um mamífero",
+   "por_que": "O pinguim é uma ave que não voa, mas nada muito bem.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "fecund",
+    "ave",
+    "casca"
+   ],
+   "ideia": "A fecundação é externa, como na maioria dos peixes",
+   "por_que": "Nas aves, a fecundação é interna, e os ovos têm casca.",
+   "fonte": "Encyclopaedia Britannica"
+  }
+ ]
+}

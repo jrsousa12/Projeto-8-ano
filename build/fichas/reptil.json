@@ -1,0 +1,73 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "cobra",
+    "escama",
+    "umida"
+   ],
+   "ideia": "A pele da cobra é úmida e gosmenta",
+   "por_que": "Os répteis têm pele seca, com escamas.",
+   "fonte": "Instituto Butantan"
+  },
+  {
+   "palavras": [
+    "jacare",
+    "crocodil"
+   ],
+   "ideia": "O jacaré é um anfíbio",
+   "por_que": "O jacaré é um réptil crocodiliano: pele com placas e ovos com casca.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "pulmo",
+    "branqui"
+   ],
+   "ideia": "Respiram por brânquias",
+   "por_que": "Os répteis respiram por pulmões, mesmo os que vivem na água.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "reptil",
+    "ectoterm",
+    "endoterm"
+   ],
+   "ideia": "Mantêm o corpo quente sozinhos",
+   "por_que": "Os répteis são ectotérmicos e usam o calor do ambiente.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "cobra",
+    "viviparo",
+    "filhote"
+   ],
+   "ideia": "Todas as cobras botam ovos",
+   "por_que": "Algumas cobras são vivíparas: o filhote nasce já formado.",
+   "fonte": "Instituto Butantan"
+  },
+  {
+   "palavras": [
+    "tartaruga",
+    "filhote",
+    "ninho"
+   ],
+   "ideia": "O sexo depende da comida da mãe",
+   "por_que": "Na tartaruga-da-amazônia, a temperatura do ninho influencia o sexo dos filhotes.",
+   "fonte": "Instituto Butantan"
+  },
+  {
+   "palavras": [
+    "tartaruga",
+    "casco",
+    "sair",
+    "troca"
+   ],
+   "ideia": "A tartaruga pode sair do casco",
+   "por_que": "O casco é ligado ao esqueleto (coluna e costelas); a tartaruga não sai dele.",
+   "fonte": "Instituto Butantan"
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "esquistossom",
+    "cercaria"
+   ],
+   "ideia": "A larva entra pela boca, ao comer peixe",
+   "por_que": "A cercária entra pela pele, na água doce contaminada.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "hospedeiro",
+    "intermediario",
+    "esquistossom",
+    "caramujo"
+   ],
+   "ideia": "O ser humano",
+   "por_que": "O hospedeiro intermediário do esquistossomo é o caramujo Biomphalaria.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "cisticercose",
+    "tenia",
+    "porco"
+   ],
+   "ideia": "Comer carne de porco mal passada",
+   "por_que": "Isso causa a teníase; a cisticercose vem de engolir ovos da tênia-do-porco.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "lombriga",
+    "larva",
+    "pulmo"
+   ],
+   "ideia": "Pelos rins",
+   "por_que": "As larvas da lombriga passam pelos pulmões antes de voltar ao intestino.",
+   "fonte": "CDC DPDx"
+  },
+  {
+   "palavras": [
+    "lombriga",
+    "boca"
+   ],
+   "ideia": "Pela picada de insetos",
+   "por_que": "Os ovos chegam à boca por água, alimentos ou mãos sujos de fezes.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "porco",
+    "cisticerc",
+    "carne",
+    "ciclo"
+   ],
+   "ideia": "A tênia adulta vive no intestino do porco",
+   "por_que": "No porco, os ovos viram cisticercos na carne; a tênia adulta vive no intestino humano.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "cercaria",
+    "caramujo",
+    "nada"
+   ],
+   "ideia": "Ovos que a pessoa engole",
+   "por_que": "Do caramujo saem cercárias, larvas que nadam na água.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "preven",
+    "saneament",
+    "higiene",
+    "verminose"
+   ],
+   "ideia": "Usar repelente",
+   "por_que": "O que previne as verminoses dos ciclos é saneamento básico e higiene.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  }
+ ]
+}

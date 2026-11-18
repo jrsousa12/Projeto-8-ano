@@ -1,0 +1,92 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "boto",
+    "mamifer"
+   ],
+   "ideia": "Um peixe",
+   "por_que": "O boto-cor-de-rosa é um mamífero: respira por pulmões e amamenta.",
+   "fonte": "INPA"
+  },
+  {
+   "palavras": [
+    "peixe-boi",
+    "herbivor"
+   ],
+   "ideia": "Um peixe carnívoro",
+   "por_que": "O peixe-boi-da-amazônia é um mamífero aquático que come plantas.",
+   "fonte": "ICMBio (SALVE)"
+  },
+  {
+   "palavras": [
+    "guara",
+    "vermelho",
+    "carotenoid"
+   ],
+   "ideia": "Por causa do sol forte",
+   "por_que": "O vermelho do guará vem dos carotenoides (pigmentos) dos alimentos, como caranguejos.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "pirarucu",
+    "doce",
+    "mar"
+   ],
+   "ideia": "Um peixe do mar",
+   "por_que": "O pirarucu é um peixe de água doce da Amazônia.",
+   "fonte": "Instituto Mamirauá"
+  },
+  {
+   "palavras": [
+    "caranguejo-uca",
+    "crustac",
+    "molusco"
+   ],
+   "ideia": "Um molusco",
+   "por_que": "O caranguejo-uçá é um crustáceo do mangue.",
+   "fonte": "ICMBio (SALVE)"
+  },
+  {
+   "palavras": [
+    "harpia",
+    "rapina"
+   ],
+   "ideia": "Uma ave que come sementes",
+   "por_que": "A harpia é uma ave de rapina: caça macacos, preguiças e outros animais.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "onca",
+    "felino",
+    "maior",
+    "america"
+   ],
+   "ideia": "A onça-parda (suçuarana)",
+   "por_que": "O maior felino das Américas é a onça-pintada.",
+   "fonte": "ICMBio (SALVE)"
+  },
+  {
+   "palavras": [
+    "defeso",
+    "caranguejo",
+    "captura",
+    "periodo"
+   ],
+   "ideia": "Época de maior captura",
+   "por_que": "O defeso é o período em que a captura é proibida, para proteger a reprodução.",
+   "fonte": "Ibama"
+  },
+  {
+   "palavras": [
+    "tracaja",
+    "quelon"
+   ],
+   "ideia": "Um anfíbio",
+   "por_que": "O tracajá é um réptil quelônio, parente da tartaruga-da-amazônia.",
+   "fonte": "Instituto Butantan"
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "aranha",
+    "inseto",
+    "perna",
+    "aracnid"
+   ],
+   "ideia": "A aranha é um inseto",
+   "por_que": "A aranha é um aracnídeo: tem 8 pernas; os insetos têm 6.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "inseto",
+    "perna",
+    "pares",
+    "quantas"
+   ],
+   "ideia": "Os insetos têm 8 pernas",
+   "por_que": "Os insetos têm 6 pernas (3 pares); 8 pernas é dos aracnídeos.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "exoesquelet",
+    "muda",
+    "ecdise"
+   ],
+   "ideia": "O exoesqueleto cresce junto com o corpo",
+   "por_que": "O exoesqueleto não cresce: para crescer, o animal troca de exoesqueleto (muda ou ecdise).",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "exoesquelet",
+    "quitina",
+    "osso",
+    "feito"
+   ],
+   "ideia": "O exoesqueleto é feito de osso",
+   "por_que": "O exoesqueleto é feito de quitina, por fora do corpo.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "centopeia",
+    "lacraia",
+    "quilopod",
+    "inseto"
+   ],
+   "ideia": "A centopeia é um inseto",
+   "por_que": "A centopeia (lacraia) é um quilópode, com muitas pernas.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "camarao",
+    "caranguejo",
+    "crustac"
+   ],
+   "ideia": "O camarão é um molusco",
+   "por_que": "O camarão é um crustáceo: artrópode com exoesqueleto e pernas articuladas.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "escorpi",
+    "inseto",
+    "aracnid"
+   ],
+   "ideia": "O escorpião é um inseto",
+   "por_que": "O escorpião é um aracnídeo, parente das aranhas.",
+   "fonte": "Instituto Butantan"
+  }
+ ]
+}

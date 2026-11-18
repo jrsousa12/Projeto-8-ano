@@ -1,0 +1,74 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "baleia",
+    "mamifer"
+   ],
+   "ideia": "A baleia é um peixe",
+   "por_que": "A baleia é um mamífero: respira por pulmões e amamenta os filhotes.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "tubarao",
+    "arraia",
+    "cartilag",
+    "osseo"
+   ],
+   "ideia": "O tubarão é um peixe ósseo",
+   "por_que": "Tubarões e arraias são peixes cartilaginosos.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "bexiga",
+    "natatoria",
+    "flutua"
+   ],
+   "ideia": "Serve para guardar a urina",
+   "por_que": "A bexiga natatória é uma bolsa com gás que ajuda o peixe a flutuar.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "linha",
+    "lateral",
+    "vibra"
+   ],
+   "ideia": "Serve para respirar",
+   "por_que": "A linha lateral capta vibrações na água; quem respira são as brânquias.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "operculo",
+    "fenda",
+    "branqui",
+    "tubarao"
+   ],
+   "ideia": "O tubarão tem opérculo",
+   "por_que": "O opérculo é dos peixes ósseos; os cartilaginosos têm fendas branquiais sem tampa.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "osseo",
+    "maioria",
+    "especie"
+   ],
+   "ideia": "A maioria dos peixes é cartilaginosa",
+   "por_que": "Mais de 90% das espécies de peixes são ósseos.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "cavalo-marinho",
+    "peixe"
+   ],
+   "ideia": "O cavalo-marinho é um crustáceo",
+   "por_que": "O cavalo-marinho é um peixe ósseo.",
+   "fonte": "Animal Diversity Web"
+  }
+ ]
+}

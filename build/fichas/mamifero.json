@@ -1,0 +1,71 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "golfinho",
+    "boto"
+   ],
+   "ideia": "O golfinho é um peixe",
+   "por_que": "Golfinhos e botos são mamíferos: respiram por pulmões e amamentam.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "ornitorrinc",
+    "equidna"
+   ],
+   "ideia": "Nenhum mamífero bota ovos",
+   "por_que": "O ornitorrinco e a equidna são mamíferos que botam ovos.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "morcego",
+    "voo"
+   ],
+   "ideia": "Nenhum mamífero voa",
+   "por_que": "O morcego é um mamífero que voa.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "marsupi",
+    "gamba",
+    "canguru"
+   ],
+   "ideia": "O gambá não é mamífero",
+   "por_que": "O gambá é um mamífero marsupial, como o canguru.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "mamifer",
+    "endoterm",
+    "ectoterm"
+   ],
+   "ideia": "A temperatura varia com o ambiente, como nos répteis",
+   "por_que": "Os mamíferos são endotérmicos: mantêm o corpo quente sozinhos.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "baleia",
+    "pulmo",
+    "branqui"
+   ],
+   "ideia": "A baleia respira por brânquias",
+   "por_que": "A baleia é mamífero: sobe à superfície para respirar com os pulmões.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "glandula",
+    "sudorip",
+    "suor"
+   ],
+   "ideia": "As aves também suam pela pele",
+   "por_que": "Só os mamíferos têm glândulas de suor (sudoríparas).",
+   "fonte": "Encyclopaedia Britannica"
+  }
+ ]
+}

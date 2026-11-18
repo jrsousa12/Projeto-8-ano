@@ -1,0 +1,74 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "platelmint",
+    "achatad"
+   ],
+   "ideia": "Corpo cilíndrico, como um fio",
+   "por_que": "Os platelmintos têm corpo achatado; corpo cilíndrico é dos nematódeos.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esquistossom",
+    "caramujo",
+    "hospedeiro"
+   ],
+   "ideia": "O caramujo é o verme que causa a doença",
+   "por_que": "O verme é o esquistossomo; o caramujo Biomphalaria é só o hospedeiro intermediário.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "tenia",
+    "teniase",
+    "carne"
+   ],
+   "ideia": "Pela picada de um mosquito",
+   "por_que": "A teníase vem de comer carne de porco ou de boi crua ou mal passada com larvas da tênia.",
+   "fonte": "Ministério da Saúde (Saúde de A a Z)"
+  },
+  {
+   "palavras": [
+    "planaria",
+    "vida",
+    "livre",
+    "parasit"
+   ],
+   "ideia": "A planária é parasita do ser humano",
+   "por_que": "A planária tem vida livre, em água doce ou terra úmida.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "tenia",
+    "autofecund",
+    "macho"
+   ],
+   "ideia": "Precisa de um macho e uma fêmea para se reproduzir",
+   "por_que": "A tênia tem os dois sexos e se reproduz por autofecundação.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "esquistossom",
+    "cercaria"
+   ],
+   "ideia": "A larva entra pela boca, ao comer carne",
+   "por_que": "A cercária do esquistossomo entra pela pele, na água doce contaminada.",
+   "fonte": "Fiocruz"
+  },
+  {
+   "palavras": [
+    "planaria",
+    "regenera",
+    "pedaco",
+    "cortad"
+   ],
+   "ideia": "Um pedaço cortado da planária morre",
+   "por_que": "A planária se regenera: um pedaço pode formar um animal novo.",
+   "fonte": "Encyclopaedia Britannica"
+  }
+ ]
+}

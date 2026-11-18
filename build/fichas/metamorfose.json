@@ -1,0 +1,86 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "borboleta",
+    "sequencia",
+    "pupa",
+    "larva"
+   ],
+   "ideia": "Ovo, pupa, larva e adulto",
+   "por_que": "A ordem é ovo, larva, pupa e adulto.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "gafanhoto",
+    "barata",
+    "ninfa",
+    "incomplet"
+   ],
+   "ideia": "Passa pela fase de pupa",
+   "por_que": "Na metamorfose incompleta não há pupa: ovo, ninfa e adulto.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "girino",
+    "branqui",
+    "pulmo"
+   ],
+   "ideia": "Por pulmões",
+   "por_que": "O girino vive na água e respira por brânquias.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "pupa",
+    "repouso",
+    "casulo"
+   ],
+   "ideia": "Na pupa o inseto come muito",
+   "por_que": "Quem come e cresce é a larva; a pupa é a fase de repouso.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "larva",
+    "reproduz",
+    "adulto"
+   ],
+   "ideia": "É a fase que se reproduz",
+   "por_que": "Quem se reproduz é o adulto; a larva come e cresce.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "mosquito",
+    "larva",
+    "metamorf"
+   ],
+   "ideia": "O mosquito tem metamorfose incompleta",
+   "por_que": "O mosquito tem metamorfose completa, com larva e pupa na água.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "ninfa",
+    "adulto",
+    "asa"
+   ],
+   "ideia": "Muito diferente do adulto",
+   "por_que": "A ninfa parece um adulto pequeno, ainda sem asas.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "libelula",
+    "ninfa",
+    "metamorf"
+   ],
+   "ideia": "A libélula tem fase de pupa",
+   "por_que": "A libélula tem metamorfose incompleta; a ninfa vive na água.",
+   "fonte": "Encyclopaedia Britannica"
+  }
+ ]
+}

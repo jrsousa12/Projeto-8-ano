@@ -1,0 +1,85 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "sapo",
+    "verruga",
+    "doenca"
+   ],
+   "ideia": "Tocar no sapo causa verruga",
+   "por_que": "Sapos, rãs e pererecas não passam doenças a quem toca na pele deles.",
+   "fonte": "Instituto Butantan"
+  },
+  {
+   "palavras": [
+    "sapo",
+    "anfibi",
+    "reptil"
+   ],
+   "ideia": "O sapo é um réptil",
+   "por_que": "O sapo é um anfíbio: pele úmida, sem escamas, e metamorfose.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "seca",
+    "escama"
+   ],
+   "ideia": "Pele seca com escamas",
+   "por_que": "A pele dos anfíbios é fina e úmida e também ajuda na respiração.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "girino",
+    "branqui",
+    "pulmo"
+   ],
+   "ideia": "O girino respira por pulmões",
+   "por_que": "O girino vive na água e respira por brânquias; os pulmões surgem depois.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "cecilia",
+    "cobra-cega",
+    "cobra"
+   ],
+   "ideia": "A cobra-cega é uma cobra",
+   "por_que": "A cobra-cega (cecília) é um anfíbio sem pernas, não uma serpente.",
+   "fonte": "Instituto Butantan"
+  },
+  {
+   "palavras": [
+    "anfibi",
+    "casca",
+    "girino"
+   ],
+   "ideia": "Põem ovos com casca em terra seca",
+   "por_que": "Os ovos dos anfíbios não têm casca e ficam na água ou em lugar úmido.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "anfibi",
+    "endoterm",
+    "ectoterm"
+   ],
+   "ideia": "Mantêm o corpo quente sozinhos",
+   "por_que": "Os anfíbios são ectotérmicos: a temperatura do corpo varia com o ambiente.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "sapo",
+    "veneno",
+    "olho",
+    "espirra",
+    "cego"
+   ],
+   "ideia": "O sapo espirra veneno que cega",
+   "por_que": "O veneno fica nas glândulas da pele e só sai quando o sapo é apertado ou mordido.",
+   "fonte": "Instituto Butantan"
+  }
+ ]
+}

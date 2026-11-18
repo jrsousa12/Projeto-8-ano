@@ -16,7 +16,8 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 ## Pendências (esperando decisão do dono)
 
-- **Próxima etapa (Conversa B, aprovada em 18/11/2026):** criar as 19 fichas de ideias erradas comuns em `build/fichas/` (13 grupos + `temperatura`, `metamorfose`, `fauna-do-para`, `verminoses`, `naturalistas`, `ciclos`), 6 a 10 itens cada, só com fontes do `FONTES-CONFIAVEIS.md` (verminoses: só MS/Fiocruz/OPAS), cada item com `fonte`. O dono confere antes de valer. Usar Opus.
+- **Feito (18/11/2026, Conversa B):** 19 fichas de ideias erradas comuns em `build/fichas/` (139 itens, 6 a 9 por ficha), cada uma com `fonte` do `FONTES-CONFIAVEIS.md` (verminoses e ciclos: só MS/Fiocruz, mais CDC DPDx no ciclo da lombriga). Lista para conferir: `revisao/fichas.md`. O pente-fino passou a dar 329 sugestões. Ficou de fora: "minhoca cortada vira duas" (a fonte mostra que depende do corte) e "caramujo-africano transmite esquistossomose" (só havia fontes de prefeituras).
+- **Esperando o "sim" do dono:** conferir `revisao/fichas.md`; com o "sim", publicar no `main`. Itens a trocar ou tirar: é só apontar.
 - **Esperando o "sim" do dono:** corrigir os avisos do pente-fino (`revisao/perguntas.md`, 18/11/2026: `longa` 201, `absoluta` 21). Correções simples podem ser feitas com Sonnet.
 - **Feito (18/11/2026, com o "sim" do dono):** revisão das perguntas (`build/revisar_perguntas.py`, teste `build/t_revisar_perguntas.py`, ligada ao `novas.py verificar`, ao `rapido.py` e ao `tudo.sh`). Decisão: trabalho dividido em duas conversas (A: ferramenta; B: fichas), um commit em cada.
 

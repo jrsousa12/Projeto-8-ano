@@ -1,0 +1,75 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "polvo",
+    "lula",
+    "concha",
+    "cefalopod"
+   ],
+   "ideia": "O polvo tem concha por fora do corpo",
+   "por_que": "O polvo não tem concha; entre os cefalópodes vivos, só o náutilo tem concha por fora.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "bivalve",
+    "radula",
+    "ostra",
+    "mexilh"
+   ],
+   "ideia": "Raspam o alimento com a rádula",
+   "por_que": "Os bivalves não têm rádula: filtram o alimento da água.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "lesma",
+    "concha",
+    "molusco"
+   ],
+   "ideia": "A lesma não é molusco porque não tem concha",
+   "por_que": "A lesma é um molusco gastrópode, mesmo sem concha.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "polvo",
+    "cromatof",
+    "muda"
+   ],
+   "ideia": "Mudam de cor por causa do que comem",
+   "por_que": "Os cefalópodes mudam de cor com os cromatóforos, para se esconder ou escapar de predadores.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "molusco",
+    "esqueleto",
+    "osso"
+   ],
+   "ideia": "Têm esqueleto interno de ossos",
+   "por_que": "Os moluscos têm corpo mole, sem ossos; muitos têm concha.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "molusco",
+    "terra"
+   ],
+   "ideia": "São todos marinhos",
+   "por_que": "Há moluscos no mar, na água doce e em terra, como o caracol.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "ostra",
+    "mexilh",
+    "filtra"
+   ],
+   "ideia": "Caçam presas com tentáculos",
+   "por_que": "Ostras e mexilhões são bivalves: filtram o alimento da água.",
+   "fonte": "Smithsonian Ocean Portal"
+  }
+ ]
+}

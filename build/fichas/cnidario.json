@@ -1,0 +1,77 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "coral",
+    "recife",
+    "animal",
+    "planta"
+   ],
+   "ideia": "O coral é uma planta ou uma rocha",
+   "por_que": "O coral é um animal (cnidário); a parte dura é um esqueleto que ele mesmo produz.",
+   "fonte": "NOAA"
+  },
+  {
+   "palavras": [
+    "cnidar",
+    "terrestre"
+   ],
+   "ideia": "Vivem em terra úmida",
+   "por_que": "Todos os cnidários são aquáticos, e a maioria vive no mar.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "nematocist",
+    "cnidoblast",
+    "urtic"
+   ],
+   "ideia": "Servem para respirar",
+   "por_que": "Os cnidoblastos lançam uma substância que queima: servem para defesa e para capturar presas.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "polipo",
+    "medusa",
+    "fixo",
+    "nada"
+   ],
+   "ideia": "O pólipo nada e a medusa vive fixa",
+   "por_que": "É o contrário: o pólipo vive fixo e a medusa nada livremente.",
+   "fonte": "Smithsonian Ocean Portal"
+  },
+  {
+   "palavras": [
+    "branqueamento",
+    "coral",
+    "alga",
+    "branco"
+   ],
+   "ideia": "O coral fica branco porque está crescendo",
+   "por_que": "No branqueamento, o coral expulsa as algas que lhe dão alimento e cor; se durar muito, ele pode morrer.",
+   "fonte": "NOAA"
+  },
+  {
+   "palavras": [
+    "agua-viva",
+    "cerebro",
+    "nervo",
+    "cnidar"
+   ],
+   "ideia": "Têm um cérebro como o nosso",
+   "por_que": "Os cnidários não têm cérebro: têm uma rede de nervos espalhada pelo corpo.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "coral",
+    "alga",
+    "fotossintese"
+   ],
+   "ideia": "O próprio coral faz fotossíntese",
+   "por_que": "Quem faz fotossíntese são as algas que vivem dentro do coral e lhe passam alimento.",
+   "fonte": "NOAA"
+  }
+ ]
+}

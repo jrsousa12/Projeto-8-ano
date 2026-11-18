@@ -1,0 +1,64 @@
+{
+ "teoria": [
+  {
+   "palavras": [
+    "minhoca",
+    "solo",
+    "planta",
+    "prejudic"
+   ],
+   "ideia": "A minhoca estraga o solo e as plantas",
+   "por_que": "A minhoca abre túneis que arejam o solo e o deixam mais fértil.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "sanguessuga",
+    "cerda",
+    "hirudin"
+   ],
+   "ideia": "Têm muitas cerdas",
+   "por_que": "Sanguessugas não têm cerdas; os poliquetas têm muitas.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "minhoca",
+    "hermafrod",
+    "fecund"
+   ],
+   "ideia": "A minhoca fecunda a si mesma",
+   "por_que": "A minhoca tem os dois sexos, mas uma fecunda a outra (fecundação cruzada).",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "minhoca",
+    "lombriga",
+    "nematod"
+   ],
+   "ideia": "A minhoca é um nematódeo",
+   "por_que": "A minhoca é um anelídeo: corpo formado por anéis.",
+   "fonte": "Animal Diversity Web"
+  },
+  {
+   "palavras": [
+    "minhoca",
+    "umida"
+   ],
+   "ideia": "Respira por pulmões",
+   "por_que": "A minhoca respira pela pele fina e úmida.",
+   "fonte": "Encyclopaedia Britannica"
+  },
+  {
+   "palavras": [
+    "anelid",
+    "anel",
+    "segment"
+   ],
+   "ideia": "Corpo liso, sem divisões",
+   "por_que": "O corpo dos anelídeos é formado por vários anéis (segmentos).",
+   "fonte": "Animal Diversity Web"
+  }
+ ]
+}
