@@ -27,6 +27,7 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
 - **Próxima tarefa:** continuar a revisão dos textos com o motor (`revisao/textos.md`), um bloco por vez: `NAT` e `PR`; conferir nas fontes confiáveis e corrigir só com o "sim" do dono.
+- **Tarefa seguinte (18/11/2026, pedido do dono):** planejar um motor de imagens e animações para o 8º ano; mostrar o plano e só criar com o "sim" do dono.
 - **Feito (18/11/2026, com o "sim" do dono):** 3 ajustes do bloco `PA` aplicados: boto "dos rios da Amazônia e também da bacia do rio Orinoco"; harpia "asas chegam a cerca de 2 metros"; "endotérmica (mantém o corpo quente sozinha)". Os 2 avisos de número que sobram (pirarucu, harpia) já foram conferidos.
 - **Feito (18/11/2026):** bloco `PA` revisado (`revisao/textos-PA-sugestoes.md`): 1 erro (boto "exclusivo da bacia amazônica"; Animal Diversity Web, Britannica, Mamirauá), harpia com a forma mais cautelosa (Britannica, Animal Diversity Web), "endotérmica" a explicar. Pirarucu, onça-pintada e guará conferidos, sem mudança.
 - **Feito (18/11/2026, com o "sim" do dono):** bloco `G` revisado (`revisao/textos-G-sugestoes.md`): "mais de 90%" dos peixes são ósseos conferido (Britannica, Animal Diversity Web); 27 termos explicados entre parênteses (larva, parasita, bioindicador, hermafrodita, fecundação cruzada, ecto/endotérmico, vivíparo, placenta etc.). Os 7 avisos que sobraram são falsos.
