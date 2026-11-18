@@ -16,6 +16,10 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 ## Pendências (esperando decisão do dono)
 
+- **Próxima etapa (Conversa B, aprovada em 18/11/2026):** criar as 19 fichas de ideias erradas comuns em `build/fichas/` (13 grupos + `temperatura`, `metamorfose`, `fauna-do-para`, `verminoses`, `naturalistas`, `ciclos`), 6 a 10 itens cada, só com fontes do `FONTES-CONFIAVEIS.md` (verminoses: só MS/Fiocruz/OPAS), cada item com `fonte`. O dono confere antes de valer. Usar Opus.
+- **Esperando o "sim" do dono:** corrigir os avisos do pente-fino (`revisao/perguntas.md`, 18/11/2026: `longa` 201, `absoluta` 21). Correções simples podem ser feitas com Sonnet.
+- **Feito (18/11/2026, com o "sim" do dono):** revisão das perguntas (`build/revisar_perguntas.py`, teste `build/t_revisar_perguntas.py`, ligada ao `novas.py verificar`, ao `rapido.py` e ao `tudo.sh`). Decisão: trabalho dividido em duas conversas (A: ferramenta; B: fichas), um commit em cada.
+
 - **Feito (18/11/2026):** protocolo-token reaplicado a partir da Física: comando já igual; `CLAUDE.md` ganhou 2 regras (teste novo no `MAPA` do `rapido.py`; `NOTAS.md` acima de ~150 linhas → histórico). Sem arquivo de código acima de 300 linhas; `dados.js` tem linhas curtas (máx. ~1 000 caracteres), então não precisa de motor de item único nem de trava.
 
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.

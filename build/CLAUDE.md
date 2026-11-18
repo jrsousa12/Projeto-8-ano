@@ -9,7 +9,7 @@
 
 | Mudou | Testes de navegador |
 |---|---|
-| `*.md`, `.github/`, `.claude/`, `validar-banco.js`, ferramentas de `build/` | nenhum |
+| `*.md`, `.github/`, `.claude/`, `validar-banco.js`, ferramentas de `build/` (inclusive `revisar_perguntas.py` e seu teste) | nenhum |
 | `banco-proprio.js`, `editor.*` | `t_editor` |
 | `jogos.js` | `t_jogos` |
 | `conteudo.js` | `t_jogos`, `t_telas`, `t_progresso` |
@@ -42,6 +42,16 @@
 - Calibrar = editar `build/fichas/textos.json` (termos, exageros, remédio, orientação de saúde, tamanho da frase), sem programar.
 - Teste guardado: `node build/t_revisar_textos.js` (rodado pelo `rapido.py` quando o motor, a ficha, o `dados.js` ou o `extras.js` mudam, e pelo `tudo.sh`).
 
+## Revisão das perguntas — `python3 build/revisar_perguntas.py`
+
+- Pente-fino nas perguntas de todos os bancos (`G`, `EXTRA`, `EXTRA2`, `BANK3`, `BANK4`, `QZ`, `MQ0`, `MQX`, `banco-proprio.js`). Só avisa, nunca altera.
+- Avisos: `longa` (certa bem mais comprida), `absoluta` (sempre/nunca/só só nas erradas), `eco` (só a certa repete o enunciado), `repetida`, `anteriores`, `negacao` ("Qual não é…" sem NÃO em maiúsculas), `sem_e` (sem explicação).
+- Todos os bancos embaralham as alternativas (o `QZ` também), por isso não há conferência da posição da certa.
+- Fichas: `build/fichas/<assunto>.json` (id do grupo; abas: `temperatura`, `metamorfose`, `fauna-do-para`, `verminoses`, `naturalistas`, `ciclos`). Formato: `{"teoria": [{"palavras": [2+], "ideia", "por_que", "fonte"}]}`. A ideia errada é sugerida quando 2 ou mais palavras aparecem no enunciado ou na explicação; o `QZ` usa todas as fichas. `fichas` confere o formato.
+- Resumo de uma linha; relatório em `revisao/perguntas.md`. Ler só o resumo e o trecho do tipo em revisão.
+- O `novas.py verificar` usa a mesma revisão (avisos `absoluta`, `eco`, `negacao` e as sugestões das fichas).
+- Teste guardado: `python3 build/t_revisar_perguntas.py` (rodado pelo `rapido.py` quando a revisão, uma ficha, o `novas.py`, o `dados.js` ou o `banco-proprio.js` mudam, e pelo `tudo.sh`).
+
 ## Gerador de perguntas — `python3 build/novas.py`
 
 - `modelo <destino> [n]` cria `build/novas/<destino>_DATA.json`; destino = id do grupo, `final` ou parte do nome de um desafio das abas.
@@ -52,7 +62,7 @@
 
 ## Comando único — `bash build/tudo.sh`
 
-- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → teste do motor de revisão dos textos → todos os testes de navegador.
+- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → teste do motor de revisão dos textos → teste da revisão das perguntas → todos os testes de navegador.
 - O arquivo único é gerado antes dos testes, para o `t_offline` testar a versão nova.
 - Os gerados (`tema-claro.css`, `sw.js`, `animais-8ano.html`) saem iguais aos do robô do GitHub; se mudarem, vão no commit.
 - Termina em "Tudo certo." ou "Há falhas" (com o teste e a verificação que falharam).

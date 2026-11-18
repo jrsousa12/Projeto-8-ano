@@ -1,7 +1,7 @@
 #!/bin/bash
 # Comando único antes de publicar no main: gera os arquivos automáticos e roda todas as conferências.
 # Uso (na pasta do projeto): bash build/tudo.sh
-# Ordem: tema claro → versão do cache → arquivo único → sintaxe → perguntas → gerador → todos os testes de navegador.
+# Ordem: tema claro → versão do cache → arquivo único → sintaxe → perguntas → gerador → revisões → todos os testes de navegador.
 # Os arquivos gerados (tema-claro.css, sw.js, animais-8ano.html) ficam prontos para ir no commit;
 # o robô do GitHub gera os mesmos no main, então não há conflito.
 cd "$(dirname "$0")/.." || exit 1
@@ -32,6 +32,7 @@ etapa "sintaxe" sintaxe
 etapa "perguntas" node validar-banco.js
 etapa "gerador de perguntas" python3 build/novas.py teste
 etapa "motor de revisão dos textos" node build/t_revisar_textos.js
+etapa "revisão das perguntas" python3 build/t_revisar_perguntas.py
 etapa "testes de navegador" node testes/testes.js
 
 gerados=$(git status --short tema-claro.css sw.js animais-8ano.html | cut -c4-)

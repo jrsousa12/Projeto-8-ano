@@ -11,6 +11,7 @@ desafio das abas (temperatura, metamorfose, fauna, verminoses).
 Grupo → BANK4; final → QZ; abas → MQX. Erro bloqueia; aviso só alerta. Relatório em build/novas/relatorio.md.
 """
 import datetime, difflib, json, os, re, shutil, subprocess, sys, tempfile, unicodedata, urllib.parse
+from revisar_perguntas import checar, ideias, assunto  # mesma revisão do pente-fino (pistas e fichas)
 
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 NOVAS = os.path.join(RAIZ, "build", "novas")
@@ -98,6 +99,9 @@ def conferir(arq, A, doms, novas_vistas):
         if any(RX_PROIBIDA.search(a) for a in alts): E.append(f'{L}: não use "todas/nenhuma das anteriores" (o app embaralha as alternativas)')
         if err and certa and len(certa) > 1.6 * max(len(x) for x in err) and len(certa) - max(len(x) for x in err) >= 15:
             W.append(f"{L}: a certa é bem mais comprida que as erradas (isso entrega a resposta)")
+        W += [f"{L}: {m}" for t, m in checar(q, alts, 0, e) if t in ("absoluta", "eco", "negacao")]
+        area = dest and ("final" if dest[0] == "QZ" else dest[1] if dest[0] == "BANK4" else assunto("aba:" + dest[1]))
+        W += [f'{L}: ideia errada comum para usar como alternativa: "{t["ideia"]}" ({t["por_que"]})' for t in ideias(area, q, e, alts)] if area else []
         for t in (q, e):
             for f in frases_longas(t): W.append(f'{L}: frase com mais de {MAX_PALAVRAS} palavras: "{f[:70]}…"')
         tudo = " ".join([q, e] + alts)
