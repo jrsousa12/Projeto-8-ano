@@ -41,6 +41,7 @@
 - Só avisa, nunca altera. Avisos: `numero` (conferir em 2 fontes), `diverge` (mesmo fato com número diferente em outra parte do app, perguntas inclusive), `termo` (técnico sem explicação na 1ª vez no cartão), `frase` (> `palavras_max`), `remedio`, `saude` (verminose sem orientar atendimento), `exagero`, `cientifico`.
 - Resumo de uma linha por tipo; relatório em `revisao/textos.md` (ou `textos-<blocos>.md`). Ler só o resumo e o trecho do bloco em revisão.
 - Calibrar = editar `build/fichas/textos.json` (termos, exageros, remédio, orientação de saúde, tamanho da frase), sem programar.
+- `conferidos` na ficha: avisos já conferidos (`tipo | lugar | palavra`) saem do relatório; se o texto mudar, o aviso volta. O resumo mostra quantos ficaram de fora e aponta os da lista que não acontecem mais.
 - Teste guardado: `node build/t_revisar_textos.js` (rodado pelo `rapido.py` quando o motor, a ficha, o `dados.js` ou o `extras.js` mudam, e pelo `tudo.sh`).
 
 ## Revisão das perguntas — `python3 build/revisar_perguntas.py`

@@ -55,6 +55,14 @@ caso("gênero com minúscula em outra parte avisa", tem("cientifico", boto, [{ o
 caso("espécie trocada em outra parte avisa", tem("cientifico", boto, [{ onde: "QZ[1][0]", s: "Inia boliviensis vive no rio." }]));
 caso("nome certo em outra parte não avisa", !tem("cientifico", boto, [{ onde: "QZ[1][0]", s: "Inia geoffrensis vive no rio." }]));
 
+console.log("• avisos já conferidos");
+const conf = { ...ficha, conferidos: ["numero | PA[9][0] | 2 metros"] };
+const sep = txt => M.separar(M.analisar([item([txt])], conf, []), conf);
+caso("aviso conferido sai do relatório", sep("Pode passar de 2 metros.").novos.length === 0 && sep("Pode passar de 2 metros.").conferidos === 1);
+caso("número mudou: o aviso volta", sep("Pode passar de 3 metros.").novos.length === 1);
+caso("conferido sem aviso é apontado", sep("Pode passar de 3 metros.").sobrando.length === 1);
+caso("conferido fora do formato é recusado", M.checar_ficha({ ...ficha, conferidos: ["numero 2 metros"] }).length === 1);
+
 console.log("• app de verdade");
 const app = M.carregar(), itens = M.cartoes(app);
 for (const b of M.BLOCOS) caso(`bloco ${b} tem cartões`, itens.some(i => i.bloco === b));

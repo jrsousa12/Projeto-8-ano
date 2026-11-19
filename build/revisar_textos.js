@@ -25,6 +25,8 @@ function checar_ficha(f) {
   const erros = [];
   for (const k of ["termos", "exageros", "remedio", "saude_ok"])
     if (!Array.isArray(f[k]) || !f[k].length || f[k].some(x => typeof x !== "string" || !x.trim())) erros.push(`"${k}" precisa ser uma lista de textos`);
+  if (f.conferidos !== undefined && (!Array.isArray(f.conferidos) || f.conferidos.some(x => typeof x !== "string" || x.split(" | ").length !== 3)))
+    erros.push(`"conferidos" precisa ser uma lista de textos no formato "tipo | lugar | palavra"`);
   if (!(f.palavras_max > 5)) erros.push(`"palavras_max" precisa ser um número maior que 5`);
   return erros;
 }
@@ -136,6 +138,15 @@ function analisar(itens, ficha, todos) {
   return [...unicos.values()];
 }
 
+/* Avisos já conferidos pelo dono ficam na ficha ("tipo | lugar | palavra") e saem do relatório.
+   Se o texto mudar (outro número, outra palavra), o aviso volta. */
+const chave = a => `${a.tipo} | ${a.onde} | ${a.msg.split(': "')[0].replace(/"/g, "")}`;
+function separar(av, ficha) {
+  const lista = new Set(ficha.conferidos || []), novos = av.filter(a => !lista.has(chave(a)));
+  const usados = new Set(av.map(chave)), sobrando = [...lista].filter(c => !usados.has(c));
+  return { novos, conferidos: av.length - novos.length, sobrando };
+}
+
 function relatorio(av, blocos) {
   const md = [`# Revisão dos textos (${blocos.join(", ")})`, "", "Gerado por `node build/revisar_textos.js`. São avisos para conferir, não erros certos.", ""];
   for (const b of blocos) {
@@ -156,15 +167,17 @@ function main() {
   const pedidos = process.argv.slice(2).map(s => s.toUpperCase()), ruins = pedidos.filter(b => !BLOCOS.includes(b));
   if (ruins.length) { console.log(`Bloco desconhecido: ${ruins.join(", ")}. Use: ${BLOCOS.join(", ")}`); return 1; }
   const blocos = pedidos.length ? pedidos : BLOCOS, app = carregar();
-  const itens = cartoes(app).filter(i => blocos.includes(i.bloco)), av = analisar(itens, ficha, todosTextos(app));
+  const itens = cartoes(app).filter(i => blocos.includes(i.bloco)), { novos: av, conferidos, sobrando } = separar(analisar(itens, ficha, todosTextos(app)), ficha);
   const arq = path.join("revisao", pedidos.length ? `textos-${blocos.join("-")}.md` : "textos.md");
   fs.mkdirSync(path.join(RAIZ, "revisao"), { recursive: true });
   fs.writeFileSync(path.join(RAIZ, arq), relatorio(av, blocos));
   console.log(`Revisados: ${itens.length} cartões (${blocos.join(", ")}), ${itens.reduce((n, i) => n + i.textos.length, 0)} textos.`);
   for (const t in TIPOS) { const n = av.filter(a => a.tipo === t).length; if (n) console.log(`- ${t}: ${n} (${TIPOS[t]})`); }
-  console.log(`Total: ${av.length} aviso(s). Relatório: ${arq}`);
+  if (conferidos) console.log(`Já conferidos (fora do relatório): ${conferidos}`);
+  if (sobrando.length && !pedidos.length) console.log(`Na lista de conferidos, mas sem aviso (texto mudou? pode tirar da ficha): ${sobrando.length}\n- ` + sobrando.join("\n- "));
+  console.log(`Total: ${av.length} aviso(s) novo(s). Relatório: ${arq}`);
   return 0;
 }
 
-module.exports = { analisar, checar_ficha, numeros, explicado, cartoes, carregar, BLOCOS };
+module.exports = { analisar, separar, chave, todosTextos, checar_ficha, numeros, explicado, cartoes, carregar, BLOCOS };
 if (require.main === module) process.exitCode = main();
