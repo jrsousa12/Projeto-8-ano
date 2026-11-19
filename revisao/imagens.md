@@ -7,7 +7,7 @@ Gerado por `python3 build/imagens.py listar`. Só avisa, nunca altera.
 - **Jogo Quem é este?:** 44 de 44 com ilustração; sem: nenhum
 - **Jogo de classificar:** 191 animais, só com o nome (sem imagem)
 - **Perguntas:** 700 perguntas, nenhuma com figura (parte 3 do plano)
-- **Arquivos:** 82 ilustrações, 1930 KB; sem uso: nenhuma; acima de 60 KB: p-anelideo (63 KB), p-cnidario (82 KB), p-porifero (61 KB), p-reptil (71 KB)
+- **Arquivos:** 82 ilustrações, 1880 KB; sem uso: nenhuma; acima de 60 KB: nenhuma
 
 ## Erros
 
