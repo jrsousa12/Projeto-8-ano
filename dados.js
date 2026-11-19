@@ -315,7 +315,7 @@ anelideo:[
 ["Qual é a simetria dos anelídeos?",["Bilateral","Radial","Pentarradial","Esférica"],"Têm lado direito e esquerdo."],
 ["De que as minhocas se alimentam?",["Restos de matéria orgânica","Sangue de animais maiores","Plâncton retirado da água","Folhas vivas das árvores"],"Elas ingerem terra e restos orgânicos."],
 ["Quais anelídeos não têm cerdas?",["Hirudíneos (sanguessugas)","Poliquetas","Oligoquetas","Todos têm"],"Hirudíneos têm ventosas no lugar."],
-["O que a atividade das minhocas faz com o solo?",["Deixa-o arejado e fértil","Deixa-o compactado e duro","Deixa-o salgado e estéril","Deixa-o seco e rachado"],"Elas abrem galerias e produzem húmus."],
+["O que a atividade das minhocas faz com o solo?",["Deixa-o arejado e fértil","Deixa-o compactado e duro","Estraga o solo e faz mal às plantas","Deixa-o seco e rachado"],"Elas abrem galerias e produzem húmus."],
 ["A qual classe pertencem as sanguessugas?",["Hirudíneos","Oligoquetas","Poliquetas","Cestódeos"],"São anelídeos."],
 ["Como é o sistema nervoso dos anelídeos?",["Com gânglios e cordão nervoso ventral","Difuso, em rede, sem gânglios","Ausente, sem células nervosas","Com um cérebro grande e dorsal"],"É mais organizado que o dos cnidários."]],
 artropode:[
@@ -387,7 +387,7 @@ anfibio:[
 ["De que os anfíbios adultos geralmente se alimentam?",["Pequenos animais, como insetos","Frutas maduras caídas no chão","Folhas e raízes de plantas","Plâncton retirado da água"],"São predadores de pequenos invertebrados."],
 ["Onde ficam as glândulas parotoides do sapo-cururu?",["Atrás dos olhos","Nas patas","Na barriga","Na cauda"],"Elas liberam uma secreção de defesa."],
 ["Os anfíbios são ectotérmicos?",["Sim, a temperatura varia com o ambiente","Não, mantêm o corpo quente como as aves","Não; a temperatura é fixa em 37 °C","Não, esquentam o corpo com a comida"],"Como peixes e répteis."],
-["Onde os anfíbios costumam pôr os ovos?",["Na água ou em locais bem úmidos","No deserto","Em ninhos de galhos secos","Em árvores secas"],"Os ovos não têm casca dura."]],
+["Onde os anfíbios costumam pôr os ovos?",["Na água ou em locais bem úmidos","No deserto","Em ninhos de galhos secos","Em terra seca, com casca dura"],"Os ovos não têm casca dura."]],
 reptil:[
 ["Qual é a função das escamas dos répteis?",["Proteger o corpo e evitar a perda de água","Ajudar o animal a voar longas distâncias","Produzir leite para alimentar os filhotes","Fazer fotossíntese para produzir açúcar"],"A pele seca é uma adaptação à vida em terra."],
 ["Qual destes é um réptil?",["Lagarto","Sapo","Salamandra","Peixe-boi"],"Lagartos têm pele escamosa."],

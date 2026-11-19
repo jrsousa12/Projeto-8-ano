@@ -1,6 +1,6 @@
 # Ideias erradas das fichas como alternativas — bloco 2 (sugestões 34 a 83 da lista atual)
 
-Conferido em 19/11/2026. Nada foi alterado ainda: aplicar só com o "sim" do dono.
+Conferido em 19/11/2026. Aplicado em 19/11/2026, com o "sim" do dono.
 A lista atual (`revisao/perguntas.md`, 279 sugestões) ainda começa pelas 33 que o bloco 1 já descartou; este bloco começa logo depois de `BANK3.porifero[7]`.
 A resposta certa e a explicação de cada pergunta não mudam; só troca uma alternativa errada.
 
