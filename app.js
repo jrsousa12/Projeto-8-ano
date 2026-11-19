@@ -181,7 +181,7 @@ function runChal(g,p){
  const box=$("#chal",p);let qi=0,hits=0,tm=null,missed=[],hints=0,review=false;let qs=shuffle(g.pool.slice()).slice(0,5);
  const dots=()=>qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("");
  function finish(Q,right,why){
-  if(!right)missed.push(Q);clearInterval(tm);if(!review)PG.registrar(Q.q,Q.o,right);$$(".opt",box).forEach(x=>x.disabled=true);
+  if(!right)missed.push(Q);clearInterval(tm);if(!review)PG.registrar(Q.q,Q.o,right);$$(".opt",box).forEach(x=>x.disabled=true);if(typeof FQ!=="undefined")FQ.revelar(box);
   $("#why",box).innerHTML=why+" "+Q.w;
   const last=qi===qs.length-1;
   $("#cnx",box).innerHTML=`<button class="btn pri" id="cn">${last?"Ver resultado":"Próxima pergunta ▶"}</button>`;
@@ -189,7 +189,7 @@ function runChal(g,p){
  function show(){
   const Q=qs[qi];let okBtn=null,answered=false;
   box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div><p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
-  const od=$("#opts",box);
+  const od=$("#opts",box);if(typeof FQ!=="undefined")FQ.por(od,Q.q);
   shuffle(Q.o.map((t,k)=>({t,ok:k===Q.a}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okBtn=b;
    b.onclick=ev=>{
     if(!ev||!ev.isTrusted||answered)return;answered=true;

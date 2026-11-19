@@ -92,3 +92,14 @@ header{position:relative}
 .pais{max-width:900px;margin:0 auto 18px;padding:12px 16px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);font-size:16px}
 .pais summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
 .pais h3{font-size:17px;margin:12px 0 4px}.pais p{margin:6px 0}.pais ul{margin:4px 0 6px 22px}.pais li{margin:3px 0}
+/* figuras das perguntas (figuras-perguntas.js): linhas e legenda só depois da resposta */
+.fq{margin:8px auto 12px;max-width:420px;padding:10px;border-radius:18px;background:rgba(255,255,255,.07);text-align:center}
+.fq svg{width:100%;max-height:200px;display:block}
+.fq text{fill:currentColor;font-size:11px;font-weight:700}
+.fq .fqr{opacity:0;transition:opacity .5s}.fq.rev .fqr{opacity:1}
+.fq .fqe line{stroke:#f59e0b;stroke-width:2.5;stroke-dasharray:6 4}
+.fq figcaption{display:flex;flex-direction:column;gap:4px;font-size:15px;margin-top:4px}
+.fq .fqt{opacity:.8;font-size:14px}.fq .fqleg{display:none}.fq.rev .fqleg{display:block}
+.fq.tarde{display:none}.fq.tarde.rev{display:block}
+.fqst{height:170px;display:grid;place-items:center}.fqst svg{width:auto;height:100%;max-height:170px}
+.fqdots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.fqdots .dot{padding:6px 12px;font-size:14px;min-height:36px}

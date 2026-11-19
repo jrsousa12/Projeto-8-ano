@@ -13,9 +13,9 @@ function mini(sel,title,Q0){
  function show(){
   const q=qs[qi];
   box.innerHTML=`<h3>🎯 ${title}</h3><div class="cprog"><span>Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("")}</span></div><p class="mqq">${q[0]}</p><div class="mo"></div><div class="why"></div><div class="mnx"></div>`;
-  const od=$(".mo",box),w=$(".why",box),nx=$(".mnx",box);let okB=null,done=false;
+  const od=$(".mo",box),w=$(".why",box),nx=$(".mnx",box);let okB=null,done=false;if(typeof FQ!=="undefined")FQ.por(od,q[0]);
   shuffle(q[1].map((t,k)=>({t,ok:k===0}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okB=b;
-   b.onclick=ev=>{if(!ev||!ev.isTrusted||done)return;done=true;$$(".opt",od).forEach(x=>x.disabled=true);
+   b.onclick=ev=>{if(!ev||!ev.isTrusted||done)return;done=true;$$(".opt",od).forEach(x=>x.disabled=true);if(typeof FQ!=="undefined")FQ.revelar(box);
     if(!rv)PG.registrar(q[0],q[1],o.ok);
     if(o.ok){hits+=HF?.5:1;b.classList.add("ok");beep("ok");}else{b.classList.add("no");okB.classList.add("ok");beep("no");missed.push(q);}
     w.innerHTML=(o.ok?"🎉 <b>Isso mesmo!</b> ":"🤔 Quase! ")+q[2];

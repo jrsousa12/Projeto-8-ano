@@ -305,6 +305,17 @@ header{position:relative}
 .pais{max-width:900px;margin:0 auto 18px;padding:12px 16px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);font-size:16px}
 .pais summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
 .pais h3{font-size:17px;margin:12px 0 4px}.pais p{margin:6px 0}.pais ul{margin:4px 0 6px 22px}.pais li{margin:3px 0}
+/* figuras das perguntas (figuras-perguntas.js): linhas e legenda só depois da resposta */
+.fq{margin:8px auto 12px;max-width:420px;padding:10px;border-radius:18px;background:rgba(255,255,255,.07);text-align:center}
+.fq svg{width:100%;max-height:200px;display:block}
+.fq text{fill:currentColor;font-size:11px;font-weight:700}
+.fq .fqr{opacity:0;transition:opacity .5s}.fq.rev .fqr{opacity:1}
+.fq .fqe line{stroke:#f59e0b;stroke-width:2.5;stroke-dasharray:6 4}
+.fq figcaption{display:flex;flex-direction:column;gap:4px;font-size:15px;margin-top:4px}
+.fq .fqt{opacity:.8;font-size:14px}.fq .fqleg{display:none}.fq.rev .fqleg{display:block}
+.fq.tarde{display:none}.fq.tarde.rev{display:block}
+.fqst{height:170px;display:grid;place-items:center}.fqst svg{width:auto;height:100%;max-height:170px}
+.fqdots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.fqdots .dot{padding:6px 12px;font-size:14px;min-height:36px}
 
 </style>
 <style>
@@ -524,6 +535,7 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 :where([data-theme=claro]) .who input{border:2px solid rgba(15,23,42,0.245);background:rgba(255,255,255,0.625);color:#0f172a}
 :where([data-theme=claro]) #inst{border:1px solid rgba(15,23,42,0.29)}
 :where([data-theme=claro]) .pais{background:rgba(15,23,42,0.074);border:1px solid rgba(15,23,42,0.182)}
+:where([data-theme=claro]) .fq{background:rgba(15,23,42,0.083)}
 :where([data-theme=claro]) .rel{color:#a16207}
 :where([data-theme=claro]) .rkmsg{color:#a16207}
 :where([data-theme=claro]) .rk{background:rgba(255,255,255,0.5)}
@@ -2042,7 +2054,7 @@ function runChal(g,p){
  const box=$("#chal",p);let qi=0,hits=0,tm=null,missed=[],hints=0,review=false;let qs=shuffle(g.pool.slice()).slice(0,5);
  const dots=()=>qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("");
  function finish(Q,right,why){
-  if(!right)missed.push(Q);clearInterval(tm);if(!review)PG.registrar(Q.q,Q.o,right);$$(".opt",box).forEach(x=>x.disabled=true);
+  if(!right)missed.push(Q);clearInterval(tm);if(!review)PG.registrar(Q.q,Q.o,right);$$(".opt",box).forEach(x=>x.disabled=true);if(typeof FQ!=="undefined")FQ.revelar(box);
   $("#why",box).innerHTML=why+" "+Q.w;
   const last=qi===qs.length-1;
   $("#cnx",box).innerHTML=`<button class="btn pri" id="cn">${last?"Ver resultado":"Próxima pergunta ▶"}</button>`;
@@ -2050,7 +2062,7 @@ function runChal(g,p){
  function show(){
   const Q=qs[qi];let okBtn=null,answered=false;
   box.innerHTML=`<div class="cprog"><span>🎯 Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${dots()}</span></div><p>${Q.q}</p><div id="opts"></div><div class="why" id="why"></div><div id="cnx"></div>`;
-  const od=$("#opts",box);
+  const od=$("#opts",box);if(typeof FQ!=="undefined")FQ.por(od,Q.q);
   shuffle(Q.o.map((t,k)=>({t,ok:k===Q.a}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okBtn=b;
    b.onclick=ev=>{
     if(!ev||!ev.isTrusted||answered)return;answered=true;
@@ -2266,6 +2278,104 @@ renderStage();
 
 </script>
 <script>
+/* ---------- figuras das perguntas: moldes de desenho ----------
+   Cada molde devolve o desenho de uma pergunta. Qual pergunta usa qual molde fica no figuras-ligacao.js.
+   "antes": aparece com a pergunta (sem dar a resposta); a parte com classe "fqr" e a legenda só aparecem depois da resposta.
+   "tarde": o desenho inteiro só aparece depois da resposta (porque mostraria a resposta).
+   Conferido em: Britannica (radial symmetry, cnidarian, echinoderm) e Animal Diversity Web (Cnidaria).
+   As etapas da metamorfose são as mesmas da tela "Metamorfose" (MS, em simulacoes.js). */
+const FQ=(()=>{
+ const V='viewBox="0 0 200 140"';
+ const eixo=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+ const raio=(n,r,a0)=>Array.from({length:n},(_,k)=>{const a=(a0+k*360/n)*Math.PI/180;return [100+r*Math.cos(a),70+r*Math.sin(a)];});
+ const eixos=(n,r)=>raio(n,r,-90).map(([x,y])=>eixo(x.toFixed(1),y.toFixed(1),(200-x).toFixed(1),(140-y).toFixed(1))).join("");
+ const lado=(x,y,t,anc)=>`<text x="${x}" y="${y}" text-anchor="${anc||"middle"}">${t}</text>`;
+ const estrela=()=>{const p=[];for(let k=0;k<10;k++){const r=k%2?22:58,a=(-90+k*36)*Math.PI/180;p.push((100+r*Math.cos(a)).toFixed(1)+","+(70+r*Math.sin(a)).toFixed(1));}return p.join(" ");};
+ const SIM={
+  /* estrela-do-mar adulta: 5 braços, 5 linhas que passam pelo centro */
+  estrela:{t:"Estrela-do-mar adulta vista de cima",leg:"<b>Simetria radial</b> (em geral com 5 partes): as partes iguais ficam ao redor do centro, como os raios de uma roda.",
+   s:`<polygon points="${estrela()}" fill="#fb923c" stroke="#c2410c" stroke-width="3" stroke-linejoin="round"/>${raio(5,36,-90).map(([x,y])=>`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="#fed7aa"/>`).join("")}<circle cx="100" cy="70" r="7" fill="#fdba74"/>`,
+   r:`<g class="fqe">${eixos(5,66)}</g>`},
+  /* água-viva vista de cima: corpo em forma de sino, 4 braços e tentáculos na borda */
+  aguaviva:{t:"Água-viva vista de cima",leg:"<b>Simetria radial</b>: várias linhas passando pelo centro dividem o corpo em partes iguais.",
+   s:`${raio(16,52,0).map(([x,y])=>`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#c4b5fd"/>`).join("")}<circle cx="100" cy="70" r="50" fill="#a5b4fc" opacity=".85" stroke="#6366f1" stroke-width="2"/>${raio(4,22,45).map(([x,y])=>`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="none" stroke="#f0abfc" stroke-width="4"/>`).join("")}<path d="M100 54V86M84 70H116" stroke="#e879f9" stroke-width="5" stroke-linecap="round"/>`,
+   r:`<g class="fqe">${eixos(4,66)}${raio(4,66,-45).map(([x,y])=>eixo(x.toFixed(1),y.toFixed(1),(200-x).toFixed(1),(140-y).toFixed(1))).join("")}</g>`},
+  /* planária vista de cima, cabeça para cima: uma só linha, ao longo do corpo */
+  planaria:{t:"Planária vista de cima",leg:"<b>Simetria bilateral</b>: uma só linha, da cabeça à cauda, divide o corpo em lado direito e lado esquerdo, parecidos como num espelho.",
+   s:`<path d="M100 10 Q112 12 122 22 Q114 26 112 34 Q116 70 108 122 Q100 134 92 122 Q84 70 88 34 Q86 26 78 22 Q88 12 100 10Z" fill="#a8a29e" stroke="#57534e" stroke-width="2.5"/><circle cx="94" cy="24" r="3" fill="#fff"/><circle cx="106" cy="24" r="3" fill="#fff"/><circle cx="94" cy="24" r="1.5" fill="#111"/><circle cx="106" cy="24" r="1.5" fill="#111"/>`,
+   r:`<g class="fqe">${eixo(100,4,100,136)}</g>${lado(86,80,"lado esquerdo","end")}${lado(114,80,"lado direito","start")}`},
+  /* minhoca vista de cima, cabeça para a direita: a linha corre ao longo do corpo */
+  minhoca:{t:"Minhoca vista de cima (cabeça à direita)",leg:"<b>Simetria bilateral</b>: uma só linha, ao longo do corpo, separa o lado direito do lado esquerdo.",
+   s:`<rect x="16" y="58" width="168" height="24" rx="12" fill="#f9a8d4" stroke="#be185d" stroke-width="2"/>${Array.from({length:15},(_,k)=>`<path d="M${30+k*10} 59V81" stroke="#db2777" stroke-width="1.2"/>`).join("")}<rect x="134" y="57" width="22" height="26" rx="6" fill="#f472b6"/>`,
+   r:`<g class="fqe">${eixo(6,70,194,70)}</g>${lado(100,46,"lado esquerdo")}${lado(100,104,"lado direito")}`},
+  /* esponja: forma irregular, sem linha que a divida em partes iguais */
+  esponja:{t:"Esponja (porífero)",leg:"<b>Sem simetria definida</b>: a forma é irregular, e nenhuma linha divide o corpo em partes iguais.",
+   s:`<path d="M60 128 Q50 96 58 70 Q52 44 66 26 Q76 18 82 34 Q86 50 96 44 Q104 16 120 22 Q132 30 124 56 Q140 62 146 86 Q150 112 136 128Z" fill="#facc15" stroke="#a16207" stroke-width="2.5"/><ellipse cx="74" cy="30" rx="6" ry="3" fill="#713f12"/><ellipse cx="114" cy="26" rx="7" ry="3.5" fill="#713f12"/><ellipse cx="136" cy="70" rx="5" ry="2.5" fill="#713f12"/>${[[72,70],[90,92],[110,80],[124,104],[80,110],[100,62],[70,94],[118,50]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.2" fill="#ca8a04"/>`).join("")}`,
+   r:""}
+ };
+ const META={ins:"Metamorfose completa (exemplo: borboleta)",gaf:"Metamorfose incompleta (exemplo: gafanhoto)",sapo:"Metamorfose do sapo"};
+ const molde=nome=>{const [tipo,k]=nome.split(":");if(tipo==="sim")return SIM[k]?{tipo,k}:null;if(tipo==="meta")return META[k]&&typeof MS!=="undefined"&&MS[k]?{tipo,k}:null;return null;};
+ function htmlSim(k,tarde){const m=SIM[k];
+  return `<figure class="fq${tarde?" tarde":""}" data-fq="sim:${k}"><svg ${V} role="img" aria-label="${m.t}">${m.s}<g class="fqr">${m.r}</g></svg><figcaption><span class="fqt">${m.t}</span><span class="fqleg">${m.leg}</span></figcaption></figure>`;}
+ function htmlMeta(k){
+  return `<figure class="fq tarde" data-fq="meta:${k}"><div class="fqst"></div><figcaption><span class="fqt">${META[k]}</span><span class="fqleg"><b class="fqet"></b> <span class="fqed"></span></span><span class="fqdots"></span></figcaption></figure>`;}
+ /* passo a passo da metamorfose: troca a etapa a cada 2,6 s e para na última; os botões escolhem a etapa */
+ function tocar(fig){const L=MS[fig.dataset.fq.split(":")[1]];let i=0,tm=null;
+  const pinta=()=>{fig.querySelector(".fqst").innerHTML=L[i].s;fig.querySelector(".fqet").textContent=L[i].t;fig.querySelector(".fqed").textContent=L[i].d;
+   fig.querySelectorAll(".fqdots button").forEach((b,j)=>b.classList.toggle("on",j===i));};
+  fig.querySelector(".fqdots").innerHTML=L.map((x,j)=>`<button type="button" class="dot" data-i="${j}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
+  fig.querySelectorAll(".fqdots button").forEach(b=>b.onclick=()=>{clearInterval(tm);i=+b.dataset.i;pinta();});
+  pinta();tm=setInterval(()=>{if(!fig.isConnected||i>=L.length-1){clearInterval(tm);return;}i++;pinta();},2600);}
+ return {
+  /* põe a figura da pergunta antes das alternativas (ou nada, se a pergunta não tem figura) */
+  por(antesDe,texto){const L=typeof FQLIG!=="undefined"&&FQLIG[String(texto).trim()];if(!L||!antesDe)return null;
+   const [nome,quando]=L,m=molde(nome);if(!m)return null;
+   const d=document.createElement("div");d.innerHTML=m.tipo==="sim"?htmlSim(m.k,quando==="tarde"):htmlMeta(m.k);
+   const fig=d.firstChild;antesDe.parentNode.insertBefore(fig,antesDe);return fig;},
+  /* depois da resposta: mostra as linhas, a legenda e a animação */
+  revelar(caixa){if(!caixa)return;caixa.querySelectorAll(".fq:not(.rev)").forEach(f=>{f.classList.add("rev");if(f.dataset.fq.startsWith("meta:"))tocar(f);});},
+  molde,SIM,META};
+})();
+
+</script>
+<script>
+/* ---------- ligação pergunta → figura ----------
+   Chave: o enunciado da pergunta, igual ao do banco. Valor: [molde, quando].
+   Moldes: "sim:estrela", "sim:aguaviva", "sim:planaria", "sim:minhoca", "sim:esponja" (simetria);
+           "meta:ins" (completa), "meta:gaf" (incompleta), "meta:sapo" (sapo). Ver figuras-perguntas.js.
+   quando: "antes" = o desenho aparece com a pergunta e a resposta (linhas e legenda) só depois;
+           "tarde" = o desenho inteiro só aparece depois da resposta.
+   O teste t_figuras confere que cada enunciado existe num banco e que cada molde existe.
+   As perguntas da tela "Metamorfose" ficam sem figura: a animação já está logo acima delas. */
+const FQLIG={
+"Qual é a simetria do corpo dos cnidários?":["sim:aguaviva","antes"],
+"Qual destes grupos tem simetria radial quando adulto?":["sim:aguaviva","tarde"],
+"Como é a simetria dos equinodermos adultos?":["sim:estrela","antes"],
+"Qual é a simetria dos equinodermos adultos?":["sim:estrela","antes"],
+"Quanto à forma do corpo, a maioria das esponjas…":["sim:esponja","antes"],
+"Qual é a simetria do corpo dos platelmintos?":["sim:planaria","antes"],
+"Qual é a simetria dos anelídeos?":["sim:minhoca","antes"],
+"Como se chama o filhote de inseto de metamorfose completa que lembra um verme?":["meta:ins","tarde"],
+"Qual fase NÃO existe na metamorfose completa?":["meta:ins","tarde"],
+"Qual inseto tem metamorfose completa?":["meta:ins","tarde"],
+"Em qual fase a borboleta fica imóvel, dentro da crisálida?":["meta:ins","tarde"],
+"O que é metamorfose?":["meta:ins","tarde"],
+"Qual é a ordem das fases da metamorfose completa?":["meta:ins","tarde"],
+"Qual destes insetos faz metamorfose completa?":["meta:ins","tarde"],
+"Em qual fase da metamorfose completa o inseto mais se alimenta?":["meta:ins","tarde"],
+"Como é a metamorfose do mosquito Aedes aegypti?":["meta:ins","tarde"],
+"Na metamorfose incompleta do gafanhoto, o filhote se chama...":["meta:gaf","tarde"],
+"Qual animal tem fase de ninfa?":["meta:gaf","tarde"],
+"Qual inseto faz metamorfose incompleta?":["meta:gaf","tarde"],
+"Qual é a ordem correta do ciclo de vida do sapo?":["meta:sapo","tarde"],
+"Qual destes vertebrados faz metamorfose?":["meta:sapo","tarde"],
+"Na metamorfose do sapo, quem respira por brânquias?":["meta:sapo","tarde"],
+"O que acontece com a cauda do girino de sapo?":["meta:sapo","tarde"],
+"Por qual estrutura o girino respira?":["meta:sapo","tarde"]
+};
+
+</script>
+<script>
 /* ---------- desafio final ---------- */
 
 /* ---------- fauna do Pará ---------- */
@@ -2281,9 +2391,9 @@ function mini(sel,title,Q0){
  function show(){
   const q=qs[qi];
   box.innerHTML=`<h3>🎯 ${title}</h3><div class="cprog"><span>Pergunta ${qi+1} de ${qs.length}</span><span class="dots">${qs.map((_,k)=>`<i class="${k<qi?"d":k===qi?"c":""}"></i>`).join("")}</span></div><p class="mqq">${q[0]}</p><div class="mo"></div><div class="why"></div><div class="mnx"></div>`;
-  const od=$(".mo",box),w=$(".why",box),nx=$(".mnx",box);let okB=null,done=false;
+  const od=$(".mo",box),w=$(".why",box),nx=$(".mnx",box);let okB=null,done=false;if(typeof FQ!=="undefined")FQ.por(od,q[0]);
   shuffle(q[1].map((t,k)=>({t,ok:k===0}))).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.t;if(o.ok)okB=b;
-   b.onclick=ev=>{if(!ev||!ev.isTrusted||done)return;done=true;$$(".opt",od).forEach(x=>x.disabled=true);
+   b.onclick=ev=>{if(!ev||!ev.isTrusted||done)return;done=true;$$(".opt",od).forEach(x=>x.disabled=true);if(typeof FQ!=="undefined")FQ.revelar(box);
     if(!rv)PG.registrar(q[0],q[1],o.ok);
     if(o.ok){hits+=HF?.5:1;b.classList.add("ok");beep("ok");}else{b.classList.add("no");okB.classList.add("ok");beep("no");missed.push(q);}
     w.innerHTML=(o.ok?"🎉 <b>Isso mesmo!</b> ":"🤔 Quase! ")+q[2];
@@ -2703,7 +2813,7 @@ function mostrar(m) {
   HF = false;
   const n = st.ids.length;
   box.innerHTML = `<div class="qtop"><span>${cfg.titulo} · ${st.rev ? "Revisão · " : ""}Pergunta ${st.i + 1}/${n}</span><span>${cfg.sim ? `<span class="rel">⏱️ ${relogio(st.rest)}</span>` : `⭐ ${fmt(st.sc)} <span class="streak" title="Acertos seguidos">🔥 ${st.seq}</span>`}</span></div><div class="qbar"><i style="width:${st.i / n * 100}%"></i></div><div class="qq">${it.q}</div><div id="qo-${m}"></div><div class="why" id="qw-${m}"></div><div class="rnav"><button class="btn pri" id="qn-${m}" style="display:none">Próxima ▶</button>${cfg.sim ? ` <button class="btn" id="qp-${m}">Pular ▶</button>` : ""}</div>`;
-  const od = $("#qo-" + m, box); let feito = false, okB = null;
+  const od = $("#qo-" + m, box); let feito = false, okB = null; if (typeof FQ !== "undefined") FQ.por(od, it.q);
   shuffle(it.o.map((t, k) => ({ t, k }))).forEach(x => {
     const b = document.createElement("button"); b.className = "opt"; b.textContent = x.t; if (x.k === it.a) okB = b;
     b.onclick = ev => {
@@ -2713,7 +2823,7 @@ function mostrar(m) {
       if (ok) { st.sc += HF ? .5 : 1; st.seq++; st.best = Math.max(st.best, st.seq); } else { st.seq = 0; st.miss.push(it.id); }
       if (HF) st.h++;
       if (cfg.sim) { st.resp[it.id] = x.k; st.i++; PG.salvarRodada(m, st); mostrar(m); return; }
-      beep(ok ? "ok" : "no");
+      beep(ok ? "ok" : "no"); if (typeof FQ !== "undefined") FQ.revelar(box);
       if (ok) { b.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🎉 <b>Correto!</b> " + it.w; if (st.seq > 0 && st.seq % 5 === 0) burst(40); }
       else { b.classList.add("no"); okB.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🤔 Não foi dessa vez. " + it.w; }
       st.i++; if (!st.rev) PG.salvarRodada(m, st);

@@ -1,6 +1,6 @@
 # Regras da pasta testes/ (testes de navegador)
 
-- `testes.js` só roda; os testes ficam em `t_*.js`, um arquivo por assunto: `t_telas`, `t_jogos`, `t_conteudo`, `t_progresso`, `t_editor`, `t_offline`.
+- `testes.js` só roda; os testes ficam em `t_*.js`, um arquivo por assunto: `t_telas`, `t_jogos`, `t_conteudo`, `t_progresso`, `t_editor`, `t_offline`, `t_figuras`.
 - Peças comuns (servidor local, `confere`, `responder`, `abrir`, `perfil`, `finalCom`, `semCache`) ficam em `apoio.js`. Não copie essas peças para os testes: importe-as.
 - Rodar: `node testes/testes.js` (todos), `node testes/testes.js t_jogos t_telas` (só esses arquivos) ou `node testes/testes.js "simulado"` (só os nomes com esse trecho).
 - No container da nuvem o Playwright já vem instalado; em outro computador: `npm install --no-save playwright@1.63.0 && npx playwright install chromium`.

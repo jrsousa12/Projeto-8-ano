@@ -37,7 +37,7 @@ function mostrar(m) {
   HF = false;
   const n = st.ids.length;
   box.innerHTML = `<div class="qtop"><span>${cfg.titulo} · ${st.rev ? "Revisão · " : ""}Pergunta ${st.i + 1}/${n}</span><span>${cfg.sim ? `<span class="rel">⏱️ ${relogio(st.rest)}</span>` : `⭐ ${fmt(st.sc)} <span class="streak" title="Acertos seguidos">🔥 ${st.seq}</span>`}</span></div><div class="qbar"><i style="width:${st.i / n * 100}%"></i></div><div class="qq">${it.q}</div><div id="qo-${m}"></div><div class="why" id="qw-${m}"></div><div class="rnav"><button class="btn pri" id="qn-${m}" style="display:none">Próxima ▶</button>${cfg.sim ? ` <button class="btn" id="qp-${m}">Pular ▶</button>` : ""}</div>`;
-  const od = $("#qo-" + m, box); let feito = false, okB = null;
+  const od = $("#qo-" + m, box); let feito = false, okB = null; if (typeof FQ !== "undefined") FQ.por(od, it.q);
   shuffle(it.o.map((t, k) => ({ t, k }))).forEach(x => {
     const b = document.createElement("button"); b.className = "opt"; b.textContent = x.t; if (x.k === it.a) okB = b;
     b.onclick = ev => {
@@ -47,7 +47,7 @@ function mostrar(m) {
       if (ok) { st.sc += HF ? .5 : 1; st.seq++; st.best = Math.max(st.best, st.seq); } else { st.seq = 0; st.miss.push(it.id); }
       if (HF) st.h++;
       if (cfg.sim) { st.resp[it.id] = x.k; st.i++; PG.salvarRodada(m, st); mostrar(m); return; }
-      beep(ok ? "ok" : "no");
+      beep(ok ? "ok" : "no"); if (typeof FQ !== "undefined") FQ.revelar(box);
       if (ok) { b.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🎉 <b>Correto!</b> " + it.w; if (st.seq > 0 && st.seq % 5 === 0) burst(40); }
       else { b.classList.add("no"); okB.classList.add("ok"); $("#qw-" + m, box).innerHTML = "🤔 Não foi dessa vez. " + it.w; }
       st.i++; if (!st.rev) PG.salvarRodada(m, st);

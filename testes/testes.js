@@ -11,7 +11,7 @@ const { chromium } = require("playwright");
 const { servidor, placar, confere } = require("./apoio");
 
 /* ordem fixa; arquivo t_*.js novo entra no fim automaticamente */
-const ORDEM = ["t_telas", "t_jogos", "t_conteudo", "t_progresso", "t_editor", "t_offline"];
+const ORDEM = ["t_telas", "t_jogos", "t_conteudo", "t_progresso", "t_editor", "t_offline", "t_figuras"];
 const todos = fs.readdirSync(__dirname).filter(f => /^t_.*\.js$/.test(f)).map(f => f.slice(0, -3));
 const arquivos = [...ORDEM.filter(a => todos.includes(a)), ...todos.filter(a => !ORDEM.includes(a))];
 
