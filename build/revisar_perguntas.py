@@ -107,6 +107,16 @@ def checar_ficha(nome):
     return err
 
 
+def _raizes(t): return {w[:5] for w in norm(t).split() if len(w) >= 4 and w not in VAZIAS}
+
+
+def _ja_tem(ideia, q, o):
+    """A ideia já está numa alternativa com outras palavras? Tira as palavras do enunciado e compara as raízes
+    (5 primeiras letras): a alternativa cabe na ideia ("Ósseo" em "O tubarão é um peixe ósseo") ou a ideia cabe nela."""
+    rq = _raizes(q); ri = _raizes(ideia) - rq
+    return bool(ri) and any((ra := _raizes(x) - rq) and (ra <= ri or ri <= ra) for x in o)
+
+
 def ideias(nome, q, e, o, max_n=2):
     """Ideias erradas da ficha ligadas ao enunciado (2+ palavras) e que ainda não estão nas alternativas.
     No Desafio final ("final") vale a ficha de qualquer assunto."""
@@ -114,7 +124,7 @@ def ideias(nome, q, e, o, max_n=2):
     for f in (fichas_existentes() if nome == "final" else [nome]):
         for t in ficha(f).get("teoria", []):
             pts = sum(1 for p in t.get("palavras", []) if " " + norm(p) in txt)
-            ja = any(difflib.SequenceMatcher(None, norm(t["ideia"]), a).ratio() > .6 for a in alts)
+            ja = any(difflib.SequenceMatcher(None, norm(t["ideia"]), a).ratio() > .6 for a in alts) or _ja_tem(t["ideia"], q, o)
             if pts >= 2 and not ja: out.append((pts, t))
     return [t for _, t in sorted(out, key=lambda x: -x[0])[:max_n]]
 

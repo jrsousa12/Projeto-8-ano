@@ -30,6 +30,7 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
 - **Próxima tarefa — fila (decisão do dono, 19/11/2026), nesta ordem:**
   1. Usar as ideias erradas comuns das fichas como alternativas erradas (329 sugestões em `revisao/perguntas.md`); blocos de ~50, relatório, aplicar só com o "sim" do dono.
+     **Bloco 1 feito (19/11/2026, "Sim, e melhore o motor"):** 6 de 50 aplicadas (`revisao/ideias-bloco1.md`). Motor melhorado: não sugere ideia já presente com outras palavras; restam 279 sugestões (próximo: bloco 2).
   2. Mais figuras nas perguntas (hoje 80 de 700): tipos novos, ex. com/sem coluna, brânquias × pulmões.
   3. Avisos restantes dos textos (55 em `revisao/textos.md`, a maioria já conferida).
   - Em espera: ilustrações dos 142 animais do jogo de classificar (o dono avisa).

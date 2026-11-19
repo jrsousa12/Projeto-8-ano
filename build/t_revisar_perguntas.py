@@ -58,6 +58,7 @@ with tempfile.TemporaryDirectory() as tmp:
     ok(len(R.ideias("final", q, "", o)) == 1, "Desafio final usa todas as fichas")
     ok(R.ideias("mamifero", "Como a baleia nada?", "", o) == [], "1 palavra só não liga a ideia")
     ok(R.ideias("mamifero", q, "", o[:3] + ["A baleia respira por brânquias"]) == [], "ideia já presente não é sugerida")
+    ok(R.ideias("mamifero", q, "", o[:3] + ["Por brânquias"]) == [], "ideia já presente com outras palavras não é sugerida")
     R.FICHAS = velho; R.ficha.cache_clear()
 
     # pente-fino no banco real, com o relatório na pasta temporária

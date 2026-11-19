@@ -48,7 +48,7 @@
 - Pente-fino nas perguntas de todos os bancos (`G`, `EXTRA`, `EXTRA2`, `BANK3`, `BANK4`, `QZ`, `MQ0`, `MQX`, `banco-proprio.js`). Só avisa, nunca altera.
 - Avisos: `longa` (certa bem mais comprida), `absoluta` (sempre/nunca/só só nas erradas), `eco` (só a certa repete o enunciado), `repetida`, `anteriores`, `negacao` ("Qual não é…" sem NÃO em maiúsculas), `sem_e` (sem explicação).
 - Todos os bancos embaralham as alternativas (o `QZ` também), por isso não há conferência da posição da certa.
-- Fichas: `build/fichas/<assunto>.json` (id do grupo; abas: `temperatura`, `metamorfose`, `fauna-do-para`, `verminoses`, `naturalistas`, `ciclos`). Formato: `{"teoria": [{"palavras": [2+], "ideia", "por_que", "fonte"}]}`. A ideia errada é sugerida quando 2 ou mais palavras aparecem no enunciado ou na explicação; o `QZ` usa todas as fichas. `fichas` confere o formato.
+- Fichas: `build/fichas/<assunto>.json` (id do grupo; abas: `temperatura`, `metamorfose`, `fauna-do-para`, `verminoses`, `naturalistas`, `ciclos`). Formato: `{"teoria": [{"palavras": [2+], "ideia", "por_que", "fonte"}]}`. A ideia errada é sugerida quando 2 ou mais palavras aparecem no enunciado ou na explicação; o `QZ` usa todas as fichas. Não sugere a ideia que já está numa alternativa, mesmo com outras palavras (compara as raízes das palavras, sem as do enunciado). `fichas` confere o formato.
 - Resumo de uma linha; relatório em `revisao/perguntas.md`. Ler só o resumo e o trecho do tipo em revisão.
 - O `novas.py verificar` usa a mesma revisão (avisos `absoluta`, `eco`, `negacao` e as sugestões das fichas).
 - Teste guardado: `python3 build/t_revisar_perguntas.py` (rodado pelo `rapido.py` quando a revisão, uma ficha, o `novas.py`, o `dados.js` ou o `banco-proprio.js` mudam, e pelo `tudo.sh`).
