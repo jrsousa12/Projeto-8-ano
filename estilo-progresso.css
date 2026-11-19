@@ -155,4 +155,6 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 .insc.ok{opacity:1;border:2px solid #fbbf24;background:rgba(251,191,36,.12)}
 .insc.ok .insm{background:#fff3c4;border-color:#fbbf24;filter:none;box-shadow:0 0 12px rgba(251,191,36,.6)}
 .insc .insm img.ani,.insc .insm svg{width:62px;height:62px;margin:0;border-radius:50%;object-fit:cover}
+.insf{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:50%}
+.insf img{position:absolute;max-width:none;height:auto;margin:0;border-radius:0}
 .insc small{font-size:12px;opacity:.85}

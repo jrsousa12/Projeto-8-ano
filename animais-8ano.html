@@ -480,6 +480,8 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 .insc.ok{opacity:1;border:2px solid #fbbf24;background:rgba(251,191,36,.12)}
 .insc.ok .insm{background:#fff3c4;border-color:#fbbf24;filter:none;box-shadow:0 0 12px rgba(251,191,36,.6)}
 .insc .insm img.ani,.insc .insm svg{width:62px;height:62px;margin:0;border-radius:50%;object-fit:cover}
+.insf{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:50%}
+.insf img{position:absolute;max-width:none;height:auto;margin:0;border-radius:0}
 .insc small{font-size:12px;opacity:.85}
 
 </style>
@@ -1942,6 +1944,9 @@ mamifero:()=>`<svg viewBox="0 0 120 120"><g class="tilt"><circle cx="22" cy="62"
 };
 const ICONSVG=Object.assign({},ICON);
 G.forEach(g=>{ICON[g.id]=()=>imgAni("g-"+g.id,g.n);});
+/* insígnia: recorte quadrado da ilustração com a cara do animal no centro — [g ou p, largura da imagem, centro x, centro y, lado] */
+const INSF={porifero:["g",202,100,165,230],cnidario:["g",157,78,72,140],platelminto:["p",534,203,85,125],nematodeo:["g",360,72,72,150],anelideo:["g",355,255,245,190],molusco:["p",534,215,545,270],artropode:["g",360,90,98,180],equinodermo:["g",360,92,110,200],peixe:["g",360,95,118,180],anfibio:["p",534,345,115,230],reptil:["g",360,295,85,140],ave:["p",534,432,160,200],mamifero:["g",360,255,115,200]};
+const insIco=g=>{const f=INSF[g.id];if(!f)return ICON[g.id]();const[p,W,x,y,s]=f,pc=v=>(v*100).toFixed(1)+"%";return `<span class="insf"><img src="${imgSrc(p+"-"+g.id)}" alt="Insígnia: ${g.n}" draggable="false" style="width:${pc(W/s)};left:${pc(-(x-s/2)/s)};top:${pc(-(y-s/2)/s)}"></span>`;};
 
 /* ---------- conteúdo ---------- */
 
@@ -1971,7 +1976,7 @@ G.forEach(g=>{g.pool=[...g.pool,...BANK3[g.id],...(BANK4[g.id]||[])].map(x=>Arra
 
 const stars=new Set(), seen=new Set();
 G.forEach((g,i)=>{const b=document.createElement("button");b.className="card";b.id="card-"+g.id;b.style.cssText=`--c:${g.c};--i:${G.filter(x=>x.t===g.t).indexOf(g)}`;
- b.innerHTML=ICON[g.id]()+`<b>${g.n}</b><span class="ins" title="Insígnia conquistada">${ICON[g.id]()}</span>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
+ b.innerHTML=ICON[g.id]()+`<b>${g.n}</b><span class="ins" title="Insígnia conquistada">${insIco(g)}</span>`;b.onclick=()=>openPanel(i);$("#c-"+g.t).appendChild(b);});
 $$(".bbtn").forEach(btn=>btn.onclick=()=>{const br=btn.parentElement;br.classList.toggle("open");
  if(br.classList.contains("open")){$$(".card",br).forEach(c=>{c.style.animation="none";void c.offsetWidth;c.style.animation=""});}});
 function updScore(){if(typeof NV!=="undefined")NV.atualiza();
@@ -2087,7 +2092,7 @@ function runChal(g,p){
 }
 /* ---------- janelas: resumo e gabarito (funcionam offline, imprimíveis) ---------- */
 function abrirInsignias(){const n=stars.size;
- openMd("🏅 Minhas insígnias",`<p>${n===13?"🎉 Você conquistou todas as insígnias!":`Você tem <b>${n} de 13</b>. Cada insígnia é de um grupo de animais: passe no desafio do grupo (${PASS} de 5) para ganhá-la.`}</p><div class="insg">${G.map(g=>{const ok=stars.has(g.id);return `<div class="insc${ok?" ok":""}" style="--c:${g.c}"><span class="insm">${ICON[g.id]()}</span><b>${g.n}</b><small>${ok?"Conquistada":"Ainda não"}</small></div>`;}).join("")}</div>`);}
+ openMd("🏅 Minhas insígnias",`<p>${n===13?"🎉 Você conquistou todas as insígnias!":`Você tem <b>${n} de 13</b>. Cada insígnia é de um grupo de animais: passe no desafio do grupo (${PASS} de 5) para ganhá-la.`}</p><div class="insg">${G.map(g=>{const ok=stars.has(g.id);return `<div class="insc${ok?" ok":""}" style="--c:${g.c}"><span class="insm">${insIco(g)}</span><b>${g.n}</b><small>${ok?"Conquistada":"Ainda não"}</small></div>`;}).join("")}</div>`);}
 function openMd(title,html){
  let m=$("#md");const had=!!m;if(m)m.remove();
  m=document.createElement("div");m.id="md";m.setAttribute("role","dialog");m.setAttribute("aria-label",title);

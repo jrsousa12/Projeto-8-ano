@@ -29,6 +29,9 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 - **Feito (18/11/2026):** protocolo-token reaplicado a partir da Física: comando já igual; `CLAUDE.md` ganhou 2 regras (teste novo no `MAPA` do `rapido.py`; `NOTAS.md` acima de ~150 linhas → histórico). Sem arquivo de código acima de 300 linhas; `dados.js` tem linhas curtas (máx. ~1 000 caracteres), então não precisa de motor de item único nem de trava.
 
+- **Feito (19/11/2026, pedido do dono):** insígnias com a cara do animal no centro. Cada grupo tem um recorte quadrado (mapa `INSF` no `app.js`: imagem `g-` ou `p-`, centro e lado); ave, planária, anfíbio e molusco usam a ilustração grande (`p-`), onde a cabeça aparece inteira. Nenhuma imagem nova.
+- **Em espera (19/11/2026, pedido do dono):** trocar o fundo branco das ilustrações `a-` pelo habitat natural de cada animal (Canva). Teste com a onça: o habitat saiu certo, mas o Canva trocou o desenho por foto realista, e a rede desta sessão bloqueia baixar a imagem grande do Canva (só chega a miniatura de 200 px). Esperando o dono escolher como seguir.
+
 - **Regra (15/11/2026, decisão do dono):** a próxima tarefa fica só aqui, nesta seção. O `CLAUDE.md` apenas aponta para cá.
 - **Próxima tarefa — fila (decisão do dono, 19/11/2026), nesta ordem:**
   1. Usar as ideias erradas comuns das fichas como alternativas erradas (329 sugestões em `revisao/perguntas.md`); blocos de ~50, relatório, aplicar só com o "sim" do dono.
