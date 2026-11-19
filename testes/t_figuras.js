@@ -75,13 +75,15 @@ testes["figuras: comparação lado a lado só depois da resposta, no desafio fin
   const r = await p.$eval("#quiz .fq", e => [getComputedStyle(e).display, getComputedStyle(e.querySelector(".fqr")).opacity, e.querySelector(".fqleg").textContent]);
   confere(r[0] !== "none" && r[1] === "1", "depois da resposta aparecem o desenho e os rótulos");
   confere(/4 pares de patas/.test(r[2]) && /3 pares de patas/.test(r[2]), "legenda compara inseto e aranha");
-  const tam = await p.evaluate(() => ["artro", "peixe", "temp", "resp", "cor", "col"].map(k => [k, !!FQ.molde("cmp:" + k)]).filter(x => !x[1]).map(x => x[0]));
-  confere(!tam.length, "os 6 moldes de comparação existem" + (tam.length ? ": " + tam.join(" ") : ""));
+  const tam = await p.evaluate(() => ["artro", "peixe", "temp", "resp", "cor", "col", "ovo", "pele"].map(k => [k, !!FQ.molde("cmp:" + k)]).filter(x => !x[1]).map(x => x[0]));
+  confere(!tam.length, "os 8 moldes de comparação existem" + (tam.length ? ": " + tam.join(" ") : ""));
 };
 
 [["Quantas cavidades tem o coração de um sapo?", "cmp:cor", /2 átrios e 1 ventrículo/],
  ["Como os insetos respiram?", "cmp:resp", /Traqueias/],
- ["O que todos os vertebrados têm?", "cmp:col", /vértebras/]].forEach(([T, m, leg]) => {
+ ["O que todos os vertebrados têm?", "cmp:col", /vértebras/],
+ ["O que significa ser vivíparo?", "cmp:ovo", /placenta/],
+ ["Como é a pele dos répteis?", "cmp:pele", /Escamas/]].forEach(([T, m, leg]) => {
   testes["figuras: " + m + " só depois da resposta, com a legenda certa"] = async (p) => {
     await p.evaluate(t => { const k = QZ.concat(G.flatMap(g => g.pool.map(x => [x.q, x.o, x.a, x.w]))).filter(x => x[0] === t);
       QZ.length = 0; for (let i = 0; i < 10; i++) QZ.push(k[0]); }, T);

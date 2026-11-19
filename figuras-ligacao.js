@@ -4,7 +4,8 @@
            "meta:ins" (completa), "meta:gaf" (incompleta), "meta:sapo" (sapo). Ver figuras-perguntas.js.
            "cic:esq:N", "cic:ten:N", "cic:lom:N" (ciclo do verme, abrindo na etapa N da tela Ciclos dos vermes).
            "cmp:artro" (inseto × aranha), "cmp:peixe" (ósseo × cartilaginoso), "cmp:temp" (ave × lagarto no frio),
-           "cmp:resp" (brânquias, pulmões, traqueias, pele), "cmp:cor" (cavidades do coração), "cmp:col" (com × sem coluna). Ver figuras-comparar.js.
+           "cmp:resp" (brânquias, pulmões, traqueias, pele), "cmp:cor" (cavidades do coração), "cmp:col" (com × sem coluna),
+           "cmp:ovo" (sem casca, com casca, no útero), "cmp:pele" (penas, escamas, pelos, pele nua). Ver figuras-comparar.js.
    quando: "antes" = o desenho aparece com a pergunta e a resposta (linhas e legenda) só depois;
            "tarde" = o desenho inteiro só aparece depois da resposta.
    O teste t_figuras confere que cada enunciado existe num banco e que cada molde existe.
@@ -118,5 +119,48 @@ const FQLIG={
 "A minhoca tem esqueleto?":["cmp:col","tarde"],
 "Como é o esqueleto dos equinodermos?":["cmp:col","tarde"],
 "De que é feito o endoesqueleto dos equinodermos?":["cmp:col","tarde"],
-"Qual animal tem esqueleto interno de calcário e pés ambulacrais?":["cmp:col","tarde"]
+"Qual animal tem esqueleto interno de calcário e pés ambulacrais?":["cmp:col","tarde"],
+"Qual adaptação permitiu aos répteis se reproduzirem longe da água?":["cmp:ovo","tarde"],
+"Como é o desenvolvimento dos mamíferos placentários?":["cmp:ovo","tarde"],
+"Como é a fecundação da maioria dos anfíbios?":["cmp:ovo","tarde"],
+"Como é a reprodução das aves?":["cmp:ovo","tarde"],
+"Os monotremados são mamíferos que…":["cmp:ovo","tarde"],
+"Os anfíbios são ovíparos?":["cmp:ovo","tarde"],
+"Como são os ovos dos anfíbios?":["cmp:ovo","tarde"],
+"Onde os anfíbios costumam pôr os ovos?":["cmp:ovo","tarde"],
+"Onde os répteis costumam pôr os ovos?":["cmp:ovo","tarde"],
+"Como é a casca do ovo das aves?":["cmp:ovo","tarde"],
+"Qual destes é um mamífero placentário?":["cmp:ovo","tarde"],
+"O ornitorrinco é diferente dos outros mamíferos porque…":["cmp:ovo","tarde"],
+"Os ovos dos répteis costumam ter...":["cmp:ovo","tarde"],
+"Qual par é de animais que botam ovos?":["cmp:ovo","tarde"],
+"O que significa ser vivíparo?":["cmp:ovo","tarde"],
+"Qual mamífero põe ovos?":["cmp:ovo","tarde"],
+"Onde os anfíbios costumam depositar os ovos?":["cmp:ovo","tarde"],
+"O que são animais ovíparos?":["cmp:ovo","tarde"],
+"Qual destes animais é ovíparo?":["cmp:ovo","tarde"],
+"O que aves e répteis têm em comum na reprodução?":["cmp:ovo","tarde"],
+"O que são as ovas de peixe?":["cmp:ovo","tarde"],
+"Por que os répteis são considerados bem adaptados à vida em terra?":["cmp:ovo","tarde"],
+"Como é a pele dos anfíbios?":["cmp:pele","tarde"],
+"Como é a pele dos répteis?":["cmp:pele","tarde"],
+"Qual característica é exclusiva das aves?":["cmp:pele","tarde"],
+"Quais são características exclusivas dos mamíferos?":["cmp:pele","tarde"],
+"Para que servem os pelos dos mamíferos?":["cmp:pele","tarde"],
+"Como é a pele da maioria dos peixes ósseos?":["cmp:pele","tarde"],
+"Por que os anfíbios dependem de ambientes úmidos?":["cmp:pele","tarde"],
+"Para que servem as glândulas da pele dos anfíbios?":["cmp:pele","tarde"],
+"Qual é a função das escamas dos répteis?":["cmp:pele","tarde"],
+"Qual característica é típica dos répteis?":["cmp:pele","tarde"],
+"De que material as penas são feitas?":["cmp:pele","tarde"],
+"Qual grupo tem pele fina, úmida e sem escamas?":["cmp:pele","tarde"],
+"Qual vertebrado tem pelos e amamenta os filhotes?":["cmp:pele","tarde"],
+"Qual vertebrado tem o corpo coberto por penas e bico sem dentes?":["cmp:pele","tarde"],
+"Qual vertebrado tem pele coberta por escamas secas e põe ovos com casca?":["cmp:pele","tarde"],
+"Qual é a função das penas das aves?":["cmp:pele","tarde"],
+"Qual vertebrado tem escamas, nadadeiras e respira por brânquias?":["cmp:pele","tarde"],
+"Por que o pinguim é uma ave, mesmo sem voar?":["cmp:pele","tarde"],
+"O morcego é uma ave?":["cmp:pele","tarde"],
+"Para que servem as escamas dos peixes?":["cmp:pele","tarde"],
+"Qual característica distingue anfíbios de répteis?":["cmp:pele","tarde"]
 };

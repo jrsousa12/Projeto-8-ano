@@ -1,11 +1,12 @@
 /* ---------- figuras das perguntas: comparação lado a lado ----------
    Dois desenhos lado a lado (esquerda × direita). Mesmo formato dos moldes de simetria (figuras-perguntas.js):
    t = título, leg = legenda (só depois da resposta), s = desenho, r = rótulos (só depois da resposta).
-   Nome do molde: "cmp:artro", "cmp:peixe", "cmp:temp", "cmp:resp", "cmp:cor", "cmp:col". Qual pergunta usa qual molde fica no figuras-ligacao.js.
+   Nome do molde: "cmp:artro", "cmp:peixe", "cmp:temp", "cmp:resp", "cmp:cor", "cmp:col", "cmp:ovo", "cmp:pele". Qual pergunta usa qual molde fica no figuras-ligacao.js.
    Conferido em: Britannica ("How are insects different from arachnids?", arachnid, chondrichthyan)
    e nos textos do próprio app (grupos Artrópodes e Peixes, tela Temperatura do corpo).
    Respiração, coração e coluna: fatos já presentes nas perguntas do app; átrio, ventrículo e vértebras
-   conferidos na Britannica (circulatory system: vertebrates e amphibians; vertebral column). */
+   conferidos na Britannica (circulatory system: vertebrates e amphibians; vertebral column).
+   Ovos e cobertura do corpo: fatos já presentes nos textos e perguntas do app (grupos Anfíbios, Répteis, Aves, Mamíferos, Peixes). */
 const FQCMP=(()=>{
  const tx=(x,y,t,c)=>`<text x="${x}" y="${y}" text-anchor="middle"${c?` class="${c}"`:""}>${t}</text>`;
  const div=`<line x1="100" y1="22" x2="100" y2="94" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>`;
@@ -52,6 +53,19 @@ const FQCMP=(()=>{
   [18,25,32,39,46,53,60].map(x=>`<rect x="${x}" y="56" width="5.5" height="8" rx="1.5" fill="#f8fafc" stroke="#475569" stroke-width="1"/>`).join("")+
   `<ellipse cx="74" cy="60" rx="9" ry="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><circle cx="77" cy="57" r="2" fill="#0f172a"/>`;
  const minh=[0,1,2,3,4,5,6,7,8].map(i=>`<ellipse cx="${116+i*8.5}" cy="${60+Math.sin(i*.8)*7}" rx="5.5" ry="7" fill="#f472b6" stroke="#be185d" stroke-width="1"/>`).join("");
+ /* ovos: sem casca (massa gelatinosa na água) × com casca (em terra) × filhote no útero, ligado à placenta */
+ const agua=`<path d="M6 100 q7 -5 14 0 t14 0 t14 0 t14 0" stroke="#38bdf8" stroke-width="2" fill="none"/>`;
+ const gel=[[22,80],[32,76],[42,81],[27,89],[38,90],[33,83]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5" fill="#bae6fd" fill-opacity=".8" stroke="#7dd3fc"/><circle cx="${x}" cy="${y}" r="1.8" fill="#0f172a"/>`).join("");
+ const ovoC=`<path d="M70 98 H130" stroke="#a16207" stroke-width="2"/><ellipse cx="100" cy="84" rx="11" ry="14" fill="#fef3c7" stroke="#a16207" stroke-width="2"/>`;
+ const utero=`<ellipse cx="167" cy="82" rx="20" ry="16" fill="#fbcfe8" stroke="#be185d" stroke-width="1.5"/>`+
+  `<path d="M160 88 q-6 -10 4 -14 q9 -3 9 6 q0 7 -7 9 Z" fill="#f9a8d4" stroke="#be185d" stroke-width="1.2"/><circle cx="168" cy="76" r="4" fill="#f9a8d4" stroke="#be185d" stroke-width="1.2"/>`+
+  `<path d="M169 86 Q176 90 179 82" stroke="#be185d" stroke-width="1.5" fill="none"/><ellipse cx="181" cy="78" rx="4" ry="6" fill="#be185d"/>`;
+ /* cobertura do corpo: penas, escamas, pelos e pele nua e úmida (um pedaço de cada, visto de perto) */
+ const penas=[[12,70],[24,70],[36,70],[18,82],[30,82],[12,94],[24,94],[36,94]].map(([x,y])=>`<path d="M${x} ${y-8} Q${x+7} ${y} ${x} ${y+8} Q${x-7} ${y} ${x} ${y-8} Z M${x} ${y-8} V${y+8}" fill="#fde68a" stroke="#a16207" stroke-width="1"/>`).join("");
+ const escamas=[64,72,80,88].map((y,i)=>[0,1,2,3].map(j=>`<path d="M${58+j*9+(i%2)*4.5} ${y} a5 5 0 0 0 10 0" fill="#86efac" stroke="#15803d" stroke-width="1.2"/>`).join("")).join("");
+ const pelos=Array.from({length:22},(_,i)=>{const x=104+(i%11)*4,y=i<11?74:90;return `<path d="M${x} ${y} q3 6 1 12" stroke="#92400e" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;}).join("");
+ const nua=`<rect x="155" y="66" width="40" height="32" rx="10" fill="#4ade80"/>`+[[164,74],[180,78],[170,88],[188,90]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="#e0f2fe" stroke="#0284c7" stroke-width=".8"/>`).join("");
+ const emjp=(x,y,ch)=>`<text x="${x}" y="${y}" text-anchor="middle" style="font-size:22px">${ch}</text>`;
  return {
   artro:{t:"Inseto × aranha (vistos de cima)",
    leg:"<b>Inseto</b>: corpo em 3 partes (cabeça, tórax e abdômen), 3 pares de patas (6 patas) e 1 par de antenas. <b>Aranha</b> (um aracnídeo): corpo em 2 partes (cefalotórax, que é a cabeça unida ao tórax, e abdômen), 4 pares de patas (8 patas) e nenhuma antena.",
@@ -77,6 +91,14 @@ const FQCMP=(()=>{
   col:{t:"Com coluna × sem coluna",
    leg:"<b>Vertebrado</b> (peixes, anfíbios, répteis, aves e mamíferos): tem coluna vertebral, uma fileira de peças chamadas vértebras (de osso ou, nos tubarões e raias, de cartilagem), e crânio. <b>Invertebrado</b> (exemplo: minhoca): não tem coluna vertebral. Não ter coluna não quer dizer não ter sustentação: a minhoca usa músculos e a pressão do líquido do corpo, o besouro tem um esqueleto por fora (exoesqueleto) e a estrela-do-mar tem placas de calcário por dentro da pele.",
    s:div+vert+minh+tx(50,134,"Vertebrado")+tx(150,134,"Invertebrado"),
-   r:tx(50,104,"coluna vertebral","pq")+tx(50,116,"e crânio","pq")+tx(150,104,"sem coluna","pq")+tx(150,116,"e sem ossos","pq")}
+   r:tx(50,104,"coluna vertebral","pq")+tx(50,116,"e crânio","pq")+tx(150,104,"sem coluna","pq")+tx(150,116,"e sem ossos","pq")},
+  ovo:{t:"Como nasce o filhote",
+   leg:"<b>Ovo sem casca dura</b> (anfíbios e muitos peixes): fica numa massa gelatinosa, posta na água ou em lugar bem úmido. <b>Ovo com casca</b> (aves e répteis): é posto em terra; a casca é calcária e dura nas aves e, em muitos répteis, flexível como couro. Quem nasce de ovo é <b>ovíparo</b>; até dois mamíferos, o ornitorrinco e a equidna, botam ovos. <b>Vivíparo</b> (a maioria dos mamíferos, como o cachorro e o ser humano): o filhote cresce dentro da mãe, no útero, ligado à placenta (órgão que alimenta o filhote na barriga da mãe), e nasce formado.",
+   s:divs([66,133])+emj(33,46,"🐸")+gel+agua+emj(100,46,"🐔")+ovoC+emj(167,46,"🐶")+utero+tx(33,134,"Sapo")+tx(100,134,"Ave")+tx(167,134,"Mamífero"),
+   r:tx(33,112,"sem casca","pq")+tx(33,123,"dura, na água","pq")+tx(100,112,"com casca","pq")+tx(100,123,"(em terra)","pq")+tx(167,112,"no útero","pq")+tx(167,123,"(placenta)","pq")},
+  pele:{t:"O que cobre o corpo",
+   leg:"<b>Penas</b>: só as aves têm; são de queratina (a mesma substância das unhas) e ajudam a voar e a guardar o calor. <b>Escamas</b>: nos peixes, cobertas de muco (camada escorregadia) e protegem o corpo; nos répteis, são secas, de queratina, e evitam a perda de água. <b>Pelos</b>: só os mamíferos têm; guardam o calor do corpo (isolamento térmico). <b>Pele nua, fina e úmida</b> (anfíbios): sem escamas, com glândulas que a mantêm úmida; por ela também entra parte do oxigênio.",
+   s:divs([50,100,150])+emj(25,46,"🐦")+penas+emjp(64,44,"🐟")+emjp(86,44,"🦎")+escamas+emj(125,46,"🐱")+pelos+emj(175,46,"🐸")+nua+tx(25,134,"Ave")+tx(75,125,"Peixe e")+tx(75,137,"réptil")+tx(125,134,"Mamífero")+tx(175,134,"Anfíbio"),
+   r:tx(25,112,"penas","pq")+tx(75,112,"escamas","pq")+tx(125,112,"pelos","pq")+tx(175,108,"pele nua","pq")+tx(175,118,"e úmida","pq")}
  };
 })();
