@@ -3,7 +3,11 @@
    "antes": aparece com a pergunta (sem dar a resposta); a parte com classe "fqr" e a legenda só aparecem depois da resposta.
    "tarde": o desenho inteiro só aparece depois da resposta (porque mostraria a resposta).
    Conferido em: Britannica (radial symmetry, cnidarian, echinoderm) e Animal Diversity Web (Cnidaria).
-   As etapas da metamorfose são as mesmas da tela "Metamorfose" (MS, em simulacoes.js). */
+   As etapas da metamorfose são as mesmas da tela "Metamorfose" (MS, em simulacoes.js).
+   As etapas dos ciclos dos vermes são as mesmas da tela "Ciclos dos vermes" (CIC, em extras.js);
+   o molde "cic:esq:3" abre na etapa 3 e o aluno pode ver as outras.
+   As comparações lado a lado ficam em figuras-comparar.js (FQCMP).
+   Nas telas Ciclos, Metamorfose e Temperatura não aparece figura: a animação já está logo acima. */
 const FQ=(()=>{
  const V='viewBox="0 0 200 140"';
  const eixo=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
@@ -34,25 +38,34 @@ const FQ=(()=>{
    r:""}
  };
  const META={ins:"Metamorfose completa (exemplo: borboleta)",gaf:"Metamorfose incompleta (exemplo: gafanhoto)",sapo:"Metamorfose do sapo"};
- const molde=nome=>{const [tipo,k]=nome.split(":");if(tipo==="sim")return SIM[k]?{tipo,k}:null;if(tipo==="meta")return META[k]&&typeof MS!=="undefined"&&MS[k]?{tipo,k}:null;return null;};
- function htmlSim(k,tarde){const m=SIM[k];
-  return `<figure class="fq${tarde?" tarde":""}" data-fq="sim:${k}"><svg ${V} role="img" aria-label="${m.t}">${m.s}<g class="fqr">${m.r}</g></svg><figcaption><span class="fqt">${m.t}</span><span class="fqleg">${m.leg}</span></figcaption></figure>`;}
- function htmlMeta(k){
-  return `<figure class="fq tarde" data-fq="meta:${k}"><div class="fqst"></div><figcaption><span class="fqt">${META[k]}</span><span class="fqleg"><b class="fqet"></b> <span class="fqed"></span></span><span class="fqdots"></span></figcaption></figure>`;}
- /* passo a passo da metamorfose: troca a etapa a cada 2,6 s e para na última; os botões escolhem a etapa */
- function tocar(fig){const L=MS[fig.dataset.fq.split(":")[1]];let i=0,tm=null;
+ const CICT={esq:"Ciclo da esquistossomose",ten:"Ciclo da tênia",lom:"Ciclo da lombriga"};
+ const cmp=()=>typeof FQCMP!=="undefined"?FQCMP:{};
+ const etapas=(tipo,k)=>tipo==="meta"?(typeof MS!=="undefined"&&MS[k]):(typeof CIC!=="undefined"&&CIC[k]);
+ const molde=nome=>{const [tipo,k,n]=String(nome).split(":");
+  if(tipo==="sim")return SIM[k]?{tipo,k}:null;
+  if(tipo==="cmp")return cmp()[k]?{tipo,k}:null;
+  if(tipo==="meta")return META[k]&&etapas(tipo,k)?{tipo,k}:null;
+  if(tipo==="cic"){const L=CICT[k]&&etapas(tipo,k),i=+n;return L&&Number.isInteger(i)&&i>=1&&i<=L.length?{tipo,k,n:i}:null;}
+  return null;};
+ function htmlSim(tipo,k,tarde){const m=tipo==="cmp"?cmp()[k]:SIM[k];
+  return `<figure class="fq${tarde?" tarde":""}" data-fq="${tipo}:${k}"><svg ${V} role="img" aria-label="${m.t}">${m.s}<g class="fqr">${m.r}</g></svg><figcaption><span class="fqt">${m.t}</span><span class="fqleg">${m.leg}</span></figcaption></figure>`;}
+ function htmlPasso(m){const nome=m.tipo==="meta"?META[m.k]:CICT[m.k];
+  return `<figure class="fq tarde" data-fq="${m.tipo}:${m.k}${m.n?":"+m.n:""}"><div class="fqst"></div><figcaption><span class="fqt">${nome}</span><span class="fqleg"><b class="fqet"></b> <span class="fqed"></span></span><span class="fqdots"></span></figcaption></figure>`;}
+ /* passo a passo: na metamorfose troca a etapa a cada 2,6 s e para na última;
+    no ciclo, fica parado na etapa da pergunta. Os botões escolhem a etapa. */
+ function tocar(fig){const [tipo,k,n]=fig.dataset.fq.split(":"),L=etapas(tipo,k);let i=n?n-1:0,tm=null;
   const pinta=()=>{fig.querySelector(".fqst").innerHTML=L[i].s;fig.querySelector(".fqet").textContent=L[i].t;fig.querySelector(".fqed").textContent=L[i].d;
    fig.querySelectorAll(".fqdots button").forEach((b,j)=>b.classList.toggle("on",j===i));};
   fig.querySelector(".fqdots").innerHTML=L.map((x,j)=>`<button type="button" class="dot" data-i="${j}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
   fig.querySelectorAll(".fqdots button").forEach(b=>b.onclick=()=>{clearInterval(tm);i=+b.dataset.i;pinta();});
-  pinta();tm=setInterval(()=>{if(!fig.isConnected||i>=L.length-1){clearInterval(tm);return;}i++;pinta();},2600);}
+  pinta();if(tipo==="cic")return;tm=setInterval(()=>{if(!fig.isConnected||i>=L.length-1){clearInterval(tm);return;}i++;pinta();},2600);}
  return {
   /* põe a figura da pergunta antes das alternativas (ou nada, se a pergunta não tem figura) */
-  por(antesDe,texto){const L=typeof FQLIG!=="undefined"&&FQLIG[String(texto).trim()];if(!L||!antesDe)return null;
+  por(antesDe,texto){const L=typeof FQLIG!=="undefined"&&FQLIG[String(texto).trim()];if(!L||!antesDe||antesDe.closest("#cic,#meta,#temp"))return null;
    const [nome,quando]=L,m=molde(nome);if(!m)return null;
-   const d=document.createElement("div");d.innerHTML=m.tipo==="sim"?htmlSim(m.k,quando==="tarde"):htmlMeta(m.k);
+   const d=document.createElement("div");d.innerHTML=m.tipo==="sim"||m.tipo==="cmp"?htmlSim(m.tipo,m.k,quando==="tarde"):htmlPasso(m);
    const fig=d.firstChild;antesDe.parentNode.insertBefore(fig,antesDe);return fig;},
   /* depois da resposta: mostra as linhas, a legenda e a animação */
-  revelar(caixa){if(!caixa)return;caixa.querySelectorAll(".fq:not(.rev)").forEach(f=>{f.classList.add("rev");if(f.dataset.fq.startsWith("meta:"))tocar(f);});},
+  revelar(caixa){if(!caixa)return;caixa.querySelectorAll(".fq:not(.rev)").forEach(f=>{f.classList.add("rev");if(/^(meta|cic):/.test(f.dataset.fq))tocar(f);});},
   molde,SIM,META};
 })();

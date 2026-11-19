@@ -29,7 +29,7 @@ MAPA = [
     (["jogos.js"], ["t_jogos"]),
     (["conteudo.js"], ["t_jogos", "t_telas", "t_progresso"]),
     (["extras.js", "simulacoes.js"], ["t_conteudo", "t_telas", "t_figuras"]),
-    (["figuras-perguntas.js", "figuras-ligacao.js"], ["t_figuras", "t_offline"]),
+    (["figuras-perguntas.js", "figuras-comparar.js", "figuras-ligacao.js"], ["t_figuras", "t_offline"]),
     (["arte.js"], ["t_telas", "t_jogos", "t_offline"]),
     (["img/*"], ["t_jogos", "t_offline"]),
     (["instalar.js"], ["t_telas", "t_offline"]),

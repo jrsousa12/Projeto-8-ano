@@ -12,7 +12,7 @@ testes["figuras: toda ligação aponta para uma pergunta e um molde que existem"
     const ch = Object.keys(FQLIG);
     return { n: ch.length, semPerg: ch.filter(k => !tx.has(k)), semMolde: ch.filter(k => !FQ.molde(FQLIG[k][0]) || !["antes", "tarde"].includes(FQLIG[k][1])) };
   });
-  confere(r.n >= 20, r.n + " perguntas com figura");
+  confere(r.n >= 70, r.n + " perguntas com figura");
   confere(!r.semPerg.length, "todo enunciado existe num banco" + (r.semPerg.length ? ": " + r.semPerg.join(" | ") : ""));
   confere(!r.semMolde.length, "todo molde existe" + (r.semMolde.length ? ": " + r.semMolde.join(" | ") : ""));
 };
@@ -43,6 +43,40 @@ testes["figuras: metamorfose animada só depois da resposta, no desafio final"] 
   await p.click("#quiz .fq .fqdots .dot >> nth=2");
   confere(/Pupa/.test(await p.textContent("#quiz .fq .fqet")), "botão escolhe a etapa da pupa");
   confere(await p.evaluate(() => !document.querySelector("#meta .fq")), "a tela Metamorfose continua sem figura extra");
+};
+
+testes["figuras: ciclo do verme abre na etapa da pergunta, só depois da resposta"] = async (p) => {
+  const T = "Qual larva do esquistossomo penetra na pele humana?";
+  await p.evaluate(t => { const g = G.find(x => x.id === "platelminto"); g.pool = g.pool.filter(x => x.q === t); }, T);
+  await abrir(p, "tree");
+  await p.click("#b-inv .bbtn");
+  await p.click("#card-platelminto");
+  confere(await p.$eval("#chal .fq", e => e.dataset.fq === "cic:esq:5" && getComputedStyle(e).display === "none"), "antes da resposta a figura do ciclo fica escondida");
+  await responder(p, "#chal", "p", false, "g");
+  confere(await p.$eval("#chal .fq", e => getComputedStyle(e).display !== "none" && !!e.querySelector(".fqst svg")), "depois da resposta o ciclo aparece");
+  confere(await p.$$eval("#chal .fq .fqdots .dot", l => l.length) === 6, "6 etapas do ciclo da esquistossomose");
+  confere(/Entram pela pele/.test(await p.textContent("#chal .fq .fqet")), "abre na etapa 5 (cercárias entram pela pele)");
+  await p.waitForTimeout(2900);
+  confere(/Entram pela pele/.test(await p.textContent("#chal .fq .fqet")), "no ciclo a etapa não muda sozinha");
+  await p.click("#chal .fq .fqdots .dot >> nth=2");
+  confere(/caramujo/.test(await p.textContent("#chal .fq .fqet")), "botão escolhe a etapa do caramujo");
+  const sem = await p.evaluate(() => ["#cic", "#meta", "#temp"].filter(s => { const d = document.createElement("div");
+    document.querySelector(s + " .box").appendChild(d); const f = FQ.por(d, "Qual é o hospedeiro intermediário do esquistossomo?"); d.remove(); if (f) f.remove(); return !!f; }));
+  confere(!sem.length, "telas Ciclos, Metamorfose e Temperatura ficam sem figura" + (sem.length ? ": " + sem.join(" ") : ""));
+};
+
+testes["figuras: comparação lado a lado só depois da resposta, no desafio final"] = async (p) => {
+  const T = "Quantas patas tem uma aranha?";
+  await p.evaluate(t => { const k = QZ.filter(x => x[0] === t); QZ.length = 0; for (let i = 0; i < 10; i++) QZ.push(k[0]); }, T);
+  await abrir(p, "quiz");
+  confere(await p.$eval("#quiz .fq", e => e.dataset.fq === "cmp:artro" && getComputedStyle(e).display === "none"), "antes da resposta a comparação fica escondida");
+  await responder(p, "#quiz", ".qq", true, "f");
+  await p.waitForTimeout(700);
+  const r = await p.$eval("#quiz .fq", e => [getComputedStyle(e).display, getComputedStyle(e.querySelector(".fqr")).opacity, e.querySelector(".fqleg").textContent]);
+  confere(r[0] !== "none" && r[1] === "1", "depois da resposta aparecem o desenho e os rótulos");
+  confere(/4 pares de patas/.test(r[2]) && /3 pares de patas/.test(r[2]), "legenda compara inseto e aranha");
+  const tam = await p.evaluate(() => ["artro", "peixe", "temp"].map(k => [k, !!FQ.molde("cmp:" + k)]).filter(x => !x[1]).map(x => x[0]));
+  confere(!tam.length, "os 3 moldes de comparação existem" + (tam.length ? ": " + tam.join(" ") : ""));
 };
 
 module.exports = testes;

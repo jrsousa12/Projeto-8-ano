@@ -2,10 +2,12 @@
    Chave: o enunciado da pergunta, igual ao do banco. Valor: [molde, quando].
    Moldes: "sim:estrela", "sim:aguaviva", "sim:planaria", "sim:minhoca", "sim:esponja" (simetria);
            "meta:ins" (completa), "meta:gaf" (incompleta), "meta:sapo" (sapo). Ver figuras-perguntas.js.
+           "cic:esq:N", "cic:ten:N", "cic:lom:N" (ciclo do verme, abrindo na etapa N da tela Ciclos dos vermes).
+           "cmp:artro" (inseto × aranha), "cmp:peixe" (ósseo × cartilaginoso), "cmp:temp" (ave × lagarto no frio). Ver figuras-comparar.js.
    quando: "antes" = o desenho aparece com a pergunta e a resposta (linhas e legenda) só depois;
            "tarde" = o desenho inteiro só aparece depois da resposta.
    O teste t_figuras confere que cada enunciado existe num banco e que cada molde existe.
-   As perguntas da tela "Metamorfose" ficam sem figura: a animação já está logo acima delas. */
+   Nas telas "Metamorfose", "Ciclos dos vermes" e "Temperatura do corpo" não aparece figura: a animação já está logo acima. */
 const FQLIG={
 "Qual é a simetria do corpo dos cnidários?":["sim:aguaviva","antes"],
 "Qual destes grupos tem simetria radial quando adulto?":["sim:aguaviva","tarde"],
@@ -30,5 +32,61 @@ const FQLIG={
 "Qual destes vertebrados faz metamorfose?":["meta:sapo","tarde"],
 "Na metamorfose do sapo, quem respira por brânquias?":["meta:sapo","tarde"],
 "O que acontece com a cauda do girino de sapo?":["meta:sapo","tarde"],
-"Por qual estrutura o girino respira?":["meta:sapo","tarde"]
+"Por qual estrutura o girino respira?":["meta:sapo","tarde"],
+"Por que o saneamento básico ajuda a evitar a esquistossomose?":["cic:esq:1","tarde"],
+"Como se chama a larva que sai do ovo do esquistossomo na água?":["cic:esq:2","tarde"],
+"Qual é o hospedeiro intermediário do esquistossomo?":["cic:esq:3","tarde"],
+"Qual animal é o hospedeiro intermediário do esquistossomo?":["cic:esq:3","tarde"],
+"O caramujo Biomphalaria é hospedeiro de qual parasita?":["cic:esq:3","tarde"],
+"O caramujo é hospedeiro intermediário de qual doença?":["cic:esq:3","tarde"],
+"Qual doença é transmitida por caramujos do gênero Biomphalaria?":["cic:esq:3","tarde"],
+"O esquistossomo (Schistosoma mansoni) é transmitido por…":["cic:esq:4","tarde"],
+"Qual larva do esquistossomo penetra na pele humana?":["cic:esq:5","tarde"],
+"Qual é o hospedeiro definitivo do esquistossomo?":["cic:esq:5","tarde"],
+"Qual doença é transmitida pelo contato com água contaminada de lagoas e rios?":["cic:esq:5","tarde"],
+"Como prevenir a esquistossomose?":["cic:esq:6","tarde"],
+"Qual destas ações ajuda a prevenir a esquistossomose?":["cic:esq:6","tarde"],
+"O que são as proglotes (proglótides) da tênia?":["cic:ten:1","tarde"],
+"Por que a carne deve ter selo de inspeção?":["cic:ten:3","tarde"],
+"Onde vive a tênia adulta?":["cic:ten:4","tarde"],
+"A tênia (solitária) vive em qual local do corpo humano?":["cic:ten:4","tarde"],
+"Como a pessoa pode pegar teníase?":["cic:ten:4","tarde"],
+"Como se pega a teníase?":["cic:ten:4","tarde"],
+"Qual verminose pode ser evitada comendo carne de porco bem cozida?":["cic:ten:4","tarde"],
+"A cisticercose é causada por…":["cic:ten:5","tarde"],
+"O que é a cisticercose?":["cic:ten:5","tarde"],
+"Como prevenir a teníase?":["cic:ten:6","tarde"],
+"Quantos ovos uma fêmea de lombriga pode pôr por dia?":["cic:lom:1","tarde"],
+"Como se pega a ascaridíase (lombriga)?":["cic:lom:2","tarde"],
+"Qual alimento deve ser bem lavado para evitar a ascaridíase?":["cic:lom:2","tarde"],
+"Onde vive a lombriga adulta no corpo humano?":["cic:lom:5","tarde"],
+"Como evitar a ascaridíase?":["cic:lom:6","tarde"],
+"Qual medida ajuda a prevenir a ascaridíase?":["cic:lom:6","tarde"],
+"Quantos pares de patas tem um inseto?":["cmp:artro","tarde"],
+"Quantos pares de patas tem uma aranha?":["cmp:artro","tarde"],
+"Em quantas partes o corpo de um inseto é dividido?":["cmp:artro","tarde"],
+"Em quantas partes o corpo de uma aranha é dividido?":["cmp:artro","tarde"],
+"Quantas antenas tem um inseto?":["cmp:artro","tarde"],
+"Os aracnídeos têm antenas?":["cmp:artro","tarde"],
+"Quantas patas tem um inseto adulto?":["cmp:artro","tarde"],
+"Quantas patas tem uma aranha?":["cmp:artro","tarde"],
+"O que os aracnídeos NÃO possuem?":["cmp:artro","tarde"],
+"Qual destes animais tem o corpo dividido em cefalotórax e abdômen?":["cmp:artro","tarde"],
+"Qual par de estruturas é típico de insetos e ajuda a sentir o ambiente?":["cmp:artro","tarde"],
+"Qual é o tipo de esqueleto do tubarão?":["cmp:peixe","tarde"],
+"Para que serve o opérculo dos peixes ósseos?":["cmp:peixe","tarde"],
+"De que é feito o esqueleto dos peixes ósseos?":["cmp:peixe","tarde"],
+"O que são os peixes cartilaginosos?":["cmp:peixe","tarde"],
+"Qual destes animais é cartilaginoso?":["cmp:peixe","tarde"],
+"Qual destes é um peixe cartilaginoso?":["cmp:peixe","tarde"],
+"As raias pertencem ao grupo dos peixes…":["cmp:peixe","tarde"],
+"Ser ectotérmico significa que...":["cmp:temp","tarde"],
+"Os répteis são…":["cmp:temp","tarde"],
+"As aves são…":["cmp:temp","tarde"],
+"Os anfíbios são ectotérmicos?":["cmp:temp","tarde"],
+"Quanto à temperatura do corpo, os peixes são…":["cmp:temp","tarde"],
+"Como é a temperatura do corpo dos mamíferos?":["cmp:temp","tarde"],
+"Por que aves e mamíferos conseguem ser ativos em dias frios?":["cmp:temp","tarde"],
+"Qual destes animais depende do calor do ambiente (é ectotérmico)?":["cmp:temp","tarde"],
+"O que peixes, anfíbios e répteis têm em comum?":["cmp:temp","tarde"]
 };

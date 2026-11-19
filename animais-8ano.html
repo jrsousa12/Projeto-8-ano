@@ -308,7 +308,7 @@ header{position:relative}
 /* figuras das perguntas (figuras-perguntas.js): linhas e legenda só depois da resposta */
 .fq{margin:8px auto 12px;max-width:420px;padding:10px;border-radius:18px;background:rgba(255,255,255,.07);text-align:center}
 .fq svg{width:100%;max-height:200px;display:block}
-.fq text{fill:currentColor;font-size:11px;font-weight:700}
+.fq>svg text{fill:currentColor;font-size:11px;font-weight:700}.fq>svg text.pq{font-size:9px;font-weight:600}
 .fq .fqr{opacity:0;transition:opacity .5s}.fq.rev .fqr{opacity:1}
 .fq .fqe line{stroke:#f59e0b;stroke-width:2.5;stroke-dasharray:6 4}
 .fq figcaption{display:flex;flex-direction:column;gap:4px;font-size:15px;margin-top:4px}
@@ -2283,7 +2283,11 @@ renderStage();
    "antes": aparece com a pergunta (sem dar a resposta); a parte com classe "fqr" e a legenda só aparecem depois da resposta.
    "tarde": o desenho inteiro só aparece depois da resposta (porque mostraria a resposta).
    Conferido em: Britannica (radial symmetry, cnidarian, echinoderm) e Animal Diversity Web (Cnidaria).
-   As etapas da metamorfose são as mesmas da tela "Metamorfose" (MS, em simulacoes.js). */
+   As etapas da metamorfose são as mesmas da tela "Metamorfose" (MS, em simulacoes.js).
+   As etapas dos ciclos dos vermes são as mesmas da tela "Ciclos dos vermes" (CIC, em extras.js);
+   o molde "cic:esq:3" abre na etapa 3 e o aluno pode ver as outras.
+   As comparações lado a lado ficam em figuras-comparar.js (FQCMP).
+   Nas telas Ciclos, Metamorfose e Temperatura não aparece figura: a animação já está logo acima. */
 const FQ=(()=>{
  const V='viewBox="0 0 200 140"';
  const eixo=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
@@ -2314,27 +2318,86 @@ const FQ=(()=>{
    r:""}
  };
  const META={ins:"Metamorfose completa (exemplo: borboleta)",gaf:"Metamorfose incompleta (exemplo: gafanhoto)",sapo:"Metamorfose do sapo"};
- const molde=nome=>{const [tipo,k]=nome.split(":");if(tipo==="sim")return SIM[k]?{tipo,k}:null;if(tipo==="meta")return META[k]&&typeof MS!=="undefined"&&MS[k]?{tipo,k}:null;return null;};
- function htmlSim(k,tarde){const m=SIM[k];
-  return `<figure class="fq${tarde?" tarde":""}" data-fq="sim:${k}"><svg ${V} role="img" aria-label="${m.t}">${m.s}<g class="fqr">${m.r}</g></svg><figcaption><span class="fqt">${m.t}</span><span class="fqleg">${m.leg}</span></figcaption></figure>`;}
- function htmlMeta(k){
-  return `<figure class="fq tarde" data-fq="meta:${k}"><div class="fqst"></div><figcaption><span class="fqt">${META[k]}</span><span class="fqleg"><b class="fqet"></b> <span class="fqed"></span></span><span class="fqdots"></span></figcaption></figure>`;}
- /* passo a passo da metamorfose: troca a etapa a cada 2,6 s e para na última; os botões escolhem a etapa */
- function tocar(fig){const L=MS[fig.dataset.fq.split(":")[1]];let i=0,tm=null;
+ const CICT={esq:"Ciclo da esquistossomose",ten:"Ciclo da tênia",lom:"Ciclo da lombriga"};
+ const cmp=()=>typeof FQCMP!=="undefined"?FQCMP:{};
+ const etapas=(tipo,k)=>tipo==="meta"?(typeof MS!=="undefined"&&MS[k]):(typeof CIC!=="undefined"&&CIC[k]);
+ const molde=nome=>{const [tipo,k,n]=String(nome).split(":");
+  if(tipo==="sim")return SIM[k]?{tipo,k}:null;
+  if(tipo==="cmp")return cmp()[k]?{tipo,k}:null;
+  if(tipo==="meta")return META[k]&&etapas(tipo,k)?{tipo,k}:null;
+  if(tipo==="cic"){const L=CICT[k]&&etapas(tipo,k),i=+n;return L&&Number.isInteger(i)&&i>=1&&i<=L.length?{tipo,k,n:i}:null;}
+  return null;};
+ function htmlSim(tipo,k,tarde){const m=tipo==="cmp"?cmp()[k]:SIM[k];
+  return `<figure class="fq${tarde?" tarde":""}" data-fq="${tipo}:${k}"><svg ${V} role="img" aria-label="${m.t}">${m.s}<g class="fqr">${m.r}</g></svg><figcaption><span class="fqt">${m.t}</span><span class="fqleg">${m.leg}</span></figcaption></figure>`;}
+ function htmlPasso(m){const nome=m.tipo==="meta"?META[m.k]:CICT[m.k];
+  return `<figure class="fq tarde" data-fq="${m.tipo}:${m.k}${m.n?":"+m.n:""}"><div class="fqst"></div><figcaption><span class="fqt">${nome}</span><span class="fqleg"><b class="fqet"></b> <span class="fqed"></span></span><span class="fqdots"></span></figcaption></figure>`;}
+ /* passo a passo: na metamorfose troca a etapa a cada 2,6 s e para na última;
+    no ciclo, fica parado na etapa da pergunta. Os botões escolhem a etapa. */
+ function tocar(fig){const [tipo,k,n]=fig.dataset.fq.split(":"),L=etapas(tipo,k);let i=n?n-1:0,tm=null;
   const pinta=()=>{fig.querySelector(".fqst").innerHTML=L[i].s;fig.querySelector(".fqet").textContent=L[i].t;fig.querySelector(".fqed").textContent=L[i].d;
    fig.querySelectorAll(".fqdots button").forEach((b,j)=>b.classList.toggle("on",j===i));};
   fig.querySelector(".fqdots").innerHTML=L.map((x,j)=>`<button type="button" class="dot" data-i="${j}">${x.t.replace(/^\d+\.\s*/,"").replace(/\s*\(.*\)/,"")}</button>`).join("");
   fig.querySelectorAll(".fqdots button").forEach(b=>b.onclick=()=>{clearInterval(tm);i=+b.dataset.i;pinta();});
-  pinta();tm=setInterval(()=>{if(!fig.isConnected||i>=L.length-1){clearInterval(tm);return;}i++;pinta();},2600);}
+  pinta();if(tipo==="cic")return;tm=setInterval(()=>{if(!fig.isConnected||i>=L.length-1){clearInterval(tm);return;}i++;pinta();},2600);}
  return {
   /* põe a figura da pergunta antes das alternativas (ou nada, se a pergunta não tem figura) */
-  por(antesDe,texto){const L=typeof FQLIG!=="undefined"&&FQLIG[String(texto).trim()];if(!L||!antesDe)return null;
+  por(antesDe,texto){const L=typeof FQLIG!=="undefined"&&FQLIG[String(texto).trim()];if(!L||!antesDe||antesDe.closest("#cic,#meta,#temp"))return null;
    const [nome,quando]=L,m=molde(nome);if(!m)return null;
-   const d=document.createElement("div");d.innerHTML=m.tipo==="sim"?htmlSim(m.k,quando==="tarde"):htmlMeta(m.k);
+   const d=document.createElement("div");d.innerHTML=m.tipo==="sim"||m.tipo==="cmp"?htmlSim(m.tipo,m.k,quando==="tarde"):htmlPasso(m);
    const fig=d.firstChild;antesDe.parentNode.insertBefore(fig,antesDe);return fig;},
   /* depois da resposta: mostra as linhas, a legenda e a animação */
-  revelar(caixa){if(!caixa)return;caixa.querySelectorAll(".fq:not(.rev)").forEach(f=>{f.classList.add("rev");if(f.dataset.fq.startsWith("meta:"))tocar(f);});},
+  revelar(caixa){if(!caixa)return;caixa.querySelectorAll(".fq:not(.rev)").forEach(f=>{f.classList.add("rev");if(/^(meta|cic):/.test(f.dataset.fq))tocar(f);});},
   molde,SIM,META};
+})();
+
+</script>
+<script>
+/* ---------- figuras das perguntas: comparação lado a lado ----------
+   Dois desenhos lado a lado (esquerda × direita). Mesmo formato dos moldes de simetria (figuras-perguntas.js):
+   t = título, leg = legenda (só depois da resposta), s = desenho, r = rótulos (só depois da resposta).
+   Nome do molde: "cmp:artro", "cmp:peixe", "cmp:temp". Qual pergunta usa qual molde fica no figuras-ligacao.js.
+   Conferido em: Britannica ("How are insects different from arachnids?", arachnid, chondrichthyan)
+   e nos textos do próprio app (grupos Artrópodes e Peixes, tela Temperatura do corpo). */
+const FQCMP=(()=>{
+ const tx=(x,y,t,c)=>`<text x="${x}" y="${y}" text-anchor="middle"${c?` class="${c}"`:""}>${t}</text>`;
+ const div=`<line x1="100" y1="22" x2="100" y2="94" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>`;
+ const COR="#a16207",PERNA=`stroke="${COR}" stroke-width="2" fill="none" stroke-linecap="round"`;
+ /* inseto visto de cima: cabeça, tórax e abdômen; 3 pares de patas saindo do tórax; 1 par de antenas na cabeça */
+ const inseto=()=>{let p="";[52,58,64].forEach((y,i)=>{const d=[-8,0,8][i];
+   p+=`<polyline points="44,${y} 34,${y-4+d/2} 28,${y+d}" ${PERNA}/><polyline points="56,${y} 66,${y-4+d/2} 72,${y+d}" ${PERNA}/>`;});
+  return p+`<path d="M47 35 Q42 26 36 20 M53 35 Q58 26 64 20" ${PERNA}/>`+
+   `<circle cx="50" cy="40" r="7" fill="${COR}"/><ellipse cx="50" cy="58" rx="6.5" ry="9" fill="#ca8a04"/><ellipse cx="50" cy="84" rx="9.5" ry="15" fill="${COR}"/>`;};
+ /* aranha vista de cima: cefalotórax e abdômen; 4 pares de patas saindo do cefalotórax; sem antenas */
+ const aranha=()=>{let p="";[42,48,54,60].forEach((y,i)=>{const d=[-14,-5,5,14][i];
+   p+=`<polyline points="142,${y} 128,${y-8+d/2} 120,${y+d}" ${PERNA}/><polyline points="158,${y} 172,${y-8+d/2} 180,${y+d}" ${PERNA}/>`;});
+  return p+`<ellipse cx="150" cy="51" rx="9" ry="11" fill="#ca8a04"/><ellipse cx="150" cy="80" rx="13" ry="17" fill="${COR}"/>`;};
+ /* peixe ósseo (à esquerda): opérculo, a tampa curva atrás da cabeça */
+ const osseo=`<path d="M18 60 L4 47 L6 60 L4 73 Z" fill="#0ea5e9"/><ellipse cx="50" cy="60" rx="34" ry="16" fill="#38bdf8"/>`+
+  `<path d="M42 45 Q50 36 60 45" fill="#0ea5e9"/><circle cx="74" cy="56" r="2.6" fill="#0f172a"/>`+
+  `<path d="M64 46 Q71 60 64 74" stroke="#0369a1" stroke-width="2.5" fill="none"/>`;
+ /* peixe cartilaginoso (tubarão, à direita): fendas das brânquias à mostra, sem tampa */
+ const tubarao=`<path d="M104 42 L122 57 Q150 47 182 54 Q194 59 182 64 Q150 72 122 63 L111 71 L116 60 Z" fill="#94a3b8"/>`+
+  `<path d="M146 50 L152 36 L160 50 Z" fill="#94a3b8"/><circle cx="182" cy="57" r="2.2" fill="#0f172a"/>`+
+  [160,164,168,172,176].map(x=>`<line x1="${x}" y1="56" x2="${x-1}" y2="64" stroke="#334155" stroke-width="1.6"/>`).join("");
+ /* termômetro: nível de 0 a 1 */
+ const termo=(x,n,cor)=>`<rect x="${x-4}" y="30" width="8" height="54" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>`+
+  `<rect x="${x-2}" y="${84-50*n}" width="4" height="${50*n}" fill="${cor}"/><circle cx="${x}" cy="88" r="6" fill="${cor}"/>`;
+ const emj=(x,y,ch)=>`<text x="${x}" y="${y}" text-anchor="middle" style="font-size:34px">${ch}</text>`;
+ return {
+  artro:{t:"Inseto × aranha (vistos de cima)",
+   leg:"<b>Inseto</b>: corpo em 3 partes (cabeça, tórax e abdômen), 3 pares de patas (6 patas) e 1 par de antenas. <b>Aranha</b> (um aracnídeo): corpo em 2 partes (cefalotórax, que é a cabeça unida ao tórax, e abdômen), 4 pares de patas (8 patas) e nenhuma antena.",
+   s:div+inseto()+aranha()+tx(50,134,"Inseto")+tx(150,134,"Aranha"),
+   r:tx(50,112,"3 partes · 6 patas","pq")+tx(50,122,"2 antenas","pq")+tx(150,112,"2 partes · 8 patas","pq")+tx(150,122,"sem antenas","pq")},
+  peixe:{t:"Peixe ósseo × peixe cartilaginoso",
+   leg:"<b>Peixe ósseo</b> (exemplo: tambaqui): esqueleto de osso e opérculo, a tampa que cobre as brânquias. <b>Peixe cartilaginoso</b> (exemplo: tubarão e raia): esqueleto de cartilagem (material firme e flexível, como o da orelha) e fendas branquiais (aberturas das brânquias) à mostra, sem tampa.",
+   s:div+osseo+tubarao+tx(50,134,"Ósseo")+tx(150,134,"Cartilaginoso"),
+   r:`<path d="M66 76 L60 96" stroke="currentColor" stroke-width="1"/><path d="M170 66 L160 96" stroke="currentColor" stroke-width="1"/>`+
+    tx(50,106,"opérculo (tampa)","pq")+tx(50,118,"esqueleto de osso","pq")+tx(150,106,"fendas à mostra","pq")+tx(150,118,"esqueleto de cartilagem","pq")},
+  temp:{t:"No mesmo dia frio: ave × lagarto",
+   leg:"<b>Endotérmico</b> (aves e mamíferos): o próprio corpo produz calor e mantém a temperatura mais ou menos constante, mesmo no frio. <b>Ectotérmico</b> (peixes, anfíbios e répteis): a temperatura do corpo varia com a do ambiente; no frio, o corpo esfria e o animal procura o calor do sol.",
+   s:div+tx(100,16,"❄️ dia frio","pq")+emj(36,72,"🐦")+termo(76,.8,"#ef4444")+emj(136,72,"🦎")+termo(176,.25,"#3b82f6")+tx(50,134,"Ave")+tx(150,134,"Lagarto"),
+   r:tx(50,108,"corpo continua quente","pq")+tx(50,120,"(endotérmico)","pq")+tx(150,108,"corpo esfria","pq")+tx(150,120,"(ectotérmico)","pq")}
+ };
 })();
 
 </script>
@@ -2343,10 +2406,12 @@ const FQ=(()=>{
    Chave: o enunciado da pergunta, igual ao do banco. Valor: [molde, quando].
    Moldes: "sim:estrela", "sim:aguaviva", "sim:planaria", "sim:minhoca", "sim:esponja" (simetria);
            "meta:ins" (completa), "meta:gaf" (incompleta), "meta:sapo" (sapo). Ver figuras-perguntas.js.
+           "cic:esq:N", "cic:ten:N", "cic:lom:N" (ciclo do verme, abrindo na etapa N da tela Ciclos dos vermes).
+           "cmp:artro" (inseto × aranha), "cmp:peixe" (ósseo × cartilaginoso), "cmp:temp" (ave × lagarto no frio). Ver figuras-comparar.js.
    quando: "antes" = o desenho aparece com a pergunta e a resposta (linhas e legenda) só depois;
            "tarde" = o desenho inteiro só aparece depois da resposta.
    O teste t_figuras confere que cada enunciado existe num banco e que cada molde existe.
-   As perguntas da tela "Metamorfose" ficam sem figura: a animação já está logo acima delas. */
+   Nas telas "Metamorfose", "Ciclos dos vermes" e "Temperatura do corpo" não aparece figura: a animação já está logo acima. */
 const FQLIG={
 "Qual é a simetria do corpo dos cnidários?":["sim:aguaviva","antes"],
 "Qual destes grupos tem simetria radial quando adulto?":["sim:aguaviva","tarde"],
@@ -2371,7 +2436,63 @@ const FQLIG={
 "Qual destes vertebrados faz metamorfose?":["meta:sapo","tarde"],
 "Na metamorfose do sapo, quem respira por brânquias?":["meta:sapo","tarde"],
 "O que acontece com a cauda do girino de sapo?":["meta:sapo","tarde"],
-"Por qual estrutura o girino respira?":["meta:sapo","tarde"]
+"Por qual estrutura o girino respira?":["meta:sapo","tarde"],
+"Por que o saneamento básico ajuda a evitar a esquistossomose?":["cic:esq:1","tarde"],
+"Como se chama a larva que sai do ovo do esquistossomo na água?":["cic:esq:2","tarde"],
+"Qual é o hospedeiro intermediário do esquistossomo?":["cic:esq:3","tarde"],
+"Qual animal é o hospedeiro intermediário do esquistossomo?":["cic:esq:3","tarde"],
+"O caramujo Biomphalaria é hospedeiro de qual parasita?":["cic:esq:3","tarde"],
+"O caramujo é hospedeiro intermediário de qual doença?":["cic:esq:3","tarde"],
+"Qual doença é transmitida por caramujos do gênero Biomphalaria?":["cic:esq:3","tarde"],
+"O esquistossomo (Schistosoma mansoni) é transmitido por…":["cic:esq:4","tarde"],
+"Qual larva do esquistossomo penetra na pele humana?":["cic:esq:5","tarde"],
+"Qual é o hospedeiro definitivo do esquistossomo?":["cic:esq:5","tarde"],
+"Qual doença é transmitida pelo contato com água contaminada de lagoas e rios?":["cic:esq:5","tarde"],
+"Como prevenir a esquistossomose?":["cic:esq:6","tarde"],
+"Qual destas ações ajuda a prevenir a esquistossomose?":["cic:esq:6","tarde"],
+"O que são as proglotes (proglótides) da tênia?":["cic:ten:1","tarde"],
+"Por que a carne deve ter selo de inspeção?":["cic:ten:3","tarde"],
+"Onde vive a tênia adulta?":["cic:ten:4","tarde"],
+"A tênia (solitária) vive em qual local do corpo humano?":["cic:ten:4","tarde"],
+"Como a pessoa pode pegar teníase?":["cic:ten:4","tarde"],
+"Como se pega a teníase?":["cic:ten:4","tarde"],
+"Qual verminose pode ser evitada comendo carne de porco bem cozida?":["cic:ten:4","tarde"],
+"A cisticercose é causada por…":["cic:ten:5","tarde"],
+"O que é a cisticercose?":["cic:ten:5","tarde"],
+"Como prevenir a teníase?":["cic:ten:6","tarde"],
+"Quantos ovos uma fêmea de lombriga pode pôr por dia?":["cic:lom:1","tarde"],
+"Como se pega a ascaridíase (lombriga)?":["cic:lom:2","tarde"],
+"Qual alimento deve ser bem lavado para evitar a ascaridíase?":["cic:lom:2","tarde"],
+"Onde vive a lombriga adulta no corpo humano?":["cic:lom:5","tarde"],
+"Como evitar a ascaridíase?":["cic:lom:6","tarde"],
+"Qual medida ajuda a prevenir a ascaridíase?":["cic:lom:6","tarde"],
+"Quantos pares de patas tem um inseto?":["cmp:artro","tarde"],
+"Quantos pares de patas tem uma aranha?":["cmp:artro","tarde"],
+"Em quantas partes o corpo de um inseto é dividido?":["cmp:artro","tarde"],
+"Em quantas partes o corpo de uma aranha é dividido?":["cmp:artro","tarde"],
+"Quantas antenas tem um inseto?":["cmp:artro","tarde"],
+"Os aracnídeos têm antenas?":["cmp:artro","tarde"],
+"Quantas patas tem um inseto adulto?":["cmp:artro","tarde"],
+"Quantas patas tem uma aranha?":["cmp:artro","tarde"],
+"O que os aracnídeos NÃO possuem?":["cmp:artro","tarde"],
+"Qual destes animais tem o corpo dividido em cefalotórax e abdômen?":["cmp:artro","tarde"],
+"Qual par de estruturas é típico de insetos e ajuda a sentir o ambiente?":["cmp:artro","tarde"],
+"Qual é o tipo de esqueleto do tubarão?":["cmp:peixe","tarde"],
+"Para que serve o opérculo dos peixes ósseos?":["cmp:peixe","tarde"],
+"De que é feito o esqueleto dos peixes ósseos?":["cmp:peixe","tarde"],
+"O que são os peixes cartilaginosos?":["cmp:peixe","tarde"],
+"Qual destes animais é cartilaginoso?":["cmp:peixe","tarde"],
+"Qual destes é um peixe cartilaginoso?":["cmp:peixe","tarde"],
+"As raias pertencem ao grupo dos peixes…":["cmp:peixe","tarde"],
+"Ser ectotérmico significa que...":["cmp:temp","tarde"],
+"Os répteis são…":["cmp:temp","tarde"],
+"As aves são…":["cmp:temp","tarde"],
+"Os anfíbios são ectotérmicos?":["cmp:temp","tarde"],
+"Quanto à temperatura do corpo, os peixes são…":["cmp:temp","tarde"],
+"Como é a temperatura do corpo dos mamíferos?":["cmp:temp","tarde"],
+"Por que aves e mamíferos conseguem ser ativos em dias frios?":["cmp:temp","tarde"],
+"Qual destes animais depende do calor do ambiente (é ectotérmico)?":["cmp:temp","tarde"],
+"O que peixes, anfíbios e répteis têm em comum?":["cmp:temp","tarde"]
 };
 
 </script>

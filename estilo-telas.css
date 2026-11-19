@@ -95,7 +95,7 @@ header{position:relative}
 /* figuras das perguntas (figuras-perguntas.js): linhas e legenda só depois da resposta */
 .fq{margin:8px auto 12px;max-width:420px;padding:10px;border-radius:18px;background:rgba(255,255,255,.07);text-align:center}
 .fq svg{width:100%;max-height:200px;display:block}
-.fq text{fill:currentColor;font-size:11px;font-weight:700}
+.fq>svg text{fill:currentColor;font-size:11px;font-weight:700}.fq>svg text.pq{font-size:9px;font-weight:600}
 .fq .fqr{opacity:0;transition:opacity .5s}.fq.rev .fqr{opacity:1}
 .fq .fqe line{stroke:#f59e0b;stroke-width:2.5;stroke-dasharray:6 4}
 .fq figcaption{display:flex;flex-direction:column;gap:4px;font-size:15px;margin-top:4px}
