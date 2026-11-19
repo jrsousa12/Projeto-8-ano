@@ -48,12 +48,25 @@ with tempfile.TemporaryDirectory() as tmp:
     ok(m.get("polvo") == "a-polvo-novo" and m.get("lula") == "a-lula", "EMJIMG ligado sem estragar o resto")
     ok(subprocess.run(["node", "--check", os.path.join(tmp, "jogos.js")]).returncode == 0, "jogos.js continua válido")
     r = roda(["listar"], tmp)
+    sem_uso = open(os.path.join(tmp, "revisao", "imagens.md"), encoding="utf-8").read().split("sem uso:")[1].split(";")[0]
+    ok(r.returncode == 0 and "a-polvo" not in sem_uso, "imagem antiga continua em uso (jogo de classificar)")
+    m = mapa(tmp, "jogos.js", "ANIMG"); m.pop("Polvo")
+    s = open(os.path.join(tmp, "jogos.js"), encoding="utf-8").read()
+    open(os.path.join(tmp, "jogos.js"), "w", encoding="utf-8").write(re.sub(r"const ANIMG=\{.*?\};", lambda _: "const ANIMG=" + json.dumps(m, ensure_ascii=False) + ";", s, count=1))
+    r = roda(["listar"], tmp)
     ok(r.returncode == 0 and "a-polvo" in open(os.path.join(tmp, "revisao", "imagens.md"), encoding="utf-8").read().split("sem uso:")[1].split(";")[0], "imagem antiga aparece como sem uso")
 
     # 3. fauna do Pará
     r = roda(["adicionar", simples, "a-boto-novo", "--pa", "boto"], tmp)
     ok(r.returncode == 0 and mapa(tmp, "conteudo.js", "PAIMG").get("boto") == "a-boto-novo", "PAIMG ligado")
     ok(subprocess.run(["node", "--check", os.path.join(tmp, "conteudo.js")]).returncode == 0, "conteudo.js continua válido")
+
+    # 3b. jogo de classificar (nome como no AN)
+    r = roda(["adicionar", simples, "a-tilapia", "--an", "Tilápia"], tmp)
+    m = mapa(tmp, "jogos.js", "ANIMG")
+    ok(r.returncode == 0 and m.get("Tilápia") == "a-tilapia" and m.get("Lula") == "a-lula", "ANIMG ligado sem estragar o resto")
+    r = roda(["listar"], tmp)
+    ok(r.returncode == 0 and "49 de 191" in open(os.path.join(tmp, "revisao", "imagens.md"), encoding="utf-8").read(), "listar conta o jogo de classificar")
 
     # 4. grupo: tamanho da ilustração grande
     r = roda(["adicionar", simples, "p-porifero", "--substituir"], tmp)
@@ -69,6 +82,7 @@ with tempfile.TemporaryDirectory() as tmp:
         ([simples, "a-x", "--pa", "dragao"], "chave da fauna desconhecida"),
         ([simples, "a-x", "--emj", "dragao"], "animal do jogo desconhecido"),
         ([simples, "g-porifero", "--pa", "boto"], "--pa em grupo"),
+        ([simples, "a-x", "--an", "tilápia"], "animal do classificar escrito diferente"),
         ([os.path.join(tmp, "nao-existe.png"), "a-x"], "arquivo inexistente"),
     ]:
         r = roda(["adicionar"] + args, tmp)

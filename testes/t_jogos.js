@@ -53,6 +53,12 @@ testes["classifique e quem é este? funcionam"] = async (p) => {
   await abrir(p, "cls");
   for (let i = 0; i < 10; i++) { await p.click("#co .opt >> nth=0"); await p.click("#cn"); }
   confere(/Você classificou/.test(await p.textContent("#cbox")), "classifique chega ao resultado");
+  const r = await p.evaluate(() => { const fora = Object.keys(ANIMG).filter(n => !AN.some(a => a[0] === n));
+    startCls([["Polvo", "molusco"]]); const com = document.querySelector("#cbox .cimg img.ani");
+    const ok = !!com && /a-polvo/.test(com.src);
+    startCls([["Tilápia", "peixe"]]); return { fora, com: ok, sem: !document.querySelector("#cbox .cimg") }; });
+  confere(r.fora.length === 0, "classifique: todo nome do ANIMG está no AN " + r.fora.join(", "));
+  confere(r.com && r.sem, "classifique mostra a ilustração só quando o animal tem uma");
   await abrir(p, "img");
   confere((await p.$$("#ibox .opt")).length >= 2, "quem é este? mostra alternativas");
 };

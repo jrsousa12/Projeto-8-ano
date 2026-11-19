@@ -96,6 +96,7 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 .pa h3{font-size:20px}.pa i{opacity:.75;font-size:14px;display:block;margin-bottom:6px}
 .pa .ans{display:none;margin-top:10px;padding:10px 12px;border-radius:14px;background:rgba(52,211,153,.18);font-size:15px}
 .pa.open .ans{display:block}.pa .hintp{opacity:.7;font-size:14px;margin-top:8px}.pa.open .hintp{display:none}
+.imgq.cimg img.ani{width:min(200px,56vw);max-height:180px;margin:4px auto 0}
 .big-name{font-size:clamp(34px,6vw,56px);font-weight:800;text-align:center;margin:6px 0 16px;background:linear-gradient(90deg,#fde68a,#5eead4);-webkit-background-clip:text;background-clip:text;color:transparent}
 .streak{color:#fbbf24}
 .review{margin:14px auto;max-width:640px;text-align:left;background:rgba(0,0,0,.22);border-radius:18px;padding:14px 18px;font-size:16px}

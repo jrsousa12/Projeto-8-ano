@@ -5,12 +5,13 @@ Uso (na pasta do projeto):
   python3 build/imagens.py listar
       Onde há ilustração e onde falta. Relatório em revisao/imagens.md. Só avisa, nunca altera.
       Erro (sai com 1): o app aponta para uma imagem que não existe.
-  python3 build/imagens.py adicionar <arquivo> <nome> [--pa chave | --emj nome] [--substituir]
+  python3 build/imagens.py adicionar <arquivo> <nome> [--pa chave | --emj nome | --an nome] [--substituir]
       Converte a imagem (PNG, JPG ou WebP, por exemplo feita no Canva) para WebP, reduz até
       LIMITE_KB, grava em img/animais/<nome>.webp e liga ao app:
         g-<grupo>  ícone do grupo        p-<grupo>  ilustração grande do grupo
         a-<nome>   animal: --pa <chave> (fauna do Pará, PAIMG do conteudo.js)
                            --emj <nome> (jogo "Quem é este?", EMJIMG do jogos.js)
+                           --an <Nome> (jogo de classificar, ANIMG do jogos.js; nome como no AN)
       A lista IMGS do sw.js e o arquivo único são atualizados pelo bash build/tudo.sh.
 A variável IMAGENS_RAIZ troca a pasta do projeto (usada pelo teste build/t_imagens.py)."""
 import io, json, os, re, subprocess, sys
@@ -20,7 +21,7 @@ PASTA = os.path.join(RAIZ, "img", "animais")
 LIMITE_KB = 40       # tamanho máximo de uma ilustração nova
 AVISO_KB = 60        # ilustração já existente acima disto entra como aviso
 TAM = {"a": (420, 420), "g": (360, 360), "p": (534, 720)}  # maior largura e altura (como as atuais)
-MAPAS = {"pa": ("conteudo.js", "PAIMG"), "emj": ("jogos.js", "EMJIMG")}
+MAPAS = {"pa": ("conteudo.js", "PAIMG"), "emj": ("jogos.js", "EMJIMG"), "an": ("jogos.js", "ANIMG")}
 
 NODE = r"""
 const fs=require('fs'),vm=require('vm'),c={window:{},document:{},console};vm.createContext(c);
@@ -60,7 +61,7 @@ def existentes(): return {f[:-5]: os.path.getsize(os.path.join(PASTA, f)) for f 
 
 
 def listar():
-    d, imgs, pa, emj = dados(), existentes(), mapa("pa"), mapa("emj")
+    d, imgs, pa, emj, an = dados(), existentes(), mapa("pa"), mapa("emj"), mapa("an")
     usadas, erros, avisos, md = set(), [], [], ["# Ilustrações do app", "", "Gerado por `python3 build/imagens.py listar`. Só avisa, nunca altera.", ""]
     def usa(img, onde):
         usadas.add(img)
@@ -70,6 +71,9 @@ def listar():
     for k, v in pa.items(): usa(v, "fauna do Pará " + k)
     sem_emj = [n for n in d["EMJ"] if n not in emj]
     for k, v in emj.items(): usa(v, "Quem é este? " + k)
+    for k, v in an.items():
+        usa(v, "jogo de classificar " + k)
+        if k not in d["AN"]: erros.append(f"jogo de classificar: '{k}' não está no AN do dados.js")
     sobra = sorted(set(imgs) - usadas)
     grandes = sorted(f"{k} ({v // 1024} KB)" for k, v in imgs.items() if v > AVISO_KB * 1024)
     total = sum(imgs.values()) // 1024
@@ -77,7 +81,7 @@ def listar():
         ("Grupos (ícone e ilustração)", f"{len(d['G'])} grupos, {sum(('g-' + g in imgs) + ('p-' + g in imgs) for g in d['G'])} de {2 * len(d['G'])} imagens"),
         ("Fauna do Pará", f"{len(pa)} de {len(pak())} com ilustração; sem: {', '.join(sem_pa) or 'nenhum'} (usam desenho do arte.js)"),
         ("Jogo Quem é este?", f"{len(emj)} de {len(d['EMJ'])} com ilustração; sem: {', '.join(sem_emj) or 'nenhum'}"),
-        ("Jogo de classificar", f"{len(d['AN'])} animais, só com o nome (sem imagem)"),
+        ("Jogo de classificar", f"{len(an)} de {len(d['AN'])} com ilustração; os outros só com o nome"),
         ("Perguntas", f"{d['perguntas']} perguntas, nenhuma com figura (parte 3 do plano)"),
         ("Arquivos", f"{len(imgs)} ilustrações, {total} KB; sem uso: {', '.join(sobra) or 'nenhuma'}; acima de {AVISO_KB} KB: {', '.join(grandes) or 'nenhuma'}"),
     ]
@@ -105,7 +109,7 @@ def converter(arq, tipo):
 def adicionar(args):
     subst = "--substituir" in args; args = [a for a in args if a != "--substituir"]
     liga = None
-    for op in ("--pa", "--emj"):
+    for op in ("--pa", "--emj", "--an"):
         if op in args:
             i = args.index(op)
             if i + 1 >= len(args): sys.exit(f"Erro: falta a chave depois de {op}.")
@@ -116,15 +120,16 @@ def adicionar(args):
     if not re.fullmatch(r"[agp]-[a-z0-9]+(-[a-z0-9]+)*", nome): sys.exit("Erro: nome deve ser g-, p- ou a- + letras minúsculas sem acento, números e hífen (ex.: a-peixe-boi).")
     tipo, d = nome[0], dados()
     if tipo in "gp" and nome[2:] not in d["G"]: sys.exit(f"Erro: grupo desconhecido '{nome[2:]}'. Grupos: {', '.join(d['G'])}")
-    if tipo in "gp" and liga: sys.exit("Erro: --pa e --emj servem só para a- (animais).")
+    if tipo in "gp" and liga: sys.exit("Erro: --pa, --emj e --an servem só para a- (animais).")
     if liga and liga[0] == "pa" and liga[1] not in pak(): sys.exit(f"Erro: chave '{liga[1]}' não está na fauna do Pará. Chaves: {', '.join(pak())}")
     if liga and liga[0] == "emj" and liga[1] not in d["EMJ"]: sys.exit(f"Erro: '{liga[1]}' não está no jogo Quem é este? (EMJ do dados.js).")
+    if liga and liga[0] == "an" and liga[1] not in d["AN"]: sys.exit(f"Erro: '{liga[1]}' não está no jogo de classificar (AN do dados.js). Escreva como lá, ex.: Peixe-boi.")
     destino = os.path.join(PASTA, nome + ".webp")
     if os.path.exists(destino) and not subst: sys.exit(f"Erro: {nome}.webp já existe. Para trocar, acrescente --substituir.")
     dados_img, q, tam = converter(arq, tipo)
     open(destino, "wb").write(dados_img)
     if liga: gravar_mapa(liga[0], liga[1], nome)
-    onde = {"g": "ícone do grupo", "p": "ilustração do grupo"}.get(tipo) or ({"pa": "fauna do Pará", "emj": "Quem é este?"}[liga[0]] + " → " + liga[1] if liga else "sem ligação (aparece como sem uso)")
+    onde = {"g": "ícone do grupo", "p": "ilustração do grupo"}.get(tipo) or ({"pa": "fauna do Pará", "emj": "Quem é este?", "an": "jogo de classificar"}[liga[0]] + " → " + liga[1] if liga else "sem ligação (aparece como sem uso)")
     print(f"✔ img/animais/{nome}.webp ({len(dados_img) // 1024} KB, {tam[0]}×{tam[1]}, qualidade {q}): {onde}. Depois: bash build/tudo.sh")
     return 0
 
