@@ -3,7 +3,8 @@
    Moldes: "sim:estrela", "sim:aguaviva", "sim:planaria", "sim:minhoca", "sim:esponja" (simetria);
            "meta:ins" (completa), "meta:gaf" (incompleta), "meta:sapo" (sapo). Ver figuras-perguntas.js.
            "cic:esq:N", "cic:ten:N", "cic:lom:N" (ciclo do verme, abrindo na etapa N da tela Ciclos dos vermes).
-           "cmp:artro" (inseto × aranha), "cmp:peixe" (ósseo × cartilaginoso), "cmp:temp" (ave × lagarto no frio). Ver figuras-comparar.js.
+           "cmp:artro" (inseto × aranha), "cmp:peixe" (ósseo × cartilaginoso), "cmp:temp" (ave × lagarto no frio),
+           "cmp:resp" (brânquias, pulmões, traqueias, pele), "cmp:cor" (cavidades do coração), "cmp:col" (com × sem coluna). Ver figuras-comparar.js.
    quando: "antes" = o desenho aparece com a pergunta e a resposta (linhas e legenda) só depois;
            "tarde" = o desenho inteiro só aparece depois da resposta.
    O teste t_figuras confere que cada enunciado existe num banco e que cada molde existe.
@@ -88,5 +89,34 @@ const FQLIG={
 "Como é a temperatura do corpo dos mamíferos?":["cmp:temp","tarde"],
 "Por que aves e mamíferos conseguem ser ativos em dias frios?":["cmp:temp","tarde"],
 "Qual destes animais depende do calor do ambiente (é ectotérmico)?":["cmp:temp","tarde"],
-"O que peixes, anfíbios e répteis têm em comum?":["cmp:temp","tarde"]
+"O que peixes, anfíbios e répteis têm em comum?":["cmp:temp","tarde"],
+"Como respiram os moluscos aquáticos, em geral?":["cmp:resp","tarde"],
+"Como as minhocas respiram?":["cmp:resp","tarde"],
+"Como os insetos respiram?":["cmp:resp","tarde"],
+"Como os crustáceos aquáticos respiram, em geral?":["cmp:resp","tarde"],
+"Como a maioria dos peixes respira?":["cmp:resp","tarde"],
+"Por que as brânquias têm muitos vasos sanguíneos?":["cmp:resp","tarde"],
+"Como os anfíbios respiram?":["cmp:resp","tarde"],
+"Como é a respiração dos répteis?":["cmp:resp","tarde"],
+"Como os golfinhos respiram?":["cmp:resp","tarde"],
+"Qual animal respira por pulmões e pela pele?":["cmp:resp","tarde"],
+"Qual animal respira por traqueias?":["cmp:resp","tarde"],
+"Qual vertebrado respira por brânquias a vida toda?":["cmp:resp","tarde"],
+"Como a minhoca respira?":["cmp:resp","tarde"],
+"Os anfíbios respiram…":["cmp:resp","tarde"],
+"Qual destes animais respira pela pele e precisa mantê-la úmida?":["cmp:resp","tarde"],
+"Quantas cavidades tem o coração dos peixes?":["cmp:cor","tarde"],
+"Como é o coração dos anfíbios?":["cmp:cor","tarde"],
+"Como é o coração dos crocodilianos?":["cmp:cor","tarde"],
+"Como é o coração das aves?":["cmp:cor","tarde"],
+"Quantas cavidades tem o coração dos mamíferos?":["cmp:cor","tarde"],
+"Qual vertebrado tem o coração com quatro cavidades?":["cmp:cor","tarde"],
+"Quantas cavidades tem o coração de um sapo?":["cmp:cor","tarde"],
+"Qual característica define todos os invertebrados?":["cmp:col","tarde"],
+"O que todos os vertebrados têm?":["cmp:col","tarde"],
+"Qual destes animais NÃO é um invertebrado?":["cmp:col","tarde"],
+"A minhoca tem esqueleto?":["cmp:col","tarde"],
+"Como é o esqueleto dos equinodermos?":["cmp:col","tarde"],
+"De que é feito o endoesqueleto dos equinodermos?":["cmp:col","tarde"],
+"Qual animal tem esqueleto interno de calcário e pés ambulacrais?":["cmp:col","tarde"]
 };

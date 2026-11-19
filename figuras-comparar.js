@@ -1,9 +1,11 @@
 /* ---------- figuras das perguntas: comparação lado a lado ----------
    Dois desenhos lado a lado (esquerda × direita). Mesmo formato dos moldes de simetria (figuras-perguntas.js):
    t = título, leg = legenda (só depois da resposta), s = desenho, r = rótulos (só depois da resposta).
-   Nome do molde: "cmp:artro", "cmp:peixe", "cmp:temp". Qual pergunta usa qual molde fica no figuras-ligacao.js.
+   Nome do molde: "cmp:artro", "cmp:peixe", "cmp:temp", "cmp:resp", "cmp:cor", "cmp:col". Qual pergunta usa qual molde fica no figuras-ligacao.js.
    Conferido em: Britannica ("How are insects different from arachnids?", arachnid, chondrichthyan)
-   e nos textos do próprio app (grupos Artrópodes e Peixes, tela Temperatura do corpo). */
+   e nos textos do próprio app (grupos Artrópodes e Peixes, tela Temperatura do corpo).
+   Respiração, coração e coluna: fatos já presentes nas perguntas do app; átrio, ventrículo e vértebras
+   conferidos na Britannica (circulatory system: vertebrates e amphibians; vertebral column). */
 const FQCMP=(()=>{
  const tx=(x,y,t,c)=>`<text x="${x}" y="${y}" text-anchor="middle"${c?` class="${c}"`:""}>${t}</text>`;
  const div=`<line x1="100" y1="22" x2="100" y2="94" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>`;
@@ -29,6 +31,27 @@ const FQCMP=(()=>{
  const termo=(x,n,cor)=>`<rect x="${x-4}" y="30" width="8" height="54" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>`+
   `<rect x="${x-2}" y="${84-50*n}" width="4" height="${50*n}" fill="${cor}"/><circle cx="${x}" cy="88" r="6" fill="${cor}"/>`;
  const emj=(x,y,ch)=>`<text x="${x}" y="${y}" text-anchor="middle" style="font-size:34px">${ch}</text>`;
+ /* divisórias verticais para 3 ou 4 colunas */
+ const divs=xs=>xs.map(x=>`<line x1="${x}" y1="22" x2="${x}" y2="98" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>`).join("");
+ const RESP=`stroke-width="2.2" fill="none" stroke-linecap="round"`;
+ /* respiração: brânquias (filamentos vermelhos), pulmões, traqueias (tubos que se ramificam), pele úmida (minhoca) */
+ const branq=[13,19,25,31,37].map(x=>`<path d="M${x} 62 q4 13 0 28" stroke="#dc2626" ${RESP}/>`).join("");
+ const pulm=`<path d="M75 58 V70 M75 70 L68 76 M75 70 L82 76" stroke="#be185d" ${RESP}/><ellipse cx="66" cy="82" rx="7.5" ry="13" fill="#f9a8d4"/><ellipse cx="84" cy="82" rx="7.5" ry="13" fill="#f9a8d4"/>`;
+ const traq=`<path d="M125 58 V96 M125 66 L113 74 M125 66 L137 74 M125 78 L111 88 M125 78 L139 88 M113 74 L109 82 M137 74 L141 82" stroke="#a16207" ${RESP}/>`;
+ const pele=`<path d="M156 84 q5 -7 10 0 t10 0 t10 0" stroke="#f472b6" stroke-width="7" fill="none" stroke-linecap="round"/>`+
+  [[162,70],[176,66],[188,72]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.2" fill="#38bdf8"/>`).join("")+`<text x="175" y="60" text-anchor="middle" class="pq">O₂</text>`;
+ /* coração em caixas: átrios em cima (claros), ventrículos embaixo (escuros) */
+ const cav=(x,y,w,h,cor)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="${cor}" stroke="#7f1d1d" stroke-width="1.5"/>`;
+ const AT="#fca5a5",VE="#dc2626";
+ const coracoes=cav(18,40,30,24,AT)+cav(18,66,30,28,VE)+
+  cav(84,40,15,24,AT)+cav(101,40,15,24,AT)+cav(84,66,32,28,VE)+
+  cav(151,40,15,24,AT)+cav(168,40,15,24,AT)+cav(151,66,15,28,VE)+cav(168,66,15,28,VE);
+ const letras=[[33,56,"A"],[33,84,"V"],[91.5,56,"A"],[108.5,56,"A"],[100,84,"V"],[158.5,56,"A"],[175.5,56,"A"],[158.5,84,"V"],[175.5,84,"V"]].map(([x,y,t])=>tx(x,y,t)).join("");
+ /* peixe com a coluna (vértebras) e o crânio à mostra × minhoca, só de anéis, sem ossos */
+ const vert=`<ellipse cx="50" cy="60" rx="38" ry="17" fill="#bae6fd"/><path d="M14 60 L2 48 L4 60 L2 72 Z" fill="#bae6fd"/>`+
+  [18,25,32,39,46,53,60].map(x=>`<rect x="${x}" y="56" width="5.5" height="8" rx="1.5" fill="#f8fafc" stroke="#475569" stroke-width="1"/>`).join("")+
+  `<ellipse cx="74" cy="60" rx="9" ry="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/><circle cx="77" cy="57" r="2" fill="#0f172a"/>`;
+ const minh=[0,1,2,3,4,5,6,7,8].map(i=>`<ellipse cx="${116+i*8.5}" cy="${60+Math.sin(i*.8)*7}" rx="5.5" ry="7" fill="#f472b6" stroke="#be185d" stroke-width="1"/>`).join("");
  return {
   artro:{t:"Inseto × aranha (vistos de cima)",
    leg:"<b>Inseto</b>: corpo em 3 partes (cabeça, tórax e abdômen), 3 pares de patas (6 patas) e 1 par de antenas. <b>Aranha</b> (um aracnídeo): corpo em 2 partes (cefalotórax, que é a cabeça unida ao tórax, e abdômen), 4 pares de patas (8 patas) e nenhuma antena.",
@@ -42,6 +65,18 @@ const FQCMP=(()=>{
   temp:{t:"No mesmo dia frio: ave × lagarto",
    leg:"<b>Endotérmico</b> (aves e mamíferos): o próprio corpo produz calor e mantém a temperatura mais ou menos constante, mesmo no frio. <b>Ectotérmico</b> (peixes, anfíbios e répteis): a temperatura do corpo varia com a do ambiente; no frio, o corpo esfria e o animal procura o calor do sol.",
    s:div+tx(100,16,"❄️ dia frio","pq")+emj(36,72,"🐦")+termo(76,.8,"#ef4444")+emj(136,72,"🦎")+termo(176,.25,"#3b82f6")+tx(50,134,"Ave")+tx(150,134,"Lagarto"),
-   r:tx(50,108,"corpo continua quente","pq")+tx(50,120,"(endotérmico)","pq")+tx(150,108,"corpo esfria","pq")+tx(150,120,"(ectotérmico)","pq")}
+   r:tx(50,108,"corpo continua quente","pq")+tx(50,120,"(endotérmico)","pq")+tx(150,108,"corpo esfria","pq")+tx(150,120,"(ectotérmico)","pq")},
+  resp:{t:"Como os animais respiram",
+   leg:"<b>Brânquias</b>: tiram da água o oxigênio dissolvido (peixes, girinos e a maioria dos crustáceos e moluscos aquáticos). <b>Pulmões</b>: tiram o oxigênio do ar (anfíbios adultos, répteis, aves e mamíferos; golfinhos e baleias sobem à superfície para respirar). <b>Traqueias</b>: tubinhos que levam o ar direto às células (insetos). <b>Pele fina e úmida</b>: a troca de gases acontece pela pele (minhoca; o sapo usa a pele e também os pulmões).",
+   s:divs([50,100,150])+emj(25,46,"🐟")+branq+emj(75,46,"🐬")+pulm+emj(125,46,"🦗")+traq+pele+tx(25,134,"Peixe")+tx(75,134,"Golfinho")+tx(125,134,"Inseto")+tx(175,134,"Minhoca"),
+   r:tx(25,112,"brânquias","pq")+tx(75,112,"pulmões","pq")+tx(125,112,"traqueias","pq")+tx(175,112,"pele úmida","pq")},
+  cor:{t:"Cavidades do coração",
+   leg:"Cada cavidade é uma “sala” do coração. <b>Átrio</b> (A): recebe o sangue que chega ao coração. <b>Ventrículo</b> (V): bombeia o sangue para fora. <b>Peixe</b>: 2 cavidades (1 átrio e 1 ventrículo). <b>Sapo</b> (anfíbio): 3 (2 átrios e 1 ventrículo); a maioria dos répteis também tem 3. <b>Aves e mamíferos</b>: 4 (2 átrios e 2 ventrículos), sem mistura do sangue rico com o sangue pobre em oxigênio. Jacarés e crocodilos também têm 4 cavidades, mas ainda há um pouco de mistura de sangue.",
+   s:divs([66,133])+coracoes+tx(33,134,"Peixe")+tx(100,134,"Sapo")+tx(167,134,"Ave"),
+   r:letras+tx(33,110,"2 cavidades","pq")+tx(100,110,"3 cavidades","pq")+tx(167,110,"4 cavidades","pq")+tx(167,121,"(e mamíferos)","pq")},
+  col:{t:"Com coluna × sem coluna",
+   leg:"<b>Vertebrado</b> (peixes, anfíbios, répteis, aves e mamíferos): tem coluna vertebral, uma fileira de peças chamadas vértebras (de osso ou, nos tubarões e raias, de cartilagem), e crânio. <b>Invertebrado</b> (exemplo: minhoca): não tem coluna vertebral. Não ter coluna não quer dizer não ter sustentação: a minhoca usa músculos e a pressão do líquido do corpo, o besouro tem um esqueleto por fora (exoesqueleto) e a estrela-do-mar tem placas de calcário por dentro da pele.",
+   s:div+vert+minh+tx(50,134,"Vertebrado")+tx(150,134,"Invertebrado"),
+   r:tx(50,104,"coluna vertebral","pq")+tx(50,116,"e crânio","pq")+tx(150,104,"sem coluna","pq")+tx(150,116,"e sem ossos","pq")}
  };
 })();
