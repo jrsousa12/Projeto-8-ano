@@ -133,6 +133,7 @@ li.f .trp{opacity:.7}
 /* ---------- ilustrações dos slides ---------- */
 img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;user-select:none}
 .card img.ani{width:100%;max-width:120px;height:96px;margin:0 auto 6px}
+img.ani.foto{object-fit:cover}
 .card.pc img.ani{max-width:150px;height:110px}
 .hero img.heroimg{width:min(300px,82%);height:auto;max-height:52vh;border-radius:22px;box-shadow:0 18px 34px -12px rgba(0,0,0,.55);animation:none}
 .opt img.ani{display:inline-block;width:46px;height:46px;vertical-align:middle;margin-right:12px;border-radius:10px}

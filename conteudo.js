@@ -62,7 +62,9 @@ const PAK=["boto","peixeboi","pirarucu","jacare","tracaja","caranguejo","harpia"
 const PAC=["#f472b6","#94a3b8","#a3b18a","#65a30d","#84cc16","#6366f1","#64748b","#b08968","#a16207","#ef4444","#f59e0b","#a16207"];
 /* animais da fauna do Pará que já têm ilustração; os outros usam o desenho do app */
 const PAIMG={"boto":"a-boto","peixeboi":"a-peixe-boi","pirarucu":"a-pirarucu","jacare":"a-jacare-acu","tracaja":"a-tracaja","caranguejo":"a-caranguejo-uca","harpia":"a-harpia","sapo":"a-sapo-cururu","tartaruga":"a-tartaruga-amazonia","guara":"a-guara","onca":"a-onca","ariranha":"a-ariranha"};
-const paArt=i=>PAIMG[PAK[i]]?imgAni(PAIMG[PAK[i]],"Ilustração: "+PA[i][0]):ART[PAK[i]]();
+/* fotos com o habitat ao fundo: preenchem o quadro (classe "foto") */
+const PAFOTO=new Set(["boto","peixeboi","pirarucu","jacare","tracaja","harpia","sapo","tartaruga","guara","onca","ariranha"]);
+const paArt=i=>PAIMG[PAK[i]]?imgAni(PAIMG[PAK[i]],"Ilustração: "+PA[i][0],PAFOTO.has(PAK[i])?"foto":""):ART[PAK[i]]();
 const PAL=PA.map((a,i)=>({c:PAC[i],svg:paArt(i),name:a[0],tag:"Fauna da Amazônia",sub:a[1],
  html:`<h3>Sobre ele</h3><p>${a[3]}</p><h3>Nome científico</h3><p><i>${a[1]}</i></p><h3>Qual é o grupo dele?</h3><div id="rv"><button class="btn pri" id="rvb">👀 Revelar o grupo</button></div>`,
  after:p=>{$("#rvb",p).onclick=()=>{$("#rv",p).innerHTML=`<div class="know">✅ <b>${NG[a[2]]}</b></div>`;};}}));
