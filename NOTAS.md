@@ -14,6 +14,8 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 - **`style.css` dividido** em 4 arquivos (`estilo-base`, `estilo-painel`, `estilo-telas`, `estilo-progresso`), na mesma ordem e com o mesmo conteúdo; o tema claro saiu igual (14/11/2026).
 
+- **Só o 8º ano (19/11/2026, decisão do dono):** conversas deste projeto nunca modificam a Física. Regra no `CLAUDE.md` e trava automática em `.claude/hooks/trava-fisica.sh` (recusa gravar arquivos ou rodar comandos que citem a pasta da Física).
+
 - **Publicar sem esperar (18/11/2026, decisão do dono: "Sempre faça isso"):** quando a tarefa terminar e o `tudo.sh` der "Tudo certo.", publicar no `main` na hora, sem esperar a conferência do dono; ele confere depois e aponta o que mudar.
 
 ## Pendências (esperando decisão do dono)

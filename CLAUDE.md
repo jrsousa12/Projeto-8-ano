@@ -4,6 +4,8 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
 
 ## Contexto do projeto
 
+- **Só o 8º ano (decisão do dono, 19/11/2026):** conversas deste projeto alteram apenas o 8º ano. Nunca modificar o projeto de Física (`Projeto-Plataforma-de-Fisica`): nem arquivos, nem commits, nem push. A trava `.claude/hooks/trava-fisica.sh` recusa essas mudanças. O `/protocolo-token` pode ler a Física como origem, mas não grava nada nela.
+
 - **App:** Ciências do 8º ano (Animais), usado por alunos no Pará (13 a 14 anos). Todo o texto em português do Brasil, com linguagem simples.
 - **Dono:** professor que não programa. Responda sempre em português do Brasil simples, sem jargão (inclusive resumos, avisos e commits).
 - **Textos para os alunos:** explique cada termo técnico na primeira vez que aparecer; prefira frases curtas.
