@@ -1,9 +1,9 @@
-# Revisão das perguntas (2026-11-18)
+# Revisão das perguntas (2026-11-19)
 
-700 perguntas, 222 aviso(s), 329 sugestão(ões).
+700 perguntas, 200 aviso(s), 329 sugestão(ões).
 Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 
-## longa: certa bem mais comprida (201)
+## longa: certa bem mais comprida (200)
 
 - `G[1].q` "Para que serve o nematocisto dos cnidários?": a certa tem 26 letras e as erradas 11 em média; encurte a certa ou alongue as erradas
 - `EXTRA.porifero[0]` "Do que é feito o esqueleto das esponjas?": a certa tem 56 letras e as erradas 11 em média; encurte a certa ou alongue as erradas
@@ -46,15 +46,14 @@ Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 - `BANK3.nematodeo[1]` "Como é o tubo digestório dos nematódeos?": a certa tem 25 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[6]` "Como evitar a ascaridíase?": a certa tem 49 letras e as erradas 18 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[7]` "O que são parasitas?": a certa tem 48 letras e as erradas 29 em média; encurte a certa ou alongue as erradas
-- `BANK3.nematodeo[9]` "Onde os nematódeos podem viver?": a certa tem 44 letras e as erradas 13 em média; encurte a certa ou alongue as erradas
+- `BANK3.nematodeo[9]` "Onde os nematódeos podem viver?": a certa tem 44 letras e as erradas 22 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[11]` "Qual é a diferença de forma entre platelmintos e nematódeos?": a certa tem 55 letras e as erradas 21 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[12]` "Qual é a vantagem do tubo digestório completo?": a certa tem 34 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[13]` "Por que andar descalço em solo contaminado é arriscado?": a certa tem 40 letras e as erradas 19 em média; encurte a certa ou alongue as erradas
 - `BANK3.nematodeo[15]` "Em grande número, as lombrigas podem causar…": a certa tem 42 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
 - `BANK3.molusco[7]` "De que é feita a concha dos moluscos?": a certa tem 34 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
 - `BANK3.molusco[10]` "Qual característica é típica dos bivalves?": a certa tem 37 letras e as erradas 20 em média; encurte a certa ou alongue as erradas
-- `BANK3.anelideo[4]` "Como é a reprodução da minhoca quanto ao sexo?": a certa tem 36 letras e as erradas 11 em média; encurte a certa ou alongue as erradas
-- `BANK3.anelideo[7]` "Quantas ventosas tem a sanguessuga?": a certa tem 32 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
+- `BANK3.anelideo[7]` "Quantas ventosas tem a sanguessuga?": a certa tem 32 letras e as erradas 8 em média; encurte a certa ou alongue as erradas
 - `BANK3.anelideo[8]` "Onde vivem os poliquetas?": a certa tem 30 letras e as erradas 10 em média; encurte a certa ou alongue as erradas
 - `BANK3.anelideo[11]` "De que as minhocas se alimentam?": a certa tem 32 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
 - `BANK3.anelideo[13]` "O que a atividade das minhocas faz com o solo?": a certa tem 24 letras e as erradas 6 em média; encurte a certa ou alongue as erradas
@@ -72,18 +71,18 @@ Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 - `BANK3.peixe[8]` "O que é a piracema?": a certa tem 49 letras e as erradas 23 em média; encurte a certa ou alongue as erradas
 - `BANK3.peixe[15]` "Por que os peixes precisam de oxigênio dissolvido na água?": a certa tem 45 letras e as erradas 26 em média; encurte a certa ou alongue as erradas
 - `BANK3.anfibio[0]` "Por que os anfíbios dependem de ambientes úmidos?": a certa tem 48 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
-- `BANK3.anfibio[1]` "Os anfíbios são ovíparos?": a certa tem 50 letras e as erradas 17 em média; encurte a certa ou alongue as erradas
+- `BANK3.anfibio[1]` "Os anfíbios são ovíparos?": a certa tem 50 letras e as erradas 13 em média; encurte a certa ou alongue as erradas
 - `BANK3.anfibio[2]` "Como são os ovos dos anfíbios?": a certa tem 35 letras e as erradas 17 em média; encurte a certa ou alongue as erradas
 - `BANK3.anfibio[9]` "Para que servem as glândulas da pele dos anfíbios?": a certa tem 64 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
 - `BANK3.anfibio[10]` "O canto dos sapos serve principalmente para…": a certa tem 34 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
-- `BANK3.anfibio[11]` "Por que os anfíbios são bons indicadores ambientais?": a certa tem 33 letras e as erradas 17 em média; encurte a certa ou alongue as erradas
-- `BANK3.anfibio[12]` "De que os anfíbios adultos geralmente se alimentam?": a certa tem 30 letras e as erradas 10 em média; encurte a certa ou alongue as erradas
-- `BANK3.anfibio[14]` "Os anfíbios são ectotérmicos?": a certa tem 47 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
+- `BANK3.anfibio[11]` "Por que os anfíbios são bons indicadores ambientais?": a certa tem 33 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
+- `BANK3.anfibio[12]` "De que os anfíbios adultos geralmente se alimentam?": a certa tem 30 letras e as erradas 7 em média; encurte a certa ou alongue as erradas
+- `BANK3.anfibio[14]` "Os anfíbios são ectotérmicos?": a certa tem 47 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[0]` "Qual é a função das escamas dos répteis?": a certa tem 41 letras e as erradas 15 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[2]` "Como as cobras se movem?": a certa tem 32 letras e as erradas 10 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[3]` "Como as cobras sentem cheiros do ambiente?": a certa tem 35 letras e as erradas 13 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[6]` "Os filhotes de répteis passam por metamorfose?": a certa tem 34 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
-- `BANK3.reptil[7]` "Qual é a diferença comum entre jabuti, cágado e tartaruga?": a certa tem 60 letras e as erradas 20 em média; encurte a certa ou alongue as erradas
+- `BANK3.reptil[7]` "Qual é a diferença comum entre jabuti, cágado e tartaruga?": a certa tem 60 letras e as erradas 19 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[9]` "Como a sucuri mata suas presas?": a certa tem 33 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[12]` "Onde os répteis costumam pôr os ovos?": a certa tem 30 letras e as erradas 13 em média; encurte a certa ou alongue as erradas
 - `BANK3.reptil[13]` "Qual característica é típica dos répteis?": a certa tem 31 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
@@ -91,7 +90,7 @@ Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 - `BANK3.ave[4]` "O que são os sacos aéreos das aves?": a certa tem 73 letras e as erradas 15 em média; encurte a certa ou alongue as erradas
 - `BANK3.ave[13]` "Por que muitas aves migram?": a certa tem 37 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
 - `BANK3.ave[14]` "Como as aves ajudam a natureza?": a certa tem 37 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
-- `BANK3.mamifero[5]` "Como são os dentes da maioria dos mamíferos?": a certa tem 45 letras e as erradas 17 em média; encurte a certa ou alongue as erradas
+- `BANK3.mamifero[5]` "Como são os dentes da maioria dos mamíferos?": a certa tem 45 letras e as erradas 13 em média; encurte a certa ou alongue as erradas
 - `BANK3.mamifero[8]` "O que é o marsúpio?": a certa tem 48 letras e as erradas 18 em média; encurte a certa ou alongue as erradas
 - `BANK3.mamifero[9]` "O tatu é um mamífero com…": a certa tem 25 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
 - `BANK3.mamifero[15]` "A preguiça é um mamífero que…": a certa tem 33 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
@@ -140,7 +139,7 @@ Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 - `BANK4.ave[3]` "Como são os pés do papagaio?": a certa tem 60 letras e as erradas 14 em média; encurte a certa ou alongue as erradas
 - `BANK4.mamifero[0]` "O que os morcegos usam para se orientar no escuro?": a certa tem 47 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
 - `BANK4.mamifero[5]` "Como os golfinhos respiram?": a certa tem 44 letras e as erradas 12 em média; encurte a certa ou alongue as erradas
-- `QZ[8]` "Ser ectotérmico significa que...": a certa tem 43 letras e as erradas 23 em média; encurte a certa ou alongue as erradas
+- `QZ[8]` "Ser ectotérmico significa que...": a certa tem 43 letras e as erradas 21 em média; encurte a certa ou alongue as erradas
 - `QZ[10]` "Os ovos dos répteis costumam ter...": a certa tem 49 letras e as erradas 16 em média; encurte a certa ou alongue as erradas
 - `QZ[20]` "O que é o branqueamento dos corais?": a certa tem 34 letras e as erradas 18 em média; encurte a certa ou alongue as erradas
 - `QZ[24]` "Como prevenir a esquistossomose?": a certa tem 42 letras e as erradas 17 em média; encurte a certa ou alongue as erradas
@@ -206,30 +205,6 @@ Só avisos: nada foi alterado. Corrigir só com o "sim" do dono.
 - `MQX["Desafio das verminoses"][10]` "Por que não se deve fazer as necessidades no chão ou perto de rios?": a certa tem 47 letras e as erradas 19 em média; encurte a certa ou alongue as erradas
 - `MQX["Desafio das verminoses"][12]` "Qual parte do corpo a filariose atinge?": a certa tem 37 letras e as erradas 9 em média; encurte a certa ou alongue as erradas
 - `MQX["Desafio das verminoses"][13]` "Por que a carne deve ter selo de inspeção?": a certa tem 56 letras e as erradas 20 em média; encurte a certa ou alongue as erradas
-
-## absoluta: sempre/nunca/só só nas erradas (21)
-
-- `G[9].q` "Como os anfíbios respiram?": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `EXTRA.porifero[2]` "Os poríferos têm tecidos e órgãos verdadeiros?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.cnidario[13]` "Onde vivem os cnidários?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.platelminto[4]` "A tênia tem sistema digestório?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.platelminto[11]` "Quanto ao sexo, as planárias são…": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.nematodeo[9]` "Onde os nematódeos podem viver?": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anelideo[4]` "Como é a reprodução da minhoca quanto ao sexo?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anelideo[7]` "Quantas ventosas tem a sanguessuga?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anfibio[1]` "Os anfíbios são ovíparos?": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anfibio[11]` "Por que os anfíbios são bons indicadores ambientais?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anfibio[12]` "De que os anfíbios adultos geralmente se alimentam?": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.anfibio[14]` "Os anfíbios são ectotérmicos?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.reptil[7]` "Qual é a diferença comum entre jabuti, cágado e tartaruga?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.ave[1]` "As aves têm dentes?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK3.mamifero[5]` "Como são os dentes da maioria dos mamíferos?": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `BANK4.nematodeo[4]` "Quantos ovos uma fêmea de lombriga pode pôr por dia?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `QZ[0]` "Qual característica define todos os invertebrados?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `QZ[8]` "Ser ectotérmico significa que...": 3 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `QZ[107]` "A minhoca é um animal…": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `MQX["Desafio da temperatura"][7]` "A temperatura do corpo de um peixe é, em geral…": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
-- `MQX["Desafio da metamorfose"][5]` "Em qual fase o sapo vive só na água?": 2 erradas usam 'sempre/nunca/só' e a certa não; a pista entrega a resposta
 
 ## Sugestões das fichas (329)
 

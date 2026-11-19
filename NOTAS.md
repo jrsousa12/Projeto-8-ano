@@ -20,7 +20,9 @@ Leia antes de propor algo; anote aqui cada decisão nova do dono, com a data.
 
 - **Feito (18/11/2026, Conversa B):** 19 fichas de ideias erradas comuns em `build/fichas/` (139 itens, 6 a 9 por ficha), cada uma com `fonte` do `FONTES-CONFIAVEIS.md` (verminoses e ciclos: só MS/Fiocruz, mais CDC DPDx no ciclo da lombriga). Lista para conferir: `revisao/fichas.md`. O pente-fino passou a dar 329 sugestões. Ficou de fora: "minhoca cortada vira duas" (a fonte mostra que depende do corte) e "caramujo-africano transmite esquistossomose" (só havia fontes de prefeituras).
 - **Feito (18/11/2026, com o "sim" do dono):** fichas publicadas no `main`. Itens a trocar ou tirar: é só o dono apontar.
-- **Esperando o "sim" do dono:** corrigir os avisos do pente-fino (`revisao/perguntas.md`, 18/11/2026: `longa` 201, `absoluta` 21). Correções simples podem ser feitas com Sonnet.
+- **Feito (19/11/2026, com o "sim" do dono):** avisos `absoluta` do pente-fino: 21 perguntas corrigidas (palavras "só/sempre/nunca/todos" tiradas das erradas; a certa não mudou). Pente-fino: 0 avisos desse tipo.
+- **Esperando decisão do dono:** avisos `longa` (200: a certa é bem mais comprida que as erradas; `revisao/perguntas.md`). Alongar as erradas exige cuidado para nenhuma virar certa; fazer em blocos.
+- **Na fila (pedido do dono, 19/11/2026), depois do item acima:** (2) encolher as 4 ilustrações acima de 60 KB (anelídeo, cnidário, porífero, réptil); (3) mais figuras nas perguntas e imagens dos 191 animais do jogo de classificar.
 - **Feito (18/11/2026, com o "sim" do dono):** revisão das perguntas (`build/revisar_perguntas.py`, teste `build/t_revisar_perguntas.py`, ligada ao `novas.py verificar`, ao `rapido.py` e ao `tudo.sh`). Decisão: trabalho dividido em duas conversas (A: ferramenta; B: fichas), um commit em cada.
 
 - **Feito (18/11/2026):** protocolo-token reaplicado a partir da Física: comando já igual; `CLAUDE.md` ganhou 2 regras (teste novo no `MAPA` do `rapido.py`; `NOTAS.md` acima de ~150 linhas → histórico). Sem arquivo de código acima de 300 linhas; `dados.js` tem linhas curtas (máx. ~1 000 caracteres), então não precisa de motor de item único nem de trava.
