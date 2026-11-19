@@ -58,7 +58,7 @@ section.on{display:block}
 @keyframes cardin{from{opacity:0;transform:translateY(24px) scale(.8)}to{opacity:1;transform:none}}
 .card:hover{transform:translateY(-6px) rotate(-1.2deg);border-color:var(--c);background:rgba(255,255,255,.15);box-shadow:0 16px 30px -14px var(--c)}
 .card svg{width:84px;height:84px;display:block;margin:0 auto 4px}
-.card b{display:block;font-size:17px}
+.card b{display:block;font-size:17px;hyphens:auto;overflow-wrap:anywhere}
 .card.seen::after{content:"👀";position:absolute;top:6px;left:8px;font-size:15px}
 .card.star{border-color:#fbbf24;background:rgba(251,191,36,.14)}
 .card.star::before{content:"⭐";position:absolute;top:4px;right:6px;font-size:20px;animation:spin 3s linear infinite}

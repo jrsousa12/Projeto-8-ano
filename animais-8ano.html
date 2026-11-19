@@ -67,7 +67,7 @@ section.on{display:block}
 @keyframes cardin{from{opacity:0;transform:translateY(24px) scale(.8)}to{opacity:1;transform:none}}
 .card:hover{transform:translateY(-6px) rotate(-1.2deg);border-color:var(--c);background:rgba(255,255,255,.15);box-shadow:0 16px 30px -14px var(--c)}
 .card svg{width:84px;height:84px;display:block;margin:0 auto 4px}
-.card b{display:block;font-size:17px}
+.card b{display:block;font-size:17px;hyphens:auto;overflow-wrap:anywhere}
 .card.seen::after{content:"👀";position:absolute;top:6px;left:8px;font-size:15px}
 .card.star{border-color:#fbbf24;background:rgba(251,191,36,.14)}
 .card.star::before{content:"⭐";position:absolute;top:4px;right:6px;font-size:20px;animation:spin 3s linear infinite}
@@ -224,7 +224,7 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:99}
 .ht:hover{transform:translateY(-5px);background:rgba(255,255,255,.16);box-shadow:0 16px 30px -14px var(--c)}
 .ht .ic{font-size:40px}.ht b{display:block;font-size:19px}.ht .d{display:block;font-size:14px;opacity:.85}
 /* cartões iguais à árvore */
-.cards.always{display:grid;margin-top:0;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.cards.always{display:grid;margin-top:0;grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}
 .card.pc svg{width:118px;height:80px}
 .src{margin-top:16px;font-size:14px;opacity:.75}
 /* painel genérico */
@@ -266,7 +266,8 @@ header{position:relative}
  main{padding:12px 12px 90px}
  .box{padding:14px;border-radius:22px}.box h2{font-size:22px}
  .htiles{grid-template-columns:1fr}.ht{padding:14px 16px}
- .cards.always{grid-template-columns:repeat(2,1fr);gap:10px}
+ .cards.always{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .cards.always .card b{font-size:15px}
  .card.pc svg{width:100%;max-width:130px;height:auto}
  .tcol{padding:12px}.tube{height:150px}.deg{font-size:30px}
  .panel{border-radius:22px}.info{padding:16px}.hero{padding:16px}.hero h2{font-size:26px}
@@ -317,6 +318,8 @@ header{position:relative}
 .fq.tarde{display:none}.fq.tarde.rev{display:block}
 .fqst{height:170px;display:grid;place-items:center}.fqst svg{width:auto;height:100%;max-height:170px}
 .fqdots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.fqdots .dot{padding:6px 12px;font-size:14px;min-height:36px}
+/* celular estreito: Voltar e Opções só com o símbolo, para o Nível caber */
+@media (max-width:480px){#bk .tx,#op .tx{display:none}}
 
 </style>
 <style>
@@ -393,7 +396,7 @@ button.score:hover{background:rgba(255,255,255,.18)}
 .nvcard{display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:24px;background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(139,92,246,.18));border:1px solid rgba(139,92,246,.4);margin-bottom:14px}
 .nvic{font-size:52px;line-height:1;animation:floaty 3s ease-in-out infinite}
 .nvinfo{flex:1;min-width:0}
-.nvtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:19px}
+.nvtop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;align-items:baseline;font-size:19px}
 .nvtop span{font-weight:700;color:#7dd3fc;white-space:nowrap}
 .nvinfo p{font-size:15px;margin-top:6px}
 .nvpct{opacity:.85}
@@ -583,9 +586,9 @@ img.ani{display:block;object-fit:contain;background:#f7f4ec;border-radius:16px;u
 <header>
  <div class="brand"><h1>🔬 Animais</h1><p>Ciências • 8º ano • Invertebrados e Vertebrados</p></div>
  <div class="hud">
-  <button class="fs" id="bk" hidden aria-label="Voltar">◀ Voltar</button>
+  <button class="fs" id="bk" hidden aria-label="Voltar">◀<span class="tx"> Voltar</span></button>
   <button class="score" id="nvb" title="Seu nível e XP: toque para ver o progresso"><span id="nvt">🔍 Nível 1</span><div class="bar"><i id="nvbar"></i></div><b id="nvxp">0 XP</b></button>
-  <div class="opw"><button class="fs" id="op" aria-expanded="false">⚙️ Opções ▾</button>
+  <div class="opw"><button class="fs" id="op" aria-expanded="false" aria-label="Opções">⚙️<span class="tx"> Opções</span> ▾</button>
    <div class="opm" id="opm">
     <button class="fs" id="sn" aria-pressed="false" title="Liga os efeitos sonoros">🔇 Som: não</button>
     <button class="fs" id="vb" aria-pressed="true" title="Vibra ao acertar e errar (celular)">📳 Vibração: sim</button>

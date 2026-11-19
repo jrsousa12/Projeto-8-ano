@@ -10,7 +10,7 @@
 .ht:hover{transform:translateY(-5px);background:rgba(255,255,255,.16);box-shadow:0 16px 30px -14px var(--c)}
 .ht .ic{font-size:40px}.ht b{display:block;font-size:19px}.ht .d{display:block;font-size:14px;opacity:.85}
 /* cartões iguais à árvore */
-.cards.always{display:grid;margin-top:0;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.cards.always{display:grid;margin-top:0;grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}
 .card.pc svg{width:118px;height:80px}
 .src{margin-top:16px;font-size:14px;opacity:.75}
 /* painel genérico */
@@ -52,7 +52,8 @@ header{position:relative}
  main{padding:12px 12px 90px}
  .box{padding:14px;border-radius:22px}.box h2{font-size:22px}
  .htiles{grid-template-columns:1fr}.ht{padding:14px 16px}
- .cards.always{grid-template-columns:repeat(2,1fr);gap:10px}
+ .cards.always{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .cards.always .card b{font-size:15px}
  .card.pc svg{width:100%;max-width:130px;height:auto}
  .tcol{padding:12px}.tube{height:150px}.deg{font-size:30px}
  .panel{border-radius:22px}.info{padding:16px}.hero{padding:16px}.hero h2{font-size:26px}
@@ -103,3 +104,5 @@ header{position:relative}
 .fq.tarde{display:none}.fq.tarde.rev{display:block}
 .fqst{height:170px;display:grid;place-items:center}.fqst svg{width:auto;height:100%;max-height:170px}
 .fqdots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.fqdots .dot{padding:6px 12px;font-size:14px;min-height:36px}
+/* celular estreito: Voltar e Opções só com o símbolo, para o Nível caber */
+@media (max-width:480px){#bk .tx,#op .tx{display:none}}

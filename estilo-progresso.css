@@ -71,7 +71,7 @@ button.score:hover{background:rgba(255,255,255,.18)}
 .nvcard{display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:24px;background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(139,92,246,.18));border:1px solid rgba(139,92,246,.4);margin-bottom:14px}
 .nvic{font-size:52px;line-height:1;animation:floaty 3s ease-in-out infinite}
 .nvinfo{flex:1;min-width:0}
-.nvtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:19px}
+.nvtop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;align-items:baseline;font-size:19px}
 .nvtop span{font-weight:700;color:#7dd3fc;white-space:nowrap}
 .nvinfo p{font-size:15px;margin-top:6px}
 .nvpct{opacity:.85}
