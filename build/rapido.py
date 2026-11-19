@@ -39,6 +39,7 @@ MAPA = [
     (["build/rapido.py", "build/buscar.js", "build/tudo.sh", "build/novas.py"], []),
     (["build/revisar_textos.js", "build/t_revisar_textos.js", "build/fichas/*"], []),
     (["build/revisar_perguntas.py", "build/t_revisar_perguntas.py"], []),
+    (["build/imagens.py", "build/t_imagens.py"], []),
     # dados.js, util.js, app.js, estilo-*.css, index.html, sw.js, manifesto e ícones: usados por tudo
     (["dados.js", "util.js", "app.js", "estilo-*.css", "index.html", "sw.js", "manifest.webmanifest", "icon-*"], TODOS),
 ]
@@ -122,6 +123,9 @@ def main():
     perg = ["build/revisar_perguntas.py", "build/t_revisar_perguntas.py", "build/novas.py", "dados.js", "banco-proprio.js"]
     if tudo or any(a in perg or a.startswith("build/fichas/") for a in arquivos):
         ok &= etapa("revisão das perguntas", ["python3", "build/t_revisar_perguntas.py"])
+    imgs = ["build/imagens.py", "build/t_imagens.py", "dados.js", "conteudo.js", "jogos.js"]
+    if tudo or any(a in imgs or a.startswith("img/") for a in arquivos):
+        ok &= etapa("motor das ilustrações", ["python3", "build/t_imagens.py"])
     if testes:
         ok &= etapa("testes de navegador", ["node", "testes/testes.js"] + ([] if testes == TODOS else testes))
     print("\nTudo certo." if ok else "\nHá falhas (veja acima).")

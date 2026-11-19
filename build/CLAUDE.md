@@ -9,7 +9,7 @@
 
 | Mudou | Testes de navegador |
 |---|---|
-| `*.md`, `.github/`, `.claude/`, `validar-banco.js`, ferramentas de `build/` (inclusive `revisar_perguntas.py` e seu teste) | nenhum |
+| `*.md`, `.github/`, `.claude/`, `validar-banco.js`, ferramentas de `build/` (inclusive `revisar_perguntas.py`, `imagens.py` e seus testes) | nenhum |
 | `banco-proprio.js`, `editor.*` | `t_editor` |
 | `jogos.js` | `t_jogos` |
 | `conteudo.js` | `t_jogos`, `t_telas`, `t_progresso` |
@@ -52,6 +52,13 @@
 - O `novas.py verificar` usa a mesma revisão (avisos `absoluta`, `eco`, `negacao` e as sugestões das fichas).
 - Teste guardado: `python3 build/t_revisar_perguntas.py` (rodado pelo `rapido.py` quando a revisão, uma ficha, o `novas.py`, o `dados.js` ou o `banco-proprio.js` mudam, e pelo `tudo.sh`).
 
+## Ilustrações — `python3 build/imagens.py`
+
+- `listar`: onde há ilustração e onde falta (grupos, fauna do Pará, "Quem é este?", jogo de classificar, perguntas), imagens sem uso e acima de 60 KB. Resumo de uma linha; relatório em `revisao/imagens.md`. Só avisa; erro (sai com 1) só quando o app aponta para uma imagem que não existe.
+- `adicionar <arquivo> <nome> [--pa chave | --emj nome] [--substituir]`: converte PNG/JPG/WebP (ex.: do Canva) para WebP, reduz ao tamanho das atuais (`a-` 420, `g-` 360, `p-` 534×720) e até 40 KB, grava em `img/animais/` e liga: `g-`/`p-<grupo>` pelo nome; `a-` no `PAIMG` (`conteudo.js`) com `--pa` ou no `EMJIMG` (`jogos.js`) com `--emj`. Recusa nome inválido, chave desconhecida e arquivo que já existe (sem `--substituir`).
+- Depois: `bash build/tudo.sh` (atualiza a lista `IMGS` do `sw.js` e o arquivo único).
+- Teste guardado: `python3 build/t_imagens.py` (numa cópia temporária; rodado pelo `rapido.py` quando o motor, `img/`, `dados.js`, `conteudo.js` ou `jogos.js` mudam, e pelo `tudo.sh`).
+
 ## Gerador de perguntas — `python3 build/novas.py`
 
 - `modelo <destino> [n]` cria `build/novas/<destino>_DATA.json`; destino = id do grupo, `final` ou parte do nome de um desafio das abas.
@@ -62,7 +69,7 @@
 
 ## Comando único — `bash build/tudo.sh`
 
-- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → teste do motor de revisão dos textos → teste da revisão das perguntas → todos os testes de navegador.
+- Ordem: `tema_claro.py` → `versao.py` → `arquivo-unico.py` → sintaxe de todos os `.js` → `validar-banco.js` → teste do gerador → teste do motor de revisão dos textos → teste da revisão das perguntas → teste do motor das ilustrações → todos os testes de navegador.
 - O arquivo único é gerado antes dos testes, para o `t_offline` testar a versão nova.
 - Os gerados (`tema-claro.css`, `sw.js`, `animais-8ano.html`) saem iguais aos do robô do GitHub; se mudarem, vão no commit.
 - Termina em "Tudo certo." ou "Há falhas" (com o teste e a verificação que falharam).

@@ -1,0 +1,14 @@
+# Ilustrações do app
+
+Gerado por `python3 build/imagens.py listar`. Só avisa, nunca altera.
+
+- **Grupos (ícone e ilustração):** 13 grupos, 26 de 26 imagens
+- **Fauna do Pará:** 12 de 12 com ilustração; sem: nenhum (usam desenho do arte.js)
+- **Jogo Quem é este?:** 44 de 44 com ilustração; sem: nenhum
+- **Jogo de classificar:** 191 animais, só com o nome (sem imagem)
+- **Perguntas:** 700 perguntas, nenhuma com figura (parte 3 do plano)
+- **Arquivos:** 82 ilustrações, 1930 KB; sem uso: nenhuma; acima de 60 KB: p-anelideo (63 KB), p-cnidario (82 KB), p-porifero (61 KB), p-reptil (71 KB)
+
+## Erros
+
+- nenhum

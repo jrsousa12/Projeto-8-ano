@@ -14,6 +14,7 @@ Este projeto prioriza a economia de contexto e tokens. As regras abaixo são obr
   - Revisar os textos (não perguntas): `node build/revisar_textos.js [bloco]` → resumo curto; relatório em `revisao/textos*.md`; calibrar em `build/fichas/textos.json`. Só avisa, nunca altera.
   - Antes de publicar: `bash build/tudo.sh` (gera os arquivos automáticos e roda tudo).
   - Revisar as perguntas: `python3 build/revisar_perguntas.py` → resumo curto; relatório em `revisao/perguntas.md`; fichas em `build/fichas/<assunto>.json`. Só avisa, nunca altera.
+  - Ilustrações: `python3 build/imagens.py listar` (o que falta → `revisao/imagens.md`) e `adicionar <arquivo> <nome> [--pa chave | --emj nome]` (converte para WebP até 40 KB, grava em `img/animais/` e liga ao app).
   - Perguntas novas: `python3 build/novas.py modelo <destino> [n]` → preencher o rascunho em `build/novas/` → `verificar` → `aplicar` (grava no `dados.js`).
   - Avulsos: `node validar-banco.js`; `node testes/testes.js [t_assunto]` (precisa de `playwright@1.63.0`); `python3 build/tema_claro.py`.
   - Lint: não há. `/protocolo-token` reaplica estas regras (origem oficial no projeto de Física).
